@@ -2,7 +2,7 @@
   "id": "1.1",
   "reviewer": "independent coordinator",
   "status": "accepted_source_review",
-  "canonical_sha256": "adcb292406f2c07d836511f6c97c9cdfa7d4f39c86435ce5a99c781c5b228c10",
+  "canonical_sha256": "c4d6990b6130f64e55d91a5ce5f86f712ef0637b43d9f79dcaf56f2378a79f1f",
   "included_source_sha256": {},
   "asset_sha256": {},
   "reviewed_dependency_sha256": {
@@ -36,5 +36,17 @@
   "limitations": [
     "Fresh-machine installer path not rerun; inspected script and existing installation.",
     "Root handles staged rendering/link checks and immediate publication."
-  ]
+  ],
+  "followup_review": {
+    "reviewer": "root (independent of same page writer)",
+    "date": "2026-11-10T21:43:09.082499+00:00",
+    "reason": "User explicitly authorised public repository; setup acquisition wording repaired by original writer",
+    "checks": [
+      "Read final acquisition section and compared full diff to previously accepted page.",
+      "Unauthenticated GitHub API GET returned200 with private:false for exact repository.",
+      "HTTPS clone command uses a new directory and preserves existing copies; ZIP primary route and explicit portable path remain accurate.",
+      "No tool, firmware, circuit or build instructions changed; existing technical review and compile limitations remain applicable."
+    ],
+    "status": "accepted_source_review"
+  }
 }
