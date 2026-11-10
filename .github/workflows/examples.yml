@@ -33,10 +33,11 @@ jobs:
             sha256sum "/tmp/$package"
             dpkg-deb -x "/tmp/$package" "$RUNNER_TEMP/pi-headers"
           done
+          sed -i "s|/usr/src/|$RUNNER_TEMP/pi-headers/usr/src/|g" "$RUNNER_TEMP/pi-headers/usr/src/linux-headers-6.12.96+rpt-rpi-v8/Makefile"
       - name: Build native Arm64 applications and Pi kernel modules
         run: |
           python3 scripts/build_examples.py --linux
-          make -C "$RUNNER_TEMP/pi-headers/usr/src/linux-headers-6.12.96+rpt-rpi-v8" M="$PWD/examples/kernel" W=1 modules
+          make -C "$RUNNER_TEMP/pi-headers/usr/src/linux-headers-6.12.96+rpt-rpi-v8" M="$PWD/examples/kernel" CC=gcc W=1 modules
           dtc -@ -I dts -O dtb -o /tmp/hardware-button.dtbo examples/kernel/hardware-button-overlay.dts
           file examples/kernel/hello.ko examples/kernel/mybutton.ko .build/serial_client
       - uses: actions/upload-artifact@v4
