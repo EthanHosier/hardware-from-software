@@ -1,6 +1,7 @@
 #include <cerrno>
 #include <charconv>
 #include <cstring>
+#include <cstdint>
 #include <fcntl.h>
 #include <iostream>
 #include <linux/gpio.h>

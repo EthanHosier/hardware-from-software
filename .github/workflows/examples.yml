@@ -23,6 +23,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/pi-headers"
           base=https://archive.raspberrypi.com/debian/pool/main/l/linux
           for package in \
             linux-headers-6.12.96+rpt-common-rpi_6.12.96-1+rpt1_all.deb \
@@ -30,12 +31,12 @@ jobs:
             linux-kbuild-6.12.96+rpt_6.12.96-1+rpt1_arm64.deb; do
             curl -fLsS --retry 3 "$base/$package" -o "/tmp/$package"
             sha256sum "/tmp/$package"
-            sudo dpkg-deb -x "/tmp/$package" /
+            dpkg-deb -x "/tmp/$package" "$RUNNER_TEMP/pi-headers"
           done
       - name: Build native Arm64 applications and Pi kernel modules
         run: |
           python3 scripts/build_examples.py --linux
-          make -C /usr/src/linux-headers-6.12.96+rpt-rpi-v8 M="$PWD/examples/kernel" W=1 modules
+          make -C "$RUNNER_TEMP/pi-headers/usr/src/linux-headers-6.12.96+rpt-rpi-v8" M="$PWD/examples/kernel" W=1 modules
           dtc -@ -I dts -O dtb -o /tmp/hardware-button.dtbo examples/kernel/hardware-button-overlay.dts
           file examples/kernel/hello.ko examples/kernel/mybutton.ko .build/serial_client
       - uses: actions/upload-artifact@v4

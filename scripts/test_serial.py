@@ -29,6 +29,9 @@ for spec in [
     ('device error',b'1 ERR unsupported\n',1),
     ('oversized reply',b'x'*100+b'\n',1),
     ('embedded NUL',b'1 OK 1\x00ignored\n',1),
+    ('bad numeric result',b'1 OK garbage\n',1),
+    ('wrong PING value',b'1 OK 99\n',1),
+    ('LED mismatch',b'1 OK 0\n',1,('LED','1')),
     ('deadline',None,1),
 ]:case(*spec)
 print('Serial PTY tests passed; this verifies host stream handling, not electrical UART behaviour.')

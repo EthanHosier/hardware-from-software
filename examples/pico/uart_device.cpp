@@ -20,16 +20,16 @@ int main() {
             if (result == hfs::Line::Result::overflow || !hfs::parse(line.text(),request)) {
                 uart_puts(uart0,"0 ERR malformed\n"); continue;
             }
-            int32_t value = 0;
+            long long value = 0;
             switch (request.op) {
             case hfs::Op::ping: value=1; break;
             case hfs::Op::led: device.led(request.led); value=device.light; break;
-            case hfs::Op::count: value=static_cast<int32_t>(device.presses); break;
+            case hfs::Op::count: value=device.presses; break;
             case hfs::Op::temp: value=device.temperature(); break;
             }
             char reply[64];
-            std::snprintf(reply,sizeof(reply),"%lu OK %ld\n",
-                static_cast<unsigned long>(request.id),static_cast<long>(value));
+            std::snprintf(reply,sizeof(reply),"%lu OK %lld\n",
+                static_cast<unsigned long>(request.id),value);
             uart_puts(uart0,reply);
         }
         tight_loop_contents();

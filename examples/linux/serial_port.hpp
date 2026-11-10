@@ -1,6 +1,7 @@
 #pragma once
 #include <cerrno>
 #include <chrono>
+#include <charconv>
 #include <cstring>
 #include <fcntl.h>
 #include <poll.h>
@@ -68,6 +69,14 @@ public:
                 const std::string prefix=std::to_string(id)+" ";
                 if(reply.compare(0,prefix.size(),prefix)!=0)throw std::runtime_error("unexpected reply ID");
                 if(reply.compare(prefix.size(),3,"OK ")!=0)throw std::runtime_error("device rejected command: "+reply);
+                const auto start=prefix.size()+3;
+                long long value=0;
+                const auto [finish,error]=std::from_chars(reply.data()+start,reply.data()+reply.size(),value);
+                if(error!=std::errc{} || finish!=reply.data()+reply.size()) throw std::runtime_error("malformed numeric reply");
+                if(parsed.op==Op::ping && value!=1) throw std::runtime_error("unexpected PING result");
+                if(parsed.op==Op::led && value!=parsed.led) throw std::runtime_error("LED acknowledgement mismatch");
+                if(parsed.op==Op::count && (value<0 || value>4294967295LL)) throw std::runtime_error("COUNT outside uint32 range");
+                if(parsed.op==Op::temp && (value<INT32_MIN || value>INT32_MAX)) throw std::runtime_error("TEMP outside int32 range");
                 return reply;
             }
         }
