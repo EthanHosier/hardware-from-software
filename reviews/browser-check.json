@@ -1,0 +1,13 @@
+{
+  "status": "pass for published Chapter0",
+  "checked_at": "2026-11-10T21:18:41.937681+00:00",
+  "public_domain": "https://hardware-from-software.vercel.app",
+  "checks": [
+    "Public0.5lesson loaded in unauthenticated in-app browser; all3SVGs loaded.",
+    "390x844 viewport: document scrollWidth390, no page horizontal overflow; diagrams constrained to350px and larger-view links present.",
+    "Default desktop layout visually inspected for0.2Pico tour and diagram; default viewport restored after mobilecheck.",
+    "Full0.6benchSVG visually inspected to resolve croppedQuickLookpreview; allsignals andlabels visible.",
+    "Livebreadboardsearch returned19results through mdBookkeyboardkeyupUI and links pointto actualchapteranchors."
+  ],
+  "physical_runtime": "not exercised"
+}

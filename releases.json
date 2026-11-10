@@ -1,0 +1,42 @@
+[
+  {
+    "published_at": "2026-11-10T21:16:51.012167+00:00",
+    "deployment": {
+      "id": "dpl_5rWPDuyPwD1BETsZGKKQKvzronaL",
+      "url": "https://hardware-from-software-8gnyn91h4-ethanhosiers-projects.vercel.app",
+      "productionUrl": null,
+      "inspectorUrl": "https://vercel.com/ethanhosiers-projects/hardware-from-software/5rWPDuyPwD1BETsZGKKQKvzronaL",
+      "readyState": "INITIALIZING",
+      "target": "production",
+      "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_5rWPDuyPwD1BETsZGKKQKvzronaL",
+      "buildMachine": {
+        "cores": 2,
+        "memory": 8192,
+        "machine": "basic",
+        "selectionType": "fixed",
+        "selectionSource": "plan-default"
+      },
+      "deploymentProtection": []
+    },
+    "publication": {
+      "published": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.4",
+        "0.5",
+        "0.6"
+      ],
+      "total": 53,
+      "canonical_sha256": {
+        "src/0.1-what-you-are-going-to-build.md": "feab44eed2e853935cec7e89f6cb7e22496dbf52f518b4f329a90dba56dd9757",
+        "src/0.2-a-labelled-tour-of-your-pico-2.md": "48768eb852a4202878827ea34580bc3f8b4e4f29f15da0c5710e6a5052cab465",
+        "src/0.3-a-labelled-tour-of-your-raspberry-pi-4.md": "51acb2ed922fdeca161d98a921ae52f5ecc6eb54374d3b430adf2e9290b7a970",
+        "src/0.4-a-labelled-tour-of-the-debug-probe-and-cables.md": "01524f742490baca0b629a53ebca83702c80593eace5dd3fef7ea2fc194eeff2",
+        "src/0.5-recognise-the-breadboard-and-kit-components.md": "6c32fa80b8e024eb3009d51e754c40f52cfef0f03ec2b1da091f5ffd6bb346c8",
+        "src/0.6-assemble-the-bench-and-understand-the-electrical-rules.md": "96803f4ff500aaec1cfd8f97d4abf102913ab6819f868a6e407f6dd766d1b40f"
+      }
+    },
+    "anonymous_verification": "manifest and every published chapter fetched without authentication and matched local output"
+  }
+]

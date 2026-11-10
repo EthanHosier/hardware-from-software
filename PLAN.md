@@ -1,6 +1,6 @@
 # Hardware from Software — research and chapter plan
 
-Planning date: 10 November 2026. Updated to include the requested detailed visual hardware tours. Status: proposed curriculum, ready for authoring when requested. This file is the plan only; no mdBook, example programs, repository, hosting project, or deployment has been created.
+Planning date: 10 November 2026. Updated to include the requested detailed visual hardware tours. Status: approved curriculum; implementation is in progress. The original plan preceded project creation; see README.md and WORK_LOG.md for current completion and publication status.
 
 ## Intended reader and result
 
