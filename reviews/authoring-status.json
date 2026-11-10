@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T21:46:32.426972+00:00",
+  "updated": "2026-11-10T21:49:08.851363+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -69,16 +69,16 @@
     "2.4": {
       "path": "src/2.4-follow-the-generated-machine-instructions.md",
       "writer": "complete",
-      "reviewer": "root_reviewing"
+      "reviewer": "accepted_source_review"
     },
     "3.1": {
       "path": "src/3.1-attach-the-debug-probe-over-swd.md",
-      "writer": "active",
-      "reviewer": "pending"
+      "writer": "complete",
+      "reviewer": "accepted_source_review"
     },
     "3.2": {
       "path": "src/3.2-load-the-elf-and-step-through-the-led-write.md",
-      "writer": "pending",
+      "writer": "active",
       "reviewer": "pending"
     },
     "3.3": {

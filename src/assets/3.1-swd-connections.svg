@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="720" viewBox="0 0 800 720" role="img" aria-labelledby="t d">
+<title id="t">Chapter 3 SWD and USB connections</title>
+<desc id="d">Connection schematic, not a physical pinout. Mac connects by two separate data-capable USB paths to probe and Pico 2. Probe D SC connects to Pico SWCLK, GND to GND, SD to SWDIO. U empty. Pico GP16 physical21 connects through one kilohm to LED anode; cathode returns to GND physical23. No power rails join the boards.</desc>
+<style>text{font-family:system-ui,sans-serif;fill:#172c45;font-size:18px}.small{font-size:15px}.b{font-weight:700}.box{fill:#eef4f8;stroke:#405a71;stroke-width:2}.usb{fill:none;stroke:#285db1;stroke-width:4}.wire{fill:none;stroke:#405a71;stroke-width:3}</style>
+<defs><marker id="light" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0 0L5 2.5L0 5" fill="none" stroke="#405a71"/></marker></defs>
+<rect width="800" height="720" fill="white"/>
+<text x="24" y="30" class="b">Connection schematic • wire by signal name</text>
+<rect x="150" y="55" width="500" height="65" rx="10" class="box"/>
+<text x="400" y="82" text-anchor="middle" class="b">Mac USB-C host</text><text x="400" y="106" text-anchor="middle" class="small">Two actual data paths, including adapters if needed</text>
+<path d="M240 120V230M560 120V230" class="usb"/>
+<text x="32" y="157" class="small">USB path A</text><text x="32" y="180" class="small">probe power + data</text><text x="580" y="157" class="small">USB path B</text><text x="580" y="180" class="small">target power + data</text>
+<rect x="40" y="230" width="290" height="300" rx="12" class="box"/><rect x="470" y="230" width="290" height="300" rx="12" class="box"/>
+<text x="185" y="260" text-anchor="middle" class="b">Raspberry Pi Debug Probe</text><text x="615" y="260" text-anchor="middle" class="b">Non-wireless Pico 2</text>
+<text x="185" y="290" text-anchor="middle">micro-USB</text><text x="615" y="290" text-anchor="middle">micro-USB</text>
+<text x="65" y="332" class="b">D</text><text x="610" y="332" class="b">Debug interface</text>
+<path d="M330 360H470M330 410H470M330 460H470" class="wire"/>
+<text x="310" y="366" text-anchor="end">pin 1 · SC</text><text x="490" y="366">SWCLK</text>
+<text x="310" y="416" text-anchor="end">pin 2 · GND</text><text x="490" y="416">GND</text>
+<text x="310" y="466" text-anchor="end">pin 3 · SD</text><text x="490" y="466">SWDIO</text>
+<text x="65" y="505" class="b">U: empty</text><text x="490" y="505" class="small">No target power in SWD cable</text>
+<text x="24" y="568" class="b">Existing LED circuit on Pico only — unchanged</text>
+<text x="24" y="610">GP16</text><text x="24" y="633" class="small">physical 21</text>
+<path d="M122 605H170M250 605H360M395 605H570" class="wire"/>
+<rect x="170" y="592" width="80" height="26" fill="white" stroke="#405a71" stroke-width="3"/><text x="210" y="583" text-anchor="middle">1 kΩ</text>
+<path d="M360 589L390 605L360 621ZM395 587V623" fill="none" stroke="#405a71" stroke-width="3"/>
+<path d="M410 594L427 577M420 604L437 587" fill="none" stroke="#405a71" stroke-width="2" marker-end="url(#light)"/>
+<text x="360" y="655" text-anchor="middle" class="small">anode</text><text x="433" y="655" text-anchor="middle" class="small">cathode</text><text x="390" y="579" text-anchor="middle" class="small">LED</text>
+<text x="580" y="610">Pico GND</text><text x="580" y="633" class="small">physical 23</text>
+<text x="24" y="696" class="small">Both boards unpowered for wiring changes. No Pi, button or joined power rails.</text>
+</svg>

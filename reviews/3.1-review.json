@@ -1,0 +1,48 @@
+{
+  "id": "3.1",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "0d2d87677c0fe5609f0064aeefe02111fd5e8d87c899a90d0ade2be039abdd24",
+  "included_source_sha256": {},
+  "asset_sha256": {
+    "src/assets/3.1-swd-connections.svg": "4b7a4dfc38f89e033f7d8b2098dfcce940175f9bde3b7caba9abcf34bd2439a6",
+    "src/assets/0.2-pico2-physical.svg": "e41224d14e894af8418713a25f1aedf907be9f54261acba5421918568f44ee6b",
+    "src/assets/0.4-probe-physical.svg": "436bf0b170c6a6144b6e8d75557f6d73d0e330a934b328f7e2ac1f0f1509ec7d"
+  },
+  "paths_read": [
+    "src/3.1-attach-the-debug-probe-over-swd.md",
+    "reviews/3.1-writer.json",
+    "src/assets/3.1-swd-connections.svg",
+    "src/assets/0.2-pico2-physical.svg",
+    "src/assets/0.4-probe-physical.svg",
+    "examples/pico/blink_registers.cpp",
+    ".deps/openocd/scripts/target/rp2350.cfg",
+    ".deps/openocd/scripts/interface/cmsis-dap.cfg"
+  ],
+  "sources_checked": [
+    "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html#debug-connector-swd",
+    "https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html",
+    "https://github.com/raspberrypi/debugprobe/releases/tag/debugprobe-v2.3.1",
+    "https://openocd.org/doc/html/Server-Configuration.html",
+    "https://github.com/raspberrypi/openocd/blob/rpi-common/tcl/target/rp2350.cfg"
+  ],
+  "scope_coverage": "Exact SWD signal table and connector variants, D versus U, no target power, two real USB paths and adapters qualification, common ground/unpowered wiring, installed OpenOCD command and explicit single cm0 target, probe discovery versus target examination, illustrative logs, server port meanings, conditional accessory-only firmware recovery, precise continuation/cleanup and physical limits.",
+  "checks_performed": [
+    "Read all final prose and new SVG source; compared wiring with previously independently reviewed physical Pico/probe references.",
+    "Read entire actual installed RP2350 config: USE_CORE cm0 precedes target parsing, target rp2350.cm0, SWD transport and single target; checked actual interface config.",
+    "Observed host OpenOCD version independently in1.1 checks; same pinned executable. No target attachment attempted.",
+    "Browsed official server initialization/default ports and probe wiring/release/update instructions. Official docs confirm FW Version protocol-level distinction and current2.3.1.",
+    "Rendered complete new SVG after same-writer repair; traced all three SWD lines and LED series circuit. Reused prior physical diagrams unchanged.",
+    "No included firmware needed for attachment-only lesson; root render/link checks precede publication."
+  ],
+  "findings": [
+    {
+      "issue": "New schematic initial draft left a gap between LED cathode and ground return.",
+      "resolution": "Same dedicated writer joined return at cathode and added outward LED light arrows. Source reread and complete repaired render inspected."
+    }
+  ],
+  "repairs": [
+    "LED cathode continuity/light-symbol repair by same writer."
+  ],
+  "hardware_status": "host version/configuration inspected; physical SWD, target discovery and accessory firmware version not exercised/measured"
+}

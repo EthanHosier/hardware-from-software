@@ -1,0 +1,56 @@
+{
+  "id": "3.1",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md (entire, split reads)",
+    "EXAMPLES.md",
+    "RESUME.md",
+    "catalog.json (3.1 and 3.2 entries)",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/0.2-a-labelled-tour-of-your-pico-2.md",
+    "src/0.4-a-labelled-tour-of-the-debug-probe-and-cables.md",
+    "src/2.4-follow-the-generated-machine-instructions.md",
+    "src/assets/0.2-pico2-physical.svg",
+    "src/assets/0.4-probe-physical.svg",
+    "src/assets/0.4-cable-paths.svg"
+  ],
+  "sources": [
+    "https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html",
+    "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html#debug-connector-swd",
+    "https://github.com/raspberrypi/debugprobe/releases/tag/debugprobe-v2.3.1",
+    "https://github.com/raspberrypi/openocd/blob/rpi-common/tcl/target/rp2350.cfg",
+    "https://openocd.org/doc/html/Server-Configuration.html"
+  ],
+  "scope_audit": {
+    "connector_and_power": "D versus U, bare pad orientation, factory keyed SH cable versus aftermarket headers/bare pads; no implicit soldering; separate USB data/power paths and adapter qualification; ground reference, no rail joins, both unpowered before changes",
+    "commands": "checkout-local executable/scripts; cmsis-dap, rp2350, USE_CORE cm0 before target; 1000kHz conservative and100kHz retry; observed version only; no GDB/load yet",
+    "observation": "distinguishes probe USB identification from target examination and port listening; illustrative target log; server port explanations",
+    "recovery_cleanup": "conditional official debugprobe.uf2 accessory-only recovery, no unnecessary update; CtrlC and unpowered detach; continuation3.2",
+    "unchanged_circuit": "GP16 physical21 through1kohm LED to GND physical23; no button/Pi, U empty"
+  },
+  "code_files_read": [
+    "scripts/setup_deps.py",
+    "examples/pico/CMakeLists.txt",
+    "examples/pico/blink_registers.cpp",
+    ".deps/openocd/scripts/interface/cmsis-dap.cfg",
+    ".deps/openocd/scripts/target/rp2350.cfg"
+  ],
+  "checks_performed": [
+    "Executed installed .deps/openocd/openocd --version:0.12.0+dev-gacff23f (2026-09-05-14:14)",
+    "Read actual installed target config in full; verified target name rp2350.cm0 and USE_CORE configuration ordering",
+    "Parsed SVG as XML; generated QuickLook PNG and visually inspected; corrected diode cathode wire continuity, then added LED light arrows",
+    "Local link check: all existing dependencies resolve except pending canonical next page3.2",
+    "No example source changed; root reports firmware compilation; no new compile required for this prose-only page"
+  ],
+  "hardware_status": {
+    "host_version": "observed",
+    "target_compilation": "root-reported compiled, unchanged sources inspected",
+    "physical_swd": "not exercised",
+    "probe_firmware": "not measured",
+    "target_discovery": "not exercised"
+  },
+  "concerns": [
+    "Canonical forward link pending authoring: 3.2-load-the-elf-and-step-through-the-led-write.md"
+  ],
+  "status": "ready_for_independent_review"
+}
