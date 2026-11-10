@@ -1,6 +1,7 @@
 // Educational latest-state device, Linux 6.12+ API baseline, 64-bit Pi OS.
 #include <linux/module.h>
 #include <linux/platform_device.h>
+#include <linux/of.h>
 #include <linux/gpio/consumer.h>
 #include <linux/interrupt.h>
 #include <linux/workqueue.h>
@@ -168,7 +169,7 @@ static int hfs_release(struct inode *inode, struct file *file)
 }
 static const struct file_operations hfs_fops = {
     .owner = THIS_MODULE, .open = hfs_open, .read = hfs_read,
-    .poll = hfs_poll, .release = hfs_release, .llseek = no_llseek,
+    .poll = hfs_poll, .release = hfs_release, .llseek = NULL,
 };
 static int hfs_probe(struct platform_device *pdev)
 {
