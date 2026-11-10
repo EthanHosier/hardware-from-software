@@ -206,6 +206,7 @@ static int hfs_probe(struct platform_device *pdev)
     if (ret) {
         devm_free_irq(&pdev->dev, b->irq, b);
         cancel_delayed_work_sync(&b->debounce);
+        gpiod_set_value_cansleep(b->led, 0);
         goto free;
     }
     platform_set_drvdata(pdev, b);

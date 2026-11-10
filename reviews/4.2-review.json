@@ -1,0 +1,49 @@
+{
+  "id": "4.2",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "142d06b1ca96f7d5e2503456f69ea778e2890768dd5ce9172b22d4615f61bc1b",
+  "included_source_sha256": {
+    "examples/pico/button_irq_sdk.cpp": "2bfe6523d1f89391b039eddf5f818dc6b786eb357ca36d01dfb856ea83f43165",
+    "examples/pico/button_irq.cpp": "98d5d773a21da23cac0a6c4eb618907e20ed5d02eb8c5986fc7aa9b67554feff"
+  },
+  "asset_sha256": {
+    "src/assets/circuit-pico-button.svg": "26cb2c83cfcf4561df63d00af2f5f2235265d3eb9e3cee6878bdb41d5a080191"
+  },
+  "paths_read": [
+    "src/4.2-configure-and-acknowledge-a-gpio-interrupt.md",
+    "reviews/4.2-writer.json",
+    "examples/pico/button_irq_sdk.cpp",
+    "examples/pico/button_irq.cpp",
+    "src/assets/circuit-pico-button.svg",
+    ".deps/pico-sdk/src/rp2_common/hardware_gpio/gpio.c (complete IRQ dispatcher/setup path)",
+    ".deps/pico-sdk/src/rp2_common/hardware_irq/irq.c (vector/enable paths)",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/io_bank0.h (GP17/word2)"
+  ],
+  "sources_checked": [
+    "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_gpio/gpio.c",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_irq/irq.c",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/2.3.1/src/rp2350/hardware_regs/include/hardware/regs/io_bank0.h"
+  ],
+  "scope_coverage": "Complete SDK falling-edge baseline then direct both-edge handler, raw edge versus level semantics, GP17 index/masks and INTR/INTE/INTS offsets, peripheral/NVIC/vector gates and ordering, correct W1C ownership, Boolean handoff/coalescing plus actual debounce overview, complete build/UF2/SWD/USB route, wiring/troubleshooting/cleanup and physical limits.",
+  "checks_performed": [
+    "Read entire prose and both actual full-file includes. Direct program already debounces; page accurately distinguishes its accepted-press LED output from SDK raw callback report.",
+    "Independently traced installed SDK dispatcher: per-core INTS -> acknowledge before callback; helper clears stale GPIO latches before INTE; callback registration before NVIC enable.",
+    "Independently inspected irq_set_exclusive_handler and RP2350 NVIC icpr-before-iser implementation; page correctly separates NVIC pending clear from peripheral W1C.",
+    "Checked word2,shift4,fall0x40,rise0x80,both0xc0, raw0x238/enable0x250/status0x280 against pinned official headers.",
+    "Rendered complete shared button SVG and traced pullup/input/switch/ground; physical pin table agrees with prior official Pico pinout review.",
+    "Both include fences top-level unindented; exact build and established cm0 SWD command/serial route inspected. Existing compilation evidence applies; no redundant firmware build performed.",
+    "Reread repaired quit line and writer report: one literal backslash key now shown. Root exact rendered includes/link checks precede publication."
+  ],
+  "findings": [
+    {
+      "issue": "Screen quit key showed two literal backslashes.",
+      "resolution": "Same dedicated writer changed it to code-span Ctrl+A then Ctrl+one backslash; independently reread repaired source."
+    }
+  ],
+  "repairs": [
+    "Corrected screen quit key notation by same writer."
+  ],
+  "hardware_status": "Both canonical targets compiled per verification.json; source/register/config reviewed. Physical IRQ delivery, LED, bounce, USB observations and SWD loading not exercised."
+}

@@ -1,0 +1,66 @@
+{
+  "id": "4.2",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/3.1-attach-the-debug-probe-over-swd.md",
+    "src/3.2-load-the-elf-and-step-through-the-led-write.md",
+    "src/3.3-diagnose-a-broken-program-systematically.md",
+    "src/4.1-read-a-button-by-polling.md",
+    "src/assets/circuit-pico-button.svg",
+    "src/1.3-flash-with-bootsel-and-read-output.md",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py",
+    "verification.json"
+  ],
+  "sources": [
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_gpio/gpio.c",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_gpio/include/hardware/gpio.h",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/2.3.1/src/rp2350/hardware_regs/include/hardware/regs/io_bank0.h",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_irq/irq.c",
+    "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
+  ],
+  "scope_audit": {
+    "sdk_baseline": "Full source; falling-only callback, automatic dispatcher acknowledge; Boolean coalescing and main reporting.",
+    "direct_handler": "Full actual source; GP17 word2 shift4 masks0x40/0x80; raw W1C, PROC0 enable/status; vector/NVIC and startup ordering; exact acknowledgment and handoff semantics.",
+    "progression": "Actual direct target already includes both-edge main debounce and LED; overview included and deeper correctness deferred to4.3, exception frame deferred4.4.",
+    "practical": "Wiring table and inspected shared schematic, prerequisites, build, both UF2 loads, complete SWD commands, predicted observations, troubleshooting and cleanup."
+  },
+  "code_files_read": [
+    "examples/pico/button_irq_sdk.cpp",
+    "examples/pico/button_irq.cpp",
+    "examples/pico/CMakeLists.txt",
+    ".deps/pico-sdk/src/rp2_common/hardware_gpio/gpio.c",
+    ".deps/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h (IRQ definitions and acknowledgment)",
+    ".deps/pico-sdk/src/rp2_common/hardware_irq/irq.c (enable/vector paths)",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/io_bank0.h (GP17 and word2 registers)",
+    ".deps/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/io_bank0.h",
+    ".deps/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h (save/restore)"
+  ],
+  "checks_performed": [
+    "Read actual full application sources and CMake; compared teaching to exact control flow.",
+    "Compared GP17 masks, word index and offsets with installed RP2350 SDK headers.",
+    "Inspected SDK dispatcher acknowledgment-before-callback and NVIC clear-before-enable.",
+    "Inspected shared button SVG text and path connectivity.",
+    "Checked local and catalog-canonical links and unindented complete source include fences.",
+    "Read root verification.json compile evidence and confirmed both ELFs and exact GDB executable exist; did not rebuild shared outputs."
+  ],
+  "hardware_status": "Not exercised: IRQ delivery, pin levels, bounce, LED toggles, USB logs and SWD loading are predictions, not measurements.",
+  "concerns": [
+    "Official datasheet browser fetch exceeded tool content limit; exact register access claims cross-checked against official pinned RP2350 generated headers and installed SDK.",
+    "4.3 and4.4 canonical forward targets are in catalog and awaiting authoring/publication; accepted-only builder routes unpublished pages.",
+    "No code corrections requested; no shared code changed."
+  ],
+  "status": "coordinator-requested repair complete; ready for recheck",
+  "repairs": [
+    {
+      "finding": "screen quit instruction displayed two literal backslashes",
+      "change": "Changed to code spans Ctrl+A followed by Ctrl+ and one literal backslash key.",
+      "verification": "Reread entire final lesson after edit; confirmed one literal backslash in quit instruction and source includes unchanged."
+    }
+  ]
+}
