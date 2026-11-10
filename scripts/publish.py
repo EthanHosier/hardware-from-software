@@ -29,7 +29,7 @@ def main():
             raise RuntimeError('Deployment '+state['readyState']+': '+str(state.get('readyStateReason',state.get('errorMessage'))))
         time.sleep(3)
     else:raise RuntimeError('Deployment pending after bounded wait; inspect existing ID before retry')
-    url=deployment.get('productionUrl','https://hardware-from-software.vercel.app')
+    url=deployment.get('productionUrl') or 'https://hardware-from-software.vercel.app'
     # This deliberately uses urllib, without Vercel credentials or bypass headers.
     request=urllib.request.Request(url+'/publication.json',headers={'User-Agent':'HardwareBookPublicVerification/1.0'})
     with urllib.request.urlopen(request,timeout=30) as response:
