@@ -1,0 +1,59 @@
+{
+  "id": "0.4",
+  "reviewer": "independent coordinator",
+  "paths_read": [
+    "src/0.4-a-labelled-tour-of-the-debug-probe-and-cables.md",
+    "src/assets/0.4-probe-physical.svg",
+    "src/assets/0.4-cable-paths.svg",
+    "src/assets/0.4-cable-ends.svg",
+    "reviews/0.4-writer.json"
+  ],
+  "code_files_read": [],
+  "sources_checked": [
+    "https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html",
+    "https://pip.raspberrypi.com/documents/RP-008194-DS",
+    "https://pip.raspberrypi.com/documents/RP-008192-DS",
+    "https://datasheets.raspberrypi.com/debug/debug-connector-specification.pdf",
+    "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html#debug-connector-swd",
+    "https://github.com/raspberrypi/debugprobe",
+    "https://www.raspberrypi.com/documentation/microcontrollers/images/the-probe.png"
+  ],
+  "findings": [
+    {
+      "issue": "Unlabelled flash/clock/regulator components introduced by prose beyond physical tour callouts.",
+      "resolution": "Same writer removed sentence; final paragraph reread."
+    },
+    {
+      "issue": "Connector contact left/right could be confused with loose plug view or target UART perspective.",
+      "resolution": "Independently rendered official connector-spec page4: side-entry cablefront down gives pins1/2/3 left to right. Schematics and probe directions checked; prose and diagrams explicitly host perspective."
+    }
+  ],
+  "scope_coverage": {
+    "probe": "Own RP2040, USB, U versus D, three signal roles, nominal 3.3V and no target power; labelled physical top view and contact close-ups.",
+    "cables": "Original cable-end drawings and endpoint inventory for USB variants/adapters, all supplied SH lead types, jumper gender, Pi supply, SD adapter. Actual package/adapter availability qualified.",
+    "paths": "Two independent Mac USB data and power paths, D-to-SWD, U unused; Pico diagnostics USB and later Pi UART distinct. Factory keyed target versus aftermarket headers/bare pads handled.",
+    "reader_progression": "Unpowered inspection steps, symptom troubleshooting, no premature wiring or invented runtime observations."
+  },
+  "checks_performed": [
+    "Read all prose and all three SVG source files; reread final repair.",
+    "Rendered and visually inspected all three complete SVGs, including text near right edge.",
+    "Browsed official probe documentation, firmware repo and schematic; viewed official connector footprint PDF.",
+    "Verified contact directions and no power pin; checked local filenames against catalog.",
+    "Downloaded and viewed official probe/accessory image; U/D placement and all three cable forms agree with original SVGs."
+  ],
+  "repairs": [
+    "Removed unlabelled extra component names; no remaining source-review findings."
+  ],
+  "pending": [
+    "Root mdBook desktop/narrow rendering and global links; future0.5 page authored separately."
+  ],
+  "hardware_status": "source-reviewed; physical-runtime not exercised; actual cable inventory and fit unconfirmed",
+  "status": "accepted_source_review",
+  "canonical_sha256": "01524f742490baca0b629a53ebca83702c80593eace5dd3fef7ea2fc194eeff2",
+  "included_source_sha256": {},
+  "asset_sha256": {
+    "src/assets/0.4-cable-ends.svg": "5d97a64c8dbf44eb2dfe7dbeebee545514c9a180ce41600ae1f2de86f8fb4ff1",
+    "src/assets/0.4-cable-paths.svg": "10cf3bde2edc303b3376049f259117af322d2456800116f1a516da113b00676c",
+    "src/assets/0.4-probe-physical.svg": "436bf0b170c6a6144b6e8d75557f6d73d0e330a934b328f7e2ac1f0f1509ec7d"
+  }
+}

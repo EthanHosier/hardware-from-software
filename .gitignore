@@ -14,3 +14,4 @@ examples/kernel/.*.cmd
 examples/kernel/Module.symvers
 examples/kernel/modules.order
 examples/kernel/.tmp_versions/
+.vercel

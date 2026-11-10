@@ -1,0 +1,60 @@
+{
+  "id": "0.2",
+  "reviewer": "independent coordinator",
+  "paths_read": [
+    "src/0.2-a-labelled-tour-of-your-pico-2.md",
+    "src/assets/0.2-pico2-physical.svg",
+    "src/assets/0.2-pico2-headers.svg",
+    "src/assets/0.2-rp2350-concept.svg",
+    "reviews/0.2-writer.json",
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json"
+  ],
+  "code_files_read": [],
+  "sources_checked": [
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf",
+    "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html",
+    "https://www.raspberrypi.com/documentation/microcontrollers/microcontroller-chips.html#rp2350"
+  ],
+  "findings": [
+    {
+      "issue": "First physical diagram lacked located power pin labels despite correct prose pin table.",
+      "resolution": "Same writer added complete labelled40-pin physical header close-up; all40 signals independently checked against Figure2."
+    },
+    {
+      "issue": "SIO acronym only in conceptual diagram was unexplained.",
+      "resolution": "Same writer replaced with software GPIO."
+    }
+  ],
+  "scope_coverage": {
+    "physical": "Every required named component mapped to top-view callout and what/where/use table; U3flash vs U1RP2350, U2/L1 vs coreL2, X1, LED, BOOTSEL, USB, SWD, power and headerpins.",
+    "conceptual": "Separate chip-boundary diagram, internal cores/SRAM/controllers vs externalflash; XIP explanation and oneapplicationcore baseline.",
+    "variants": "OriginalPico versus Pico2 versus wireless; factorykeyedSWD versus aftermarketheaders barepads.",
+    "orientation": "USBup, corners1/20/21/40, correct ground groups and SWCLK/GND/SWDIO lefttoright.",
+    "reader_progression": "Unpowered identification, flash/SRAM and pin/mux distinctions, transition to Pi tour."
+  },
+  "checks_performed": [
+    "Read all final prose and all3SVGsource files, including repair; no code/includes/commands.",
+    "Downloaded official PDF, rendered and viewed schematicp20, componentlocationsp21, pinoutp4.",
+    "Browsed official chip features and board layout/debug variant tables.",
+    "Rendered and viewed all3complete SVGs with temporarysquareviewport; no clipping/overlap found.",
+    "Verified40pinmapping and canonicalnextpagelink."
+  ],
+  "repairs": [
+    "Full power/header close-up added; diagram jargon clarified."
+  ],
+  "pending": [
+    "Root rendered mdBook/narrowlayout and global link verification;0.3canonical target authored separately."
+  ],
+  "hardware_status": "source-reviewed; physical-runtime not exercised; userboard revision/cablefit unconfirmed",
+  "status": "accepted_source_review",
+  "canonical_sha256": "48768eb852a4202878827ea34580bc3f8b4e4f29f15da0c5710e6a5052cab465",
+  "included_source_sha256": {},
+  "asset_sha256": {
+    "src/assets/0.2-pico2-headers.svg": "5dbe208de46bed767027908fd8988b52e8d0856afa084ff40fcf7966132ee6fe",
+    "src/assets/0.2-pico2-physical.svg": "e41224d14e894af8418713a25f1aedf907be9f54261acba5421918568f44ee6b",
+    "src/assets/0.2-rp2350-concept.svg": "cc270db9ac98dd636fdb0c836aff3f29bec635af5a379a5d32a261e8137c86c7"
+  }
+}

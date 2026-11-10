@@ -1,0 +1,47 @@
+{
+  "id": "0.3",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md (all217 lines, read in chunks)",
+    "EXAMPLES.md",
+    "catalog.json entry0.3",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "/tmp/hfs-01-pi-reference.png",
+    "/tmp/hfs-01-pi-brief.png",
+    "/tmp/hfs-03-official-top.jpg"
+  ],
+  "sources": [
+    "https://www.raspberrypi.com/products/raspberry-pi-4-model-b/#specifications",
+    "https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-mechanical-drawing.pdf",
+    "https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-reduced-schematics.pdf",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#gpio",
+    "https://magazine.raspberrypi.com/articles/raspberry-pi-4-in-detail",
+    "https://www.raspberrypi.com/app/uploads/2019/07/raspberry-pi-4.jpg",
+    "https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf"
+  ],
+  "scope_audit": {
+    "top_view": "Original SVG,20 numbered items across top/underside. Ethernet upper right,blue USB3 middle right,black USB2 lower right. Physical package positions checked against official mechanical drawing and official Pi4 photo.",
+    "underside": "Original SVG, explicitly left-right flip; microSD at right,header solder joints top; far-side connectors dashed.",
+    "components": "BCM2711,LPDDR4,VL805,BCM54213PE PHY, Ethernet jack,all4 USB ports,power,micro-HDMI0/1,GPIO/pin1,wireless,DSI,CSI,microSD,power/clock overview,PoE,AV,status LEDs. What/location/why/use in tables.",
+    "conceptual": "Separate SoC diagram distinguishes CPU,SoC,board; MAC/PHY and controller/connector distinction; RAM vs persistent storage; Linux driver boundary.",
+    "revision_and_obscuring": "Actual RAM/revision unconfirmed; heatsink/case removal not needed. Current primary product page confirms3GB exists; no claim about user board capacity.",
+    "clock_qualification": "Official mechanical drawing and official top photo show small supporting parts in lower-left interior; callout17 is explicitly broad dashed support-part region, not identification or marking of a specific crystal package. Additional support circuitry elsewhere acknowledged."
+  },
+  "code_files_read": [],
+  "checks_performed": [
+    "XML parsed all3 SVGs successfully",
+    "Rendered all3 SVGs with macOS Quick Look at1200px and visually inspected",
+    "Repaired dark-chip label contrast",
+    "Added actual inner-left pin1 contact outline and leader",
+    "Added two visible small PWR/ACT LED package marks",
+    "Checked canonical catalog link names and local SVG existence",
+    "Browsed official sources; inaccessible/specifications/ path replaced with accessible base#specifications"
+  ],
+  "hardware_status": "Not exercised. Visual/source review only; no claim about runtime,wiring,actual RAM,board revision or measured electrical results.",
+  "concerns": [
+    "Links to canonical0.4 and5.2 pages await their author files at this moment.",
+    "Broad clock-support callout intentionally avoids exact crystal identification on unconfirmed revision; independent reviewer should confirm this overview meets desired detail.",
+    "No mdBook/page browser rendering performed by this writer; coordinator owns integration and independent review."
+  ],
+  "status": "complete_for_independent_review"
+}

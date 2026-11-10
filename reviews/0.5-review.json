@@ -1,0 +1,34 @@
+{
+  "id": "0.5",
+  "reviewer": "root (independent of fresh page writer)",
+  "status": "accepted_source_review",
+  "canonical_sha256": "6c32fa80b8e024eb3009d51e754c40f52cfef0f03ec2b1da091f5ffd6bb346c8",
+  "included_source_sha256": {},
+  "asset_sha256": {
+    "src/assets/0.5-breadboard.svg": "8e3706f63871b7d1915ac36ff5df87d5c8abff7dfc90a7936172b0325bee0636",
+    "src/assets/0.5-parts.svg": "db973485dd38e7f4fbfb6d1d146e1b18fd8c32b11e4e88c6a3f2677ac4b82330",
+    "src/assets/0.5-switch.svg": "f58bed8af03a0b5ca99eac63088c12778f11e6bd249376c24f53a3cb66c00500"
+  },
+  "paths_read": [
+    "src/0.5-recognise-the-breadboard-and-kit-components.md",
+    "src/assets/0.5-breadboard.svg",
+    "src/assets/0.5-parts.svg",
+    "src/assets/0.5-switch.svg",
+    "reviews/0.5-writer.json"
+  ],
+  "sources_checked": [
+    "https://learn.adafruit.com/breadboards-for-beginners?view=all",
+    "https://www.vishay.com/docs/20143/colorcod.pdf",
+    "https://www.kingbrightusa.com/images/catalog/SPEC/WP7113ID.pdf",
+    "https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3f.pdf"
+  ],
+  "scope_coverage": "Read full1635-word lesson and complete3SVGs. Independently checked isolated five-hole groups, gap, split rails, Pico placement distinction, resistor bands/arithmetic/tolerance, LED polarity and clipped-lead caveat, male/female jumper fit, switch permanent groups versus switched contacts, actual-kit uncertainty and final unpowered state.",
+  "checks_performed": [
+    "Read primary manufacturer references; viewed actual Omron page4 and Kingbright page1 package diagrams.",
+    "Viewed all3 complete original SVG renders; matched horizontal permanent pairs to Omron top-view internal diagram and LED cathode marks to Kingbright package drawing.",
+    "Checked1k/4.7k four/five-band codes against Vishay; checked component instructions and sample troubleshooting.",
+    "No program or hardware-runtime claim. Responsive integration check performed separately at publication."
+  ],
+  "findings": [],
+  "hardware_status": "physical-runtime not exercised"
+}

@@ -1,0 +1,76 @@
+{
+  "id": "0.5",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md (complete, chunked)",
+    "EXAMPLES.md",
+    "catalog.json entry 0.5",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/0.1-what-you-are-going-to-build.md",
+    "src/0.2-a-labelled-tour-of-your-pico-2.md",
+    "src/0.3-a-labelled-tour-of-your-raspberry-pi-4.md",
+    "src/0.4-a-labelled-tour-of-the-debug-probe-and-cables.md"
+  ],
+  "paths_authored": [
+    "src/0.5-recognise-the-breadboard-and-kit-components.md",
+    "src/assets/0.5-breadboard.svg",
+    "src/assets/0.5-parts.svg",
+    "src/assets/0.5-switch.svg",
+    "reviews/0.5-writer.json"
+  ],
+  "sources": [
+    {
+      "url": "https://learn.adafruit.com/breadboards-for-beginners?view=all",
+      "use": "Manufacturer guide: hidden contact clips, independent terminal strips and rails, split-rail caveat; read through web."
+    },
+    {
+      "url": "https://www.vishay.com/docs/20143/colorcod.pdf",
+      "use": "Manufacturer four/five-band definitions, digits, multipliers and tolerance; PDF text read through web."
+    },
+    {
+      "url": "https://www.kingbrightusa.com/images/catalog/SPEC/WP7113ID.pdf",
+      "use": "Reference LED package cathode, flat base and unequal lead lengths; page 1 downloaded/rendered and visually inspected."
+    },
+    {
+      "url": "https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3f.pdf",
+      "use": "Reference four-terminal B3F topology and top/bottom view qualification; page 4 downloaded/rendered and visually inspected. Horizontal pairs 4/3 and 2/1 permanent in reference top view. Local A/B labels avoid pretending kit part pin numbers are known."
+    },
+    {
+      "url": "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf",
+      "use": "Pico 2 mechanical layout and 2.54 mm header pitch; official PDF read through web. Placement SVG is explicitly abbreviated, not a pin-count guide."
+    }
+  ],
+  "scope_audit": {
+    "hidden_strips": "Five holes per half-row explicitly one node; adjacent rows separate, gap isolates halves; same-node bypass failures explained.",
+    "rails": "Potential mid-rail splits, independent rails, labels not voltage sources, optional unpowered continuity check; no rail continuity assumed.",
+    "pico": "USB-up component-side top view, length follows gap; headers on opposite fields, each header pin separate row; exposed nodes accessible. Abbreviated placement drawing has correct seven-pitch row separation (c/h on standard geometry).",
+    "resistors": "1k and 4.7k values, four/five-band codes, tolerance, bag/meter ambiguity advice, non-polarity, roles.",
+    "led": "Long anode/short cathode for uncut form, flat cathode inset, clipped-lead caveat and no assumption of actual LED manufacturer.",
+    "switch": "Permanent A1/A2 and B1/B2 pairs, pressing joins groups, diagram places distinct groups on separate breadboard rows across gap; warns across-gap selection can still be permanently connected.",
+    "jumpers": "Male/male, female/male, female/female, breadboard versus board-header fit and colour independence.",
+    "actual_kit": "Explicitly unconfirmed ELEGOO revision, quantities, component identity. No invented box inventory. Optional meter does not become a prerequisite.",
+    "continuity": "Builds on 0.4 and leaves bench unpowered for 0.6; no firmware or circuit energized."
+  },
+  "code_files_read": [],
+  "checks_performed": [
+    "All three SVG files parsed as XML.",
+    "Rendered all three SVGs using macOS Quick Look, inspected PNGs with view_image; repaired LED shape and added labelled top-view flat-cathode inset, re-rendered and re-inspected.",
+    "Checked all relative Markdown targets exist, including next-page path.",
+    "Manually verified four/five-band arithmetic for both resistor values.",
+    "Compared physical switch and LED drawing semantics with rendered official manufacturer PDF pages.",
+    "No source includes, shell commands, or executable examples required on this identification page."
+  ],
+  "hardware_status": {
+    "source_reviewed": true,
+    "compiled": "not applicable; no code",
+    "host_tested": "not applicable; no code",
+    "target_compiled": "not applicable; no code",
+    "physical_runtime": "not exercised; no actual kit or breadboard continuity measured"
+  },
+  "concerns": [
+    "Independent reviewer must read all prose and diagrams and check final mdBook responsive rendering. SVGs include larger-view links and textual label tables; only standalone asset rendering inspected by writer.",
+    "Actual kit revision, component manufacturer/part numbers, rail breaks and switch orientation need reader inspection; clearly qualified in prose.",
+    "1635 whitespace-separated words including headings/tables; fuller identification treatment exceeds typical page length but covers requested mechanics."
+  ],
+  "status": "writer complete; awaiting independent review"
+}

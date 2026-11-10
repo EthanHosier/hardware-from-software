@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="480" viewBox="0 0 1100 480" role="img"><title>Active-low button on Pico 2</title><desc>Use an external 4.7 kΩ pull-up. Button connection pairs are explained in Chapter 0.</desc><rect width="1100" height="480" fill="#f6f8fc"/>
+<text x="35" y="40" font-family="system-ui,sans-serif" font-size="25" fill="#17263b">Active-low button on Pico 2</text>
+<text x="35" y="70" font-family="system-ui,sans-serif" font-size="15" fill="#17263b">Use an external 4.7 kΩ pull-up. Button connection pairs are explained in Chapter 0.</text>
+<rect x="35" y="110" width="330" height="270" rx="12" fill="white" stroke="#506b85" stroke-width="2"/>
+<text x="53" y="142" font-family="system-ui,sans-serif" font-size="21" fill="#17263b">Pico 2</text>
+<text x="55" y="175" font-family="system-ui,sans-serif" font-size="17" fill="#17263b">3V3(OUT) · physical 36</text>
+<text x="55" y="255" font-family="system-ui,sans-serif" font-size="17" fill="#17263b">GP17 input · physical 22</text>
+<text x="55" y="340" font-family="system-ui,sans-serif" font-size="17" fill="#17263b">GND · physical 23</text>
+<path d="M365 165 L520 165" stroke="#286ba3" stroke-width="3" fill="none"/>
+<text x="380" y="155.0" font-family="system-ui,sans-serif" font-size="16" fill="#286ba3"></text>
+<rect x="520" y="130" width="180" height="70" rx="12" fill="white" stroke="#506b85" stroke-width="2"/>
+<text x="538" y="162" font-family="system-ui,sans-serif" font-size="21" fill="#17263b">4.7 kΩ</text>
+<path d="M700 165 H790 V245 H365 M790 245 V300" stroke="#286ba3" stroke-width="3" fill="none"/>
+<text x="800" y="245" font-family="system-ui,sans-serif" font-size="17" fill="#17263b">idle HIGH</text>
+<text x="800" y="270" font-family="system-ui,sans-serif" font-size="17" fill="#17263b">press → LOW</text>
+<rect x="700" y="300" width="230" height="65" rx="12" fill="white" stroke="#506b85" stroke-width="2"/>
+<text x="718" y="332" font-family="system-ui,sans-serif" font-size="21" fill="#17263b">Push button</text>
+<path d="M700 335 H365" stroke="#465363" stroke-width="3" fill="none"/>
+<text x="35" y="435" font-family="system-ui,sans-serif" font-size="16" fill="#17263b">Released: pull-up defines HIGH. Pressed: switch joins GP17 to ground. Keep Pico internal pulls disabled.</text>
+</svg>

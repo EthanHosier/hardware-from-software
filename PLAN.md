@@ -76,7 +76,7 @@ This chapter is a visual introduction to the physical hardware, before installat
 
 | Page | Content and practical work | Completion evidence |
 | --- | --- | --- |
-| 1.1 Install a reproducible macOS toolchain | Choose the official Pico VS Code extension's managed SDK/toolchain route on Apple Silicon; record exact versions and expose its underlying tools for terminal use. Check Arm GCC, CMake, build tool, GDB, OpenOCD, and SDK paths. Explain host tools versus target binaries. Keep any manual installation route in an appendix. | Version/path checks succeed and the compiler targets Arm embedded firmware. |
+| 1.1 Install a reproducible macOS toolchain | Use the checkout-local pinned setup script on Apple Silicon as the reproducible primary route; record exact versions and paths. Explain the official Pico VS Code extension as an optional alternative with separate managed tool paths. Check Arm GCC, CMake, build tool, GDB, OpenOCD, and SDK paths. Explain host tools versus target binaries. Keep manual setup and editor integration details in the recovery appendix. | Version/path checks succeed and the compiler targets Arm embedded firmware. |
 | 1.2 Understand the smallest useful project | Complete CMake and C++ files; explicit Pico 2/Arm target, debug build, SDK import, SDK initialisation, and USB serial output. Explain compilation, linking, ELF, UF2, flash, SRAM, and the SDK's startup contribution. | A clean build produces a Pico 2 ELF and UF2. |
 | 1.3 Flash with BOOTSEL and read output | Enter BOOTSEL, copy the UF2, observe the RP2350 mass-storage device disappear, locate the serial port, and read a versioned heartbeat. Account for macOS serial device naming and charge-only cables. | Rebooted firmware repeatedly emits its identity and heartbeat. |
 | 1.4 Make the build–flash–observe loop repeatable | Change a heartbeat value, rebuild, flash, verify the new firmware, and recover from a program that no longer starts its USB interface. Establish stable example names and a version report. | A deliberate source change is visible on the actual board, and BOOTSEL recovery is understood. |
@@ -215,3 +215,5 @@ No claim is made that the example programs or physical experiments are already i
 ## Authorisation history
 
 The plan-only phase ended when the user explicitly requested: “ok pls start and continue until the end”. Authoring, fresh page agents, independent reviews, GitHub creation and public Vercel deployment are now authorised.
+
+Implementation decision: the primary macOS route uses the actually verified checkout-local pinned tool installer, rather than requiring an editor extension. VS Code and the official Pico extension remain optional; their managed paths must not be mixed with the book’s pinned tool paths.

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="670" viewBox="0 0 760 670" role="img" aria-labelledby="t d">
+<title id="t">Debug Probe physical top view and connector close-up</title><desc id="d">USB at top. UART U is lower left; debug D lower right. Both side-entry connectors face downward. Pin 1 is left, 2 centre, 3 right in this top view. U carries probe TX ground RX; D carries SWCLK ground SWDIO.</desc>
+<style>text{font-family:system-ui,sans-serif;fill:#172c45;font-size:18px}.small{font-size:15px}.bold{font-weight:700}.wire{fill:none;stroke:#405a71;stroke-width:2}.box{fill:#f1f5f9;stroke:#405a71;stroke-width:2}</style>
+<rect width="760" height="670" fill="white"/><text x="28" y="32" class="bold">Physical top view — USB up, cable sockets down</text>
+<rect x="220" y="65" width="300" height="360" rx="35" fill="#e8edf0" stroke="#8796a3" stroke-width="2"/>
+<rect x="237" y="80" width="266" height="330" rx="19" fill="#24755d"/>
+<g fill="#e5cf85" stroke="#172c45"><circle cx="262" cy="110" r="13"/><circle cx="478" cy="110" r="13"/><circle cx="262" cy="383" r="13"/><circle cx="478" cy="383" r="13"/></g>
+<rect x="336" y="66" width="70" height="52" fill="#b8c3cc" stroke="#405a71"/><rect x="344" y="65" width="54" height="12" fill="#32465a"/>
+<rect x="323" y="197" width="94" height="94" fill="#253642"/><text x="370" y="238" text-anchor="middle" fill="white" style="fill:white;font-size:17px">RP2040</text><text x="370" y="263" text-anchor="middle" style="fill:white;font-size:14px">probe's chip</text>
+<rect x="350" y="141" width="40" height="28" rx="5" fill="#cbd5dc"/><rect x="345" y="317" width="48" height="20" fill="#bfc5c6"/>
+<g fill="#f6f5e9" stroke="#405a71"><rect x="276" y="363" width="70" height="48"/><rect x="394" y="363" width="70" height="48"/></g>
+<g stroke="#bea252" stroke-width="5"><path d="M291 368v32m20-32v32m20-32v32m78-32v32m20-32v32m20-32v32"/></g>
+<text x="311" y="355" text-anchor="middle" style="fill:white" class="bold">U</text><text x="429" y="355" text-anchor="middle" style="fill:white" class="bold">D</text>
+<path d="M371 68V48H580" class="wire"/><text x="530" y="72">1 USB: power + data</text>
+<path d="M324 224H185" class="wire"/><text x="24" y="218">2 Own controller</text><text x="24" y="242" class="small">runs probe firmware</text>
+<path d="M311 411v25H26" class="wire"/><text x="26" y="461">3 U: UART bridge</text>
+<path d="M429 411v25H550" class="wire"/><text x="533" y="461">4 D: SWD</text>
+<text x="28" y="500" class="bold">Enlarged sockets — same top-view orientation</text>
+<g class="box"><rect x="45" y="520" width="280" height="80" rx="6"/><rect x="410" y="520" width="305" height="80" rx="6"/></g>
+<g class="bold" text-anchor="middle"><text x="90" y="548">1</text><text x="185" y="548">2</text><text x="280" y="548">3</text><text x="460" y="548">1</text><text x="563" y="548">2</text><text x="665" y="548">3</text></g>
+<g text-anchor="middle" class="small"><text x="90" y="580">probe TX</text><text x="185" y="580">GND</text><text x="280" y="580">probe RX</text><text x="460" y="580">SWCLK</text><text x="563" y="580">GND</text><text x="665" y="580">SWDIO</text></g>
+<text x="28" y="633" class="small">Cable entry is toward the bottom of this drawing. Keyed shells must match.</text><text x="28" y="656" class="small">Simplified reference layout; case transparent/omitted for clarity. Not to scale.</text>
+</svg>

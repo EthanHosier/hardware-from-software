@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="590" viewBox="0 0 1100 590" role="img"><title>Pi 4: dedicated button and LED</title><desc>Physical pin numbers refer to the 40-pin header. This circuit is separate from the Pico button.</desc><rect width="1100" height="590" fill="#f6f8fc"/>
+<text x="35" y="40" font-family="system-ui,sans-serif" font-size="25" fill="#17263b">Pi 4: dedicated button and LED</text>
+<text x="35" y="70" font-family="system-ui,sans-serif" font-size="15" fill="#17263b">Physical pin numbers refer to the 40-pin header. This circuit is separate from the Pico button.</text>
+<rect x="35" y="110" width="400" height="365" rx="12" fill="white" stroke="#506b85" stroke-width="2"/>
+<text x="53" y="142" font-family="system-ui,sans-serif" font-size="21" fill="#17263b">Pi 4 header</text>
+<text x="55" y="175" font-family="system-ui,sans-serif" font-size="18" fill="#17263b">3V3 · physical17</text>
+<text x="55" y="260" font-family="system-ui,sans-serif" font-size="18" fill="#17263b">BCM27 input · physical13</text>
+<text x="55" y="345" font-family="system-ui,sans-serif" font-size="18" fill="#17263b">BCM17 output · physical11</text>
+<text x="55" y="440" font-family="system-ui,sans-serif" font-size="18" fill="#17263b">GND · physical14 / physical9</text>
+<rect x="540" y="130" width="170" height="65" rx="12" fill="white" stroke="#506b85" stroke-width="2"/>
+<text x="558" y="162" font-family="system-ui,sans-serif" font-size="21" fill="#17263b">4.7 kΩ</text>
+<rect x="820" y="225" width="230" height="65" rx="12" fill="white" stroke="#506b85" stroke-width="2"/>
+<text x="838" y="257" font-family="system-ui,sans-serif" font-size="21" fill="#17263b">Button</text>
+<path d="M435 165 H540 M710 165 H780 V250 H435 M780 250 H820 M1050 260 V435 H435" stroke="#286ba3" stroke-width="3" fill="none"/>
+<rect x="540" y="310" width="170" height="65" rx="12" fill="white" stroke="#506b85" stroke-width="2"/>
+<text x="558" y="342" font-family="system-ui,sans-serif" font-size="21" fill="#17263b">1 kΩ</text>
+<rect x="820" y="310" width="230" height="65" rx="12" fill="white" stroke="#506b85" stroke-width="2"/>
+<text x="838" y="342" font-family="system-ui,sans-serif" font-size="21" fill="#17263b">LED + → −</text>
+<path d="M435 340 H540 M710 340 H820 M1050 345 V435" stroke="#286ba3" stroke-width="3" fill="none"/>
+<text x="35" y="525" font-family="system-ui,sans-serif" font-size="16" fill="#17263b">Button pressed: physical voltage LOW; GPIO_ACTIVE_LOW translates this to logical pressed=true.</text>
+<text x="35" y="555" font-family="system-ui,sans-serif" font-size="16" fill="#17263b">LED current flows from BCM17 through 1 kΩ and the LED to GND. Power down before rewiring.</text>
+</svg>

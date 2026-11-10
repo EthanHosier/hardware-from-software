@@ -1,0 +1,33 @@
+{
+  "id": "0.6",
+  "reviewer": "root (independent of fresh page writer)",
+  "status": "accepted_source_review",
+  "canonical_sha256": "96803f4ff500aaec1cfd8f97d4abf102913ab6819f868a6e407f6dd766d1b40f",
+  "included_source_sha256": {},
+  "asset_sha256": {
+    "src/assets/0.6-bench-paths.svg": "e374751150bd43708e03fc4be31c01281a1996737128ccc2f943dc8c1f1fbafc",
+    "src/assets/0.6-led-placement.svg": "0b5e2d246717e8cfd455f525a920af52a58691a7b24c35ef17c99369139338d1",
+    "src/assets/0.6-led-schematic.svg": "168e12c979a616204d09bcb718ffbd5150283d210900137c8e59ed8f5b0e4ba9"
+  },
+  "paths_read": [
+    "src/0.6-assemble-the-bench-and-understand-the-electrical-rules.md",
+    "src/assets/0.6-bench-paths.svg",
+    "src/assets/0.6-led-placement.svg",
+    "src/assets/0.6-led-schematic.svg",
+    "reviews/0.6-writer.json"
+  ],
+  "sources_checked": [
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#gpio",
+    "https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html"
+  ],
+  "scope_coverage": "Full prose, all3 SVG sources and renders independently inspected. Equipment inventory and unconfirmed cable limits; USB paths versus SWD signals; separate supplies and common ground; GPIO3.3V and no5V signalling; 1k series current bound and illustrative1.3mA, pullup0.70mA; unpowered numbered assembly and exact final state; physical21GP16 and23GND, GP17leftempty; explicit diagram versus placement distinction.",
+  "checks_performed": [
+    "Official probe documentation:3.3V, D/U functions, no target supply, common reference before signals.",
+    "Official Pico schematic/pinout and Pi GPIO documentation; verified current arithmetic and series circuit.",
+    "Read complete originalSVG sources and traced LED wiring endpoints. Viewed all3PNG renders; inspected full benchSVG in browser to resolve QuickLook clipping.",
+    "No powered test, continuity reading or measured current claimed."
+  ],
+  "findings": [],
+  "hardware_status": "physical-runtime not exercised"
+}

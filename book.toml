@@ -9,7 +9,7 @@ build-dir = "book"
 default-theme = "light"
 preferred-dark-theme = "navy"
 no-section-label = true
-additional-css = ["assets/book.css"]
+additional-css = ["src/assets/book.css"]
 [output.html.playground]
 runnable = false
 [output.html.search]

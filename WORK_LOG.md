@@ -1,3 +1,9 @@
 # Work log
 
 2026-11-10: User authorised complete authoring and publication using fresh-context page writers and independent semantic reviews. New project, separate private GitHub repository and public Vercel production domain. Plan expanded to 44 main lessons plus nine appendix pages. No physical board access assumed. Root owns shared examples, integration, verification and publication; coordinator dispatches one fresh writer per page and independently reviews it.
+
+2026-11-10 progress: created private EthanHosier/hardware-from-software and new public Vercel project. All12Pico targets compile warning-clean with SDK2.3.1/ArmGNU14.2; host parser normal+ASan/UBSan and10PTY cases passed. Native LinuxArm64 CI compiles all7programs and both modules against officialPi6.12.96+rpt-rpi-v8 headers; DToverlay compiles. Linuxhost memory lab recorded128minor faults and expected childSIGSEGV. CI evidence42901505627 at9f2eb1b. These are software results, not physical device tests.
+
+User requested immediate Vercel upload after each finished page. Publisher stages ONLY pages with an accepted independent review and matching content hashes, redirects unfinished crosslinks to a complete roadmap, checks all local links and anonymously verifies deployed page bytes. Initial reviewed0.1–0.4 published, then0.5 and0.6 accepted and progressive publication initiated.
+
+Fresh-context writer0.5 and0.6 completed their pages. Coordinator hit account usage limit and next writer1.1 also errored for that limit (reported reset11Nov2026 00:31). Root independently completed full prose/diagram/primary-source reviews for0.5 and0.6. No further lesson writing was substituted for the requested fresh-writer/independent-review method. Continue from1.1 after agents can run.

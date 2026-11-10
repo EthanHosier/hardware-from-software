@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="720" viewBox="0 0 760 720" role="img" aria-labelledby="t d">
+<title id="t">Separate USB and SWD paths</title><desc id="d">Two independent data-capable USB paths run from Mac USB-C ports through verified adapters if required, one to the Debug Probe micro-USB and one to Pico 2 micro-USB. The probe D socket runs SWCLK ground SWDIO to the Pico debug connector. U is unused. Pi 4 has its own USB-C supply.</desc>
+<style>text{font-family:system-ui,sans-serif;fill:#172c45;font-size:18px}.small{font-size:15px}.b{font-weight:700}.box{fill:#eef4f8;stroke:#405a71;stroke-width:2}.usb{fill:none;stroke:#285db1;stroke-width:5}.debug{fill:none;stroke:#9a4d15;stroke-width:4}</style>
+<rect width="760" height="720" fill="white"/><text x="26" y="32" class="b">Chapter 3 connection plan — do not connect yet</text>
+<rect x="145" y="63" width="470" height="80" rx="12" class="box"/><text x="380" y="95" text-anchor="middle" class="b">MacBook Pro • USB-C host ports</text><text x="380" y="123" text-anchor="middle" class="small">Two usable USB device connections required</text>
+<path d="M240 143v45M520 143v45" class="usb"/>
+<rect x="45" y="188" width="310" height="85" rx="8" class="box"/><rect x="405" y="188" width="310" height="85" rx="8" class="box"/>
+<text x="200" y="217" text-anchor="middle">USB-C → micro-USB data lead</text><text x="200" y="244" text-anchor="middle" class="small">or data adapter + USB-A data lead</text><text x="560" y="217" text-anchor="middle">Second data-capable USB path</text><text x="560" y="244" text-anchor="middle" class="small">availability must be checked</text>
+<path d="M200 273v72M560 273v72" class="usb"/>
+<text x="25" y="309" class="small">Power + USB data</text><text x="574" y="309" class="small">Power + USB data</text>
+<rect x="75" y="345" width="250" height="115" rx="16" fill="#d8eee3" stroke="#24755d" stroke-width="2"/><text x="200" y="377" text-anchor="middle" class="b">Debug Probe</text><text x="200" y="405" text-anchor="middle">micro-USB</text><text x="118" y="440">U unused</text><text x="270" y="440">D</text>
+<rect x="435" y="345" width="250" height="115" rx="16" fill="#d8eee3" stroke="#24755d" stroke-width="2"/><text x="560" y="377" text-anchor="middle" class="b">Target Pico 2</text><text x="560" y="405" text-anchor="middle">micro-USB</text><text x="560" y="440" text-anchor="middle">SWD connector</text>
+<path d="M285 460v49H560v-49" class="debug"/><text x="380" y="541" text-anchor="middle">D → target SWD: SWCLK · GND · SWDIO</text><text x="380" y="568" text-anchor="middle" class="b">No target-power contact in this cable</text>
+<path d="M28 592H732" stroke="#a5b4c0"/>
+<rect x="28" y="614" width="260" height="76" rx="8" class="box"/><text x="158" y="643" text-anchor="middle">Official Pi 4 supply</text><text x="158" y="671" text-anchor="middle" class="small">mains → captive USB-C lead</text><path d="M288 650H455" class="usb"/><text x="371" y="634" text-anchor="middle" class="small">power</text><rect x="455" y="614" width="275" height="76" rx="8" class="box"/><text x="592" y="643" text-anchor="middle">Pi 4 USB-C power input</text><text x="592" y="671" text-anchor="middle" class="small">Used from Chapter 5</text>
+</svg>

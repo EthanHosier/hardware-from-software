@@ -52,7 +52,7 @@
     "title": "Install a reproducible macOS toolchain",
     "chapter": "1. Build and flash your first Pico program",
     "path": "src/1.1-install-a-reproducible-macos-toolchain.md",
-    "scope": "Choose the official Pico VS Code extension's managed SDK/toolchain route on Apple Silicon; record exact versions and expose its underlying tools for terminal use. Check Arm GCC, CMake, build tool, GDB, OpenOCD, and SDK paths. Explain host tools versus target binaries. Keep any manual installation route in an appendix.",
+    "scope": "Install the checkout-local pinned official SDK/Arm/tool bundle with scripts/setup_deps.py on Apple Silicon; record exact compiler/build/debug paths and versions. Official Pico VSCode extension is an optional separate managed-tool route, not required or mixed with .deps. Explain host versus target binaries and verification commands.",
     "acceptance": "Version/path checks succeed and the compiler targets Arm embedded firmware."
   },
   {

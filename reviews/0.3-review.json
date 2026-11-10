@@ -1,0 +1,60 @@
+{
+  "id": "0.3",
+  "reviewer": "independent coordinator",
+  "paths_read": [
+    "src/0.3-a-labelled-tour-of-your-raspberry-pi-4.md",
+    "src/assets/0.3-pi4-top.svg",
+    "src/assets/0.3-pi4-underside.svg",
+    "src/assets/0.3-pi4-concept.svg",
+    "reviews/0.3-writer.json"
+  ],
+  "code_files_read": [],
+  "sources_checked": [
+    "https://www.raspberrypi.com/products/raspberry-pi-4-model-b/#specifications",
+    "https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-mechanical-drawing.pdf",
+    "https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-reduced-schematics.pdf",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#gpio",
+    "https://magazine.raspberrypi.com/articles/raspberry-pi-4-in-detail",
+    "https://www.raspberrypi.com/app/uploads/2019/07/raspberry-pi-4.jpg"
+  ],
+  "findings": [
+    {
+      "issue": "Specification subpath produced no readable content.",
+      "resolution": "Writer replaced with verified base product specification anchor."
+    },
+    {
+      "issue": "Pin 1 needed a visible contact marker and status LEDs had no physical package marks.",
+      "resolution": "Writer added inner-left contact outline/leader and two small LED packages; final SVG source changes and complete render reviewed."
+    },
+    {
+      "issue": "Clock callout initially resembled exact unidentified metal package.",
+      "resolution": "Writer replaced with broad dashed support region and explicit overview qualification; official photo and mechanical drawing checked."
+    }
+  ],
+  "scope_coverage": {
+    "physical_tours": "Top and explicitly mirrored underside, microSD, all required packages/connectors, header pin1, power/clock support, wireless, DSI/CSI, tables of locations, functions and use.",
+    "conceptual": "BCM2711 includes CPU cores/controllers; external RAM, VL805 and PHY; MAC versus PHY and connector distinction; RAM versus microSD; Linux execution path.",
+    "reader_state": "Unpowered inspection, heatsink/case can remain; actual RAM/revision deferred to actual machine; no invented hardware observations."
+  },
+  "checks_performed": [
+    "Read all final prose and SVG source; reread repairs.",
+    "Rendered all three complete SVGs and final top SVG after repairs.",
+    "Viewed official mechanical/product brief and accessible official board photo; chip identities checked in official magazine text.",
+    "Checked header physical numbering/BCM example and canonical internal filenames."
+  ],
+  "repairs": [
+    "Specification URL, pin marker, LED visibility and clock-region qualification repaired by same writer."
+  ],
+  "pending": [
+    "Root integration rendered mdBook/narrow layout and global links."
+  ],
+  "hardware_status": "source-reviewed; physical-runtime not exercised",
+  "status": "accepted_source_review",
+  "canonical_sha256": "51acb2ed922fdeca161d98a921ae52f5ecc6eb54374d3b430adf2e9290b7a970",
+  "included_source_sha256": {},
+  "asset_sha256": {
+    "src/assets/0.3-pi4-concept.svg": "a7cc7db7cca25858c827fd8f4a0b556fcf2283682e5bc8d6136eb58f11827ce0",
+    "src/assets/0.3-pi4-top.svg": "e0706ba370ef9a43249be5ef3b6b080fec13bf928a9d2a1b7d20ef18f4622a52",
+    "src/assets/0.3-pi4-underside.svg": "b592d1aa3553b4992c39a083644d236ace8e5dc3361b780c93d2d1c7c36c3caf"
+  }
+}

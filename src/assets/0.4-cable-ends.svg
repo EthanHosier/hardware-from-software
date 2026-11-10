@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="650" viewBox="0 0 760 650" role="img" aria-labelledby="t d">
+<title id="t">Recognise cable ends</title><desc id="d">Original simplified physical shapes of USB-A, USB-C and micro-B plugs, three-pin SH plug and breakout leads, jumper sockets and pins, microSD card with full-size SD adapter.</desc>
+<style>text{font-family:system-ui,sans-serif;fill:#172c45;font-size:18px}.s{font-size:15px}.b{font-weight:700}.metal{fill:#c5cfd7;stroke:#405a71;stroke-width:2}.plastic{fill:#edf2f7;stroke:#405a71;stroke-width:2}.line{fill:none;stroke:#405a71;stroke-width:5}</style>
+<rect width="760" height="650" fill="white"/><text x="25" y="32" class="b">Recognise the ends before choosing the cable</text>
+<text x="25" y="70">USB plugs — shapes do not prove data capability</text>
+<path d="M105 148v45M360 148v45M625 148v45" class="line"/>
+<rect x="67" y="95" width="76" height="54" class="metal"/><rect x="80" y="102" width="50" height="11" fill="#405a71"/><rect x="317" y="103" width="86" height="43" rx="21" class="metal"/><rect x="330" y="113" width="60" height="12" rx="6" fill="#405a71"/><path d="M590 145v-29l10-12h50l10 12v29z" class="metal"/><path d="M601 119h48" stroke="#405a71" stroke-width="7"/>
+<text x="105" y="223" text-anchor="middle">USB-A</text><text x="360" y="223" text-anchor="middle">USB-C</text><text x="625" y="223" text-anchor="middle">micro-USB (Micro-B)</text>
+<path d="M25 247H735" stroke="#a5b4c0"/>
+<text x="25" y="279">Probe leads — keyed 3-pin SH end on each</text>
+<g class="plastic"><rect x="58" y="303" width="80" height="35"/><rect x="220" y="303" width="80" height="35"/><rect x="415" y="303" width="80" height="35"/></g>
+<g stroke="#a58c42" stroke-width="5"><path d="M76 310v16m22-16v16m22-16v16m118-16v16m22-16v16m22-16v16m151-16v16m22-16v16m22-16v16"/></g>
+<path d="M98 338v50" stroke="#a2acb4" stroke-width="17"/><rect x="58" y="388" width="80" height="35" class="plastic"/>
+<g stroke-width="4"><path d="M240 338v53m195-53v53" stroke="#df6519"/><path d="M260 338v53m195-53v53" stroke="#172c45"/><path d="M280 338v53m195-53v53" stroke="#bd9e10"/></g>
+<g fill="#253642"><rect x="234" y="391" width="12" height="25"/><rect x="254" y="391" width="12" height="25"/><rect x="274" y="391" width="12" height="25"/></g><g stroke="#a3afb8" stroke-width="5"><path d="M435 391v26m20-26v26m20-26v26"/></g>
+<text x="98" y="451" text-anchor="middle" class="s">SH ↔ SH</text><text x="260" y="451" text-anchor="middle" class="s">SH ↔ female sockets</text><text x="455" y="451" text-anchor="middle" class="s">SH ↔ male pins</text>
+<text x="555" y="322" class="s">Male: exposed metal pin</text><text x="555" y="349" class="s">Female: receiving socket</text><text x="555" y="389" class="s">Kit jumpers also use</text><text x="555" y="413" class="s">these two end types.</text><text x="555" y="442" class="s">Inspect both ends.</text>
+<path d="M25 476H735" stroke="#a5b4c0"/>
+<path d="M80 509h73l23 23v86H80z" fill="#32465a"/><text x="127" y="559" text-anchor="middle" style="fill:white;font-size:15px">SD</text><text x="127" y="581" text-anchor="middle" style="fill:white;font-size:13px">adapter</text><path d="M245 539h35l13 13v47h-48z" fill="#32465a"/><text x="338" y="552">microSD → SD adapter → Mac SD slot</text><text x="338" y="580" class="s">For reading/imaging storage; supplies no board power.</text><text x="338" y="609" class="s">Simplified identifying shapes, not connector dimensions.</text>
+</svg>

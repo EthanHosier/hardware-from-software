@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1120" viewBox="0 0 760 1120" role="img" aria-labelledby="title desc">
+<title id="title">The eventual Mac to Pico LED command chain</title>
+<desc id="desc">Top to bottom: MacBook laptop, network SSH connection, Raspberry Pi 4 top-view silhouette with header at top and Ethernet and USB at right, UART link, non-wireless Pico 2 top-view silhouette with USB at top, then GPIO through a resistor and LED to ground. The circuit and arrows show functions rather than wiring positions.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#344d68" stroke-width="1.5"/></marker></defs>
+<rect width="760" height="1120" fill="#f8fafc"/>
+<g font-family="sans-serif" fill="#182c40" font-size="19">
+<text x="30" y="34" font-size="24" font-weight="bold">One command, several machines and layers</text>
+<text x="30" y="61" font-size="15">Original simplified silhouettes • top views • not to scale • not a wiring guide</text>
+<!-- laptop -->
+<rect x="65" y="92" width="210" height="125" rx="8" fill="#c8d0da" stroke="#344d68" stroke-width="3"/>
+<rect x="77" y="104" width="186" height="99" fill="#203e60"/>
+<text x="94" y="146" fill="white" font-family="monospace" font-size="17">$ ssh …</text>
+<path d="M65 217H275L303 237H37Z" fill="#b8c2ce" stroke="#344d68" stroke-width="2"/>
+<text x="334" y="124" font-size="23" font-weight="bold">MacBook Pro</text>
+<text x="334" y="156">Apple silicon runs macOS.</text>
+<text x="334" y="187">Editor, build tools, SSH client</text>
+<path d="M170 249V311" fill="none" stroke="#344d68" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="205" y="280">SSH over the local network</text>
+<!-- Pi 4 geometry proportion 85 by 56 -->
+<rect x="40" y="337" width="255" height="168" rx="12" fill="#d4e7d6" stroke="#355e45" stroke-width="3"/>
+<rect x="60" y="346" width="163" height="15" fill="#273748"/>
+<text x="59" y="331" font-size="15">40-pin header</text>
+<circle cx="60" cy="353" r="3" fill="#ffe095"/>
+<rect x="105" y="383" width="46" height="44" fill="#333f4b"/>
+<text x="92" y="451" font-size="15">BCM2711</text>
+<rect x="246" y="345" width="55" height="45" fill="#bac5cf" stroke="#344d68"/>
+<rect x="257" y="401" width="44" height="40" fill="#bac5cf" stroke="#344d68"/>
+<rect x="257" y="452" width="44" height="40" fill="#bac5cf" stroke="#344d68"/>
+<text x="218" y="381" font-size="12">Ethernet</text>
+<text x="218" y="431" font-size="12">USB</text>
+<rect x="58" y="489" width="29" height="20" fill="#bac5cf" stroke="#344d68"/>
+<text x="40" y="533" font-size="14">USB-C power (bottom-left edge)</text>
+<text x="334" y="370" font-size="23" font-weight="bold">Raspberry Pi 4 Model B</text>
+<text x="334" y="402">Cortex-A72 CPUs run Linux.</text>
+<text x="334" y="433">C++ process → Linux UART driver</text>
+<text x="334" y="464">→ UART controller in the SoC</text>
+<path d="M170 550V605" fill="none" stroke="#344d68" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="205" y="572">UART: TX / RX signals + common GND</text>
+<text x="205" y="596" font-size="15">Replies return in the opposite direction.</text>
+<!-- Pico 2 -->
+<rect x="117" y="630" width="106" height="263" rx="6" fill="#d4e7d6" stroke="#355e45" stroke-width="3"/>
+<rect x="151" y="625" width="38" height="31" fill="#bac5cf" stroke="#344d68"/>
+<text x="25" y="648" font-size="15">Micro-USB</text>
+<path d="M105 644H149" stroke="#344d68"/>
+<g fill="#fff" stroke="#aa8b36" stroke-width="2">
+<circle cx="125" cy="665" r="3"/>
+<circle cx="125" cy="676" r="3"/>
+<circle cx="125" cy="687" r="3"/>
+<circle cx="125" cy="698" r="3"/>
+<circle cx="125" cy="709" r="3"/>
+<circle cx="125" cy="720" r="3"/>
+<circle cx="125" cy="731" r="3"/>
+<circle cx="125" cy="742" r="3"/>
+<circle cx="125" cy="753" r="3"/>
+<circle cx="125" cy="764" r="3"/>
+<circle cx="125" cy="775" r="3"/>
+<circle cx="125" cy="786" r="3"/>
+<circle cx="125" cy="797" r="3"/>
+<circle cx="125" cy="808" r="3"/>
+<circle cx="125" cy="819" r="3"/>
+<circle cx="125" cy="830" r="3"/>
+<circle cx="125" cy="841" r="3"/>
+<circle cx="125" cy="852" r="3"/>
+<circle cx="125" cy="863" r="3"/>
+<circle cx="125" cy="874" r="3"/>
+<circle cx="215" cy="665" r="3"/>
+<circle cx="215" cy="676" r="3"/>
+<circle cx="215" cy="687" r="3"/>
+<circle cx="215" cy="698" r="3"/>
+<circle cx="215" cy="709" r="3"/>
+<circle cx="215" cy="720" r="3"/>
+<circle cx="215" cy="731" r="3"/>
+<circle cx="215" cy="742" r="3"/>
+<circle cx="215" cy="753" r="3"/>
+<circle cx="215" cy="764" r="3"/>
+<circle cx="215" cy="775" r="3"/>
+<circle cx="215" cy="786" r="3"/>
+<circle cx="215" cy="797" r="3"/>
+<circle cx="215" cy="808" r="3"/>
+<circle cx="215" cy="819" r="3"/>
+<circle cx="215" cy="830" r="3"/>
+<circle cx="215" cy="841" r="3"/>
+<circle cx="215" cy="852" r="3"/>
+<circle cx="215" cy="863" r="3"/>
+<circle cx="215" cy="874" r="3"/>
+</g>
+<rect x="151" y="739" width="38" height="38" fill="#333f4b"/>
+<text x="24" y="759" font-size="15">RP2350</text><path d="M94 755H148" stroke="#344d68"/>
+<text x="144" y="823" font-size="15">Pico 2</text>
+<text x="334" y="672" font-size="23" font-weight="bold">Raspberry Pi Pico 2</text>
+<text x="334" y="704">One Cortex-M33 runs our firmware.</text>
+<text x="334" y="735">UART receive → parse command</text>
+<text x="334" y="766">→ GPIO output register</text>
+<text x="334" y="806" font-size="16">Non-wireless board; selected landmarks only.</text>
+<text x="334" y="832" font-size="16">Header contacts are schematic, not a pinout.</text>
+<path d="M170 906V951" fill="none" stroke="#344d68" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="205" y="932">GPIO drives an electrical output.</text>
+<!-- physical axial resistor and LED -->
+<path d="M70 1000H105M175 1000H200M227 1020V1052" fill="none" stroke="#344d68" stroke-width="3"/>
+<rect x="105" y="987" width="70" height="26" rx="10" fill="#e7d9b9" stroke="#344d68" stroke-width="2"/>
+<path d="M120 989V1011M130 989V1011M151 989V1011" stroke="#86573d" stroke-width="4"/>
+<path d="M220 1020V994A19 19 0 0 1 258 994V1020Z" fill="#dc7069" stroke="#344d68" stroke-width="2"/>
+<path d="M250 1020V1041" stroke="#344d68" stroke-width="3"/>
+<text x="69" y="976" font-size="15">Resistor</text><text x="270" y="1002" font-size="15">LED</text>
+<text x="334" y="991" font-size="23" font-weight="bold">Visible result</text>
+<text x="334" y="1023">The resistor limits current.</text>
+<text x="334" y="1054">The LED turns on or off.</text>
+<text x="30" y="1097" font-size="14">Parts at bottom are separate objects, not a circuit schematic. See the wiring lessons.</text>
+</g></svg>

@@ -1,0 +1,37 @@
+# Download the examples
+
+[Download every example and build script](downloads/hardware-examples.zip). Extract the archive, then follow the lesson’s commands from its root directory. The archive includes shared headers used by the examples.
+
+The scripts install dependencies locally; no prebuilt firmware is included.
+
+- [examples/common/protocol.hpp](downloads/examples/common/protocol.hpp)
+- [examples/common/protocol_test.cpp](downloads/examples/common/protocol_test.cpp)
+- [examples/kernel/99-mybutton.rules](downloads/examples/kernel/99-mybutton.rules)
+- [examples/kernel/Makefile](downloads/examples/kernel/Makefile)
+- [examples/kernel/hardware-button-overlay.dts](downloads/examples/kernel/hardware-button-overlay.dts)
+- [examples/kernel/hello.c](downloads/examples/kernel/hello.c)
+- [examples/kernel/mmio_fragment.c](downloads/examples/kernel/mmio_fragment.c)
+- [examples/kernel/mybutton.c](downloads/examples/kernel/mybutton.c)
+- [examples/linux/button_client.cpp](downloads/examples/linux/button_client.cpp)
+- [examples/linux/capstone.cpp](downloads/examples/linux/capstone.cpp)
+- [examples/linux/gpio_events.cpp](downloads/examples/linux/gpio_events.cpp)
+- [examples/linux/hello.cpp](downloads/examples/linux/hello.cpp)
+- [examples/linux/i2c_client.cpp](downloads/examples/linux/i2c_client.cpp)
+- [examples/linux/memory_lab.cpp](downloads/examples/linux/memory_lab.cpp)
+- [examples/linux/serial_client.cpp](downloads/examples/linux/serial_client.cpp)
+- [examples/linux/serial_port.hpp](downloads/examples/linux/serial_port.hpp)
+- [examples/pico/CMakeLists.txt](downloads/examples/pico/CMakeLists.txt)
+- [examples/pico/blink_registers.cpp](downloads/examples/pico/blink_registers.cpp)
+- [examples/pico/blink_sdk.cpp](downloads/examples/pico/blink_sdk.cpp)
+- [examples/pico/bme280_common.hpp](downloads/examples/pico/bme280_common.hpp)
+- [examples/pico/bme280_i2c.cpp](downloads/examples/pico/bme280_i2c.cpp)
+- [examples/pico/bme280_spi.cpp](downloads/examples/pico/bme280_spi.cpp)
+- [examples/pico/button_irq.cpp](downloads/examples/pico/button_irq.cpp)
+- [examples/pico/button_irq_sdk.cpp](downloads/examples/pico/button_irq_sdk.cpp)
+- [examples/pico/button_poll.cpp](downloads/examples/pico/button_poll.cpp)
+- [examples/pico/device_io.hpp](downloads/examples/pico/device_io.hpp)
+- [examples/pico/heartbeat.cpp](downloads/examples/pico/heartbeat.cpp)
+- [examples/pico/i2c_target.cpp](downloads/examples/pico/i2c_target.cpp)
+- [examples/pico/spi_loopback.cpp](downloads/examples/pico/spi_loopback.cpp)
+- [examples/pico/uart_device.cpp](downloads/examples/pico/uart_device.cpp)
+- [examples/pico/uart_echo.cpp](downloads/examples/pico/uart_echo.cpp)

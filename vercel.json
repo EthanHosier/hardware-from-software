@@ -1,1 +1,7 @@
-{"cleanUrls": false, "trailingSlash": false}
+{
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "git": {
+    "deploymentEnabled": false
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "0.4",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md (entire document; sections read in chunks as well)",
+    "EXAMPLES.md",
+    "catalog.json entry 0.4",
+    "src/0.2-a-labelled-tour-of-your-pico-2.md",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md"
+  ],
+  "sources": [
+    "https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html",
+    "https://pip.raspberrypi.com/documents/RP-008194-DS",
+    "https://pip.raspberrypi.com/documents/RP-008192-DS",
+    "https://rpltd.co/debug-spec",
+    "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html#debug-connector-swd",
+    "https://www.raspberrypi.com/documentation/microcontrollers/images/the-probe.png",
+    "https://www.raspberrypi.com/documentation/microcontrollers/images/labelled-wiring.jpg",
+    "https://www.raspberrypi.com/documentation/microcontrollers/images/debug-probe-tps.jpg?hash=a093fce11fd83c5292aec0cd49817c60"
+  ],
+  "scope_audit": {
+    "physical_probe": "Original physical top view labels USB, own RP2040, lower-left U and lower-right D; enlarged socket views number all contacts; host-perspective UART directions explicit.",
+    "orientation_evidence": "Official mechanical drawing rotated to USB-up; official probe image and labelled-wiring photo show downward-facing side-entry sockets. Connector spec page4 side-entry footprint has pin1 left/pin3 right with cable entry downward. Official schematic maps J2 pin1 TX, pin2 GND, pin3 RX; J3 pin1 CLK, pin2 GND, pin3 DIO. TP-layout bottom-view TP7=UARTTX right additionally mirrors to top-left.",
+    "power_and_data": "Separate Pico USB and probe USB paths including Mac USB-C adapter/data lead qualifications. No target power on D; U unused; Pico USB is diagnostics baseline and later Pi UART is protocol.",
+    "inventory": "One recorded data lead only; supplied package list distinguished from actual availability; second USB data path/adapter unconfirmed; all three SH cables, jumper ends, Pi supply and SD adapter explained and illustrated.",
+    "connector_variants": "Factory Pico2 with headers keyed SWD vs aftermarket long headers possibly bare SWD pads; no implicit soldering.",
+    "practical_state": "Tour starts/ends unpowered, no wiring; numbered inspection actions and symptom-based failures included. No code/build commands necessary for this identification page."
+  },
+  "code_files_read": [],
+  "checks_performed": [
+    "Read complete page after drafting; checked signals against official schematic and connector-spec PDF rendered by pdftoppm.",
+    "Downloaded and visually inspected official mechanical, wiring, probe accessory and TP-layout images.",
+    "Parsed all three own SVGs using Python XML parser.",
+    "Rendered all three SVGs via QuickLook temporary square viewport copies; visually inspected resulting PNGs; no published viewport changed for render.",
+    "Checked all local Markdown targets: all own assets and preceding page exist; next 0.5 link matches canonical catalog path but page not yet present during authoring.",
+    "No generated images or copied official imagery published; all published SVGs original."
+  ],
+  "hardware_status": "Source-reviewed only. No physical hardware connected, measured, enumerated or debugged; no target runtime claimed.",
+  "concerns": [
+    "User-specific probe package contents, connector fit, two data-capable USB paths and USB-C adapters remain inspection items, explicitly stated on page.",
+    "Canonical next-page 0.5 link awaits that page being authored; integration reviewer should close it.",
+    "Independent review and mdBook desktop/narrow rendering remain coordinator responsibilities."
+  ],
+  "status": "writer_complete_pending_independent_review",
+  "authored_paths": [
+    "src/0.4-a-labelled-tour-of-the-debug-probe-and-cables.md",
+    "src/assets/0.4-probe-physical.svg",
+    "src/assets/0.4-cable-paths.svg",
+    "src/assets/0.4-cable-ends.svg",
+    "reviews/0.4-writer.json"
+  ]
+}

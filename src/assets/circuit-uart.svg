@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="470" viewBox="0 0 1100 470" role="img"><title>UART: cross transmit and receive</title><desc>Schematic wiring map. Pin numbers are physical header positions.</desc><rect width="1100" height="470" fill="#f6f8fc"/>
+<text x="35" y="40" font-family="system-ui,sans-serif" font-size="25" fill="#17263b">UART: cross transmit and receive</text>
+<text x="35" y="70" font-family="system-ui,sans-serif" font-size="15" fill="#17263b">Schematic wiring map. Pin numbers are physical header positions.</text>
+<rect x="30" y="110" width="350" height="260" rx="12" fill="white" stroke="#506b85" stroke-width="2"/>
+<text x="48" y="142" font-family="system-ui,sans-serif" font-size="21" fill="#17263b">Pi 4 header</text>
+<rect x="720" y="110" width="350" height="260" rx="12" fill="white" stroke="#506b85" stroke-width="2"/>
+<text x="738" y="142" font-family="system-ui,sans-serif" font-size="21" fill="#17263b">Pico 2 header</text>
+<text x="50" y="190" font-family="system-ui,sans-serif" font-size="17" fill="#17263b">TX · BCM14 · pin8</text>
+<text x="740" y="190" font-family="system-ui,sans-serif" font-size="17" fill="#17263b">RX · GP1 · pin2</text>
+<path d="M380 185 L720 185" stroke="#286ba3" stroke-width="3" fill="none"/>
+<text x="395" y="175.0" font-family="system-ui,sans-serif" font-size="16" fill="#286ba3">Pi → Pico</text>
+<text x="50" y="255" font-family="system-ui,sans-serif" font-size="17" fill="#17263b">RX · BCM15 · pin10</text>
+<text x="740" y="255" font-family="system-ui,sans-serif" font-size="17" fill="#17263b">TX · GP0 · pin1</text>
+<path d="M380 250 L720 250" stroke="#286ba3" stroke-width="3" fill="none"/>
+<text x="395" y="240.0" font-family="system-ui,sans-serif" font-size="16" fill="#286ba3">Pico → Pi</text>
+<text x="50" y="320" font-family="system-ui,sans-serif" font-size="17" fill="#17263b">GND · pin6</text>
+<text x="740" y="320" font-family="system-ui,sans-serif" font-size="17" fill="#17263b">GND · pin8</text>
+<path d="M380 315 L720 315" stroke="#465363" stroke-width="3" fill="none"/>
+<text x="395" y="305.0" font-family="system-ui,sans-serif" font-size="16" fill="#465363">common signal ground</text>
+<text x="35" y="425" font-family="system-ui,sans-serif" font-size="15" fill="#17263b">Both ends: 115200 baud, 8N1, 3.3V logic. Power off both boards before changing wires.</text>
+</svg>

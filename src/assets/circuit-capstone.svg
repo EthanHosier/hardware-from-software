@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="500" viewBox="0 0 1100 500" role="img"><title>Capstone: physical button to a remote LED</title><desc>Keep the Pi button/LED circuit and Pico LED circuit; join only UART signals and common ground.</desc><rect width="1100" height="500" fill="#f6f8fc"/>
+<text x="35" y="40" font-family="system-ui,sans-serif" font-size="25" fill="#17263b">Capstone: physical button to a remote LED</text>
+<text x="35" y="70" font-family="system-ui,sans-serif" font-size="15" fill="#17263b">Keep the Pi button/LED circuit and Pico LED circuit; join only UART signals and common ground.</text>
+<rect x="30" y="130" width="245" height="180" rx="12" fill="white" stroke="#506b85" stroke-width="2"/>
+<text x="48" y="162" font-family="system-ui,sans-serif" font-size="21" fill="#17263b">Pi button</text>
+<rect x="305" y="130" width="245" height="180" rx="12" fill="white" stroke="#506b85" stroke-width="2"/>
+<text x="323" y="162" font-family="system-ui,sans-serif" font-size="21" fill="#17263b">Pi 4 + Linux</text>
+<rect x="720" y="130" width="245" height="180" rx="12" fill="white" stroke="#506b85" stroke-width="2"/>
+<text x="738" y="162" font-family="system-ui,sans-serif" font-size="21" fill="#17263b">Pico 2</text>
+<text x="45" y="210" font-family="system-ui,sans-serif" font-size="17" fill="#17263b">BCM27 · pin13</text>
+<text x="325" y="210" font-family="system-ui,sans-serif" font-size="18" fill="#17263b">/dev/mybutton</text>
+<text x="325" y="245" font-family="system-ui,sans-serif" font-size="16" fill="#17263b">C++ → /dev/serial0</text>
+<text x="740" y="210" font-family="system-ui,sans-serif" font-size="17" fill="#17263b">UART0 GP0/GP1</text>
+<text x="740" y="245" font-family="system-ui,sans-serif" font-size="17" fill="#17263b">LED GP16 · pin21</text>
+<path d="M275 220 L305 220" stroke="#286ba3" stroke-width="3" fill="none"/>
+<text x="290" y="210.0" font-family="system-ui,sans-serif" font-size="16" fill="#286ba3"></text>
+<path d="M550 195 L720 195" stroke="#286ba3" stroke-width="3" fill="none"/>
+<text x="565" y="183.0" font-family="system-ui,sans-serif" font-size="16" fill="#286ba3">TX → RX</text>
+<path d="M550 255 L720 255" stroke="#286ba3" stroke-width="3" fill="none"/>
+<text x="565" y="243.0" font-family="system-ui,sans-serif" font-size="16" fill="#286ba3">RX ← TX</text>
+<path d="M550 300 L720 300" stroke="#465363" stroke-width="3" fill="none"/>
+<text x="565" y="290.0" font-family="system-ui,sans-serif" font-size="16" fill="#465363">GND ↔ GND</text>
+<text x="35" y="380" font-family="system-ui,sans-serif" font-size="17" fill="#17263b">Pi TX BCM14 pin8 → Pico RX GP1 pin2; Pi RX BCM15 pin10 ← Pico TX GP0 pin1.</text>
+<text x="35" y="415" font-family="system-ui,sans-serif" font-size="17" fill="#17263b">Pi GND pin6 ↔ Pico GND pin8. Pi and Pico remain powered separately; no power-rail wire.</text>
+<text x="35" y="455" font-family="system-ui,sans-serif" font-size="16" fill="#17263b">See the separate component circuits for resistor placement, button pull-up and LED polarity.</text>
+</svg>

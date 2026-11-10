@@ -1,0 +1,46 @@
+{
+  "id": "0.6",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md (full, chunks 1\u2013110, 111\u2013175, 176\u2013217)",
+    "EXAMPLES.md",
+    "catalog.json (entry 0.6)",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/0.2-a-labelled-tour-of-your-pico-2.md",
+    "src/0.4-a-labelled-tour-of-the-debug-probe-and-cables.md"
+  ],
+  "sources": [
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html",
+    "https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html"
+  ],
+  "scope_audit": {
+    "inventory": "Covered with staged equipment table; no unconfirmed second cable/adapter assumed.",
+    "power_data_debug": "Original labelled path diagram, separate USB supplies, SWD no power, probe U unused.",
+    "electrical_rules": "Ground/reference, 3.3V logic, Pi 5V intolerance, LED series limiting with illustrative Vf calculation, floating inputs/pull resistors, later 4.7k external GP17 pull-up.",
+    "assembly": "Numbered unpowered LED assembly, GP16 physical21 to1k to anode/cathode toGND physical23, original schematic and exploded placement guide, GPIO/physical identity, troubleshooting and exact final state.",
+    "owned_paths": [
+      "src/0.6-assemble-the-bench-and-understand-the-electrical-rules.md",
+      "src/assets/0.6-bench-paths.svg",
+      "src/assets/0.6-led-schematic.svg",
+      "src/assets/0.6-led-placement.svg",
+      "reviews/0.6-writer.json"
+    ]
+  },
+  "code_files_read": [],
+  "checks_performed": [
+    "Official primary documentation browsed: Pico pinout/GPIO/powerchain, Pi inputs/outputs/pulls, probe cables/reference requirement.",
+    "All three original SVGs XML-parsed successfully; accessible title/desc and page alt text provided.",
+    "Quick Look thumbnails generated and inspected. Quick Look clips/crops wide SVG previews; full browser render review remains required.",
+    "Schematic and placement wire endpoints traced; canonical resistor/pin/polarity values checked.",
+    "Relative-link existence check: all own SVGs and existing earlier tours resolve; future pages 0.5,1.1,4.1 not yet present at writing time.",
+    "Illustrative current calculations checked: (3.3\u22122.0)/1000=1.3mA;3.3/4700\u22480.70mA."
+  ],
+  "hardware_status": "source-reviewed; physical-runtime not exercised. No code/target compilation applies to this unpowered assembly page.",
+  "concerns": [
+    "Independent substantive review required; full browser render at narrow and desktop widths pending.",
+    "Three canonical future lesson links await their writers:0.5,1.1,4.1.",
+    "Actual board variant, kit resistor/LED markings and cable availability remain reader inspection tasks; no equipment purchases assumed."
+  ],
+  "status": "ready_for_independent_review"
+}

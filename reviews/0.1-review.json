@@ -1,0 +1,58 @@
+{
+  "id": "0.1",
+  "reviewer": "independent coordinator",
+  "paths_read": [
+    "src/0.1-what-you-are-going-to-build.md",
+    "src/assets/0.1-build-chain.svg",
+    "reviews/0.1-writer.json",
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json"
+  ],
+  "code_files_read": [],
+  "sources_checked": [
+    "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html",
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf",
+    "https://www.raspberrypi.com/products/raspberry-pi-4-model-b/",
+    "https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-mechanical-drawing.pdf",
+    "https://pip.raspberrypi.com/documents/RP-008344-DS-raspberry-pi-4-product-brief.pdf",
+    "https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html",
+    "https://www.kernel.org/doc/html/latest/driver-api/gpio/intro.html"
+  ],
+  "findings": [
+    {
+      "issue": "Initial component illustration had ambiguous return wire around LED/resistor.",
+      "resolution": "Writer replaced with separate physical objects, explicitly not a circuit. Independently rendered complete SVG using temporary square viewport and inspected all content."
+    },
+    {
+      "issue": "Reviewer suspected Pi4 Ethernet upper-right placement.",
+      "resolution": "Rejected suspicion after comparing both official mechanical drawing and product brief visuals; writer was correct."
+    }
+  ],
+  "scope_coverage": {
+    "seven_experiments": "Substantive chapter map, main no-extra-sensor route and optional sensor qualification.",
+    "roles": "Process, consumer driver, controller driver, firmware, processor, controller and component differentiated; correct execution machine.",
+    "chain": "Mac SSH launches Pi C++; Linux UART driver/controller sends to Pico firmware and LED; reverse acknowledgement; capstone button path.",
+    "visual": "Accurate simplified board landmarks, explicit not-pinout, physical-label table and alt text; larger SVG link."
+  },
+  "checks_performed": [
+    "Read every prose word and final SVG source; re-read final updated prose.",
+    "Compared official Pico and Pi physical drawing landmarks.",
+    "Inspected complete SVG render including bottom objects (temporary width adjustment only in /tmp).",
+    "No code/includes or executable commands on introductory page; next canonical filename checked against catalog."
+  ],
+  "repairs": [
+    "LED ambiguity repaired by same writer; terminology expanded."
+  ],
+  "pending": [
+    "Root integration will verify narrow-screen rendered mdBook and global links."
+  ],
+  "hardware_status": "physical-runtime not exercised",
+  "status": "accepted_source_review",
+  "canonical_sha256": "feab44eed2e853935cec7e89f6cb7e22496dbf52f518b4f329a90dba56dd9757",
+  "included_source_sha256": {},
+  "asset_sha256": {
+    "src/assets/0.1-build-chain.svg": "9c620811bfeafb2d3c5b977aa935daa84eda522bcd4b53f24a0525ab8f030027"
+  }
+}

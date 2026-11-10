@@ -1,0 +1,45 @@
+{
+  "id": "0.1",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json (entry 0.1 and next-page path)",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md"
+  ],
+  "sources": [
+    "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html",
+    "https://www.raspberrypi.com/products/raspberry-pi-pico-2/",
+    "https://www.raspberrypi.com/products/raspberry-pi-4-model-b/",
+    "https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-mechanical-drawing.pdf",
+    "https://pip.raspberrypi.com/documents/RP-008344-DS-raspberry-pi-4-product-brief.pdf",
+    "https://www.raspberrypi.com/documentation/microcontrollers/images/pico-2s.png",
+    "https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html",
+    "https://www.kernel.org/doc/html/latest/driver-api/gpio/intro.html"
+  ],
+  "scope_audit": {
+    "seven_original_exercises": "Mapped to chapters in table; debugger separated from register exercise, kernel driver/MMIO grouped as original final experiment.",
+    "software_and_hardware_roles": "Linux process, kernel consumer/controller drivers, bare-metal firmware, processor, controller, physical component distinguished.",
+    "chain": "SSH launches Pi process; Linux UART controller to Pico firmware to external LED; replies reverse; capstone button path described.",
+    "visuals": "Original SVG with laptop, Pi4 and nonwireless Pico2 identification silhouettes, separate resistor and LED objects, signal-flow arrows; explicitly not wiring instructions.",
+    "orientation": "Pi4 source checked top header, bottom-left USB-C, upper-right Ethernet and USBs below. Pico2 top micro-USB, central RP2350, two rows of 20 simplified contacts; not a pinout.",
+    "out_of_scope": "No installation, source includes, build/run commands or wiring on this introductory reference page."
+  },
+  "code_files_read": [],
+  "checks_performed": [
+    "Read required authoring/context files in full; PLAN chunked to avoid truncation.",
+    "Browsed primary official references.",
+    "Viewed official Pico2 board photograph and rendered official Pi4 mechanical drawing and October 2026 product brief.",
+    "Parsed SVG as XML.",
+    "Rendered SVG using Quick Look and inspected upper content; independent full-page/narrow-layout review remains.",
+    "Checked next-page canonical filename against catalog.",
+    "Prose source includes none; no pending source files."
+  ],
+  "hardware_status": "Physical runtime not exercised; diagram and described result are intended system, not measurements.",
+  "concerns": [
+    "Full rendered mdBook and narrow-screen check belongs to integration/reviewer.",
+    "Quick Look thumbnail was square-cropped; full SVG bottom needs independent rendered inspection.",
+    "Other page files may still be authored concurrently."
+  ],
+  "status": "ready_for_independent_full_review"
+}
