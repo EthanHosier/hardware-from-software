@@ -27,6 +27,8 @@ def accepted(catalog):
             if digest(ROOT/name)!=sha:raise RuntimeError(f"Included source changed since review: {entry['id']}: {name}")
         for name,sha in review.get('asset_sha256',{}).items():
             if digest(ROOT/name)!=sha:raise RuntimeError(f"Diagram changed since review: {entry['id']}: {name}")
+        for name,sha in review.get('reviewed_dependency_sha256',{}).items():
+            if digest(ROOT/name)!=sha:raise RuntimeError(f"Reviewed dependency changed: {entry['id']}: {name}")
         result.append(entry)
     return result
 

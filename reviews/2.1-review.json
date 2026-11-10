@@ -1,0 +1,50 @@
+{
+  "id": "2.1",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "3371fbef4e908a2c50f3a67b104cf1f6fafaa2d6da58fc7b435a87e6861f8f6c",
+  "included_source_sha256": {
+    "examples/pico/blink_sdk.cpp": "3bf879fbe854269edc8c49df194c26753159c836c28e0a8476d215f4355485a9"
+  },
+  "asset_sha256": {
+    "src/assets/circuit-pico-led.svg": "eafabcb96c28ec2c507d2e6775168e8e55f50c193f588bda819d7410bcb29ac9",
+    "src/assets/0.6-led-placement.svg": "0b5e2d246717e8cfd455f525a920af52a58691a7b24c35ef17c99369139338d1"
+  },
+  "paths_read": [
+    "src/2.1-wire-and-verify-an-external-led.md",
+    "reviews/2.1-writer.json",
+    "examples/pico/blink_sdk.cpp",
+    "src/assets/circuit-pico-led.svg",
+    "src/assets/0.6-led-placement.svg",
+    "examples/pico/CMakeLists.txt",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py",
+    ".deps/pico-sdk/src/rp2_common/hardware_gpio/gpio.c (init/function)",
+    ".deps/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h (put/direction)"
+  ],
+  "sources_checked": [
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf",
+    "https://www.raspberrypi.com/documentation/microcontrollers/c_sdk.html#your-first-binaries",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#outputs",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_gpio/gpio.c",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_gpio/include/hardware/gpio.h"
+  ],
+  "scope_coverage": "Complete practical SDK baseline: exact unpowered wiring/state and parts, active-high output/current-limit concept and illustrative arithmetic, full wiring table and source include, two diagrams, numbered build/BOOTSEL/UF2/LED observation steps, source mechanism, symptom troubleshooting, unpowered cleanup and register-map transition. No serial output claimed for firmware without stdio init.",
+  "checks_performed": [
+    "Read every prose word and full included blink source/CMake/scripts; commands and target/artifact names agree.",
+    "Read full two reused SVG sources and rendered both; traced GP16 physical21 through1k to LED anode and cathode return physical23; ground third from bottom and emptyGP17 physical22 correct.",
+    "Inspected pinned SDK init/function and inline put/direction branches. Functional description correct without asserting MMIO instructions where coprocessor branch may be used.",
+    "Compared GPIO/pin and BOOTSEL statements with official references already independently inspected.",
+    "Existing root target compile hash matches exact included source; no unchanged rebuild repeated."
+  ],
+  "findings": [
+    {
+      "issue": "mdBook expansion inside numbered-list indented source fence escaped after first include line.",
+      "resolution": "Same dedicated writer moved full-file include into top-level unindented cpp fence. Independently reread repaired procedure; source unchanged. Root exact rendered-include check will run before publication."
+    }
+  ],
+  "repairs": [
+    "Top-level full-file include fence repair."
+  ],
+  "hardware_status": "source-reviewed; target compilation recorded; physical-runtime not exercised"
+}

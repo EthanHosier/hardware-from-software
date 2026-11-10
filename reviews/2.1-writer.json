@@ -1,0 +1,63 @@
+{
+  "id": "2.1",
+  "paths_read": [
+    "AUTHORING_GUIDE.md (complete)",
+    "PLAN.md (complete, lines 1\u2013100 and 101\u2013219)",
+    "EXAMPLES.md",
+    "catalog.json entry 2.1",
+    "RESUME.md",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md (complete)",
+    "src/0.6-assemble-the-bench-and-understand-the-electrical-rules.md",
+    "src/assets/circuit-pico-led.svg (complete XML)",
+    "src/assets/0.6-led-placement.svg (complete XML)",
+    "verification.json"
+  ],
+  "sources": [
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf",
+    "https://www.raspberrypi.com/documentation/microcontrollers/c_sdk.html",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#outputs",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_gpio/gpio.c",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_gpio/include/hardware/gpio.h"
+  ],
+  "scope_audit": {
+    "owned_paths": [
+      "src/2.1-wire-and-verify-an-external-led.md",
+      "reviews/2.1-writer.json"
+    ],
+    "result_prerequisites": "External LED known-good SDK baseline after 1.4; preassembled unpowered circuit from 0.6; non-wireless Pico2, no Pi/probe/button.",
+    "circuit": "Complete 3-row wiring table, root circuit-pico-led.svg, reviewed 0.6 placement SVG; GP16 physical21 to1k to anode, cathode toGND physical23; GP17 physical22 empty. Pin1/20/21/40 orientation and separate S/A/K strips explained.",
+    "concepts": "Output high/low, limited GPIO current, current-limiting resistor, illustrative 1.3mA estimate, active-high, SDK baseline versus later register operations.",
+    "procedure": "Six numbered steps cover unpowered audit, complete actual source include, labelled Mac checkout cwd setup/build, RP2350 BOOTSEL, exact UF2 copy and illustrative 500ms on/off observation.",
+    "explanation": "SDK2.3.1 gpio_init direction/value/SIO sequence and function-selection pad isolation; output enable then output writes. No USB logging claimed.",
+    "failure_cleanup": "Symptom table covers cable/BOOTSEL, wrong source/pin, polarity, contact strips/rails, loose leads and dim LED. USB unplugged at end; same circuit retained for2.2."
+  },
+  "code_files_read": [
+    "examples/pico/blink_sdk.cpp (complete)",
+    "examples/pico/CMakeLists.txt (complete)",
+    "scripts/setup_deps.py (complete)",
+    "scripts/build_examples.py (complete)",
+    ".deps/pico-sdk/src/rp2_common/hardware_gpio/gpio.c (gpio_init and gpio_set_function)",
+    ".deps/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h (gpio_put and gpio_set_dir)"
+  ],
+  "checks_performed": [
+    "Official primary docs browsed: Pico2 datasheet, SDK/flashing guide, GPIO electrical guide and pinned SDK source. Incorrect guessed standalone pico-2-pinout.pdf URL was inaccessible and is not cited; canonical datasheet used instead.",
+    "Full reused SVG XML inspected and electrical paths traced. circuit-pico-led.svg GP16/21 and GND/23 match table; placement drawing top/bottom numbering1/20/21/40 and GND23 third from bottom with GP17/22 between verified. Both XML parse successfully.",
+    "Include resolves to complete actual blink_sdk.cpp; SHA256 3bf879fbe854269edc8c49df194c26753159c836c28e0a8476d215f4355485a9 matches verification.json target-compile evidence. No shared source changed; unchanged compile checks not rerun.",
+    "All local links/includes resolve except canonical forward page2.2 pending its author.",
+    "Commands checked against full setup/build scripts and target/output names. No commands executed against real board.",
+    "Source claims checked against installed SDK2.3.1 implementation: gpio_init input/zero/SIO; mux removes isolation; direction output; gpio_put high/low.",
+    "Same-page rendering repair requested by independent review: complete-source include moved to a top-level unindented cpp fence so mdBook expansion cannot escape the numbered-list fence. Source wording otherwise preserved; root final render check pending."
+  ],
+  "hardware_status": {
+    "source_review": "writer complete; independent review pending",
+    "target_compile": "Existing root evidence:12 Pico targets compiled, source hash matches blink_sdk.cpp",
+    "physical_runtime": "not exercised; no verified connected board; all blink observations explicitly illustrative"
+  },
+  "concerns": [
+    "Independent full prose/source/command review and final rendered page/diagram inspection required before acceptance.",
+    "Page2.2 forward link is catalog-canonical but not yet authored; accepted-only publication routes unpublished links to roadmap.",
+    "Actual LED/kit markings and USB mount path are reader inspection tasks. Physical blink is not author-confirmed."
+  ],
+  "status": "ready_for_independent_review",
+  "canonical_sha256": "3371fbef4e908a2c50f3a67b104cf1f6fafaa2d6da58fc7b435a87e6861f8f6c"
+}
