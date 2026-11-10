@@ -1,0 +1,38 @@
+{
+  "id": "2.2",
+  "reviewer": "root (independent of dedicated fresh writer)",
+  "status": "accepted_source_review",
+  "canonical_sha256": "f77df2df68f37e77e15a240fca6af49d5bc6ff9c7afc1654335d567a04b3d191",
+  "included_source_sha256": {},
+  "asset_sha256": {},
+  "reviewed_dependency_sha256": {
+    "examples/pico/blink_registers.cpp": "fbd45b4d97c4fb73c23046fbcdbd8435a1fda858cf5607b8dd119a74248acd1d"
+  },
+  "paths_read": [
+    "src/2.2-read-the-rp2350-register-map.md",
+    "reviews/2.2-writer.json",
+    "examples/pico/blink_registers.cpp",
+    "pinned SDK RP2350 regs/addressmap.h, io_bank0.h, pads_bank0.h, sio.h and corresponding structs",
+    "official RP2350 datasheet release8 complete relevant pages24\u201328,58\u201363,540,575,714; colophon"
+  ],
+  "sources_checked": [
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/2.3.1/src/rp2350/hardware_regs/include/hardware/regs/sio.h",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/2.3.1/src/rp2350/hardware_regs/include/hardware/regs/pads_bank0.h",
+    "https://github.com/raspberrypi/pico-sdk/tree/2.3.1/src/rp2350/hardware_regs/include/hardware/regs",
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf"
+  ],
+  "scope_coverage": "Complete read-only register-map lesson: physicalpin/GPIO/address/mask/value, SRAM/MMIO, SIO/mux/pad path, bases and offset derivations,32-bit accesses, per-field reset/access semantics, isolation and electrical settings, exact configuration order, dedicated SIO SET/CLR versus generic aliases, lost-update example and W1C distinction. Full implementation correctly deferred to2.3.",
+  "checks_performed": [
+    "Read every final prose word and actual register firmware.",
+    "Compared addresses, reset values, field masks and CTRL function5 to pinnedSDK and official datasheet.",
+    "Extracted complete relevant PDF pages using bundled pypdf; rendered and visually read GPIO16 CTRL table715 and padtable901 to confirm row associations. Colophon release8/build01October2026 and page references agree.",
+    "Confirmed SIO generic-alias exception and usual narrow-write replication against complete PDF sections2.1.3\u20132.1.5.",
+    "Executed exact read-only Python snippet from lesson; all printed constants match table.",
+    "Read-only lesson adds no wiring/physical operation and no compile change; prior target-compile evidence applies to unchanged source."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "source-reviewed; no physical runtime exercised",
+  "reviewed_at": "2026-11-10T21:36:34.724569+00:00"
+}

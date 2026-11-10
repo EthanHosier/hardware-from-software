@@ -1,0 +1,55 @@
+{
+  "id": "2.2",
+  "status": "writer_complete_pending_independent_review",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md (entire, two chunks)",
+    "EXAMPLES.md",
+    "RESUME.md",
+    "catalog.json entry 2.2",
+    "verification.json",
+    "src/2.1-wire-and-verify-an-external-led.md",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "/tmp/page22-rp2350.pdf (official current download; relevant complete pages and colophon)"
+  ],
+  "code_files_read": [
+    "examples/pico/blink_registers.cpp",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/addressmap.h",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/pads_bank0.h",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/io_bank0.h",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/sio.h",
+    ".deps/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/pads_bank0.h",
+    ".deps/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/io_bank0.h",
+    ".deps/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/sio.h"
+  ],
+  "sources": [
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf#page=5",
+    "https://github.com/raspberrypi/pico-sdk/tree/2.3.1/src/rp2350/hardware_regs/include/hardware/regs",
+    "https://github.com/raspberrypi/pico-sdk/tree/2.3.1/src/rp2350/hardware_structs/include/hardware/structs"
+  ],
+  "scope_audit": {
+    "register_map": "Exact GP16 addresses derived from bases and strides; SRAM/MMIO and address/value/mask/pin distinguished.",
+    "semantics": "Width, RW/WO, pad masks/reset, isolation, mux, SIO OE and latch; W1C introduced as a separate access class.",
+    "order": "Matches actual blink_registers.cpp: disable OE, latch low, SIO mux, pad 0x2, enable OE.",
+    "boundary": "Reading/map lesson; no new circuit, firmware implementation or flashing task; next page supplies full source/build. Only complete runnable block is read-only Python inspection command.",
+    "references": "Near-claim primary references plus four focused final references; current RP2350 datasheet release 8 build 01/10/2026 inspected."
+  },
+  "checks_performed": [
+    "Executed exact embedded Python header inspection command from checkout; output agrees with table.",
+    "Programmatic SDK checks for pad and CTRL address derivation, all six SIO offsets, pad reset/mask and function value.",
+    "All local Markdown links resolve to catalog entries; 2.3 is forward link pending its authoring.",
+    "Verified current blink_registers.cpp SHA256 matches root verification.json compile evidence.",
+    "Read current official datasheet PDF pages for address map, atomic exception/narrow IO, SIO registers, GPIO16 CTRL, pad GPIO16 and INTR0 access types.",
+    "No source modifications; no redundant target compile for prose-only page."
+  ],
+  "hardware_status": "not exercised; no verified board connection, flash, GPIO voltage or LED runtime claim. Existing root Pico compile evidence applies to unchanged example only.",
+  "concerns": [
+    "Page 2.3 forward link currently targets catalog entry awaiting authoring; accepted-only publication rewrites unpublished references.",
+    "Root must independently review and render this page before acceptance/publication."
+  ],
+  "output_paths": [
+    "src/2.2-read-the-rp2350-register-map.md",
+    "reviews/2.2-writer.json"
+  ]
+}

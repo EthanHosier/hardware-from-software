@@ -1,6 +1,6 @@
 # Hardware from Software
 
-A personal, hands-on mdBook for an experienced C++/Rust programmer learning the hardware/software boundary with a Pico2, Raspberry Pi4 and Raspberry Pi Debug Probe. The reading site is public at https://hardware-from-software.vercel.app; this repository is private.
+A personal, hands-on mdBook for an experienced C++/Rust programmer learning the hardware/software boundary with a Pico2, Raspberry Pi4 and Raspberry Pi Debug Probe. The reading site is public at https://hardware-from-software.vercel.app; this repository is public.
 
 The book progresses from labelled hardware and electronics-kit diagrams through GPIO registers, SWD/GDB, interrupts, I2C/SPI, UART, Linux drivers, virtual memory and an integrated project. `PLAN.md` records scope and `AUTHORING_GUIDE.md` records the fresh-writer/independent-review contract.
 
@@ -27,4 +27,4 @@ No credentials, real network identifiers, binaries, downloaded dependency trees 
 
 ## Current progress
 
-Chapter0: all6pages written by dedicated fresh-context writers and independently reviewed. Remaining47catalog pages are not yet authored. Authoring has resumed at Chapter1 with dedicated writers and independent reviews. `reviews/authoring-status.json` records current per-page progress. Every accepted page must be published immediately through the checked progressive-release command.
+Twelve of53catalog pages are published: all6Chapter0 pages, all4Chapter1 pages, and2.1–2.2. Each had a dedicated fresh-context writer and independent review. Remaining lessons are in progress. `reviews/authoring-status.json` records current per-page progress. Every accepted page must be published immediately through the checked progressive-release command.
