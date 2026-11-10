@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T21:29:37.347536+00:00",
+  "updated": "2026-11-10T21:30:59.047579+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -48,12 +48,12 @@
     },
     "1.4": {
       "path": "src/1.4-make-the-build-flash-observe-loop-repeatable.md",
-      "writer": "active",
-      "reviewer": "pending"
+      "writer": "complete",
+      "reviewer": "accepted_source_review"
     },
     "2.1": {
       "path": "src/2.1-wire-and-verify-an-external-led.md",
-      "writer": "pending",
+      "writer": "active",
       "reviewer": "pending"
     },
     "2.2": {

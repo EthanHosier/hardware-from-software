@@ -1,0 +1,40 @@
+{
+  "id": "1.4",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "efbfd73fc94004d67319daa7d6ce586bc71a85fc720f43ac887c947ca855d904",
+  "included_source_sha256": {
+    "examples/pico/heartbeat.cpp": "b3eab585fa76ed7eb6a6ccd966909b3e22de26bae44dfe12344b9edc166b7589"
+  },
+  "asset_sha256": {},
+  "paths_read": [
+    "src/1.4-make-the-build-flash-observe-loop-repeatable.md",
+    "reviews/1.4-writer.json",
+    "examples/pico/heartbeat.cpp",
+    "examples/pico/CMakeLists.txt",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py",
+    ".deps/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h"
+  ],
+  "sources_checked": [
+    "https://www.raspberrypi.com/documentation/microcontrollers/c_sdk.html#your-first-binaries",
+    "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html#reset-flash-memory",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h",
+    "https://github.com/raspberrypi/pico-sdk/releases/tag/2.3.1"
+  ],
+  "scope_coverage": "Complete baseline included unchanged, explicitly reader-local replacement fragments v1/1000 to v2/500; save recovery UF2/hash, successful rebuild before flash, RP2350 BOOTSEL copy and dynamic serial rediscovery, repeated identity observations explicitly illustrative, deliberate absent USB initialization with ROM recovery, exact tool/SDK/source/ELF/UF2 report, checksum provenance limits, full source/build/board restoration and unpowered next state.",
+  "checks_performed": [
+    "Read all prose, commands and fragments against complete canonical heartbeat/CMake and actual build scripts.",
+    "Verified source v1 remains unchanged and fragments are exact valid substitutions; no divergent full code fence.",
+    "Independently ran documented /usr/bin/find serial discovery syntax; no device test.",
+    "Checked official BOOTSEL volume/auto-ejection/ROM independence and SDK USB initialization mechanism; root also independently checked screen manual and recovery prose.",
+    "No unchanged baseline rebuild; target compile evidence is existing root verification. No hardware operation inferred from hashes or compilation."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Baseline target compilation recorded; physical-runtime not exercised",
+  "limitations": [
+    "Reader-local variants are source-reviewed, not independently target-built or physically exercised; page does not claim they were.",
+    "Root performs staged rendering/link validation and immediate publication."
+  ]
+}

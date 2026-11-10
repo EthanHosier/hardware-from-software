@@ -1,0 +1,60 @@
+{
+  "id": "1.4",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "RESUME.md",
+    "catalog.json",
+    "verification.json",
+    "src/1.1-install-a-reproducible-macos-toolchain.md",
+    "src/1.2-understand-the-smallest-useful-project.md",
+    "src/1.3-flash-with-bootsel-and-read-output.md",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py"
+  ],
+  "sources": [
+    "https://www.raspberrypi.com/documentation/microcontrollers/c_sdk.html#your-first-binaries",
+    "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html#reset-flash-memory",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h",
+    "https://github.com/raspberrypi/pico-sdk/releases/tag/2.3.1",
+    "macOS installed man screen: C-a C-backslash quit binding"
+  ],
+  "scope_audit": {
+    "stable_example_names": true,
+    "complete_canonical_source_include": true,
+    "reader_only_v1_1000_to_v2_500_fragments": true,
+    "successful_build_before_copy": true,
+    "elf_uf2_paths": true,
+    "usb_rediscovery_and_monitor_exit": true,
+    "rom_bootsel_recovery_and_saved_v1_image": true,
+    "deliberate_usb_uninitialised_reader_experiment": true,
+    "version_report_tools_sdk_source_elf_uf2_checksums": true,
+    "checksums_not_board_proof": true,
+    "cleanup_restore_v1_source_build_board": true,
+    "no_led_blink_claim": true
+  },
+  "code_files_read": [
+    "examples/pico/heartbeat.cpp",
+    "examples/pico/CMakeLists.txt",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py"
+  ],
+  "checks_performed": [
+    "Browsed official Raspberry Pi BOOTSEL and recovery docs, SDK2.3.1 USB header and release page.",
+    "Read actual heartbeat source and build scripts; confirmed canonical heartbeat SHA256 b3eab585fa76ed7eb6a6ccd966909b3e22de26bae44dfe12344b9edc166b7589 remained unchanged.",
+    "Validated all 7 sh fences with zsh -n (syntax only).",
+    "Executed macOS find serial-discovery command successfully; no matching port returned; not a device test.",
+    "Checked installed man screen confirms Control-A Control-backslash quit.",
+    "Checked local links: preceding pages exist, next2.1 is catalogued forward reference awaiting its author.",
+    "Checked balanced fences and complete include path.",
+    "Did not rerun previously recorded unchanged baseline compilation; authoring change is prose only."
+  ],
+  "hardware_status": "not exercised; no verified board connection, flashing, USB enumeration, timing or recovery measurements",
+  "concerns": [
+    "Reader-local v2 and USB-uninitialised variants are not author-compiled or physically exercised by this writer; independent reviewer may compile temporary variants.",
+    "Page2.1 is an intentional catalogued forward reference; publication staging handles unpublished destinations."
+  ],
+  "status": "ready_for_independent_review"
+}
