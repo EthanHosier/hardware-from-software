@@ -1,0 +1,40 @@
+{
+  "id": "1.1",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "adcb292406f2c07d836511f6c97c9cdfa7d4f39c86435ce5a99c781c5b228c10",
+  "included_source_sha256": {},
+  "asset_sha256": {},
+  "reviewed_dependency_sha256": {
+    "scripts/setup_deps.py": "036970ac104491b3bda3475652faba6898169c91cd4798d5db3a003b0cbabd93",
+    "scripts/build_examples.py": "4a574be40a0ae3149876ba20171df9a77cb01d194bf3fd550cc6451d27f18b26"
+  },
+  "paths_read": [
+    "src/1.1-install-a-reproducible-macos-toolchain.md",
+    "reviews/1.1-writer.json",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py",
+    "scripts/build.py"
+  ],
+  "sources_checked": [
+    "https://developer.apple.com/documentation/xcode/installing-the-command-line-tools.md",
+    "https://github.com/raspberrypi/pico-sdk/releases/tag/2.3.1",
+    "https://github.com/raspberrypi/pico-sdk-tools/releases/tag/v2.3.1-0",
+    "https://github.com/raspberrypi/pico-vscode"
+  ],
+  "scope_coverage": "Complete unpowered prerequisite/setup lesson, public archive acquisition, native Apple Silicon and CLT/Python prerequisites; local pinned official tools, exact SDK commit and package/binary distinctions, host versus target ABI, shell PATH/SDK/OpenOCD scripts, all tool version/path checks; troubleshooting and next state. Optional editor route kept separate.",
+  "checks_performed": [
+    "Read every word and compared commands to actual setup/build scripts.",
+    "Executed exact zsh exports, all seven tool path checks, compiler target, tool banners, SDK commit and RP2350 config test; all agree with page.",
+    "Checked archive packaging uses root-relative examples/scripts paths.",
+    "Browsed official Apple installation instructions and Raspberry Pi release/extension sources.",
+    "No board operations or firmware rebuild needed for setup-only prose; existing compile evidence qualified."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Tool commands exercised on authoring Mac; physical-runtime not exercised",
+  "limitations": [
+    "Fresh-machine installer path not rerun; inspected script and existing installation.",
+    "Root handles staged rendering/link checks and immediate publication."
+  ]
+}
