@@ -1,0 +1,44 @@
+{
+  "id": "3.2",
+  "reviewer": "root (independent of dedicated fresh writer)",
+  "status": "accepted_source_review",
+  "canonical_sha256": "2045dae98df9c27a9b57060a8f8d95e0f6e895bfe4d12d828fed3766aea3f2dc",
+  "included_source_sha256": {
+    "examples/pico/blink_registers.cpp": "fbd45b4d97c4fb73c23046fbcdbd8435a1fda858cf5607b8dd119a74248acd1d"
+  },
+  "asset_sha256": {
+    "src/assets/3.1-swd-connections.svg": "4b7a4dfc38f89e033f7d8b2098dfcce940175f9bde3b7caba9abcf34bd2439a6"
+  },
+  "paths_read": [
+    "src/3.2-load-the-elf-and-step-through-the-led-write.md",
+    "reviews/3.2-writer.json",
+    "examples/pico/blink_registers.cpp",
+    "src/assets/3.1-swd-connections.svg",
+    "src/3.1-attach-the-debug-probe-over-swd.md",
+    "examples/pico/CMakeLists.txt",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py",
+    "pinned OpenOCD rp2350.cfg and RP2350 SIO definitions"
+  ],
+  "sources_checked": [
+    "https://openocd.org/doc/html/GDB-and-OpenOCD.html",
+    "https://sourceware.org/gdb/current/onlinedocs/gdb.html/Continuing-and-Stepping.html",
+    "https://sourceware.org/gdb/current/onlinedocs/gdb.html/Memory.html",
+    "https://sourceware.org/gdb/current/onlinedocs/gdb.html/Set-Breaks.html",
+    "https://documentation-service.arm.com/static/66be2153882fec713ef49e49",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
+  ],
+  "scope_coverage": "Complete powered SWD/GDB practical with unchanged exact circuit; Mac shell versus target debugger commands; matching ELF/reset/load/reset/main breakpoint, setup-before-led_on, adaptive instruction stepping and operand/destination inspection, safe readable latch masking, both on/off physical predictions, PC/SP/LR concepts, stale source and optimized-variable/breakpoint troubleshooting, halt/time/USB effects and explicit reset/run/disconnect/stop/unpowered cleanup.",
+  "checks_performed": [
+    "Read every prose word, complete included source, setup scripts and prerequisite server command; singlecm0target/3333 consistent.",
+    "Independently ran bundled ArmGDB offline: p led=16, p/x mask=0x10000 and both /r disassemblies exactly match store operands.",
+    "Official GDB/OpenOCD docs confirm remote connection support, monitor reset/load, hardware breakpoints, next versus stepi and x/wx four-byte word.",
+    "SIO latch and SET/CLR meanings independently checked in officialPDF/SDK during2.2review; avoid reads of write-only commands.",
+    "Read complete reused SVG source and visually inspected its actual anonymous public browser render; both USB paths, Dsignals, unusedU and GP16/resistor/LED/GND route agree.",
+    "Full source include top-level; expected remote observations explicitly unmeasured. No remote target or board operation attempted."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "host ELF/GDB inspection exercised; firmware target compilation recorded; physical SWD/load/step/LED runtime not exercised",
+  "reviewed_at": "2026-11-10T21:51:42.894435+00:00"
+}

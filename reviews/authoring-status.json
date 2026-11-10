@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T21:49:08.851363+00:00",
+  "updated": "2026-11-10T21:50:39.379969+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -78,12 +78,12 @@
     },
     "3.2": {
       "path": "src/3.2-load-the-elf-and-step-through-the-led-write.md",
-      "writer": "active",
-      "reviewer": "pending"
+      "writer": "complete",
+      "reviewer": "root_reviewing"
     },
     "3.3": {
       "path": "src/3.3-diagnose-a-broken-program-systematically.md",
-      "writer": "pending",
+      "writer": "active",
       "reviewer": "pending"
     },
     "4.1": {

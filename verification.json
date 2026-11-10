@@ -22,7 +22,8 @@
     "ci_commit": "70a2d4935293c3154850415fb085875d2e1f290f",
     "ci_result": "success",
     "ci_scope": "Linux host tests plus native Arm64 application and exact Pi kernel module compilation and DT overlay compilation",
-    "i2c_pull_configuration_rebuild": "passed: i2c_target and bme280_i2c compiled/linked after explicitly disabling internal pulls; external board pull-ups retained"
+    "i2c_pull_configuration_rebuild": "passed: i2c_target and bme280_i2c compiled/linked after explicitly disabling internal pulls; external board pull-ups retained",
+    "example_archive": "Extracted independently: complete shared headers; host builds and normal/sanitized protocol tests pass"
   },
   "physical_runtime": "not exercised; no verified connection to boards",
   "limitations": [

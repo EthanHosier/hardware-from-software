@@ -1,0 +1,59 @@
+{
+  "id": "3.2",
+  "paths_read": [
+    "AUTHORING_GUIDE.md (full)",
+    "PLAN.md (full, split reads)",
+    "EXAMPLES.md (full)",
+    "RESUME.md (full)",
+    "catalog.json (3.1\u20133.3 entries)",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/3.1-attach-the-debug-probe-over-swd.md",
+    "src/assets/3.1-swd-connections.svg",
+    "reviews/3.1-writer.json"
+  ],
+  "sources": [
+    "https://sourceware.org/gdb/current/onlinedocs/gdb.html/Continuing-and-Stepping.html",
+    "https://sourceware.org/gdb/current/onlinedocs/gdb.html/Set-Breaks.html",
+    "https://sourceware.org/gdb/current/onlinedocs/gdb.html/Memory.html",
+    "https://openocd.org/doc/html/GDB-and-OpenOCD.html",
+    "https://developer.arm.com/documentation/100230/0004/functional-description/programmers-model/processor-core-registers-summary",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
+  ],
+  "scope_audit": {
+    "connection": "Reuses 3.1 diagram, exact GP16 physical21 through1kohm LED to GND23; D SWD, U empty, noPi/button, separateUSB. Explicit cwd ~/hardware-from-software versus actualcheckout; Mac shell and Pico(gdb) distinct.",
+    "load": "Actual bundled ArmGDB path; target remote localhost:3333; reset halt/load/reset halt; hardware main breakpoint, continue startup then led_on breakpoint permits full GPIOsetup.",
+    "inspection": "Complete source include; constants and PC/SP/LR; source next versus stepi; adaptive instruction stepping until actual store rather than assumed count; r3 base/r2 value/byteoffset effective destination. SafeGPIO_OUT read and maskedbit, noSET/CLR reads.",
+    "observation": "Predicted first low\u2192high then high\u2192low, no capturedtarget transcript; disassembly explicitly host-inspected fragment. Latch vs electrical output distinction; haltedCPU, USB, time effects.",
+    "recovery": "Stale source/ELF, optimizedvariables, breakpointresources, connection/wiring symptoms. Deletebreakpoints/reset run/disconnect/quit followed by serverCtrlC/unpowereddisconnect; exact free-running baseline for3.3."
+  },
+  "code_files_read": [
+    "examples/pico/blink_registers.cpp",
+    "examples/pico/CMakeLists.txt",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py",
+    ".deps/openocd/scripts/target/rp2350.cfg",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/sio.h",
+    ".build/pico/CMakeCache.txt",
+    ".build/pico/blink_registers.elf (GDBdisassembly/symbolinspection)"
+  ],
+  "checks_performed": [
+    "Ran actual bundled ArmGDB in batch against .build/pico/blink_registers.elf: p/x mask=0x10000, inspected led_on, led_off and main disassembly; confirmed str offsets24 and32 and setup beforefirstcall.",
+    "Inspected Debugcache -Og -g and installedcfg USE_CORE cm0 behavior.",
+    "Read reusedSVG connectionlabels and circuit against page3.1; no newasset.",
+    "Linkcheck existing3.1 andSVG pass; canonical3.3 forwardlink pending authoring.",
+    "Balanced24 codefences; fullsource include unindented top-level; sourceunchanged, no redundantcompile.",
+    "Browsed official GDB/OpenOCD docs and Armregistersummary. RP2350 largePDF webfetch exceededlimit; exact local generatedSDK registerdescription independently read for outputlatch semantics."
+  ],
+  "hardware_status": {
+    "host_elf_inspection": "executed",
+    "target_compilation": "existing compiled ELF inspected; source unchanged",
+    "physical_swd": "not exercised",
+    "physical_instruction_step": "not exercised",
+    "physical_led": "not exercised"
+  },
+  "concerns": [
+    "3.3 canonical forward link pending authoring.",
+    "Root must independently review and render before acceptance; no physicalruntime evidence."
+  ],
+  "status": "ready_for_independent_review"
+}

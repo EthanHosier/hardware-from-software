@@ -86,8 +86,19 @@ def main():
         target=dest/x.relative_to(STAGE);target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(x,target)
     with zipfile.ZipFile(dest/'hardware-examples.zip','w',zipfile.ZIP_DEFLATED) as z:
         for x in files:z.write(x,x.relative_to(STAGE).as_posix())
-        for x in list((ROOT/'scripts').glob('*.py'))+[ROOT/'EXAMPLES.md',ROOT/'README.md']:
-            z.write(x,x.relative_to(ROOT).as_posix())
+        for name in ['scripts/setup_deps.py','scripts/build_examples.py','scripts/test_serial.py','EXAMPLES.md']:
+            z.write(ROOT/name,name)
+        z.writestr('README.md', '# Hardware from Software: example bundle\n\n'
+            'Read the guide at https://hardware-from-software.vercel.app. '
+            'Extract this archive into its own directory and run commands from that root.\n\n'
+            'On Apple Silicon macOS:\n\n```sh\npython3 scripts/setup_deps.py\n'
+            'python3 scripts/build_examples.py\npython3 scripts/test_serial.py\n```\n\n'
+            'Follow the relevant lesson for Linux application and kernel-module builds, wiring, '
+            'flashing and cleanup. EXAMPLES.md lists the source contracts. Dependencies install '
+            'under .deps/ and outputs under .build/. Physical runtime has not been exercised by '
+            'the authoring environment.\n\nThis bundle contains examples and their build/test scripts. '
+            'For the full mdBook source and website publication tools, clone '
+            'https://github.com/EthanHosier/hardware-from-software.\n')
     if (ROOT/'verification.json').exists():shutil.copy2(ROOT/'verification.json',ROOT/'book/verification.json')
     manifest={'published':[e['id'] for e in published],'total':len(catalog),'canonical_sha256':{e['path']:digest(ROOT/e['path']) for e in published}}
     (ROOT/'book/publication.json').write_text(json.dumps(manifest,indent=2)+'\n')
