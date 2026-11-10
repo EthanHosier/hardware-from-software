@@ -1,0 +1,28 @@
+/dts-v1/;
+/plugin/;
+/ {
+    compatible = "brcm,bcm2711";
+    fragment@0 {
+        target = <&gpio>;
+        __overlay__ {
+            hfs_pins: hfs_pins {
+                brcm,pins = <17 27>;
+                brcm,function = <1 0>; /* GPIO17 output, GPIO27 input */
+                brcm,pull = <0 0>;     /* External 4.7k button pull-up */
+            };
+        };
+    };
+    fragment@1 {
+        target-path = "/";
+        __overlay__ {
+            hfs_button {
+                compatible = "hfs,mybutton";
+                pinctrl-names = "default";
+                pinctrl-0 = <&hfs_pins>;
+                button-gpios = <&gpio 27 1>; /* GPIO_ACTIVE_LOW */
+                led-gpios = <&gpio 17 0>;    /* GPIO_ACTIVE_HIGH */
+                status = "okay";
+            };
+        };
+    };
+};

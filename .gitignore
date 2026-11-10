@@ -1,0 +1,16 @@
+book/
+.vercel/
+.deps/
+.build/
+.authoring/
+.env*
+__pycache__/
+.DS_Store
+examples/kernel/*.o
+examples/kernel/*.ko
+examples/kernel/*.mod
+examples/kernel/*.mod.c
+examples/kernel/.*.cmd
+examples/kernel/Module.symvers
+examples/kernel/modules.order
+examples/kernel/.tmp_versions/

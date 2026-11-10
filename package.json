@@ -1,0 +1,9 @@
+{
+  "name": "hardware-from-software",
+  "private": true,
+  "scripts": {
+    "build": "python3 scripts/build.py",
+    "check": "python3 scripts/check_book.py",
+    "deploy": "npm run build && vercel deploy --prebuilt --prod"
+  }
+}

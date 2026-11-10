@@ -1,0 +1,426 @@
+[
+  {
+    "id": "0.1",
+    "title": "What you are going to build",
+    "chapter": "0. Know your hardware and your bench",
+    "path": "src/0.1-what-you-are-going-to-build.md",
+    "scope": "Map the seven original exercises onto this book. Contrast a Linux process, kernel driver, bare-metal firmware, processor, peripheral controller, and physical component. Show the eventual Mac \u2192 SSH \u2192 Pi \u2192 UART \u2192 Pico \u2192 LED chain, with photographs or accurate board silhouettes identifying the actual devices.",
+    "acceptance": "Reader can identify which processor runs each program and where Linux is involved."
+  },
+  {
+    "id": "0.2",
+    "title": "A labelled tour of your Pico 2",
+    "chapter": "0. Know your hardware and your bench",
+    "path": "src/0.2-a-labelled-tour-of-your-pico-2.md",
+    "scope": "Provide an annotated top view of the actual baseline board and a separate internal block diagram. Label the RP2350 microcontroller package, external flash chip, USB connector, BOOTSEL button, onboard LED, GPIO headers, power/ground pins, SWD connector, and the relevant clock/power circuitry. Explain processor cores, SRAM, and peripheral controllers as parts inside the RP2350 rather than separate visible chips. Distinguish flash from SRAM, the chip from the board, and a physical pin from its selectable peripheral functions. Explain what each labelled item does and when we use it. Identify board orientation and Pico 2 versus Pico 2 W differences explicitly.",
+    "acceptance": "Reader can point to the main physical parts on their Pico, explain where firmware and working data live, and identify power, GPIO, and debug connections."
+  },
+  {
+    "id": "0.3",
+    "title": "A labelled tour of your Raspberry Pi 4",
+    "chapter": "0. Know your hardware and your bench",
+    "path": "src/0.3-a-labelled-tour-of-your-raspberry-pi-4.md",
+    "scope": "Provide annotated top and underside views. Label the BCM2711 system-on-chip package, RAM package, USB controller, Ethernet controller/connector, USB ports, USB-C power input, micro-HDMI ports, microSD slot, 40-pin GPIO header and pin-1 marker, wireless section, and visible display/camera connectors. Explain SoC versus CPU versus board, RAM versus microSD storage, and controllers versus physical connectors. Cover supporting power/clock circuitry at a useful overview level, without trying to name every passive component. State which parts are used in our labs and which can be left alone. Account for a heatsink or case obscuring parts without requiring removal.",
+    "acceptance": "Reader recognises their board's main components and ports and can distinguish power, storage, networking, and GPIO connections."
+  },
+  {
+    "id": "0.4",
+    "title": "A labelled tour of the Debug Probe and cables",
+    "chapter": "0. Know your hardware and your bench",
+    "path": "src/0.4-a-labelled-tour-of-the-debug-probe-and-cables.md",
+    "scope": "Annotate the probe's USB, SWD, and UART connections and their signal names; explain the probe's own controller separately from the target Pico. Show the actual connector orientation and the path each cable serves. Inventory data-capable micro-USB cables, USB-C adapters/hub, supplied SWD cable, jumper wire ends, power supply, and SD adapter. Distinguish power, data, debug, and serial connections, including the fact that the SWD connector has no target-power pin.",
+    "acceptance": "Reader can identify every cable endpoint and explain the separate power, programming/debug, and serial-data paths."
+  },
+  {
+    "id": "0.5",
+    "title": "Recognise the breadboard and kit components",
+    "chapter": "0. Know your hardware and your bench",
+    "path": "src/0.5-recognise-the-breadboard-and-kit-components.md",
+    "scope": "Use labelled diagrams of the breadboard's hidden contact strips, centre gap, and possibly split power rails; show how the Pico straddles the gap. Identify resistors and their values, LED anode/cathode and polarity markings, four-leg button internal contact pairs, and jumper wire types. Explain what each component contributes to our circuits. Identify these against the actual kit rather than inventing included parts.",
+    "acceptance": "Reader can select the required components and understand which breadboard holes and button legs are electrically connected."
+  },
+  {
+    "id": "0.6",
+    "title": "Assemble the bench and understand the electrical rules",
+    "chapter": "0. Know your hardware and your bench",
+    "path": "src/0.6-assemble-the-bench-and-understand-the-electrical-rules.md",
+    "scope": "Consolidate the physical inventory and power/data/debug connection diagram. Explain ground/reference voltage, 3.3V logic, LED current limiting and resistor selection, pull resistors, floating inputs, and separate USB supplies. Explain why signal-ground wires are shared but power outputs are not joined. Establish consistent top-view orientation, GPIO names versus physical pin numbering, and a habit of powering down before changing wiring.",
+    "acceptance": "Reader can identify all equipment, interpret later wiring tables, and assemble the LED circuit correctly before firmware-controlled output is enabled."
+  },
+  {
+    "id": "1.1",
+    "title": "Install a reproducible macOS toolchain",
+    "chapter": "1. Build and flash your first Pico program",
+    "path": "src/1.1-install-a-reproducible-macos-toolchain.md",
+    "scope": "Choose the official Pico VS Code extension's managed SDK/toolchain route on Apple Silicon; record exact versions and expose its underlying tools for terminal use. Check Arm GCC, CMake, build tool, GDB, OpenOCD, and SDK paths. Explain host tools versus target binaries. Keep any manual installation route in an appendix.",
+    "acceptance": "Version/path checks succeed and the compiler targets Arm embedded firmware."
+  },
+  {
+    "id": "1.2",
+    "title": "Understand the smallest useful project",
+    "chapter": "1. Build and flash your first Pico program",
+    "path": "src/1.2-understand-the-smallest-useful-project.md",
+    "scope": "Complete CMake and C++ files; explicit Pico 2/Arm target, debug build, SDK import, SDK initialisation, and USB serial output. Explain compilation, linking, ELF, UF2, flash, SRAM, and the SDK's startup contribution.",
+    "acceptance": "A clean build produces a Pico 2 ELF and UF2."
+  },
+  {
+    "id": "1.3",
+    "title": "Flash with BOOTSEL and read output",
+    "chapter": "1. Build and flash your first Pico program",
+    "path": "src/1.3-flash-with-bootsel-and-read-output.md",
+    "scope": "Enter BOOTSEL, copy the UF2, observe the RP2350 mass-storage device disappear, locate the serial port, and read a versioned heartbeat. Account for macOS serial device naming and charge-only cables.",
+    "acceptance": "Rebooted firmware repeatedly emits its identity and heartbeat."
+  },
+  {
+    "id": "1.4",
+    "title": "Make the build\u2013flash\u2013observe loop repeatable",
+    "chapter": "1. Build and flash your first Pico program",
+    "path": "src/1.4-make-the-build-flash-observe-loop-repeatable.md",
+    "scope": "Change a heartbeat value, rebuild, flash, verify the new firmware, and recover from a program that no longer starts its USB interface. Establish stable example names and a version report.",
+    "acceptance": "A deliberate source change is visible on the actual board, and BOOTSEL recovery is understood."
+  },
+  {
+    "id": "2.1",
+    "title": "Wire and verify an external LED",
+    "chapter": "2. Make a CPU store change a pin",
+    "path": "src/2.1-wire-and-verify-an-external-led.md",
+    "scope": "Use one conservative resistor value from the kit and a specified external GPIO. Provide the complete pin-to-resistor-to-LED-to-ground circuit. Briefly use the SDK GPIO API to establish a known-good circuit.",
+    "acceptance": "The external LED blinks reliably; common polarity and rail mistakes are resolved."
+  },
+  {
+    "id": "2.2",
+    "title": "Read the RP2350 register map",
+    "chapter": "2. Make a CPU store change a pin",
+    "path": "src/2.2-read-the-rp2350-register-map.md",
+    "scope": "Derive the chosen pin's pad control, function selection, SIO output enable, and output registers from the RP2350 datasheet. Explain address, register width, access type, masks, reset state, pad isolation, and read-modify-write hazards.",
+    "acceptance": "Reader can locate each register and explain the required configuration sequence."
+  },
+  {
+    "id": "2.3",
+    "title": "Replace GPIO calls with register accesses",
+    "chapter": "2. Make a CPU store change a pin",
+    "path": "src/2.3-replace-gpio-calls-with-register-accesses.md",
+    "scope": "Keep SDK startup, replace GPIO setup/output with documented register operations, and use SET/CLR aliases where appropriate. Introduce volatile access and its limits; distinguish peripheral atomic operations from C++ inter-thread atomics.",
+    "acceptance": "The same LED blinks using direct peripheral-register accesses."
+  },
+  {
+    "id": "2.4",
+    "title": "Follow the generated machine instructions",
+    "chapter": "2. Make a CPU store change a pin",
+    "path": "src/2.4-follow-the-generated-machine-instructions.md",
+    "scope": "Compare source, disassembly, address calculation, and the store to a peripheral register. Explain that optimisation, bus transactions, pad configuration, and physical timing are separate layers.",
+    "acceptance": "Reader identifies the instruction responsible for changing the LED output; live stepping follows in Chapter 3."
+  },
+  {
+    "id": "3.1",
+    "title": "Attach the Debug Probe over SWD",
+    "chapter": "3. Debug the running hardware",
+    "path": "src/3.1-attach-the-debug-probe-over-swd.md",
+    "scope": "Separate SWD and probe UART connectors, verify SWDIO/SWCLK/GND, power the target separately, and run OpenOCD with RP2350 support and the correct target configuration. Account for probe firmware compatibility.",
+    "acceptance": "OpenOCD recognises the RP2350 target rather than merely finding the USB probe."
+  },
+  {
+    "id": "3.2",
+    "title": "Load the ELF and step through the LED write",
+    "chapter": "3. Debug the running hardware",
+    "path": "src/3.2-load-the-elf-and-step-through-the-led-write.md",
+    "scope": "Connect Arm GDB, reset/halt, load the debug ELF, break at a known point, inspect variables/registers, and step across the output store. Explain stopped-CPU effects and stale source/binary mistakes.",
+    "acceptance": "A debugger step produces the predicted LED state, and a register read confirms it."
+  },
+  {
+    "id": "3.3",
+    "title": "Diagnose a broken program systematically",
+    "chapter": "3. Debug the running hardware",
+    "path": "src/3.3-diagnose-a-broken-program-systematically.md",
+    "scope": "Use supplied reversible faults: wrong mask, missing output enable, wrong mux, and a bounded loop. Inspect stack, PC, peripheral state, and disassembly. Explain when reading a register can have side effects.",
+    "acceptance": "Reader repairs each fault using evidence and restores the known-good baseline."
+  },
+  {
+    "id": "4.1",
+    "title": "Read a button by polling",
+    "chapter": "4. From a button to an interrupt handler",
+    "path": "src/4.1-read-a-button-by-polling.md",
+    "scope": "Use an active-low button and an explicitly specified external pull-up; explain contact pairs, input enable, electrical versus logical state, and the relevant silicon erratum/revision qualification. Poll an input register.",
+    "acceptance": "Press/release yields stable raw states, with bounce visible in transition counts where present."
+  },
+  {
+    "id": "4.2",
+    "title": "Configure and acknowledge a GPIO interrupt",
+    "chapter": "4. From a button to an interrupt handler",
+    "path": "src/4.2-configure-and-acknowledge-a-gpio-interrupt.md",
+    "scope": "Move from the SDK callback baseline to the relevant GPIO interrupt enable/status/acknowledge path and CPU IRQ enable. Explain edge versus level, NVIC, vector entry, and write-one-to-clear semantics.",
+    "acceptance": "A button edge reaches an ISR and main-loop reporting confirms receipt."
+  },
+  {
+    "id": "4.3",
+    "title": "Share state and debounce correctly",
+    "chapter": "4. From a button to an interrupt handler",
+    "path": "src/4.3-share-state-and-debounce-correctly.md",
+    "scope": "Keep the ISR short; no sleeping or USB logging there. Use a documented single-core handoff with appropriate critical sections or proven lock-free operations, and a timed debounce state machine. Explain why volatile alone is not synchronisation.",
+    "acceptance": "One accepted press toggles once; delayed main-loop work does not corrupt shared state."
+  },
+  {
+    "id": "4.4",
+    "title": "Inspect exception entry and return",
+    "chapter": "4. From a button to an interrupt handler",
+    "path": "src/4.4-inspect-exception-entry-and-return.md",
+    "scope": "Break in the handler, inspect the Cortex-M33 exception frame and return path, observe pending interrupts, and explain how halted execution distorts timing. Contrast polling, interrupt notification, and optional wait-for-interrupt behaviour.",
+    "acceptance": "Reader traces pin transition \u2192 interrupt controller \u2192 handler \u2192 resumed application."
+  },
+  {
+    "id": "5.1",
+    "title": "Prepare Raspberry Pi OS and SSH",
+    "chapter": "5. Bring up the Pi 4 headlessly",
+    "path": "src/5.1-prepare-raspberry-pi-os-and-ssh.md",
+    "scope": "Support checking a preinstalled card and, when necessary, imaging a selected 64-bit Raspberry Pi OS Lite release. Configure user, hostname, network, SSH, and key authentication; use the actual Mac network route. Explain local-network discovery and the fallback to an IP address.",
+    "acceptance": "Mac reaches a Pi shell through SSH without a monitor."
+  },
+  {
+    "id": "5.2",
+    "title": "Verify the Linux development environment",
+    "chapter": "5. Bring up the Pi 4 headlessly",
+    "path": "src/5.2-verify-the-linux-development-environment.md",
+    "scope": "Record board model, OS release, architecture, running kernel, compiler, and boot configuration layout. Install only required development packages and compile/run a tiny C++ program natively.",
+    "acceptance": "A machine/version record and a working native C++ build."
+  },
+  {
+    "id": "5.3",
+    "title": "Establish GPIO identity and ownership",
+    "chapter": "5. Bring up the Pi 4 headlessly",
+    "path": "src/5.3-establish-gpio-identity-and-ownership.md",
+    "scope": "Distinguish physical header pins, BCM names, gpiochip line offsets, and requested lines. Use current GPIO character-device tooling to inspect the actual controller instead of assuming a gpiochip number. Introduce line ownership and pin multiplexing.",
+    "acceptance": "Correct header lines are identified and confirmed available for later labs."
+  },
+  {
+    "id": "6.1",
+    "title": "I\u00b2C on the wires",
+    "chapter": "6. Understand clocked buses with your existing boards",
+    "path": "src/6.1-i-c-on-the-wires.md",
+    "scope": "Explain open-drain signalling, pull-ups, START/STOP, 7-bit addresses, R/W bit, ACK/NACK, register pointers, and repeated START. Wire Pi controller to Pico target using the documented Pi pull-ups and 3.3V signalling; separate powering and common ground.",
+    "acceptance": "A verified wiring table and an idle bus; with an analyser, the idle voltage and first transfer can be observed."
+  },
+  {
+    "id": "6.2",
+    "title": "Turn the Pico into a register-based peripheral",
+    "chapter": "6. Understand clocked buses with your existing boards",
+    "path": "src/6.2-turn-the-pico-into-a-register-based-peripheral.md",
+    "scope": "Implement a small versioned I\u00b2C register interface inspired by the official memory-target example. Expose identity, LED control, button count, and a coherent snapshot of the internal temperature ADC reading. Keep bus callbacks bounded and handle repeated START and multi-byte state correctly.",
+    "acceptance": "Known register transactions produce predictable values and LED changes."
+  },
+  {
+    "id": "6.3",
+    "title": "Write a Linux I\u00b2C client",
+    "chapter": "6. Understand clocked buses with your existing boards",
+    "path": "src/6.3-write-a-linux-i-c-client.md",
+    "scope": "Enable the intended Pi I\u00b2C bus, identify `/dev/i2c-*`, and use a complete C++ client with `I2C_RDWR` for combined transactions. Read identity/data, control the LED, and diagnose wrong addresses, NACKs, and partial/failed transfers. Distinguish an approximate chip temperature from ambient measurement.",
+    "acceptance": "Pi reads the Pico's sensor data and changes its LED over real I\u00b2C wires."
+  },
+  {
+    "id": "6.4",
+    "title": "Compare SPI with a loopback experiment",
+    "chapter": "6. Understand clocked buses with your existing boards",
+    "path": "src/6.4-compare-spi-with-a-loopback-experiment.md",
+    "scope": "Use the Pico SPI controller in a simple loopback exercise, initially with documented loopback support or an explicit MOSI-to-MISO wire. Explain SCK, MOSI/MISO, chip select, CPOL/CPHA, full duplex, and why echo success does not validate a real peripheral's timing. Detach any earlier wiring that conflicts.",
+    "acceptance": "Transmitted patterns are recovered, and the reader can explain how SPI differs from I\u00b2C."
+  },
+  {
+    "id": "7.1",
+    "title": "Make a UART link electrically and logically correct",
+    "chapter": "7. Connect Linux to bare-metal firmware over UART",
+    "path": "src/7.1-make-a-uart-link-electrically-and-logically-correct.md",
+    "scope": "Cross Pi TX to Pico RX and vice versa, share ground, and use 3.3V logic. Explain baud rate, start/stop bits, idle state, and the distinction between UART, USB serial, and RS-232. Establish a fixed 115200/8-N-1 baseline.",
+    "acceptance": "A verified wiring diagram and matching settings on both ends."
+  },
+  {
+    "id": "7.2",
+    "title": "Configure the Pi UART and test an echo",
+    "chapter": "7. Connect Linux to bare-metal firmware over UART",
+    "path": "src/7.2-configure-the-pi-uart-and-test-an-echo.md",
+    "scope": "Disable the serial login console while enabling UART hardware. Resolve Pi 4 Bluetooth/PL011 versus mini-UART routing explicitly, inspect `/dev/serial0`, and verify the actual port. Keep Pico diagnostic output separate from protocol traffic.",
+    "acceptance": "Pi and Pico exchange an exact test pattern without console noise."
+  },
+  {
+    "id": "7.3",
+    "title": "Build a robust C++ serial client",
+    "chapter": "7. Connect Linux to bare-metal firmware over UART",
+    "path": "src/7.3-build-a-robust-c-serial-client.md",
+    "scope": "Use termios, bounded buffers, timeouts/poll, partial reads/writes, interruption handling, and clean close. Implement a small newline-framed protocol with request identifiers, bounded lengths, explicit errors, and commands for LED, button count, and temperature.",
+    "acceptance": "Split, delayed, malformed, and multiple messages are handled predictably."
+  },
+  {
+    "id": "7.4",
+    "title": "Trace a command end to end",
+    "chapter": "7. Connect Linux to bare-metal firmware over UART",
+    "path": "src/7.4-trace-a-command-end-to-end.md",
+    "scope": "Follow an SSH-launched command through Linux write/read, the UART controller, Pico receive/parsing, the register store, and acknowledgement. Compare USB logs, optional analyser capture, and debugger evidence; distinguish throughput from latency.",
+    "acceptance": "One command can be accounted for at every stage from Linux process to LED."
+  },
+  {
+    "id": "8.1",
+    "title": "Establish a userspace GPIO baseline",
+    "chapter": "8. Write a Linux driver for a physical button",
+    "path": "src/8.1-establish-a-userspace-gpio-baseline.md",
+    "scope": "Rewire a button and LED to dedicated Pi header pins, confirm availability, and use a C++ client against the GPIO character-device v2 API to request lines and receive edges. Explain why an educational custom driver is not required for every GPIO application.",
+    "acceptance": "The physical circuit works through the existing Linux interface before new kernel code is introduced."
+  },
+  {
+    "id": "8.2",
+    "title": "Build and load the smallest external module",
+    "chapter": "8. Write a Linux driver for a physical button",
+    "path": "src/8.2-build-and-load-the-smallest-external-module.md",
+    "scope": "Install headers matching the running kernel, use kbuild, and build a minimal C module with load/unload logging. Explain module metadata, kernel/user address spaces, and recovery if the module or headers mismatch.",
+    "acceptance": "Module loads, logs, and unloads cleanly on the recorded kernel."
+  },
+  {
+    "id": "8.3",
+    "title": "Describe the device and bind the driver",
+    "chapter": "8. Write a Linux driver for a physical button",
+    "path": "src/8.3-describe-the-device-and-bind-the-driver.md",
+    "scope": "Provide a complete Device Tree overlay and matching platform driver. Use a custom compatible string, named `*-gpios` properties, descriptor acquisition, explicit pin configuration, and error unwinding. Explain probe/binding and how to disable the overlay.",
+    "acceptance": "Driver binds to the intended device and requests the intended GPIO lines exclusively."
+  },
+  {
+    "id": "8.4",
+    "title": "Convert GPIO events into driver state",
+    "chapter": "8. Write a Linux driver for a physical button",
+    "path": "src/8.4-convert-gpio-events-into-driver-state.md",
+    "scope": "Map the button descriptor to an IRQ, use an appropriate threaded handler/deferred debounce design, and update protected event state. Explain hard IRQ versus process/thread context and which operations may sleep.",
+    "acceptance": "Accepted physical button events produce a consistent kernel counter without ISR logging floods."
+  },
+  {
+    "id": "8.5",
+    "title": "Expose `/dev/mybutton` to a C++ client",
+    "chapter": "8. Write a Linux driver for a physical button",
+    "path": "src/8.5-expose-dev-mybutton-to-a-c-client.md",
+    "scope": "Use a misc device and deliberately small text-record ABI. Define blocking/nonblocking reads, poll readiness, short-buffer behaviour, errors, and permissions. Use a monotonic event counter with per-open last-seen state; explicitly document that this is a latest-state/counter interface, not an unlimited event queue.",
+    "acceptance": "A C++ client sleeps for an event, wakes on a press, reads a valid record, and handles timeout/nonblocking cases."
+  },
+  {
+    "id": "8.6",
+    "title": "Make failure and teardown behaviour explicit",
+    "chapter": "8. Write a Linux driver for a physical button",
+    "path": "src/8.6-make-failure-and-teardown-behaviour-explicit.md",
+    "scope": "Test concurrent readers under the defined counter semantics, repeated load/unload, signal interruption, a held button, bounce, and open descriptors. Define an explicit offline state and a reference-counted userspace-facing object so unbind wakes waiters and returns a documented device-gone error without freed-memory access. Compare with standard gpio-keys/input drivers.",
+    "acceptance": "No blocked reader remains stranded during documented teardown, and resources/pins can be reclaimed."
+  },
+  {
+    "id": "9.1",
+    "title": "Observe your Linux process's mappings",
+    "chapter": "9. Virtual memory and the registers beneath the driver",
+    "path": "src/9.1-observe-your-linux-process-s-mappings.md",
+    "scope": "Inspect `/proc/self/maps`, allocate/map ordinary memory, query page size, and compare virtual addresses in separate runs. Explain why pointer values do not reveal physical addresses and why an MCU MMIO address is not a usable Linux userspace pointer.",
+    "acceptance": "Reader can classify mappings and explain virtual versus physical addressing."
+  },
+  {
+    "id": "9.2",
+    "title": "Observe demand paging and protection faults",
+    "chapter": "9. Virtual memory and the registers beneath the driver",
+    "path": "src/9.2-observe-demand-paging-and-protection-faults.md",
+    "scope": "Use a bounded userspace program to touch mapped anonymous pages and compare minor-fault counts; use a child process and `mprotect` for a controlled protection fault. Explain why observed counts vary and why normal demand faults differ from invalid accesses.",
+    "acceptance": "Measured paging behaviour and a predictable child-process protection fault, without crashing the Pi kernel."
+  },
+  {
+    "id": "9.3",
+    "title": "Trace a real kernel MMIO mapping",
+    "chapter": "9. Virtual memory and the registers beneath the driver",
+    "path": "src/9.3-trace-a-real-kernel-mmio-mapping.md",
+    "scope": "Inspect the live Device Tree and resource descriptions, then follow the matching Pi kernel GPIO/pinctrl source from resource lookup/mapping to register access. Explain address translation (`reg`/`ranges`), `ioremap` and managed mapping helpers, `__iomem`, device attributes, and `readl`/`writel`. Use source matching the selected kernel, not a random tutorial's physical addresses.",
+    "acceptance": "A concrete map from the driver's GPIO operation to the owning controller's mapped register access."
+  },
+  {
+    "id": "9.4",
+    "title": "Explain ordering, access semantics, and ownership",
+    "chapter": "9. Virtual memory and the registers beneath the driver",
+    "path": "src/9.4-explain-ordering-access-semantics-and-ownership.md",
+    "scope": "Compare Pico volatile pointers with Linux MMIO accessors, memory barriers, write-one-to-clear registers, SET/CLR aliases, resource ownership, and ordinary RAM. Walk through a minimal resource-owning mapping example as annotated source, not a module that maps over the active GPIO controller.",
+    "acceptance": "Reader explains why copying the Pico pointer technique into a Linux process or second GPIO driver is incorrect."
+  },
+  {
+    "id": "10.1",
+    "title": "Use a Linux device event to control Pico hardware",
+    "chapter": "10. Put the whole chain together",
+    "path": "src/10.1-use-a-linux-device-event-to-control-pico-hardware.md",
+    "scope": "Reuse `/dev/mybutton` and the robust UART client. A physical Pi button event wakes the C++ process, which sends an identified LED command to the Pico and verifies its reply. Show separate Pi/Pico LEDs and all wiring on one consolidated diagram.",
+    "acceptance": "Physical button \u2192 Linux IRQ \u2192 driver \u2192 blocked read/poll \u2192 C++ \u2192 UART \u2192 Pico \u2192 LED."
+  },
+  {
+    "id": "10.2",
+    "title": "Verify, troubleshoot, and explain the system",
+    "chapter": "10. Put the whole chain together",
+    "path": "src/10.2-verify-troubleshoot-and-explain-the-system.md",
+    "scope": "Use a repeatable end-to-end checklist: restart the client, reset the Pico, remove/reconnect the data link with boards powered down for wiring changes, reject malformed requests, and handle the driver going offline. Revisit what each layer provides and identify the next experiment by interest.",
+    "acceptance": "A reproducible demonstration and a clear explanation of the complete hardware/software path."
+  },
+  {
+    "id": "A",
+    "title": "Pinouts and circuits",
+    "chapter": "Appendices",
+    "path": "src/appendix-a.md",
+    "scope": "Pin maps and wiring states; component diagram index and colour conventions.",
+    "acceptance": "Complete self-contained reference or worked optional exercise with sources and honest limits."
+  },
+  {
+    "id": "B",
+    "title": "Build and recovery reference",
+    "chapter": "Appendices",
+    "path": "src/appendix-b.md",
+    "scope": "Complete terminal build route and recovery commands; scripts/setup-deps.py and build commands. No invented tool paths.",
+    "acceptance": "Complete self-contained reference or worked optional exercise with sources and honest limits."
+  },
+  {
+    "id": "C.1",
+    "title": "Meet an optional BME280",
+    "chapter": "Appendices",
+    "path": "src/appendix-c-1.md",
+    "scope": "Adafruit BME280 breakout product 2652 as optional, soldering/headers explicit; label identity and datasheet; Bosch register map.",
+    "acceptance": "Complete self-contained reference or worked optional exercise with sources and honest limits."
+  },
+  {
+    "id": "C.2",
+    "title": "Read a BME280 over I\u00b2C",
+    "chapter": "Appendices",
+    "path": "src/appendix-c-2.md",
+    "scope": "Exact Pico wiring and raw chip-ID/calibration/data registers using bme280_i2c target. Complete source include. Explain repeated START.",
+    "acceptance": "Complete self-contained reference or worked optional exercise with sources and honest limits."
+  },
+  {
+    "id": "C.3",
+    "title": "Convert raw sensor data",
+    "chapter": "Appendices",
+    "path": "src/appendix-c-3.md",
+    "scope": "Read calibration, compensation temperature and pressure/humidity where implemented; use actual source, measurement limitations. If temperature only, state scope and explain other channels, do not claim more.",
+    "acceptance": "Complete self-contained reference or worked optional exercise with sources and honest limits."
+  },
+  {
+    "id": "C.4",
+    "title": "Read the same chip over SPI",
+    "chapter": "Appendices",
+    "path": "src/appendix-c-4.md",
+    "scope": "Exact wiring and bme280_spi source; protocol comparison with I2C and chip identity checks.",
+    "acceptance": "Complete self-contained reference or worked optional exercise with sources and honest limits."
+  },
+  {
+    "id": "D",
+    "title": "Optional logic analyser",
+    "chapter": "Appendices",
+    "path": "src/appendix-d.md",
+    "scope": "Device-specific worked path for a Saleae Logic 8 with official Logic 2 docs on macOS; no purchasing necessary. Captures described, never fabricated. Wiring and sample-rate rationale; other devices not claimed compatible.",
+    "acceptance": "Complete self-contained reference or worked optional exercise with sources and honest limits."
+  },
+  {
+    "id": "E",
+    "title": "References and glossary",
+    "chapter": "Appendices",
+    "path": "src/appendix-e.md",
+    "scope": "Primary sources organised by topic, glossary, software and hardware verification matrix from verification.json; honest status.",
+    "acceptance": "Complete self-contained reference or worked optional exercise with sources and honest limits."
+  },
+  {
+    "id": "F",
+    "title": "Where to go next",
+    "chapter": "Appendices",
+    "path": "src/appendix-f.md",
+    "scope": "Short useful next steps for DMA PIO multicore Rust startup/linker; no pretend lessons.",
+    "acceptance": "Complete self-contained reference or worked optional exercise with sources and honest limits."
+  }
+]

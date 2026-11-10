@@ -1,0 +1,24 @@
+# Canonical example contract (root-owned)
+
+All examples run single-core on Pico 2 unless stated. Root supplies actual files as work progresses. Page writers must read current files before final review.
+
+Pico project: `examples/pico/CMakeLists.txt`, pico-sdk import at `$PICO_SDK_PATH/external/pico_sdk_import.cmake`. Build `cmake -S examples/pico -B .build/pico -DPICO_BOARD=pico2 -DPICO_PLATFORM=rp2350-arm-s -DPICO_SDK_PATH="$PWD/.deps/pico-sdk" -DCMAKE_BUILD_TYPE=Debug` (setup script also sets tool PATH). Easier cross-platform scripted route `python3 scripts/build_examples.py --pico`.
+
+Targets / files:
+- heartbeat / heartbeat.cpp: USB identity and heartbeat; first UF2.
+- blink_sdk / blink_sdk.cpp: GP16 LED with SDK.
+- blink_registers / blink_registers.cpp: GP16 pad/mux/SIO with registers; exported noinline `led_on` and `led_off` for GDB.
+- button_poll / button_poll.cpp: GP17 active-low external pullup, register reads, bounded printing in main.
+- button_irq / button_irq.cpp: raw GPIO interrupt registers + CPU handler, debounced main-loop and critical-section handoff; LED GP16; exported `gpio_isr` for GDB.
+- i2c_target / i2c_target.cpp: target0x42 i2c0 GP4/5. Register0 identity0x42,1 protocol1,2 LED state; 4..7 uint32 press count little endian;8..11 int32 milli-degC little endian. 16-byte snapshot pinned per transaction; LED write register2 value0/1. Callback bounded.
+- spi_loopback / spi_loopback.cpp: spi0 GP18SCK GP19TX GP20RX; external GP19→GP20 jumper; repeated bounded pattern test with status over USB.
+- uart_echo / uart_echo.cpp: uart0 GP0/1,1152008N1; exact echo; diagnostics USB.
+- uart_device / uart_device.cpp: same UART; line protocol `<id> LED 0|1`, `<id> COUNT`, `<id> TEMP`, `<id> PING`, replies `<id> OK <value>` or `<id> ERR <reason>`. ID1..999999, line max63 chars excluding newline, CR ignored, overlong line discarded through newline. LED GP16,button GP17. Diagnostic USB. Shared protocol parser in examples/common/protocol.hpp, host test separate.
+- bme280_i2c / bme280_i2c.cpp; bme280_spi / bme280_spi.cpp: optional temp-only true sensor chipID0x60; Bosch temperature calibration/compensation. Both share bme280_common.hpp; forced read and readiness polling; full root implementation.
+
+Linux C++ standalone programs:
+`examples/linux/hello.cpp`, `i2c_client.cpp`, `serial_client.cpp`, `gpio_events.cpp`, `button_client.cpp`, `memory_lab.cpp`, `capstone.cpp`. Build `g++ -std=c++20 -Wall -Wextra -Wpedantic -O2 examples/linux/NAME.cpp -o .build/NAME` from repo root; `mkdir -p .build` first. serial_client and capstone use common header (relative include), source archive includes it. gpio_events takes CHIP LED_OFFSET BUTTON_OFFSET. i2c_client takes DEVICE (default/dev/i2c-1); serial_client takes DEVICE and command (e.g. `/dev/serial0 LED 1`); button_client takes `/dev/mybutton` and bounded event count; capstone takes `/dev/mybutton /dev/serial0` and bounded count.
+
+Kernel: examples/kernel/hello.c, mybutton.c, Makefile, hardware-button-overlay.dts, 99-mybutton.rules. Build on Pi with matching kernel `make -C /lib/modules/"$(uname -r)"/build M="$PWD/examples/kernel" modules`. DeviceTree overlay uses GPIO27 button with external pullup; GPIO17 LED output. Platform compatible `hfs,mybutton`. C misc-device module: counter/state per-open seen sequence, blocking read, nonblock EAGAIN,poll, ENODEV on unbind, kref lifetime and delayed-work debounce; concurrent readers get independent latest event counters, not queued every-edge delivery. No per-device code deployment at boot until manually validated.
+
+Host test: examples/common/protocol_test.cpp. Build with clang++ C++20 and run normal/ASan+UBSan. Pseudo-terminal integration tests planned for serial client, actual Linux-target compile where supported. Firmware infinite control loops are intended; don't run them as host executables.

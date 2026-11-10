@@ -1,0 +1,47 @@
+name: Verify examples
+on:
+  workflow_dispatch:
+  push:
+    paths: ['examples/**', 'scripts/test_serial.py', '.github/workflows/examples.yml']
+permissions:
+  contents: read
+jobs:
+  linux-host:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/build_examples.py --host --linux
+      - run: python3 scripts/test_serial.py
+      - run: .build/memory_lab
+  pi-kernel-build:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install native build tools
+        run: sudo apt-get update && sudo apt-get install -y build-essential device-tree-compiler libelf-dev
+      - name: Fetch pinned official Pi kernel headers
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=https://archive.raspberrypi.com/debian/pool/main/l/linux
+          for package in \
+            linux-headers-6.12.96+rpt-common-rpi_6.12.96-1+rpt1_all.deb \
+            linux-headers-6.12.96+rpt-rpi-v8_6.12.96-1+rpt1_arm64.deb \
+            linux-kbuild-6.12.96+rpt_6.12.96-1+rpt1_arm64.deb; do
+            curl -fLsS --retry 3 "$base/$package" -o "/tmp/$package"
+            sha256sum "/tmp/$package"
+            sudo dpkg-deb -x "/tmp/$package" /
+          done
+      - name: Build native Arm64 applications and Pi kernel modules
+        run: |
+          python3 scripts/build_examples.py --linux
+          make -C /usr/src/linux-headers-6.12.96+rpt-rpi-v8 M="$PWD/examples/kernel" W=1 modules
+          dtc -@ -I dts -O dtb -o /tmp/hardware-button.dtbo examples/kernel/hardware-button-overlay.dts
+          file examples/kernel/hello.ko examples/kernel/mybutton.ko .build/serial_client
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pi-build-evidence
+          path: |
+            examples/kernel/*.ko
+            /tmp/hardware-button.dtbo
+          retention-days: 7
