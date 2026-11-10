@@ -1,0 +1,55 @@
+{
+  "id": "3.3",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "RESUME.md",
+    "catalog.json (3.3 entry)",
+    "src/3.1-attach-the-debug-probe-over-swd.md",
+    "src/3.2-load-the-elf-and-step-through-the-led-write.md",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "/tmp/page22-rp2350-relevant.txt"
+  ],
+  "sources": [
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://sourceware.org/gdb/current/onlinedocs/gdb.html/Backtrace.html",
+    "https://sourceware.org/gdb/current/onlinedocs/gdb.html/Continuing-and-Stepping.html",
+    "https://openocd.org/doc/html/GDB-and-OpenOCD.html",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2350/hardware_regs/include/hardware/regs/io_bank0.h",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2350/hardware_regs/include/hardware/regs/pads_bank0.h",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2350/hardware_regs/include/hardware/regs/sio.h"
+  ],
+  "scope_audit": {
+    "wrong_mask": "led_on mask >> 1 only, leaves GP16 setup intact and does not enable GP15",
+    "missing_output_enable": "omit final OE_SET, retain initial OE_CLR",
+    "wrong_mux": "GPIO16 documented NULL value",
+    "bounded_loop": "three cycles then explicit sleeping loop, no main return assumption",
+    "debug_evidence": "OUT/OE/CTRL/PAD before/after store, operand disassembly, PC/SP/LR/backtrace/frame/context, safe register-read discussion",
+    "restoration": "one fault at a time, successful rebuild plus fresh GDB/load/reset after each edit and restore, source cmp, on/off evidence, fourth-call control-flow check",
+    "wiring": "exact existing Pico GP16 physical21 resistor LED GND23 and probe D/U state, no Pi/button"
+  },
+  "code_files_read": [
+    "examples/pico/blink_registers.cpp",
+    "examples/pico/CMakeLists.txt",
+    "scripts/build_examples.py",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/io_bank0.h (GPIO16)",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/pads_bank0.h (GPIO0/GPIO16)",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/sio.h (OUT/OE)",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/addressmap.h"
+  ],
+  "checks_performed": [
+    "Read complete assigned Markdown after drafting",
+    "Local links and shared SVG existence verified",
+    "Top-level complete canonical include checked",
+    "Each local fragment replacement matched exactly once in actual canonical source",
+    "Addresses/access types and field values checked in pinned SDK plus extracted official datasheet",
+    "OpenOCD and GDB command route compared with current 3.1/3.2",
+    "No shared source changed; no redundant baseline build run"
+  ],
+  "hardware_status": "Physical SWD, GPIO, LED, register reads, backtraces and local faults not exercised. Existing root 12-target build is baseline compilation only; local fault variants source-reviewed, not independently target-compiled.",
+  "concerns": [
+    "Independent technical/prose/render review pending. Shared 3.1 SVG dependency must be hash-recorded by reviewer. GDB frame availability depends on optimized Debug build; page provides disassembly fallback."
+  ],
+  "status": "ready_for_independent_review"
+}

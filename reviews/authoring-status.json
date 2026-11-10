@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T21:50:39.379969+00:00",
+  "updated": "2026-11-10T21:54:06.685732+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -79,21 +79,21 @@
     "3.2": {
       "path": "src/3.2-load-the-elf-and-step-through-the-led-write.md",
       "writer": "complete",
-      "reviewer": "root_reviewing"
+      "reviewer": "accepted_source_review"
     },
     "3.3": {
       "path": "src/3.3-diagnose-a-broken-program-systematically.md",
-      "writer": "active",
-      "reviewer": "pending"
+      "writer": "complete",
+      "reviewer": "accepted_source_review"
     },
     "4.1": {
       "path": "src/4.1-read-a-button-by-polling.md",
-      "writer": "pending",
+      "writer": "active",
       "reviewer": "pending"
     },
     "4.2": {
       "path": "src/4.2-configure-and-acknowledge-a-gpio-interrupt.md",
-      "writer": "pending",
+      "writer": "active",
       "reviewer": "pending"
     },
     "4.3": {

@@ -1,0 +1,40 @@
+{
+  "id": "3.3",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "60f87239fc762725e7efd83ba347a92b938719b1ae3bbebfc00c1893c397fcd7",
+  "included_source_sha256": {
+    "examples/pico/blink_registers.cpp": "fbd45b4d97c4fb73c23046fbcdbd8435a1fda858cf5607b8dd119a74248acd1d"
+  },
+  "asset_sha256": {
+    "src/assets/3.1-swd-connections.svg": "4b7a4dfc38f89e033f7d8b2098dfcce940175f9bde3b7caba9abcf34bd2439a6"
+  },
+  "paths_read": [
+    "src/3.3-diagnose-a-broken-program-systematically.md",
+    "reviews/3.3-writer.json",
+    "examples/pico/blink_registers.cpp",
+    "src/assets/3.1-swd-connections.svg",
+    ".deps/openocd/scripts/target/rp2350.cfg",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/sio.h (OUT/OE access and offsets)",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/io_bank0.h (GPIO16 CTRL/NULL)",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/pads_bank0.h (GPIO16)"
+  ],
+  "sources_checked": [
+    "https://sourceware.org/gdb/current/onlinedocs/gdb.html/Backtrace.html",
+    "https://sourceware.org/gdb/current/onlinedocs/gdb.html/Continuing-and-Stepping.html",
+    "https://openocd.org/doc/html/GDB-and-OpenOCD.html",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf (official release8 extracted register tables previously independently inspected)"
+  ],
+  "scope_coverage": "All four isolated reversible faults, mandatory restored baseline between faults, exact build/new ELF/load/reset cycle, safe state register inspection, mask operand versus global constant, OE versus mux distinction, bounded-loop PC/stack/frame/disassembly interpretation, MMIO read side effects and W1C hazard, cleanup and explicit physical limits.",
+  "checks_performed": [
+    "Read complete final prose, actual full include and SVG source; unchanged shared SVG was independently completely rendered during3.1 review. Wiring continuity and all labels remain correct.",
+    "Ran bundled GDB against actual ELF: mask0x10000, led_on store0xd0000018 and complete main setup/loop disassembly agree. No target connected.",
+    "Compared exact register addresses/base offsets, access semantics, GPIO16 NULL0x1f, pad2 and mux5 with pinned SDK and official register tables.",
+    "Checked all four fragment substitution points against canonical source, one local change at a time; no shared code modified.",
+    "Browsed primary GDB and OpenOCD docs for instruction stepping, frames, remote load/reset. Installed cm0 configuration matches established route.",
+    "Full-file include is top-level unindented. Fragment examples explicitly local/source-reviewed only; no claim they were independently compiled or run. Root exact-render/link check precedes publication."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source-reviewed canonical program has existing target-compilation evidence; local fault variants source-reviewed only. SWD, GPIO, register reads, physical LED and stack transcripts not exercised or measured."
+}
