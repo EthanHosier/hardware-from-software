@@ -1,0 +1,73 @@
+{
+  "id": "2.3",
+  "paths_read": [
+    "AUTHORING_GUIDE.md (full, reread after include-render rule update)",
+    "PLAN.md (full, chunks 1\u2013109 and 110\u2013219)",
+    "EXAMPLES.md",
+    "catalog.json (entry 2.3)",
+    "RESUME.md",
+    "verification.json",
+    "src/2.1-wire-and-verify-an-external-led.md",
+    "src/2.2-read-the-rp2350-register-map.md",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/assets/circuit-pico-led.svg",
+    "src/assets/0.6-led-placement.svg"
+  ],
+  "sources": [
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf#page=24",
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf#page=5",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2350/hardware_structs/include/hardware/structs/sio.h",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/2.3.1/src/rp2350/hardware_structs/include/hardware/structs/io_bank0.h",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/2.3.1/src/rp2350/hardware_structs/include/hardware/structs/pads_bank0.h",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/2.3.1/src/rp2350/hardware_regs/include/hardware/regs/pads_bank0.h",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/2.3.1/src/rp2_common/hardware_base/include/hardware/address_mapped.h",
+    "https://gcc.gnu.org/onlinedocs/gcc/Volatiles.html",
+    "https://www.raspberrypi.com/documentation/microcontrollers/c_sdk.html#your-first-binaries"
+  ],
+  "scope_audit": {
+    "practical": "Complete source include; numbered preparation/build/BOOTSEL/observe steps; Mac working directory explicit; same non-wireless Pico 2 GP16 physical 21 through 1k resistor and LED to GND physical 23; Pi/probe/button detached; cleanup and next lesson.",
+    "mmio": "Typed fixed SDK pointers, volatile 32-bit fields, write-only intent not enforced by C++ types, safe initialisation order, all pad fields explained, SIO SET/CLR versus generic aliases and W1C.",
+    "limits": "Retains startup/clocks/linker/sleep; volatile is compiler observable access, not CPU barrier or C++ synchronization; hardware atomic bit update distinguished from std::atomic; no USB logging claimed.",
+    "consistency": "Read accepted 2.2 and matched function 5, pad value 2, GP16 mask, five-store order and ownership assumption."
+  },
+  "code_files_read": [
+    "examples/pico/blink_registers.cpp",
+    "examples/pico/blink_sdk.cpp",
+    "examples/pico/CMakeLists.txt",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py",
+    ".deps/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/sio.h",
+    ".deps/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/io_bank0.h",
+    ".deps/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/pads_bank0.h",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/pads_bank0.h",
+    ".deps/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h"
+  ],
+  "checks_performed": [
+    "Inspected actual root-owned examples, CMake target list and pinned setup/build script arguments; no code changes needed.",
+    "Compared register example SHA256 to verification.json compiled-source SHA256: exact match.",
+    "Checked every relative target against existence or canonical catalog entry: all present except planned canonical 2.4 forward reference.",
+    "Checked full-file include is at column zero within a top-level cpp fence; source exists.",
+    "Inspected both referenced SVG XML files; generated local Quick Look previews and viewed them. Placement guide readable. Quick Look crops the wide circuit thumbnail; root should judge the actual browser-rendered SVG, not that thumbnail.",
+    "Browsed official SDK 2.3.1 headers, GCC volatile docs and official BOOTSEL instructions. RP2350 PDF web fetch exceeded tool size limit; alias statement cross-checked against accepted 2.2 and installed official SDK access definitions.",
+    "No repeated target compile for unchanged code; existing 12-target evidence applies to exact included-source hash."
+  ],
+  "hardware_status": {
+    "source_reviewed": "writer completed; independent review pending",
+    "target_compiled": "Existing verification.json evidence, exact included-source hash matches",
+    "host_tested": "not applicable to firmware loop",
+    "physical_runtime": "not exercised; no flash/GPIO/timing measurement claimed"
+  },
+  "concerns": [
+    "Independent reviewer must check rendered include/list continuation, full circuit SVG and normal progressive publication checks.",
+    "The official RP2350 PDF exceeded web fetch size; reviewer should recheck section 2.1.3 using its available PDF extraction."
+  ],
+  "status": "ready_for_independent_review",
+  "canonical_sha256": "dbbc040de168d4f0527e039c8b11bb4fbc500dac0b113c33846a35ece6ef2b44",
+  "included_source_sha256": {
+    "examples/pico/blink_registers.cpp": "fbd45b4d97c4fb73c23046fbcdbd8435a1fda858cf5607b8dd119a74248acd1d"
+  },
+  "asset_sha256": {
+    "src/assets/circuit-pico-led.svg": "eafabcb96c28ec2c507d2e6775168e8e55f50c193f588bda819d7410bcb29ac9",
+    "src/assets/0.6-led-placement.svg": "0b5e2d246717e8cfd455f525a920af52a58691a7b24c35ef17c99369139338d1"
+  }
+}

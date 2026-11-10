@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T21:43:13.288545+00:00",
+  "updated": "2026-11-10T21:44:34.648559+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -63,12 +63,12 @@
     },
     "2.3": {
       "path": "src/2.3-replace-gpio-calls-with-register-accesses.md",
-      "writer": "active_resumed_after_account_limit",
-      "reviewer": "pending"
+      "writer": "complete",
+      "reviewer": "accepted_source_review"
     },
     "2.4": {
       "path": "src/2.4-follow-the-generated-machine-instructions.md",
-      "writer": "active_resumed_after_account_limit",
+      "writer": "active",
       "reviewer": "pending"
     },
     "3.1": {

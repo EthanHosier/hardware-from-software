@@ -16,5 +16,14 @@
     "mobile": "390x844 fresh load: readable page with collapsed sidebar; scrollWidth390 equals viewport390",
     "limitation": "Desktop-to-mobile viewport resize retained open sidebar until fresh navigation; normal fresh mobile load collapses it",
     "viewport_restored": true
+  },
+  "register_map_2_2": {
+    "url": "https://hardware-from-software.vercel.app/2.2-read-the-rp2350-register-map.html",
+    "viewport": "390x844",
+    "document_width": 390,
+    "table_client_width": 350,
+    "register_table_scroll_width": 612,
+    "result": "Readable prose and per-table horizontal scrolling; no document overflow; source-derived values agree with reviewed content",
+    "viewport_restored": true
   }
 }

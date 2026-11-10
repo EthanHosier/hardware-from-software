@@ -1,0 +1,45 @@
+{
+  "id": "2.3",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "dbbc040de168d4f0527e039c8b11bb4fbc500dac0b113c33846a35ece6ef2b44",
+  "included_source_sha256": {
+    "examples/pico/blink_registers.cpp": "fbd45b4d97c4fb73c23046fbcdbd8435a1fda858cf5607b8dd119a74248acd1d"
+  },
+  "asset_sha256": {
+    "src/assets/circuit-pico-led.svg": "eafabcb96c28ec2c507d2e6775168e8e55f50c193f588bda819d7410bcb29ac9",
+    "src/assets/0.6-led-placement.svg": "0b5e2d246717e8cfd455f525a920af52a58691a7b24c35ef17c99369139338d1"
+  },
+  "paths_read": [
+    "src/2.3-replace-gpio-calls-with-register-accesses.md",
+    "reviews/2.3-writer.json",
+    "examples/pico/blink_registers.cpp",
+    "src/assets/circuit-pico-led.svg",
+    "src/assets/0.6-led-placement.svg",
+    "examples/pico/CMakeLists.txt",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py",
+    ".deps/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h",
+    ".deps/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/sio.h",
+    "/tmp/page22-rp2350-relevant.txt (atomic/narrow IO, GP16 CTRL and pad tables)"
+  ],
+  "sources_checked": [
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf",
+    "https://gcc.gnu.org/onlinedocs/gcc/Volatiles.html",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_base/include/hardware/address_mapped.h",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2350/hardware_structs/include/hardware/structs/sio.h"
+  ],
+  "scope_coverage": "Full register firmware include at column zero; exact unchanged LED wiring/table and diagrams; numbered Mac build/BOOTSEL/observe path; five-store safe setup, every pad field/value, fixed typed volatile pointers and limits, whole-register ownership assumption, peripheral atomic SET/CLR versus generic aliases/W1C and C++ synchronization, retained SDK startup, symptom troubleshooting and cleanup.",
+  "checks_performed": [
+    "Read all prose, commands and complete actual included source. Compared code and current source hash with compiled verification evidence.",
+    "Checked io_rw/io_wo volatile uint32 typedefs and const volatile read-only type in pinned SDK; verified write-only intent is not enforced by typedef.",
+    "Read official PDF extraction sections2.1.3/2.1.5 and GP16 tables715/901; SIO dedicated aliases, five-store order, FUNCSEL5, pad0x2 and mask0x10000 agree.",
+    "Browsed GCC volatile rules independently and checked ordinary RAM ordering/publication limits.",
+    "Previously independently rendered and fully read both identical SVGs for2.1; hashes unchanged. Rechecked GP16/21 and GND/23 wiring here.",
+    "Top-level include avoids mdBook list expansion defect. Root exact render/link checks precede deployment."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "source-reviewed; exact baseline target compilation recorded; physical-runtime not exercised"
+}
