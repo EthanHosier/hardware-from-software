@@ -27,4 +27,4 @@ No credentials, real network identifiers, binaries, downloaded dependency trees 
 
 ## Current progress
 
-Chapter0: all6pages written by dedicated fresh-context writers and independently reviewed. Remaining47catalog pages are not yet authored. The page agents hit account usage limits during the next assignment; `RESUME.md` records the exact continuation point. Every accepted page must be published immediately through the checked progressive-release command.
+Chapter0: all6pages written by dedicated fresh-context writers and independently reviewed. Remaining47catalog pages are not yet authored. Authoring has resumed at Chapter1 with dedicated writers and independent reviews. `reviews/authoring-status.json` records current per-page progress. Every accepted page must be published immediately through the checked progressive-release command.

@@ -1,6 +1,6 @@
 {
   "status": "authoring in progress",
-  "recorded_at": "2026-11-10T21:07:08.434347+00:00",
+  "recorded_at": "2026-11-10T21:24:23.624614+00:00",
   "baseline": {
     "pico_sdk": "2.3.1",
     "pico_sdk_commit": "079c6f39023649b154152db30f1d781e884879bc",
@@ -21,7 +21,8 @@
     "ci_url": "https://github.com/EthanHosier/hardware-from-software/actions/runs/42901505627",
     "ci_commit": "9f2eb1b5ece9030759cfdab4ec8252eca063d81e",
     "ci_result": "success",
-    "ci_scope": "Linux host tests plus native Arm64 application and exact Pi kernel module compilation and DT overlay compilation"
+    "ci_scope": "Linux host tests plus native Arm64 application and exact Pi kernel module compilation and DT overlay compilation",
+    "i2c_pull_configuration_rebuild": "passed: i2c_target and bme280_i2c compiled/linked after explicitly disabling internal pulls; external board pull-ups retained"
   },
   "physical_runtime": "not exercised; no verified connection to boards",
   "limitations": [
@@ -29,13 +30,13 @@
     "Arm64 CI runs on a hosted Linux machine, not on a Raspberry Pi. Kernel modules are compiled against official Pi headers, never loaded into the runner kernel."
   ],
   "example_sha256": {
-    "examples/pico/bme280_i2c.cpp": "68c0acc5042081356c5bd5752296ecab97bab0b8095c498be4e3bcf675daa8b7",
+    "examples/pico/bme280_i2c.cpp": "cf958229b065e3c47df8859d8c32c81f2762c21cd7d6801af9fe3733fb71bce5",
     "examples/pico/CMakeLists.txt": "82d60c4334f09dd190517c58d9331d3e5fd78d2a11855a790f8aaaea636fecc6",
     "examples/pico/button_poll.cpp": "6b3ce0530072eb746fd71c8d4549517b9c07c0b34a837857bf120c44d9d2a88c",
     "examples/pico/button_irq_sdk.cpp": "2bfe6523d1f89391b039eddf5f818dc6b786eb357ca36d01dfb856ea83f43165",
     "examples/pico/uart_echo.cpp": "2618e59b8c32af73960b16a7797af6ccea5f701842fbe12307a1f4dcd0735f95",
     "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3",
-    "examples/pico/i2c_target.cpp": "d11c7171f4ecbb05b34cd428afd3f14a983b90b07a5f40d9d5cd44f2e21c156f",
+    "examples/pico/i2c_target.cpp": "96f30fdfe3d1892e14fe8344d665a3eb801f6b7f09b85dd8c05487dad37c30d4",
     "examples/pico/heartbeat.cpp": "b3eab585fa76ed7eb6a6ccd966909b3e22de26bae44dfe12344b9edc166b7589",
     "examples/pico/bme280_spi.cpp": "8cdbd28f258ffd599d8b1260fe94df187962c7a35b07aea946ffd40861a74e31",
     "examples/pico/bme280_common.hpp": "08dabf4417c9147b49414e4a93d5fa5a8b8a824b4f0d0733d131b9db8ac3c781",

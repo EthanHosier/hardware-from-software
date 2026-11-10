@@ -38,6 +38,7 @@ int main() {
     published[0] = 0x42; published[1] = 1;
     i2c_init(i2c0, 100000);
     gpio_set_function(4, GPIO_FUNC_I2C); gpio_set_function(5, GPIO_FUNC_I2C);
+    gpio_disable_pulls(4); gpio_disable_pulls(5);
     // Pi header SDA/SCL already have external pull-ups. No added Pico pull-ups.
     i2c_slave_init(i2c0, 0x42, on_i2c);
     while (true) {
