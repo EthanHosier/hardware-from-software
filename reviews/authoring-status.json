@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T21:44:34.648559+00:00",
+  "updated": "2026-11-10T21:46:32.426972+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -68,12 +68,12 @@
     },
     "2.4": {
       "path": "src/2.4-follow-the-generated-machine-instructions.md",
-      "writer": "active",
-      "reviewer": "pending"
+      "writer": "complete",
+      "reviewer": "root_reviewing"
     },
     "3.1": {
       "path": "src/3.1-attach-the-debug-probe-over-swd.md",
-      "writer": "pending",
+      "writer": "active",
       "reviewer": "pending"
     },
     "3.2": {

@@ -1,0 +1,52 @@
+{
+  "id": "2.4",
+  "reviewer": "root (independent of fresh dedicated page writer)",
+  "status": "accepted_source_review",
+  "canonical_sha256": "533c28772a35881fb70430f645b93ec4f80389d50d6ce7776f4de7b741ff4077",
+  "included_source_sha256": {
+    "examples/pico/blink_registers.cpp": "fbd45b4d97c4fb73c23046fbcdbd8435a1fda858cf5607b8dd119a74248acd1d"
+  },
+  "asset_sha256": {},
+  "paths_read": [
+    "src/2.4-follow-the-generated-machine-instructions.md",
+    "reviews/2.4-writer.json",
+    "examples/pico/blink_registers.cpp",
+    "examples/pico/CMakeLists.txt",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py",
+    "pinned RP2350 SIO/addressmap/access-type headers",
+    ".build/pico/CMakeCache.txt",
+    ".build/pico/build.ninja"
+  ],
+  "sources_checked": [
+    "https://documentation-service.arm.com/static/66be2153882fec713ef49e49",
+    "https://sourceware.org/binutils/docs/binutils/objdump.html",
+    "https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gcc/Optimize-Options.html",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2350/hardware_structs/include/hardware/structs/sio.h",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
+  ],
+  "scope_coverage": "Complete Mac-only source-to-machine walkthrough: full exact source, explicit tools and paths, readelf header and recorded actual on/off disassembly, effective destination/mask calculations, CPU register versus peripheral register, instruction address versus data destination, instruction encoding width versus32-bit store width, compiler -Og/-g/noinline choices, physical output route and timing limits; no live execution implied.",
+  "checks_performed": [
+    "Read every prose word and complete included source; compare with accepted register map.",
+    "Independently ran pinned readelf and both on/off objdump commands; all addresses, encodings, constants and operands match whitespace-compacted excerpts.",
+    "Inspected actual Ninja compile rule: cortex-m33/-mthumb and -Og/-g; ELF32/little-endian/ARM confirmed.",
+    "Official GNU objdump and GCC14.2 docs support flags; official Arm guide sections3.3.8/3.4.7/3.14.3 support width/MOV/STR explanation.",
+    "RP2350 datasheet address-map and SIO sections independently read during2.2 review agree with effective destinations and SET/CLR semantics.",
+    "Same writer corrected decimal/hex wording; reread repaired sentence and report/hash.",
+    "No unchanged compilation repeated; actual linked artifact inspection is the new evidence."
+  ],
+  "findings": [
+    {
+      "issue": "Sentence called 0x20 decimal",
+      "resolution": "Original writer repaired to32decimal(0x20hexadecimal), root rechecked."
+    }
+  ],
+  "repairs": [
+    "Same writer numeric-base wording correction"
+  ],
+  "artifact_evidence": {
+    "elf_sha256": "27d56adfa217703f653a48544efac7304df2d2a127d2efd63dc1b7c438cce335"
+  },
+  "hardware_status": "target-compiled artifact inspected; physical execution/debug/timing not exercised",
+  "reviewed_at": "2026-11-10T21:47:16.754451+00:00"
+}

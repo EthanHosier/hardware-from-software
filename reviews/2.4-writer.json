@@ -1,0 +1,88 @@
+{
+  "id": "2.4",
+  "paths_read": [
+    "AUTHORING_GUIDE.md (full)",
+    "PLAN.md (full, chunked)",
+    "EXAMPLES.md",
+    "catalog.json (entry 2.4)",
+    "RESUME.md",
+    "verification.json",
+    "src/2.2-read-the-rp2350-register-map.md",
+    "src/2.3-replace-gpio-calls-with-register-accesses.md",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md"
+  ],
+  "sources": [
+    "https://documentation-service.arm.com/static/66be2153882fec713ef49e49",
+    "https://sourceware.org/binutils/docs/binutils/objdump.html",
+    "https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gcc/Optimize-Options.html",
+    "https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gcc/Common-Function-Attributes.html",
+    "https://gcc.gnu.org/onlinedocs/gcc-14.2.0/gcc/Volatiles.html",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2350/hardware_structs/include/hardware/structs/sio.h",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_base/include/hardware/address_mapped.h",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
+  ],
+  "scope_audit": {
+    "result": "Reader identifies exact STR and computes GPIO_OUT_SET/CLR destination from actual linked output. No stepping or physical result claimed.",
+    "source_to_instruction": "Complete top-level source include; volatile uint32_t layout; fixed typed MMIO pointer; compile-time mask; immediate materialization; 32-bit STR; CPU registers versus peripheral registers; ordinary BX LR return.",
+    "addresses_and_encoding": "Instruction XIP location distinguished from data destination; decimal immediate and byte offset explained; Thumb 16/32-bit encoding distinguished from transfer width.",
+    "layers": "Debug -Og/-g and noinline qualified; compiler choices, architectural write, SIO register effect, output route and electrical timing kept distinct.",
+    "practical": "Mac-only commands with checkout root and exact local tools; optional setup/build recovery; unpowered same LED GP16 physical21 through1k resistor to LED/GND physical23; Pi/button/probe detached; cleanup and Chapter3 handoff."
+  },
+  "code_files_read": [
+    "examples/pico/blink_registers.cpp",
+    "examples/pico/CMakeLists.txt",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py",
+    ".deps/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/sio.h",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/sio.h",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/addressmap.h",
+    ".deps/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h",
+    ".build/pico/CMakeCache.txt",
+    ".build/pico/build.ninja"
+  ],
+  "checks_performed": [
+    "Regenerated led_on and led_off disassembly independently using checkout-local arm-none-eabi-objdump -d --disassemble=SYMBOL against actual .build/pico/blink_registers.elf. Both masks/base, offsets24/32 and BX LR match page excerpts; only whitespace compacted.",
+    "Ran checkout-local arm-none-eabi-readelf -h: ELF32, little endian, ARM.",
+    "Checked actual blink_registers.cpp.o build.ninja rule and CMakeCache: cortex-m33 -mthumb, Debug -Og -g.",
+    "Compared included source SHA256 to verification.json prior target-compile evidence: exact match; no source changed and no redundant compile.",
+    "Checked top-level unindented complete-source cpp include and source existence.",
+    "Checked every relative Markdown link against existing files or catalog canonical paths; Chapter3 link is planned.",
+    "Checked installed SDK XIP_BASE 0x10000000, SIO_BASE 0xd0000000, SET offset0x18, CLR offset0x20 and volatile uint32_t access typedef.",
+    "Browsed official Arm guide (MOV/STR/BX and width rules), GNU objdump docs, GCC14.2 optimization/function attributes/volatile docs and official SDK. RP2350 PDF web fetch exceeded size limit; page uses previously accepted2.2 anchors and installed SDK exact constants.",
+    "Repaired independent-review wording: offset 32 is decimal, 0x20 is hexadecimal; checked exact replacement and refreshed canonical SHA256."
+  ],
+  "output_provenance": {
+    "elf": ".build/pico/blink_registers.elf",
+    "elf_sha256": "27d56adfa217703f653a48544efac7304df2d2a127d2efd63dc1b7c438cce335",
+    "compiler": "arm-none-eabi-g++ (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119",
+    "objdump": "GNU objdump (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 2.43.1.20241119",
+    "led_on": [
+      "0x100001e0 mov.w r3,#0xd0000000",
+      "0x100001e4 mov.w r2,#0x10000",
+      "0x100001e8 str r2,[r3,#24]",
+      "0x100001ea bx lr"
+    ],
+    "led_off": [
+      "0x100001ec mov.w r3,#0xd0000000",
+      "0x100001f0 mov.w r2,#0x10000",
+      "0x100001f4 str r2,[r3,#32]",
+      "0x100001f6 bx lr"
+    ]
+  },
+  "hardware_status": {
+    "source_reviewed": "writer completed; independent review pending",
+    "target_compiled": "Existing verification.json exact source hash; actual ELF inspected",
+    "host_tested": "Not applicable",
+    "physical_runtime": "Not exercised; no board connection, flash, step, GPIO voltage or timing claim"
+  },
+  "concerns": [
+    "Independent reviewer must perform rendered include/list/links acceptance and publish checks.",
+    "RP2350 PDF tool size limit; register/address constants checked against actual pinned SDK and accepted2.2, but reviewer may use available datasheet extraction."
+  ],
+  "status": "ready_for_independent_review",
+  "canonical_sha256": "533c28772a35881fb70430f645b93ec4f80389d50d6ce7776f4de7b741ff4077",
+  "included_source_sha256": {
+    "examples/pico/blink_registers.cpp": "fbd45b4d97c4fb73c23046fbcdbd8435a1fda858cf5607b8dd119a74248acd1d"
+  },
+  "asset_sha256": {}
+}
