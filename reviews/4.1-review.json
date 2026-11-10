@@ -1,0 +1,45 @@
+{
+  "id": "4.1",
+  "reviewer": "root (independent of dedicated fresh writer)",
+  "status": "accepted_source_review",
+  "canonical_sha256": "c63665ad8a536b76d67f36a85bae6cf23614f0e8eabbaafc4f6e33cb09b543ae",
+  "included_source_sha256": {
+    "examples/pico/button_poll.cpp": "6b3ce0530072eb746fd71c8d4549517b9c07c0b34a837857bf120c44d9d2a88c"
+  },
+  "asset_sha256": {
+    "src/assets/circuit-pico-button.svg": "26cb2c83cfcf4561df63d00af2f5f2235265d3eb9e3cee6878bdb41d5a080191",
+    "src/assets/0.2-pico2-headers.svg": "5dbe208de46bed767027908fd8988b52e8d0856afa084ff40fcf7966132ee6fe",
+    "src/assets/0.5-switch.svg": "f58bed8af03a0b5ca99eac63088c12778f11e6bd249376c24f53a3cb66c00500"
+  },
+  "paths_read": [
+    "src/4.1-read-a-button-by-polling.md",
+    "reviews/4.1-writer.json",
+    "examples/pico/button_poll.cpp",
+    "src/assets/circuit-pico-button.svg",
+    "src/assets/0.2-pico2-headers.svg",
+    "src/assets/0.5-switch.svg",
+    "examples/pico/CMakeLists.txt",
+    "scripts/build_examples.py",
+    "pinned SDK GPIO init/function/pull implementations",
+    "RP2350 release8 PDF completepages1350,1359\u20131360"
+  ],
+  "sources_checked": [
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://www.raspberrypi.com/news/rp2350-a4-rp2354-and-a-new-hacking-challenge/",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/2.3.1/src/rp2_common/hardware_gpio/gpio.c"
+  ],
+  "scope_coverage": "Complete active-low button practical: exact GP17physical22/4.7k/3V3physical36/GND23 and retainedLED state; four-leg pairs and actual-kit qualification, input enable/isolation/internal pulls, A2-only E9 fixedA3, raw register sample/Boolean conversion, complete source/build/BOOTSEL/Pico-versus-probe USB discovery, illustrative hold/release output, both-direction sampled-counter/USBblocking/missed-bounce limits, symptom troubleshooting and exactcleanup.",
+  "checks_performed": [
+    "Read all final prose, full source, writer report and sharedbuild/SDK implementation.",
+    "Independently read official release8 silicon revision/E9 complete PDF pages: A2 sourcing leakage, pullup works, fixedA3; official A4 announcement corroborates package markings and A3 Pico inventory.",
+    "Traced full SVG sources: pullup from36 through4.7k toGP17, switchedground23; inspected complete square-viewport circuit render, switch-pair render and header render. Matches prose and previous source-checked Chapter0assets.",
+    "Checked initiallast sample/noinitialprint, rawregistermask, prints onlychanges/bothdirections, counterformat and noLEDconfiguration against exactsource; root clarified stale EXAMPLES contract without changingcode.",
+    "Current source hash matches recorded target compilation; no redundant rebuild or physical operation.",
+    "Full source include top-level; all existing assets hashed including link-only header drawing."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "source-reviewed and previously target-compiled; physical button/USB/bounce/voltage/SWD not exercised",
+  "reviewed_at": "2026-11-10T21:57:02.142575+00:00"
+}

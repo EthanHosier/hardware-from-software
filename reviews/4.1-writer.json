@@ -1,0 +1,71 @@
+{
+  "id": "4.1",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json (entry 4.1)",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/3.1-attach-the-debug-probe-over-swd.md",
+    "src/3.2-load-the-elf-and-step-through-the-led-write.md",
+    "src/3.3-diagnose-a-broken-program-systematically.md",
+    "src/1.3-flash-with-bootsel-and-read-output.md",
+    "src/assets/circuit-pico-button.svg",
+    "src/assets/0.5-switch.svg",
+    "verification.json"
+  ],
+  "sources": [
+    {
+      "url": "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf",
+      "checked": "Official release 5 via web parser and pinout figure; physical 21 GP16, 22 GP17, 23 GND, 36 3V3; power rail and BOOTSEL behavior."
+    },
+    {
+      "url": "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+      "checked": "Main URL too large for web extraction. Independently read existing downloaded /tmp/page22-rp2350.pdf release 8, build 01/10/2026 80d627281ed5, E9 complete pp1359\u20131360 in PDF indexing via PDFKit. Affects A2; fixed A3; weak pulldown and sourcing leakage; pullup still works."
+    },
+    {
+      "url": "https://pip-assets.raspberrypi.com/categories/1214-rp2350/documents/RP-008373-DS-2-rp2350-datasheet.pdf?disposition=inline",
+      "checked": "Official 2025 PIP copy via web: E9 A2-only and silicon-history A3 hardware fix independently corroborated."
+    },
+    {
+      "url": "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_gpio/gpio.c",
+      "checked": "Official SDK source via web and installed source: gpio_init, gpio_set_function, input enable/isolation order."
+    },
+    {
+      "url": "https://www.raspberrypi.com/news/rp2350-a4-rp2354-and-a-new-hacking-challenge/",
+      "checked": "Official package stepping identification and A3 Pico inventory; A4 retains E9 fix."
+    }
+  ],
+  "scope_audit": {
+    "active_low_pullup": "External 4.7k to physical36; direct ground switch physical23; input GP17 physical22. Electrical vs Boolean state explained.",
+    "contacts": "Reused inspected 0.5-switch SVG plus contact-pair explanation and across-gap placement; actual kit switch unconfirmed.",
+    "input_register": "Complete source include and explanation of SIO GPIO_IN mask, configuration path/input enable/pad isolation.",
+    "timing": "Raw sampled transition count, both directions, missed pulses, variable polling interval, USB blocking, no full bounce capture, debounce deferred4.3.",
+    "practical": "Numbered power-off wiring/build/BOOTSEL/USB steps, portable checkout cwd, complete source, expected illustrative observations, symptom table and next wiring state.",
+    "led": "Retained exact GP16/1k/LED/GND circuit; explicitly unconfigured/undriven in this polling source."
+  },
+  "code_files_read": [
+    "examples/pico/button_poll.cpp",
+    "examples/pico/CMakeLists.txt",
+    "examples/pico/device_io.hpp (inspected; NOT a dependency of button_poll)",
+    "scripts/build_examples.py",
+    ".deps/pico-sdk/src/rp2_common/hardware_gpio/gpio.c",
+    ".deps/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h"
+  ],
+  "checks_performed": [
+    "Read actual included source; no project-local shared dependency in this target.",
+    "Compared source SHA256 to verification.json: 6b3ce0530072eb746fd71c8d4549517b9c07c0b34a837857bf120c44d9d2a88c matches recorded target-compilation baseline.",
+    "Validated top-level unindented cpp include fence.",
+    "Inspected circuit-pico-button SVG XML for topology/labels and 0.5-switch SVG XML plus existing rendered PNG for pair placement/readability.",
+    "Checked all current local targets; 4.2/4.3 forward lessons not yet present and must use staged-publication roadmap routing.",
+    "Inspected build script and canonical CMake against commands; no new compile performed by writer because root-owned source unchanged and recorded compile evidence matches."
+  ],
+  "hardware_status": "Not exercised: no physical button/LED, USB serial, voltage, bounce, or SWD evidence. All output explicitly illustrative.",
+  "concerns": [
+    "4.2 and 4.3 links are canonical future files; accepted-only build should route them to roadmap until authored.",
+    "Actual kit switch pairing and silicon stepping remain reader checks; prose does not assume reference switch matches every kit.",
+    "Root corrected EXAMPLES bounded-print claim to match unchanged raw polling source.",
+    "Independent reviewer must check rendered include, diagrams, commands, pinout, sources and whole-page prose before acceptance."
+  ],
+  "status": "ready_for_independent_review"
+}

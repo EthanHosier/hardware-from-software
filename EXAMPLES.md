@@ -9,6 +9,7 @@ Targets / files:
 - blink_sdk / blink_sdk.cpp: GP16 LED with SDK.
 - blink_registers / blink_registers.cpp: GP16 pad/mux/SIO with registers; exported noinline `led_on` and `led_off` for GDB.
 - button_poll / button_poll.cpp: GP17 active-low external pullup, tight raw register polling; prints only observed transitions in main. USB output may block and cause rapid transitions to be missed; this is not a complete bounce capture. Does not configure or drive the retained LED.
+- button_irq_sdk / button_irq_sdk.cpp: GP17 SDK falling-edge callback sets a pending flag; IRQ-masked main handoff and 1ms loop print raw notifications that may bounce or coalesce; no LED configuration.
 - button_irq / button_irq.cpp: raw GPIO interrupt registers + CPU handler, debounced main-loop and critical-section handoff; LED GP16; exported `gpio_isr` for GDB.
 - i2c_target / i2c_target.cpp: target0x42 i2c0 GP4/5. Register0 identity0x42,1 protocol1,2 LED state; 4..7 uint32 press count little endian;8..11 int32 milli-degC little endian. 16-byte snapshot pinned per transaction; LED write register2 value0/1. Callback bounded.
 - spi_loopback / spi_loopback.cpp: spi0 GP18SCK GP19TX GP20RX; external GP19→GP20 jumper; repeated bounded pattern test with status over USB.

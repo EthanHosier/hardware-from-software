@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T21:54:06.685732+00:00",
+  "updated": "2026-11-10T21:57:28.642860+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -88,13 +88,13 @@
     },
     "4.1": {
       "path": "src/4.1-read-a-button-by-polling.md",
-      "writer": "active",
-      "reviewer": "pending"
+      "writer": "complete",
+      "reviewer": "accepted_source_review"
     },
     "4.2": {
       "path": "src/4.2-configure-and-acknowledge-a-gpio-interrupt.md",
-      "writer": "active",
-      "reviewer": "pending"
+      "writer": "same_page_repair",
+      "reviewer": "repair_requested"
     },
     "4.3": {
       "path": "src/4.3-share-state-and-debounce-correctly.md",
