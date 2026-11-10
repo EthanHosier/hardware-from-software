@@ -1,0 +1,46 @@
+{
+  "id": "1.2",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "ff1345b055a8e245ccba8396919d82c22de446cacf3a82cb3c22f8da2b238a12",
+  "included_source_sha256": {
+    "examples/pico/heartbeat.cpp": "b3eab585fa76ed7eb6a6ccd966909b3e22de26bae44dfe12344b9edc166b7589",
+    "examples/pico/CMakeLists.txt": "82d60c4334f09dd190517c58d9331d3e5fd78d2a11855a790f8aaaea636fecc6"
+  },
+  "asset_sha256": {},
+  "paths_read": [
+    "src/1.2-understand-the-smallest-useful-project.md",
+    "reviews/1.2-writer.json",
+    "examples/pico/heartbeat.cpp",
+    "examples/pico/CMakeLists.txt",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py",
+    ".deps/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h",
+    ".deps/pico-sdk/src/rp2_common/pico_crt0/crt0.S (data/bss/runtime/main paths)",
+    ".deps/pico-sdk/cmake/preload/platforms/rp2350-arm-s.cmake"
+  ],
+  "sources_checked": [
+    "https://www.raspberrypi.com/documentation/pico-sdk/runtime.html#pico_stdio_usb",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/README.md#quick-start-your-own-project",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/pico_crt0/crt0.S",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2350/pico_platform/memmap_default.ld"
+  ],
+  "scope_coverage": "Complete shared CMake and heartbeat includes; source/build/runtime boundaries; exact pico2 Arm platform and Debug script settings; separate executables and USB enabled/UART stdio disabled; compile/link/ELF/UF2, flash/SRAM/XIP and startup/clocks; numbered Mac actions, unpowered exact LED wiring, outputs and troubleshooting/next state.",
+  "findings": [
+    {
+      "issue": "Build block used authoring-machine absolute directory rather than portable book convention.",
+      "resolution": "Same dedicated writer repaired to ~/hardware-from-software; final surrounding section reread and no private author path remains."
+    }
+  ],
+  "repairs": [
+    "Portable working directory harmonized with1.1."
+  ],
+  "checks_performed": [
+    "Read all prose and complete included source files, compared target flags to build script.",
+    "Inspected pinned SDK default USB connection wait0, startup data copy/BSS clear/runtime/main flow and platform compiler selection; official docs corroborated.",
+    "Existing root all12-target compile evidence and ELF/UF2 artifacts reviewed; no unchanged compilation repeated.",
+    "Checked include paths and final exact hashes; root handles stage/render/publication."
+  ],
+  "hardware_status": "target-compiled baseline evidence; physical-runtime not exercised"
+}

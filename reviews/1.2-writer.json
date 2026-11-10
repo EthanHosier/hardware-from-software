@@ -1,0 +1,65 @@
+{
+  "id": "1.2",
+  "paths_read": [
+    "AUTHORING_GUIDE.md (complete)",
+    "PLAN.md (complete)",
+    "EXAMPLES.md (complete)",
+    "RESUME.md (complete)",
+    "catalog.json entry 1.2",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "verification.json",
+    ".build/pico/CMakeCache.txt",
+    "src/1.1-install-a-reproducible-macos-toolchain.md (complete final page, cwd consistency repair)"
+  ],
+  "sources": [
+    "https://www.raspberrypi.com/documentation/pico-sdk/runtime.html",
+    "https://www.raspberrypi.com/documentation/microcontrollers/c_sdk.html",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/README.md",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2350/pico_platform/memmap_default.ld",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/pico_crt0/crt0.S",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/pico_runtime_init/runtime_init_clocks.c",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/boards/include/boards/pico2.h",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/cmake/preload/platforms/rp2350-arm-s.cmake"
+  ],
+  "scope_audit": {
+    "complete_cmake_and_cpp": "Both complete files use mdBook include; shared project explained rather than misrepresented as standalone two-file project.",
+    "explicit_target_and_debug": "Script flags, cache settings, Arm platform and board definition explained.",
+    "usb_stdio": "Enable USB, disable UART, runtime init vs compile config, TinyUSB, connection delay and repeated identity covered.",
+    "mechanisms": "Host compiler/linker, target objects, linker sections, ELF/UF2 roles, flash/SRAM, startup and clock support covered.",
+    "practical_contract": "Prerequisites, exact unchanged unpowered LED state, numbered Mac actions with cwd, existing-build evidence, symptom troubleshooting, fresh configure recovery, next wiring state.",
+    "scope_boundary": "Build only; no flashing, Pi setup, SWD attachment or physical output claims."
+  },
+  "code_files_read": [
+    "examples/pico/CMakeLists.txt",
+    "examples/pico/heartbeat.cpp",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py",
+    ".deps/pico-sdk/src/rp2350/pico_platform/memmap_default.ld",
+    ".deps/pico-sdk/src/rp2_common/pico_crt0/crt0.S (startup/data/bss/main paths)",
+    ".deps/pico-sdk/cmake/preload/platforms/rp2350-arm-s.cmake"
+  ],
+  "checks_performed": [
+    "Verified both include paths and hashes against verification.json.",
+    "Verified catalog canonical links; 1.3 is a deliberate future link for staging roadmap handling.",
+    "Inspected existing CMake cache: pico2, rp2350-arm-s, Debug, pinned compiler and SDK.",
+    "Inspected existing heartbeat ELF and UF2: both nonempty.",
+    "Ran pinned arm-none-eabi-readelf -h and -S: ELF32 ARM, executable, debug_info/debug_line sections.",
+    "Browsed official primary SDK documentation and versioned source.",
+    "No recompilation: shared source unchanged, root reports all twelve target builds passed.",
+    "No render/deploy performed; independent coordinator review and publication pending.",
+    "Same-page repair requested by independent review: command now uses cd ~/hardware-from-software, matching public archive route in 1.1; surrounding prose permits an alternate example tree/authorised checkout location. Verified no authoring-machine path remains in page."
+  ],
+  "hardware_status": "physical-runtime not exercised; board need not be connected for this lesson",
+  "concerns": [
+    "Independent reviewer must verify final rendering and future-link staging.",
+    "No version.json/versions.json exists; actual setup/build scripts and verification.json used.",
+    "No fresh clean rebuild executed by writer; existing generated artifacts/cache and recorded root target compile are evidence, and recovery instructions describe fresh build."
+  ],
+  "canonical_sha256": "ff1345b055a8e245ccba8396919d82c22de446cacf3a82cb3c22f8da2b238a12",
+  "included_source_sha256": {
+    "examples/pico/heartbeat.cpp": "b3eab585fa76ed7eb6a6ccd966909b3e22de26bae44dfe12344b9edc166b7589",
+    "examples/pico/CMakeLists.txt": "82d60c4334f09dd190517c58d9331d3e5fd78d2a11855a790f8aaaea636fecc6"
+  },
+  "status": "ready_for_independent_review"
+}
