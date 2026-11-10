@@ -1,0 +1,48 @@
+{
+  "id": "4.3",
+  "reviewer": "root (independent of fresh dedicated writer)",
+  "status": "accepted_source_review",
+  "canonical_sha256": "038d8ff3da5461e448f0b1cb5cc4f667abc23e64a05e1a7adb59856cfaf5ef63",
+  "included_source_sha256": {
+    "examples/pico/button_irq.cpp": "98d5d773a21da23cac0a6c4eb618907e20ed5d02eb8c5986fc7aa9b67554feff"
+  },
+  "asset_sha256": {
+    "src/assets/circuit-pico-button.svg": "26cb2c83cfcf4561df63d00af2f5f2235265d3eb9e3cee6878bdb41d5a080191"
+  },
+  "paths_read": [
+    "src/4.3-share-state-and-debounce-correctly.md",
+    "reviews/4.3-writer.json",
+    "examples/pico/button_irq.cpp",
+    "src/assets/circuit-pico-button.svg",
+    "examples/pico/CMakeLists.txt",
+    "scripts/build_examples.py",
+    "pinned SDK hardware/sync.h save/disable/restore implementation",
+    "prerequisite4.1/4.2 and4.2 SWD anchor"
+  ],
+  "sources_checked": [
+    "https://arm-software.github.io/CMSIS_6/main/Core/group__Core__Register__gr.html",
+    "https://gcc.gnu.org/onlinedocs/gcc/Volatiles.html",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/2.3.1/src/rp2_common/hardware_sync/include/hardware/sync.h",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
+  ],
+  "scope_coverage": "Full single-core ISR/main handoff and debounce lesson: exact circuit/source, explicit lost-notification interleaving and PRIMASK restoration/compiler clobbers; exclusion scope/NMI/HardFault and volatile limits; all main-state variables and both-direction acceptance, initial held-button behavior, observed quiet-time versus actual continuous stability, post-handoff sample gap, coalescing and missed-history limits; complete build/flash/serial, reversible100ms experiment/restoration, symptoms and cleanup.",
+  "checks_performed": [
+    "Read every final prose word, full exact source, shared circuit and actual SDK Arm assembly; masks/read-clear/restoration match explanation.",
+    "Official CMSIS confirms PRIMASK/pending/masking scope; GCC confirms nonvolatile publication not ordered by volatile.",
+    "Manually traced candidate/stable/since and flag interleavings, delayed-main and brief-release cases against source; limitations accurately bound promises.",
+    "Circuit source and complete render independently inspected during4.1 review; exact same asset hash retained.",
+    "Verified actual4.2 SWD heading anchor and top-level fullsource include; sourcehash matches compiled baseline.",
+    "Original writer repaired screen quit key into inlinecode, root reread repaired text. No runtime/hardware test claimed."
+  ],
+  "findings": [
+    {
+      "issue": "Single backslash before comma would be lost by Markdown escaping",
+      "resolution": "Same writer used inline-code key names; root rechecked literalbackslash."
+    }
+  ],
+  "repairs": [
+    "Same-writer screen-key formatting correction"
+  ],
+  "hardware_status": "source-reviewed and prior target-compilation baseline; physical interrupts/debounce/LED/timing and optional delay experiment not exercised",
+  "reviewed_at": "2026-11-10T22:02:01.251535+00:00"
+}

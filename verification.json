@@ -1,6 +1,6 @@
 {
   "status": "authoring in progress",
-  "recorded_at": "2026-11-10T21:26:07.807446+00:00",
+  "recorded_at": "2026-11-10T22:00:10.971009+00:00",
   "baseline": {
     "pico_sdk": "2.3.1",
     "pico_sdk_commit": "079c6f39023649b154152db30f1d781e884879bc",
@@ -18,12 +18,13 @@
     "serial_pty_cases": 10,
     "serial_pty": "passed",
     "linux_arm64_cross_compile": "passed all seven applications (Zig0.14.1, Debian6.12.113 UAPI headers)",
-    "ci_url": "https://github.com/EthanHosier/hardware-from-software/actions/runs/42904806012",
-    "ci_commit": "70a2d4935293c3154850415fb085875d2e1f290f",
+    "ci_url": "https://github.com/EthanHosier/hardware-from-software/actions/runs/42910194223",
+    "ci_commit": "544c55d99dc4a91cf2246a638f9cc0d9ad1db44e",
     "ci_result": "success",
     "ci_scope": "Linux host tests plus native Arm64 application and exact Pi kernel module compilation and DT overlay compilation",
     "i2c_pull_configuration_rebuild": "passed: i2c_target and bme280_i2c compiled/linked after explicitly disabling internal pulls; external board pull-ups retained",
-    "example_archive": "Extracted independently: complete shared headers; host builds and normal/sanitized protocol tests pass"
+    "example_archive": "Extracted independently: complete shared headers; host builds and normal/sanitized protocol tests pass",
+    "kernel_failure_unwind": "LED low after IRQ/work cancellation on misc registration failure; source-reviewed and native Pi-header compiled, physical failure path not exercised"
   },
   "physical_runtime": "not exercised; no verified connection to boards",
   "limitations": [
@@ -61,6 +62,6 @@
     "examples/kernel/99-mybutton.rules": "27e33c9aa4b38bee386203add3ce82748397f31315ce95529766caaa2b902f84",
     "examples/kernel/Makefile": "4e205ebdc4eb9545724b32f7067b512881ba2ab2aea08b5f631e900d41b2acaf",
     "examples/kernel/hardware-button-overlay.dts": "72fd129f2ebab3565a0d65d0fef67a0f29322ec2aa9dd1f72b9a9df3cc1632e9",
-    "examples/kernel/mybutton.c": "3d8e79cf2cd6e1965e4c4b8c3feb6945408d94ede8b82a7d3566b778aaa367e3"
+    "examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826"
   }
 }

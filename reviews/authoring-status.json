@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T21:58:27.980571+00:00",
+  "updated": "2026-11-10T22:00:49.306971+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -98,8 +98,8 @@
     },
     "4.3": {
       "path": "src/4.3-share-state-and-debounce-correctly.md",
-      "writer": "active",
-      "reviewer": "pending"
+      "writer": "complete",
+      "reviewer": "root_reviewing"
     },
     "4.4": {
       "path": "src/4.4-inspect-exception-entry-and-return.md",

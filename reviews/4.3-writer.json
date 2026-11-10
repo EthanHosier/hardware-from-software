@@ -1,0 +1,47 @@
+{
+  "id": "4.3",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/4.1-read-a-button-by-polling.md",
+    "src/4.2-configure-and-acknowledge-a-gpio-interrupt.md",
+    "src/assets/circuit-pico-button.svg",
+    "scripts/build_examples.py",
+    "verification.json"
+  ],
+  "sources": [
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_sync/include/hardware/sync.h",
+    "https://arm-software.github.io/CMSIS_6/main/Core/group__Core__Register__gr.html",
+    "https://gcc.gnu.org/onlinedocs/gcc/Volatiles.html",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
+  ],
+  "scope_audit": {
+    "existing_target": "button_irq; no new target",
+    "handoff": "exact volatile Boolean, masked copy+clear, prior PRIMASK restoration, interleaving and scope limits",
+    "debounce": "stable/candidate/since, both directions accepted, LOW-only toggle, observed quiet-time and deferred main limitations",
+    "practical": "unchanged wiring/table/shared schematic; complete include; portable checkout commands, BOOTSEL and serial; reversible 100ms main-delay experiment; troubleshooting and cleanup"
+  },
+  "code_files_read": [
+    "examples/pico/button_irq.cpp",
+    "examples/pico/CMakeLists.txt",
+    ".deps/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h"
+  ],
+  "checks_performed": [
+    "Inspected actual full firmware and installed SDK save/restore APIs and implementations",
+    "Browsed official SDK, Arm and GCC documentation",
+    "Local links checked: existing targets resolve; canonical forward link to 4.4 awaits its writer. Complete source include is top-level and unindented; code fences balanced.",
+    "Actual button_irq source hash equals verification.json target-compilation record",
+    "No new compilation or physical runtime performed by writer",
+    "Repaired screen exit shortcut after root review: key names now use inline code so Markdown preserves the literal backslash."
+  ],
+  "hardware_status": "not exercised; all observations explicitly expected or illustrative",
+  "concerns": [
+    "Independent coordinator review and rendered-page verification pending",
+    "Coalesced Boolean and sampled/deferred decision are explicitly not lossless press recording or proof of continuously stable voltage",
+    "Canonical 4.4 forward target was not yet present at writer check; accepted-only publication should route it to roadmap until accepted."
+  ],
+  "status": "ready_for_independent_review"
+}
