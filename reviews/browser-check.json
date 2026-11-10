@@ -9,5 +9,12 @@
     "Full0.6benchSVG visually inspected to resolve croppedQuickLookpreview; allsignals andlabels visible.",
     "Livebreadboardsearch returned19results through mdBookkeyboardkeyupUI and links pointto actualchapteranchors."
   ],
-  "physical_runtime": "not exercised"
+  "physical_runtime": "not exercised",
+  "toolchain_lesson_1_1": {
+    "url": "https://hardware-from-software.vercel.app/1.1-install-a-reproducible-macos-toolchain.html",
+    "desktop": "Readable heading, sidebar, prose, table; rendered shell syntax highlighting",
+    "mobile": "390x844 fresh load: readable page with collapsed sidebar; scrollWidth390 equals viewport390",
+    "limitation": "Desktop-to-mobile viewport resize retained open sidebar until fresh navigation; normal fresh mobile load collapses it",
+    "viewport_restored": true
+  }
 }

@@ -1,0 +1,39 @@
+{
+  "id": "1.3",
+  "reviewer": "root (independent of dedicated page writer)",
+  "status": "accepted_source_review",
+  "canonical_sha256": "9aedec41910583a8f15dbed362315f9f2c46761083ab26db8074dfa90392597d",
+  "included_source_sha256": {
+    "examples/pico/heartbeat.cpp": "b3eab585fa76ed7eb6a6ccd966909b3e22de26bae44dfe12344b9edc166b7589"
+  },
+  "asset_sha256": {},
+  "paths_read": [
+    "src/1.3-flash-with-bootsel-and-read-output.md",
+    "reviews/1.3-writer.json",
+    "examples/pico/heartbeat.cpp",
+    "examples/pico/CMakeLists.txt",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py"
+  ],
+  "sources_checked": [
+    "https://www.raspberrypi.com/documentation/microcontrollers/c_sdk.html#your-first-binaries",
+    "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html#debug-using-a-pico-series-device",
+    "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html#reset-flash-memory",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/pico_stdio_usb/stdio_usb.c",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/2.3.1/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h",
+    "installed macOS man screen"
+  ],
+  "scope_coverage": "Complete retained unpowered LED state, exact Mac project path; verified UF2/ELF roles, BOOTSEL-before-power, RP2350 volume, automatic removal/restart, independent CDC enumeration and identity check, actual device suffix discovery, screen setup/termination, USB versus UART distinction, symptom-driven recovery and final unpowered state. No new wiring requires a new diagram.",
+  "checks_performed": [
+    "Read entire final prose, writer report, complete included firmware and shared CMake.",
+    "Official first-binaries instructions confirm RP2350 mass-storage identity and reboot. Board utility instructions confirm automatic eject and ROM recovery.",
+    "Pinned SDK configuration confirms zero default initial connection-wait timeout and TinyUSB CDC transport; firmware emits v1 identity and increasing unsigned counter.",
+    "Executed read-only Mac find-device command; inspected actual nonempty ELF/UF2 artifacts. No device matched, and no connected hardware was operated.",
+    "Installed macOS screen manual confirms Ctrl+A Ctrl+backslash quit, distinct from detach.",
+    "Existing all-target compilation evidence reused because included firmware unchanged; source hash agrees."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "physical-runtime not exercised; serial output clearly illustrative",
+  "reviewed_at": "2026-11-10T21:29:06.721553+00:00"
+}

@@ -1,0 +1,66 @@
+{
+  "id": "1.3",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "RESUME.md",
+    "catalog.json",
+    "verification.json",
+    "src/1.1-install-a-reproducible-macos-toolchain.md",
+    "src/1.2-understand-the-smallest-useful-project.md",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "examples/pico/heartbeat.cpp",
+    "examples/pico/CMakeLists.txt",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py"
+  ],
+  "sources": [
+    "https://www.raspberrypi.com/documentation/microcontrollers/c_sdk.html#your-first-binaries",
+    "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html#software-utilities",
+    "https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/pico_stdio_usb/stdio_usb.c",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h"
+  ],
+  "scope_audit": {
+    "result": "Install versioned heartbeat using BOOTSEL; independently check repeated USB output.",
+    "prerequisites": "1.1 public archive acquired under ~/hardware-from-software and 1.2 build; non-wireless Pico 2, known data cable, appropriate adapter/hub.",
+    "board_state": "Start unpowered with GP16 physical21 / 1k resistor / LED / GND physical23 preserved; no button, Pi, probe or additional signal wiring.",
+    "procedure": "Rebuild/check UF2 and ELF; hold BOOTSEL before power; verify RP2350 mounted; copy heartbeat.uf2; automatic disappearance/restart; discover actual cu.usbmodem path; screen115200; exit Ctrl+A then Ctrl+backslash and confirm Y.",
+    "explanation": "ROM loader versus firmware CDC identity; USB packet stream versus GPIO UART; repeated identity/counter and lost early output; no timing measurement claim.",
+    "troubleshooting": "Charge-only cable, adapter/hub, unknown firmware, wrong image/volume, absent or busy serial device, blank output, deterministic BOOTSEL recovery.",
+    "cleanup": "Close serial session then unplug before wiring; keep LED assembled and artifacts for1.4.",
+    "diagram": "No new wiring; exact retained pin/circuit state specified in prose with link to earlier bench diagrams."
+  },
+  "code_files_read": [
+    "examples/pico/heartbeat.cpp",
+    "examples/pico/CMakeLists.txt",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py"
+  ],
+  "checks_performed": [
+    "Read complete authoring contract, plan, example contract and continuation status.",
+    "Browsed official current BOOTSEL instructions: RP2350 versus RPI-RP2, automatic eject, ROM recovery.",
+    "Browsed official getting-started USB versus UART console explanation and SDK2.3.1 stdio source/configuration.",
+    "Inspected installed macOS man screen for serial device invocation, exclusive open, and Ctrl+A Ctrl+backslash quit binding.",
+    "Verified whole-source include exists and SHA256 matches verification.json.",
+    "Verified local links resolve to existing pages or catalog planned1.4 canonical path; no shared files modified.",
+    "Did not repeat unchanged root compile checks; used recorded all12target compilation evidence from verification.json."
+  ],
+  "hardware_status": {
+    "source_reviewed": true,
+    "target_compiled": "Root verification.json records all12Pico targets compiled; writer did not rerun.",
+    "physical_runtime": "Not exercised; no connected board. All serial output explicitly illustrative.",
+    "host_tested": "Not applicable to new prose; no firmware changes."
+  },
+  "concerns": [
+    "Forward link1.4 is catalogued but not authored at writer completion; accepted-only publisher routes pending pages.",
+    "Existing1.2 currently shows author-specific /Users/hermes/Desktop path; this page follows1.1 public portable ~/hardware-from-software path. Coordinator should harmonise1.2 through its own writer.",
+    "GNU web manual requests failed; screen syntax and quit binding checked against installed macOS manual instead."
+  ],
+  "canonical_sha256": "9aedec41910583a8f15dbed362315f9f2c46761083ab26db8074dfa90392597d",
+  "included_source_sha256": {
+    "examples/pico/heartbeat.cpp": "b3eab585fa76ed7eb6a6ccd966909b3e22de26bae44dfe12344b9edc166b7589"
+  },
+  "status": "ready_for_independent_review"
+}
