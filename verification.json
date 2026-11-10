@@ -1,6 +1,6 @@
 {
   "status": "authoring in progress",
-  "recorded_at": "2026-11-10T21:24:23.624614+00:00",
+  "recorded_at": "2026-11-10T21:26:07.807446+00:00",
   "baseline": {
     "pico_sdk": "2.3.1",
     "pico_sdk_commit": "079c6f39023649b154152db30f1d781e884879bc",
@@ -18,8 +18,8 @@
     "serial_pty_cases": 10,
     "serial_pty": "passed",
     "linux_arm64_cross_compile": "passed all seven applications (Zig0.14.1, Debian6.12.113 UAPI headers)",
-    "ci_url": "https://github.com/EthanHosier/hardware-from-software/actions/runs/42901505627",
-    "ci_commit": "9f2eb1b5ece9030759cfdab4ec8252eca063d81e",
+    "ci_url": "https://github.com/EthanHosier/hardware-from-software/actions/runs/42904806012",
+    "ci_commit": "70a2d4935293c3154850415fb085875d2e1f290f",
     "ci_result": "success",
     "ci_scope": "Linux host tests plus native Arm64 application and exact Pi kernel module compilation and DT overlay compilation",
     "i2c_pull_configuration_rebuild": "passed: i2c_target and bme280_i2c compiled/linked after explicitly disabling internal pulls; external board pull-ups retained"

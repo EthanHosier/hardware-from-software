@@ -15,6 +15,14 @@ def accepted(catalog):
         source=ROOT/entry['path']
         if review.get('canonical_sha256')!=digest(source):
             raise RuntimeError(f"Review hash missing/stale: {entry['id']}")
+        text=source.read_text()
+        included={(source.parent/name.strip()).resolve().relative_to(ROOT).as_posix()
+                  for name in re.findall(r'\{\{#include\s+([^}]+)\}\}',text)}
+        assets={(source.parent/name).resolve().relative_to(ROOT).as_posix()
+                for name in re.findall(r'\]\((assets/[^)#?]+\.svg)(?:[?#][^)]*)?\)',text)}
+        for field,required in [('included_source_sha256',included),('asset_sha256',assets)]:
+            missing=required-set(review.get(field,{}))
+            if missing:raise RuntimeError(f"Review omits {field}: {entry['id']}: {sorted(missing)}")
         for name,sha in review.get('included_source_sha256',{}).items():
             if digest(ROOT/name)!=sha:raise RuntimeError(f"Included source changed since review: {entry['id']}: {name}")
         for name,sha in review.get('asset_sha256',{}).items():
@@ -29,7 +37,14 @@ def main():
     if STAGE.exists():shutil.rmtree(STAGE)
     (STAGE/'src').mkdir(parents=True)
     shutil.copy2(ROOT/'book.toml',STAGE/'book.toml')
-    shutil.copytree(ROOT/'src/assets',STAGE/'src/assets')
+    (STAGE/'src/assets').mkdir()
+    reviewed_assets={'src/assets/book.css'}
+    for entry in published:
+        review=json.loads((ROOT/'reviews'/f"{entry['id']}-review.json").read_text())
+        reviewed_assets.update(review.get('asset_sha256',{}))
+    for name in sorted(reviewed_assets):
+        target=STAGE/name;target.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copy2(ROOT/name,target)
     shutil.copytree(ROOT/'examples',STAGE/'examples',ignore=shutil.ignore_patterns('*.o','*.ko','*.mod','*.mod.c','.*.cmd','Module.symvers','modules.order','.tmp_versions'))
     ids={e['id'] for e in published};byname={Path(e['path']).name:e for e in catalog}
     def replace_future(match):

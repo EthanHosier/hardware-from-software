@@ -15,3 +15,5 @@ Chapter0 public release verified: https://hardware-from-software.vercel.app, dep
 ## Resumed authoring and I²C pad audit
 
 User requested continuation after usage became available. Coordinator and page1.1 writer resumed. Inspection of pinned SDK gpio_set_function showed it preserves pad pulls; reset RP2350 pads have pull-down enabled. Explicitly disabled internal pulls on GP4/GP5 in both I²C examples so the intended external board pull-ups determine the bus bias. Both affected firmware targets recompiled and linked successfully; physical bus testing remains unexercised.
+
+Publication staging now requires hash coverage for all actual lesson includes and SVG references and copies only reviewed SVGs plus the theme stylesheet. Six-page build/link checks pass. CI run42904806012 passed Linux host/parser/serial/memory checks and nativeArm64 applications, Pi-header module and overlay compilation at70a2d49.
