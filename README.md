@@ -27,4 +27,4 @@ No credentials, real network identifiers, binaries, downloaded dependency trees 
 
 ## Current progress
 
-Twenty-one of53catalog pages are published: Chapters0–4 are complete. Each had a dedicated fresh-context writer and independent review. Remaining lessons are in progress. `reviews/authoring-status.json` records current per-page progress. Every accepted page must be published immediately through the checked progressive-release command.
+The [public roadmap](https://hardware-from-software.vercel.app/roadmap.html) shows which of the 53 catalog pages are published. Each page has a dedicated fresh-context writer and independent review. `reviews/authoring-status.json` records the current per-page review state; `releases.json` records each verified deployment. Every accepted page is published immediately through the checked progressive-release command.

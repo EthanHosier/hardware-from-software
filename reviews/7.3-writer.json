@@ -1,0 +1,54 @@
+{
+  "id": "7.3",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/7.1-make-a-uart-link-electrically-and-logically-correct.md",
+    "src/7.2-configure-the-pi-uart-and-test-an-echo.md",
+    "src/6.2-turn-the-pico-into-a-register-based-peripheral.md",
+    "src/6.3-write-a-linux-i-c-client.md",
+    "src/5.2-verify-the-linux-development-environment.md",
+    "scripts/build_examples.py",
+    "scripts/setup_deps.py",
+    "scripts/build.py",
+    "scripts/test_serial.py",
+    "verification.json"
+  ],
+  "sources": [
+    "https://man7.org/linux/man-pages/man3/termios.3.html",
+    "https://man7.org/linux/man-pages/man2/poll.2.html",
+    "https://man7.org/linux/man-pages/man2/read.2.html",
+    "https://man7.org/linux/man-pages/man2/write.2.html",
+    "https://man7.org/linux/man-pages/man2/open.2.html",
+    "https://github.com/raspberrypi/pico-sdk/blob/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_uart/include/hardware/uart.h"
+  ],
+  "scope_audit": {
+    "framing": "Actual bounded Line and exact grammar, CR anywhere, invalid byte and overflow recovery; multi-line firmware versus single transaction CLI explained",
+    "serial": "Actual RAII owner, termios flags including explicit IXON/IXOFF/IXANY clearing, no attribute restoration, one absolute deadline, partial IO and EINTR/EAGAIN, reply validation",
+    "practical": "Detached-all-three safe uart_device replacement, retained circuits, precise wiring, ownership/routing, native build and CLI, verification limits, symptoms and 7.4 end state"
+  },
+  "code_files_read": [
+    "examples/linux/serial_client.cpp",
+    "examples/linux/serial_port.hpp",
+    "examples/common/protocol.hpp",
+    "examples/pico/uart_device.cpp",
+    "examples/pico/device_io.hpp",
+    "examples/common/protocol_test.cpp",
+    "examples/pico/CMakeLists.txt"
+  ],
+  "checks_performed": [
+    "Browsed Linux man-pages and pinned official SDK API",
+    "Compared behaviour claims with current actual source",
+    "Checked all five include paths, page/asset/catalog forward links and balanced fences",
+    "Read recorded verification and all 11 PTY cases; did not rerun unchanged root tests",
+    "Repaired independent review findings: describe sampled debounce limits and distinguish separate pinned-Mac Pico compilation from Linux CI scope; reread final page against sources."
+  ],
+  "hardware_status": "Physical runtime not exercised; proposed bench output explicitly illustrative. Pico compilation is separate pinned-Mac evidence from verification.json; CI43079878334 supplies Linux host/native Arm64 application/Pi-header module evidence, not Pico compilation.",
+  "concerns": [
+    "Independent recheck, rendered layout/download checks and publication are coordinator/root responsibilities."
+  ],
+  "status": "ready_for_independent_review"
+}

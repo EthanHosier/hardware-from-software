@@ -1,0 +1,65 @@
+{
+  "id": "7.3",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "94fd4dabf1aac904ba59a0ef7c07c2402a4e34d755285984521dc8b31e0fa543",
+  "included_source_sha256": {
+    "examples/common/protocol.hpp": "77c7529b2f7758a3e784c5752eaca01f377d67e6f672263c3cf6e5104bba8be7",
+    "examples/pico/uart_device.cpp": "f352a466e6a3bd7c58b9305feab5f50b7a41d550c0a0cd32c9e7e78b00e9c977",
+    "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3",
+    "examples/linux/serial_client.cpp": "fd54040d11499427d4a53e621fcf08000b88c4724eb5ee2cac5dd9cbc62fb70c",
+    "examples/linux/serial_port.hpp": "eb2a42df5baa75b6178f3d5b4cdc7aeddb0711e1cd0b5f43341698d5d3ce4e22"
+  },
+  "asset_sha256": {
+    "src/assets/circuit-uart.svg": "128a4c30917db9187fe77ce7b1fa7ad80fb08c6a4ccc80a6086cdf7420e45f4b"
+  },
+  "paths_read": [
+    "src/7.3-build-a-robust-c-serial-client.md",
+    "reviews/7.3-writer.json",
+    "examples/common/protocol.hpp",
+    "examples/pico/uart_device.cpp",
+    "examples/pico/device_io.hpp",
+    "examples/linux/serial_client.cpp",
+    "examples/linux/serial_port.hpp",
+    "scripts/build_examples.py",
+    "scripts/test_serial.py",
+    "examples/common/protocol_test.cpp",
+    "verification.json",
+    "src/7.2-configure-the-pi-uart-and-test-an-echo.md (routing anchor/prerequisites)"
+  ],
+  "sources_checked": [
+    "https://man7.org/linux/man-pages/man3/termios.3.html",
+    "https://man7.org/linux/man-pages/man2/poll.2.html",
+    "https://man7.org/linux/man-pages/man2/read.2.html",
+    "https://man7.org/linux/man-pages/man2/write.2.html",
+    "https://man7.org/linux/man-pages/man2/open.2.html",
+    "https://github.com/raspberrypi/pico-sdk/blob/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_uart/include/hardware/uart.h"
+  ],
+  "scope_coverage": "All five actual complete sources; precise printable-line grammar, IDs/leading zeros/CR-anywhere/discard recovery; safe echo-to-device programming and unchanged wiring; native CLI build/run and ownership; RAII/raw flags/queue flush/no attribute restoration; partial I/O and absolute deadline/error handling; command-specific reply validation; one-ID CLI and stale-reply/no-retry limits; sampled button/temp interpretation; exact test scope, symptoms and cleanup.",
+  "checks_performed": [
+    "Read complete final prose and all five included files, plus parser/PTY tests and build script. All include hashes match current verification evidence.",
+    "Independently consulted Linux termios/open/poll/read/write primary manuals. Explicit software-flow clear, CREAD, raw mode, nonblocking semantics, partial counts and remaining-time polling agree with code.",
+    "Identified inherited IXOFF/IXANY omission before this draft; root fixed shared header and added an inherited-flags PTY case. Current source and page use the corrected version and recorded 11-case evidence.",
+    "Traced exact parser paths: IDs 1..999999/max6digits/leading zeros, CR ignored anywhere, other control/nonASCII/overlength discard until LF, overflow label reused for invalid bytes, output normalization and malformed ID0. Page matches each distinction.",
+    "Traced absolute deadline/partial send/read loops, failure flags and validation before returning; page accurately rejects stale/wrong replies rather than pretending to recover automatically.",
+    "Verified sampled Device semantics and UART byte budget against firmware; no USB logs invented, source reply/LED/counter/temp behavior accurately distinguished from physical evidence.",
+    "Parsed all6shellblocks with sh -n, checked routing/cleanup anchors and prerequisites, and compared software-check commands with actual build/test scripts. No redundant unchanged software suite rerun.",
+    "Reused UART SVG unchanged from independent complete 7.1 rendering and physical pin check; table/power-off detached-programming sequence coherent. Root exact include/render/link/public checks precede publication.",
+    "Reread same-writer repairs: candidate timing is explicitly sampled, and separate Mac Pico compilation is clearly distinguished from Linux CI."
+  ],
+  "findings": [
+    {
+      "issue": "Debounce wording could imply 20ms of continuously measured electrical stability.",
+      "resolution": "Same writer explained unchanged sampled candidate and transitions that polling cannot observe; final paragraph rechecked."
+    },
+    {
+      "issue": "Verification paragraph blurred separate Pico compilation and Linux CI scope.",
+      "resolution": "Same writer explicitly separated pinned-Mac Pico evidence from Linux host/native Arm64/Pi-header CI; final paragraph and test script reread."
+    }
+  ],
+  "repairs": [
+    "Qualified sampled debounce limits.",
+    "Separated Pico compilation from Linux CI evidence."
+  ],
+  "hardware_status": "Canonical sources compiled and host parser/11 PTY cases recorded by root; source/commands reviewed independently. Physical Pi UART, LED/button/temperature and actual transfer not exercised."
+}
