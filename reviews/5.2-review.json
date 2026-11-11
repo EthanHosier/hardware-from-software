@@ -1,0 +1,40 @@
+{
+  "id": "5.2",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "d95651000629b0d99e4e97d548c06c6bb92004e518da773854a017ed038e7a19",
+  "included_source_sha256": {
+    "examples/linux/hello.cpp": "0783b109723dac17e451051e0754e122b02c323970e626b0a6086eb11a045156"
+  },
+  "asset_sha256": {},
+  "paths_read": [
+    "src/5.2-verify-the-linux-development-environment.md",
+    "reviews/5.2-writer.json",
+    "examples/linux/hello.cpp",
+    ".github/workflows/examples.yml",
+    "verification.json",
+    "scripts/build.py (archive layout)",
+    "src/5.1-prepare-raspberry-pi-os-and-ssh.md"
+  ],
+  "sources_checked": [
+    "https://www.raspberrypi.com/software/operating-systems/",
+    "https://packages.debian.org/bookworm/build-essential",
+    "https://www.raspberrypi.com/documentation/computers/linux_kernel.html#kernel-headers",
+    "https://www.kernel.org/doc/html/latest/kbuild/modules.html",
+    "https://www.raspberrypi.com/documentation/computers/config_txt.html",
+    "https://manpages.debian.org/bookworm/coreutils/mktemp.1.en.html"
+  ],
+  "scope_coverage": "Measured board/memory/OS/kernel/userland architecture/toolchain record, Pi native Linux versus Mac/embedded/kernel targets, official package setup and compiler identity, public checkout/download context and actual complete C++ example, exact build/run/ELF/loader interpretation, boot layout, running-kernel headers/build symlink/kernelrelease readiness and safe matching-pair reboot recovery, isolated unwired bench, symptoms/cleanup/next state.",
+  "checks_performed": [
+    "Read entire final prose and actual include; no findings. Exact simple hello source hash matches verification.json native hostedArm64 compilation evidence.",
+    "Independently checked official OS listing: LegacyLite64Bookworm6Oct2026/kernel6.12 and currentTrixie6.18. Page distinguishes family/image/runningpatch and existingcard preservation.",
+    "Browsed official Debian dependencies and RaspberryPi header metapackage docs; exact named headerpackage agrees with actual pinned CI package, metapackage is not represented as proof of current-kernel match. Read kbuild module prerequisites.",
+    "Verified archive root layout in actual build.py: examples plus scripts directly atroot, no repositorywrapper. Existing checkout preserved and commands labelledPi.",
+    "Independently parsed all7shellblocks with sh -n; verified mktemp suffix behavior against Bookworm coreutilsmanual, and environmentrecord variable survives under documented same-shell requirement.",
+    "Actual source uses hosted iostream/stdout; narrative correctly interprets loader and Exitstatus0 as expected output, not measured physicalPi result.",
+    "No diagrams required for terminal setup; no physical tests or package installation performed. Root exact-render/include/download/link checks precede publication."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source/commands reviewed and existing hosted nativeArm64 compilation evidence applies. PhysicalPiSSH/package installation/executable runtime/headerchecks/moduleloading not exercised."
+}
