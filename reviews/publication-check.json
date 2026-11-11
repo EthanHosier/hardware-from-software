@@ -21,147 +21,170 @@
     "4.1",
     "4.2",
     "4.3",
-    "4.4"
+    "4.4",
+    "5.1",
+    "5.2",
+    "5.3"
   ],
   "checks": [
     {
       "path": "index.html",
-      "sha256": "41f73018a2dd35b3a9e8e43e6fc73aa95b1367dbb6cf4d1dbd6bab41971575fe",
+      "sha256": "ae75ea177711898939852638ddb388c15375c1aa645c706ab34cdf71c88bf290",
       "status": 200
     },
     {
       "path": "roadmap.html",
-      "sha256": "31db5e0547a3b091b230cf34669e374c90cb2b1ec40e7b6e69048f42758f3c91",
+      "sha256": "02524b722ae8dcab2e6eceacbd59f328f9224bf95389d76e348c9d3f4b4a1a1d",
       "status": 200
     },
     {
       "path": "verification.html",
-      "sha256": "3f76ae00dea7b2794386c974beb18790e63e67996827f251789480d326e03331",
+      "sha256": "a9714db4b35c99196abb2b1b212cee06f8ff659646f75c44bf982a363a5ac55e",
       "status": 200
     },
     {
       "path": "downloads.html",
-      "sha256": "ab4d9ce0f3d5be7fa0381852974f12954392719f024f2da7342148e9ebf332d6",
+      "sha256": "812b3938ac60f336d3917c269661b925fb612ecfc5a41e463c2a8d8edf61e13f",
       "status": 200
     },
     {
       "path": "publication.json",
-      "sha256": "0f683604632330bbbf57fe0f02815ffb1d0b8be257e5166e9db190ff971016f0",
+      "sha256": "d03c1540b705d9eb1d731d10e5260895402bdf26f081b068a65d05bcd1e00afa",
       "status": 200
     },
     {
       "path": "verification.json",
-      "sha256": "9c4de7ca4454db0b7ec6ad28880c5f6df0b74e68cf61becd01f38c9b2988499a",
+      "sha256": "88c9c3cbbc78d9a3e22def08a0aca945ad0ad5363394be68d45aa75578d326ff",
       "status": 200
     },
     {
       "path": "downloads/hardware-examples.zip",
-      "sha256": "afba7a9e13934a8e4907b2d8dca76a6ea07c0370960112c7d04358ef276b3976",
+      "sha256": "7b2948a9c0679270868ad302db4e1ce1b3df291e48e45ec06b4fb4b7d86f1635",
       "status": 200
     },
     {
       "path": "0.1-what-you-are-going-to-build.html",
-      "sha256": "b2d1a8d1fe53e8dffd3a463c76067f9df7827f0324c91a093bde6b8c4e056951",
+      "sha256": "9670852296ff390435c95339777c3a49230bbbf60e6a338dcf181851893b6558",
       "status": 200
     },
     {
       "path": "0.2-a-labelled-tour-of-your-pico-2.html",
-      "sha256": "9e57c2da47a1105a40ad8617144759a4a52ca04ca8e98db30eb639a386198f27",
+      "sha256": "d88ba24e3f4733ba55d69e038c1b35c4179bdca8128909d5f87bffd49a858ebb",
       "status": 200
     },
     {
       "path": "0.3-a-labelled-tour-of-your-raspberry-pi-4.html",
-      "sha256": "5b496df900dd5f202bb7836be7ac0462b67ac5b0f20af03af0072e53fb2b24f8",
+      "sha256": "0868444ee693e49ce15c8ef393928a2b28cc0f0fc4c6b248c665f484c12349e3",
       "status": 200
     },
     {
       "path": "0.4-a-labelled-tour-of-the-debug-probe-and-cables.html",
-      "sha256": "8e7229ec23fc2a98b6cd55a6123a0de284b15237a5ddc1a5e2ba2f5330232442",
+      "sha256": "96e3d8cf3c115deab4b798562cb5d649b75b5aafe334e9421a743550559fd03e",
       "status": 200
     },
     {
       "path": "0.5-recognise-the-breadboard-and-kit-components.html",
-      "sha256": "81453f8016ef64db1746ed1f7652c4194d2dd952bc33660a399ddc7b0fb59124",
+      "sha256": "c6f58a734e6ec63823bc212acff26f1c67888fc85420f58f2ffd9b09e7190e6e",
       "status": 200
     },
     {
       "path": "0.6-assemble-the-bench-and-understand-the-electrical-rules.html",
-      "sha256": "3762814d29fc511b5201c13a31ed7ce1a9bc64eef2d0f6a724c45e8fe807cf5e",
+      "sha256": "1eb97f7d1a1d177df3f99d9e67d898a6bd99623130021ef69289c44838809efa",
       "status": 200
     },
     {
       "path": "1.1-install-a-reproducible-macos-toolchain.html",
-      "sha256": "0eee351a8f3b5475b86df18a272d264162e6c6c17f770837de90fe31b2d918b7",
+      "sha256": "051419a27001f8ce1c6706e3f02adaeb5c270de3723ae309444e7ee54f47d224",
       "status": 200
     },
     {
       "path": "1.2-understand-the-smallest-useful-project.html",
-      "sha256": "010370c7c5fb94ba6abb8b0233077153503aaf26f9410079c7182322e9e52a31",
+      "sha256": "4acfeb568bfe2682ac075ac558c1486618d9ffb3fe677eadb045f93bbeabbe3b",
       "status": 200
     },
     {
       "path": "1.3-flash-with-bootsel-and-read-output.html",
-      "sha256": "dd7388e220ad5a62d860243ce3722320cfe862b748ae02d86cf04edf62edd6e6",
+      "sha256": "1abbea3bd17e66b8955620ba27cb9a440504630b1d9d58acd2563248d8e88a8f",
       "status": 200
     },
     {
       "path": "1.4-make-the-build-flash-observe-loop-repeatable.html",
-      "sha256": "2650771c8b8e612e1e30737f9645616bee10af192113cfcd95b8cd377412cec2",
+      "sha256": "2ef8b54693c5884dac49f9b017f9c2c8b23e85f51399126471e496fac3820d6b",
       "status": 200
     },
     {
       "path": "2.1-wire-and-verify-an-external-led.html",
-      "sha256": "d37729b78a419b13a9987e46b22cec90d77f364f45dc704a98aba35a40da7e58",
+      "sha256": "952a376c105eca60ee6885109a84a0345bcba8500a6ed328f6f2bb0ad79fd3a0",
       "status": 200
     },
     {
       "path": "2.2-read-the-rp2350-register-map.html",
-      "sha256": "2c002428c9e51b86515fbf44633b2e4babf9c1089cdfc983655b964bfdcdcbd5",
+      "sha256": "0ef19563724f4a08a930df605bc249b8629ededa1d4e653edc237252f2d43da4",
       "status": 200
     },
     {
       "path": "2.3-replace-gpio-calls-with-register-accesses.html",
-      "sha256": "260e6914c9a179ff7bbed6eeb278836bbb4851b58c4c3455be04a08726cbca7e",
+      "sha256": "5cc704ce85ec815eb8ef606e171828aae457b130fc5eb5bd49714f3ee2ecb88d",
       "status": 200
     },
     {
       "path": "2.4-follow-the-generated-machine-instructions.html",
-      "sha256": "7725df69dc7d1f44cd79fff4821a08a3757904dd086e6901ea5f2d530c90ef5d",
+      "sha256": "f305d15207747da629e7cd636db694b84289675086070534b43facfde7acf524",
       "status": 200
     },
     {
       "path": "3.1-attach-the-debug-probe-over-swd.html",
-      "sha256": "9de32764ab2aba915919a95e4fdd1d12c7bd7f5e876dc8aa7191d39a481547ca",
+      "sha256": "824a9b431b4818a56654e4f9e29970917ee744266d099c7e60f9d2509f5e6741",
       "status": 200
     },
     {
       "path": "3.2-load-the-elf-and-step-through-the-led-write.html",
-      "sha256": "9dc76b2723e203d5d07b78bb46575afa536646bd50edb4a06cd1a4c2955866cd",
+      "sha256": "47e11db71eac050d1558bd0b76d9f5beed7951183eca64e5c392a628b71b9818",
       "status": 200
     },
     {
       "path": "3.3-diagnose-a-broken-program-systematically.html",
-      "sha256": "92905563eb69622c68d2491052970e94b61ed3748fe4bf8025a4d6c3849d8819",
+      "sha256": "800c98cd1deeda54ad3a286172dc0c749df6e080ae2da0262a211f60b96826a1",
       "status": 200
     },
     {
       "path": "4.1-read-a-button-by-polling.html",
-      "sha256": "94145af5408afc25adea40ae36da15bcf3c3fcfc6d3d75a7c0546725df26e970",
+      "sha256": "911236001b491d3f50e516d9be9a10f037b18b6dadb250b786722aaa5c5af16f",
       "status": 200
     },
     {
       "path": "4.2-configure-and-acknowledge-a-gpio-interrupt.html",
-      "sha256": "85348fa580bca1cfa1728e606c01bf5dcb42a7b1b6496c93fd42c9c0d5f3bc15",
+      "sha256": "69d44aaaa725b0f6dd7dcff53151c994fac0ff06107826549b1da97f14609d3b",
       "status": 200
     },
     {
       "path": "4.3-share-state-and-debounce-correctly.html",
-      "sha256": "a40967162e558bf6253ccde67910d65c6452562fb17cff273a8c14ee66835c1b",
+      "sha256": "6a1f189cb48b6e811a02d563e29a9e8bfa4f8d7536c49e98c604c57ca709a67d",
       "status": 200
     },
     {
       "path": "4.4-inspect-exception-entry-and-return.html",
-      "sha256": "aee4a48001de83584c369e0e406d57db947f23fd7cad7cc3ab1093ac9cee9465",
+      "sha256": "fdda445cd0d6e65a5c9716e478524636f9c1f718efca0b5aebf8d788efaa26a0",
+      "status": 200
+    },
+    {
+      "path": "5.1-prepare-raspberry-pi-os-and-ssh.html",
+      "sha256": "e5210c6e207b5e6a044ddff2f35be589ec390e194798330126c7025c6f9caaf7",
+      "status": 200
+    },
+    {
+      "path": "5.2-verify-the-linux-development-environment.html",
+      "sha256": "2afa444bb3816a565397607bff39838b025baff23a10d69ebf6e3e3abdab01a0",
+      "status": 200
+    },
+    {
+      "path": "5.3-establish-gpio-identity-and-ownership.html",
+      "sha256": "f4b27dfab6ff82ed87f6d26bfaeaa6bcc6df7a701f0e30e563b0a6033ab6dc65",
+      "status": 200
+    },
+    {
+      "path": "assets/5.3-pi-header-identity.svg",
+      "sha256": "6e089b0063838ad8d34079b6d60bf92d9d6f535a182965370905f618058c39f5",
       "status": 200
     },
     {
@@ -265,13 +288,13 @@
       "status": 200
     },
     {
-      "path": "searcher-09f2665d.js",
-      "sha256": "9009cbea8ecee63ad7f5b4497444e49b110fc445b3ac0d4795bd1aa87314a12b",
+      "path": "searchindex-cb3d25c1.js",
+      "sha256": "cb3d25c1b68368b3f4bdb39e9563e37663e940933dc512e67845efd54ee24533",
       "status": 200
     },
     {
-      "path": "searchindex-c4aa2d4e.js",
-      "sha256": "c4aa2d4e2dc532b7b8ffc8cb00ae050dfc642626bae3517e61af08cea0df2158",
+      "path": "searcher-09f2665d.js",
+      "sha256": "bb2e4a11db06fa82732d8e868a1c0eab5bb9f3dd86b47b021d9d56a6d3cee0ca",
       "status": 200
     },
     {
