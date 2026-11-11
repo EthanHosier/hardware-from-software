@@ -1,0 +1,47 @@
+{
+  "id": "6.3",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "8417ec13b31d9de1e729daff07926421614d5ef4175d951e1d5a1e7ec95e79dc",
+  "included_source_sha256": {
+    "examples/linux/i2c_client.cpp": "72d67baf85980f64f4d90a0a9d3041d60dafd839d41c58b911ebd1ea9dfb1bb3"
+  },
+  "asset_sha256": {
+    "src/assets/circuit-i2c.svg": "dbd430c0f5c5760127c4e9fd8b4662746dc67bf2158c5fc8e4e4391aa8e832ed"
+  },
+  "reviewed_dependency_sha256": {
+    "examples/pico/i2c_target.cpp": "96f30fdfe3d1892e14fe8344d665a3eb801f6b7f09b85dd8c05487dad37c30d4",
+    "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3"
+  },
+  "paths_read": [
+    "src/6.3-write-a-linux-i-c-client.md",
+    "reviews/6.3-writer.json",
+    "examples/linux/i2c_client.cpp",
+    "examples/pico/i2c_target.cpp",
+    "examples/pico/device_io.hpp",
+    "src/assets/circuit-i2c.svg",
+    "verification.json",
+    "src/6.2-turn-the-pico-into-a-register-based-peripheral.md (ADC anchor/progression)"
+  ],
+  "sources_checked": [
+    "https://www.kernel.org/doc/html/latest/i2c/dev-interface.html",
+    "https://www.kernel.org/doc/html/latest/i2c/fault-codes.html",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/i2c/i2c-dev.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/include/uapi/linux/i2c.h",
+    "https://www.nxp.com/docs/en/user-guide/UM10204.pdf",
+    "https://github.com/raspberrypi/linux/issues/4884#issuecomment-1038929049"
+  ],
+  "scope_coverage": "First transfer only after target setup, exact unchanged threewire/localcircuits/power state, verifiedI2C3adapter identity and ownership/permissions, actual fullclient/native build/run, capabilityquery and combined two-message ABI/bufferlifetimes/returncount versusbytes, address/endian/signeddecode/validation-beforewrite, deferredLEDrequest and every-run-toggle/readbacklimits, presscounter/tempinterpretation, precise system-versussemanticerrors and troubleshooting/cleanup/rollback.",
+  "checks_performed": [
+    "Read full final prose, actual full client and target/sharedDevice sources; sourcehash matches latest verification.json CI42986688767 success. Existing hostedArm64 compilation distinguished from physicalPi execution.",
+    "Independently read pinned i2c-dev RDWR implementation: descriptor/userbuffer copies, synchronous transfer/copyback, per-message address, capability check, and no I2C_SLAVE ownershipcheck inRDWR path; page explicitly preflights ownedaddress rather than bypassingdriver.",
+    "Checked pinned UAPI i2c_msg addr/flags/len/buf and STOP/repeatedSTART semantics, Linuxdevinterface return/messageandcapability contract, and officialfaultcode conventions.",
+    "Reviewed actual uint32LE assembly and signed64 subtract2^32 path, identity/version validation beforewrite, immediateerrno capture/system_error versussemantic runtime_error, closeonallhandledpaths.",
+    "Independently parsed all3shellblocks with sh -n; exact buildflags and canonicalsourceinclude unindented/top-level. ADCcrosslinkheadingexists.",
+    "Shared I2C SVG unchanged from complete independent6.1 rendering/source/wiring check; table and boardstates agree. I2C3clockstretch rationale already independently checkedagainstfrozenDTS/officialengineer and remains accurate.",
+    "Everyrunreadthenrequesttoggle explicitly documented; completionisnot LEDapplicationproof, no immediateverificationclaim. No capturedhardwareoutput invented. Root render/include/link/publicchecksprecedepublication."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source/commands/ABI reviewed; current client compiled nativehostedArm64 perverification. PhysicalI2C/RPiread/run/ACK/LED/button/temperature notexercised."
+}

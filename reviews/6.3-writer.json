@@ -1,0 +1,57 @@
+{
+  "id": "6.3",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/6.1-i-c-on-the-wires.md",
+    "src/6.2-turn-the-pico-into-a-register-based-peripheral.md",
+    "src/5.2-verify-the-linux-development-environment.md",
+    "src/assets/circuit-i2c.svg",
+    "verification.json",
+    "reviews/6.2-writer.json"
+  ],
+  "sources": [
+    "https://www.kernel.org/doc/html/latest/i2c/dev-interface.html",
+    "https://raw.githubusercontent.com/torvalds/linux/master/include/uapi/linux/i2c.h",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/include/uapi/linux/i2c-dev.h",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/i2c/i2c-dev.c",
+    "https://www.kernel.org/doc/html/latest/i2c/fault-codes.html",
+    "https://www.nxp.com/docs/en/user-guide/UM10204.pdf",
+    "https://github.com/raspberrypi/linux/issues/4884#issuecomment-1038929049",
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm/boot/dts/overlays/README",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#gpio-pin-inputs-outputs-and-communication-protocols"
+  ],
+  "scope_audit": {
+    "owned_files": [
+      "src/6.3-write-a-linux-i-c-client.md",
+      "reviews/6.3-writer.json"
+    ],
+    "practical": "First transfer only after 6.2 firmware; full bus/local circuit table and reused source-inspected diagram; separate USB supplies/no rail join; exact native Pi C++20 build/run from repository root; adapter sysfs/DT alias identity, ownership, conditional permissions and reversible rollback; no scans/force bypass.",
+    "mechanism": "Actual full source unindented include; open, capabilities, two-message I2C_RDWR repeated START versus separate STOPs, 0x42 per-message address versus wire84/85, message return count versus byte length, identity/version before LED request, endian/signed decoding, synchronous user-buffer copy/lifetime, no I2C_SLAVE required, no ownership enforcement.",
+    "observation": "Illustrative exact current output; snapshot then opposite-state request, deferred main-loop application and subsequent-run readback, every run toggles/no read-only claim; accepted 20ms sampled press/release, approximate chip temperature versus ambient; ACK/log/register versus physical LED/calibration evidence."
+  },
+  "code_files_read": [
+    "examples/linux/i2c_client.cpp",
+    "examples/pico/i2c_target.cpp",
+    "examples/pico/device_io.hpp"
+  ],
+  "checks_performed": [
+    "Guide read first; full PLAN and EXAMPLES; catalog6.3 entry and approved style read.",
+    "Browsed official primary Linux ABI/dev interface/fault sources, pinned Pi implementation, NXP and Pi controller/overlay/header sources.",
+    "Reread current root client after errno fix: explicit immediate errno capture; system_error for negative ioctls; runtime_error semantic/partial checks. Source hash 72d67baf85980f64f4d90a0a9d3041d60dafd839d41c58b911ebd1ea9dfb1bb3.",
+    "Three shell fences pass sh -n. Twelve balanced fence delimiters; entire source included top-level/unindented.",
+    "All local paths checked; only canonical 6.4 forward link not yet authored. Shared SVG labels inspected; no assets changed.",
+    "Used root-recorded verification compilation evidence; did not run a hardware transfer, Pi configuration or tests.",
+    "No executable, scripts, shared configuration, Git or deployment changed."
+  ],
+  "hardware_status": "not exercised: no physical wiring, power, native Pi run, I2C transfer, LED/button or temperature measurement. Native Arm64 hosted CI compilation recorded by root is explicitly distinguished from Pi/runtime evidence.",
+  "concerns": [
+    "Independent substantive and rendering review pending.",
+    "6.4 canonical forward path awaits authoring/publication; accepted-only staging should route it to roadmap.",
+    "Root current errno-fix CI is running; coordinator/root must reconcile latest verification evidence before acceptance."
+  ],
+  "status": "ready_for_independent_review"
+}
