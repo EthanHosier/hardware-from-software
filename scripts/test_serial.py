@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """Bounded pseudo-terminal tests of the exact serial client. No Pico implied."""
-import errno, os, pty, select, subprocess, threading, time
+import errno, os, pty, select, subprocess, termios, time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-def case(name,reply,expected,command=('PING',)):
+def case(name,reply,expected,command=('PING',),inherit_flow=False):
     master,slave=pty.openpty();path=os.ttyname(slave)
+    flow=termios.IXON | termios.IXOFF | termios.IXANY
+    if inherit_flow:
+        attributes=termios.tcgetattr(slave);attributes[0] |= flow
+        termios.tcsetattr(slave,termios.TCSANOW,attributes)
     proc=subprocess.Popen([str(ROOT/'.build/serial_client'),path,*command],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
     try:
         end=time.monotonic()+4;request=b''
@@ -12,6 +16,8 @@ def case(name,reply,expected,command=('PING',)):
             if time.monotonic()>=end:raise AssertionError('no request received')
             if select.select([master],[],[],.1)[0]:request+=os.read(master,128)
         assert request==b'1 '+(' '.join(command)).encode()+b'\n',(name,request)
+        if inherit_flow:
+            assert termios.tcgetattr(slave)[0] & flow == 0, (name,'software flow control remains enabled')
         if reply is not None:
             # Each byte is deliberately a distinct write: framing cannot rely on read boundaries.
             for byte in reply:os.write(master,bytes([byte]))
@@ -25,6 +31,7 @@ def case(name,reply,expected,command=('PING',)):
 for spec in [
     ('fragmented success',b'1 OK 1\n',0),
     ('CRLF success',b'1 OK 1\r\n',0),
+    ('inherited software flow control',b'1 OK 1\n',0,('PING',),True),
     ('wrong ID',b'2 OK 1\n',1),
     ('device error',b'1 ERR unsupported\n',1),
     ('oversized reply',b'x'*100+b'\n',1),

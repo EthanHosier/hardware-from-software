@@ -33,7 +33,9 @@ public:
         if(fd_<0) throw std::runtime_error(std::string("open UART: ")+std::strerror(errno));
         termios t{};
         if(tcgetattr(fd_,&t)<0) { close(fd_); fd_=-1; throw std::runtime_error("tcgetattr failed"); }
-        cfmakeraw(&t); cfsetispeed(&t,B115200); cfsetospeed(&t,B115200);
+        cfmakeraw(&t);
+        t.c_iflag &= ~(IXON | IXOFF | IXANY);
+        cfsetispeed(&t,B115200); cfsetospeed(&t,B115200);
         t.c_cflag=(t.c_cflag & ~(CSIZE|PARENB|CSTOPB|CRTSCTS))|CS8|CLOCAL|CREAD;
         t.c_cc[VMIN]=0; t.c_cc[VTIME]=0;
         if(tcsetattr(fd_,TCSANOW,&t)<0 || tcflush(fd_,TCIOFLUSH)<0) {
