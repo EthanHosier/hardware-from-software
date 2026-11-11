@@ -1,0 +1,65 @@
+{
+  "id": "6.1",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/5.1-prepare-raspberry-pi-os-and-ssh.md",
+    "src/5.2-verify-the-linux-development-environment.md",
+    "src/5.3-establish-gpio-identity-and-ownership.md",
+    "src/0.2-a-labelled-tour-of-your-pico-2.md",
+    "src/assets/circuit-i2c.svg",
+    "scripts/build.py"
+  ],
+  "sources": [
+    "https://www.nxp.com/docs/en/user-guide/UM10204.pdf",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html",
+    "https://www.raspberrypi.com/documentation/computers/configuration.html",
+    "https://raw.githubusercontent.com/RPi-Distro/raspi-config/bookworm/raspi-config",
+    "https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README",
+    "https://www.kernel.org/doc/html/latest/i2c/dev-interface.html",
+    "https://github.com/raspberrypi/linux/issues/4884",
+    "https://raw.githubusercontent.com/raspberrypi/linux/rpi-6.12.y/drivers/i2c/busses/i2c-bcm2835.c",
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm/boot/dts/overlays/README",
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi",
+    "https://github.com/raspberrypi/linux/issues/4884#issuecomment-1038929049",
+    "https://github.com/raspberrypi/linux/issues/4884#issuecomment-1039409136"
+  ],
+  "scope_audit": {
+    "owned_files": [
+      "src/6.1-i-c-on-the-wires.md",
+      "reviews/6.1-writer.json"
+    ],
+    "electrical": "Controller/target roles, open drain vs push-pull, fixed Pi 1.8k board pulls, disabled Pico pulls, rise time/capacitance, 100kHz and controller clock authority. Clock stretching described with hardware-specific limitation.",
+    "protocol": "START/STOP/repeated START, MSB first, ninth ACK/NACK ownership including final-read NACK, 7-bit 0x42 vs raw0x84/0x85, register pointer protocol vs chip registers, coherent multi-byte snapshot distinction.",
+    "wiring": "Both supplies physically removed before changes. Exact canonical Pi BCM2 pin3 to Pico GP4 pin6; BCM3 pin5 to GP5 pin7; Pi GND6 to Pico GND8. Existing original diagram source-read and visually checked; no shared asset modification. Separately USB-powered and common ground, no rail joins. Retained LED/button exact full circuit; Pi17/27 unused and probe U empty.",
+    "practical": "Electrical/configuration-only lesson, no full C++ include because no program is built/run here. No scans or client transaction before target loading. Adapter identity/sysfs, permissions, kernel/user ownership, no forced requests, troubleshooting and reversible cleanup.",
+    "controller_baseline": "Root-approved BSC3/I2C3 on same BCM2/3 physical3/5,100kHz,/dev/i2c-3. Provisional bus1 route removed. Explicit source-linked unavoidable target read stretching and legacy BSC defect. Boot backup/edit preserves unrelated settings; conflict/included/conditional config inspection; disable i2c_arm; exact i2c3 overlay; i2c-dev load plus optional exclusive-create persistence; reboot, sysfsname/path+DTalias identity; conditional permissions; reversible cleanup."
+  },
+  "code_files_read": [
+    "examples/pico/i2c_target.cpp",
+    "examples/pico/device_io.hpp",
+    "examples/linux/i2c_client.cpp",
+    "examples/pico/bme280_i2c.cpp"
+  ],
+  "checks_performed": [
+    "Read guide first and full PLAN/EXAMPLES, exact catalog entry, approved prose style and preceding5.1/5.2/5.3.",
+    "Browsed official Pi hardware/config, official raspi-config implementation, overlay README and Linux user interface. Downloaded NXP Rev7 PDF from official server and extracted using macOS PDFKit. RP2350 web open exceeded tool10MB limit; read official cached datasheet PDF with PDFKit, specifically12.2.10.1.2/12.2.10.1.4 target holds SCL pending software read response.",
+    "All three shell fences pass sh -n; shell commands not executed on a Pi.",
+    "Matched all forward page filenames to catalog; original circuit-i2c.svg parsed/read, QuickLook rendered and visually checked in full.",
+    "Root reports example compilation separately; this lesson adds no executable source and makes no hardware/runtime claim.",
+    "No Git/deploy/shared code writes.",
+    "Re-read root-updated AUTHORING_GUIDE canonical I2C3 contract, EXAMPLES device default and actual i2c_client.cpp /dev/i2c-3. Read official frozen overlay README and BCM2711 i2c3 alias source; independently browsed official issue4884 discussion.",
+    "All seven current shell fences pass sh -n. Balanced fences, XML-valid reused SVG, canonical local link targets audited; physical board connections unchanged.",
+    "Independent review citation repair: clock-stretch fix claim now links directly to engineer correction comment1038929049; frozen overlay README remains exact configuration source. Re-read final whole page; seven shell fences still parse."
+  ],
+  "hardware_status": "not exercised: no physical wiring, voltage measurement, SSH session, config mutation, adapter access, ACK capture or bus transfer",
+  "concerns": [
+    "Independent coordinator substantive review and final render/link checks pending.",
+    "Canonical6.2/6.3/appendixD forward links may not yet be published; accepted-only builder routes to roadmap."
+  ],
+  "status": "ready_for_independent_review"
+}

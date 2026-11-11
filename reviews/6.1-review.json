@@ -1,0 +1,63 @@
+{
+  "id": "6.1",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "c2585993f8825c84315026ae56b2cbe8d5049b09436e60bce6808ba76bf791f0",
+  "included_source_sha256": {},
+  "asset_sha256": {
+    "src/assets/circuit-i2c.svg": "dbd430c0f5c5760127c4e9fd8b4662746dc67bf2158c5fc8e4e4391aa8e832ed"
+  },
+  "reviewed_dependency_sha256": {
+    "examples/pico/i2c_target.cpp": "96f30fdfe3d1892e14fe8344d665a3eb801f6b7f09b85dd8c05487dad37c30d4",
+    "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3",
+    "examples/linux/i2c_client.cpp": "db8813bbb7207d3a42eaf90e54bf3a4c7ff8695797c41fff480debbae6e709f7"
+  },
+  "paths_read": [
+    "src/6.1-i-c-on-the-wires.md",
+    "reviews/6.1-writer.json",
+    "src/assets/circuit-i2c.svg",
+    "examples/pico/i2c_target.cpp",
+    "examples/pico/device_io.hpp",
+    "examples/linux/i2c_client.cpp",
+    ".deps/pico-sdk/src/rp2_common/pico_i2c_slave/i2c_slave.c",
+    "/tmp/hfs-review/rp2350-i2c-stretch.txt (officialrelease8 pp904\u2013906)"
+  ],
+  "sources_checked": [
+    "https://www.nxp.com/docs/en/user-guide/UM10204.pdf",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html",
+    "https://www.kernel.org/doc/html/latest/i2c/dev-interface.html",
+    "https://github.com/raspberrypi/linux/issues/4884#issuecomment-1038929049",
+    "https://github.com/raspberrypi/linux/issues/4884#issuecomment-1039409136",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm/boot/dts/overlays/i2c3-overlay.dts",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm/boot/dts/overlays/README",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi",
+    "https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf"
+  ],
+  "scope_coverage": "Electrical open-drain/pullups/rise-time/clock authority, START/STOP/address/ACK/NACK/repeatedSTART, RAM protocol registers and snapshot coherence versus transport, exact powered-off threewire table/diagram/retained circuits, source-grounded I2C3 stretch-safe controller choice, reversible config/conflict/include inspection, i2c-dev persistence/reboot, adapter identity/permissions/registered-owner checks withouttransfers, unmeasured idle and troubleshooting/cleanup/nextstate.",
+  "checks_performed": [
+    "Read complete final prose/current repaired citation and actual target/sharedDevice/Linuxclient plus pinned slave ISR. Protocol/register map and snapshot/deferredLED predictions agree.",
+    "Independently identified oldBSC1 stretching defect relevant to SDK targetRDREQ; root approved I2C3 primary beforepublication. Frozenoverlay selects controller3/pins2-3/100k, Pi4downstreamDTS aliases3 andALT5, BCM2711table94 confirmsmux. Primary engineer correction qualifies broad datasheetfix claim.",
+    "Extracted official RP2350release8 I2Csections12.2.10.1.2\u20134: actual targetSCLhold pending software/emptyTX; page explicitly avoids runtimecompatibility guarantee.",
+    "Checked officialPi1.8kboardpullups and physical3/5/6 mapping, prior officialPico pinout GP4/5physical6/7/GND8. Rendered complete reused I2C SVG and traced all3lines; noassetchange.",
+    "Compared NXP byte/ACK/data/START definitions and Linux i2c-dev/sysfs identity docs; read-onlyadapter inspection sendsnobusmessages; scan cautions accurate.",
+    "Independently parsed all7shellblocks with sh -n. Configbackup/preserveincludes/disableoldbus/modulesnoclobber/persistence/identity/conditionalgroup/reboot/rollback sequence coherent. No targetcommands executed.",
+    "Checked GitHubAPI: originalcommentanchor404; retrieved exact6by9commentIDs, samewriter corrected to1038929049, finalsource rechecked.",
+    "No program built/run thiselectricalpage; mandatoryinclude map empty. Source-derived protocol dependencies hashed separately. Root render/link/public checks precedepublication."
+  ],
+  "findings": [
+    {
+      "issue": "Provisional I2C1 config relied on legacyPi4 controller with stretching defect while actual Pico target necessarily stretches.",
+      "resolution": "Independently source-researched; root approved new I2C3 samepin route. Samewriter replaced allconfig/identity/cleanupinstructions with sourcedI2C3 and preservedphysicalwires."
+    },
+    {
+      "issue": "First engineercommentanchor did notexist (API404).",
+      "resolution": "Samewriter replaced with independently verified6by9comment1038929049; finalsource checked."
+    }
+  ],
+  "repairs": [
+    "PrimaryI2C3 configuration and reversibleconflict-aware setup by samewriter afterrootdecision.",
+    "Corrected primary engineercommentanchor by samewriter."
+  ],
+  "hardware_status": "Source/config/schematic/shell reviewed; no physical wiring, voltage, bus/ACK/clockstretch transfer, SSHconfiguration or adapteraccess measured."
+}
