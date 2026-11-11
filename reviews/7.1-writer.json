@@ -1,0 +1,92 @@
+{
+  "id": "7.1",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/6.4-compare-spi-with-a-loopback-experiment.md",
+    "src/assets/circuit-uart.svg",
+    "verification.json"
+  ],
+  "sources": [
+    "https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-uarts",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf"
+  ],
+  "scope_audit": {
+    "electrical": "Explicit unpowered transition, SPI/I2C jumper removal, retained Pico circuits, crossed TX/RX, canonical GND pins, independent USB supplies and no power-rail joins.",
+    "logic": "115200 8N1, LSB-first frame, idle/start/stop, derived periods and overhead, independent clocks, duplex/no flow control, byte stream and later framing.",
+    "progression": "No firmware install, UART configuration or data transfer on this page. Documented agreement only; 7.2 configures endpoints and verifies bytes. End state explicitly unpowered.",
+    "limits": "No measured observations; electrical runtime not exercised."
+  },
+  "code_files_read": [
+    "examples/pico/uart_echo.cpp",
+    "examples/pico/uart_device.cpp",
+    "examples/linux/serial_client.cpp",
+    "examples/linux/serial_port.hpp",
+    "examples/common/protocol.hpp"
+  ],
+  "checks_performed": [
+    "Read source contracts and verification matrix; no executable firmware included or run on electrical-only page.",
+    "Browsed official Pico 2 PDF and Pi UART documentation; fetched and extracted current official RP2350 PDF, checked chapter 12.1.3 frame, receiver timing and FIFO/error descriptions.",
+    "Parsed shared UART SVG and visually inspected complete Quick Look rendering using a temporary enlarged-viewBox preview; labels/directions/ground match prose. Shared asset unchanged.",
+    "Checked relative links against existing files or catalog future-page paths.",
+    {
+      "local_links": [
+        {
+          "target": "7.2-configure-the-pi-uart-and-test-an-echo.md",
+          "exists": false,
+          "catalog_forward_reference": true
+        },
+        {
+          "target": "6.4-compare-spi-with-a-loopback-experiment.md",
+          "exists": true,
+          "catalog_forward_reference": false
+        },
+        {
+          "target": "0.2-a-labelled-tour-of-your-pico-2.md",
+          "exists": true,
+          "catalog_forward_reference": false
+        },
+        {
+          "target": "0.3-a-labelled-tour-of-your-raspberry-pi-4.md",
+          "exists": true,
+          "catalog_forward_reference": false
+        },
+        {
+          "target": "assets/circuit-uart.svg",
+          "exists": true,
+          "catalog_forward_reference": false
+        },
+        {
+          "target": "7.2-configure-the-pi-uart-and-test-an-echo.md",
+          "exists": false,
+          "catalog_forward_reference": true
+        },
+        {
+          "target": "7.3-build-a-robust-c-serial-client.md",
+          "exists": false,
+          "catalog_forward_reference": true
+        },
+        {
+          "target": "7.4-trace-a-command-end-to-end.md",
+          "exists": false,
+          "catalog_forward_reference": true
+        },
+        {
+          "target": "7.2-configure-the-pi-uart-and-test-an-echo.md",
+          "exists": false,
+          "catalog_forward_reference": true
+        }
+      ]
+    },
+    "Repaired independent-review wording: a one-way byte observation does not establish round-trip echo, which inherently traverses both UART directions. Reread final page."
+  ],
+  "hardware_status": "Physical UART link not exercised. Compilation evidence is repository verification.json, not a new authoring run. Bit periods and levels are calculated/predicted, not measured.",
+  "concerns": [
+    "7.2\u20137.4 forward links are canonical catalog paths, pages not yet authored; accepted-only publication must route them through roadmap as usual."
+  ],
+  "status": "ready for independent review"
+}

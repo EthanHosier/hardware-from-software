@@ -1,0 +1,56 @@
+{
+  "id": "7.2",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json entry 7.2",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/5.2-verify-the-linux-development-environment.md",
+    "src/7.1-make-a-uart-link-electrically-and-logically-correct.md",
+    "src/1.3-flash-with-bootsel-and-read-output.md",
+    "scripts/setup_deps.py",
+    "examples/pico/CMakeLists.txt"
+  ],
+  "sources": [
+    "https://www.raspberrypi.com/documentation/computers/config_txt.html",
+    "https://raw.githubusercontent.com/raspberrypi/documentation/master/documentation/asciidoc/computers/configuration/interfaces.adoc",
+    "https://raw.githubusercontent.com/raspberrypi/documentation/master/documentation/asciidoc/computers/configuration/reference.adoc",
+    "https://raw.githubusercontent.com/raspberrypi/firmware/master/boot/overlays/README",
+    "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html",
+    "https://github.com/raspberrypi/pico-sdk/blob/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_uart/include/hardware/uart.h"
+  ],
+  "scope_audit": {
+    "uart_route": "Pi4 PL011 UART0, disable-bt and hciuart stop/disable; serial0 must resolve ttyAMA0",
+    "boot_edits": "Backups and original services recorded; include/conditional awareness; preserve one-line cmdline unrelated tokens; reboot and ownership checks",
+    "electrical": "7.1 alignment checked; safe detached programming; both off before three-wire reconnection; retained LED/button; no joined rails; probe disconnected",
+    "echo": "Actual full firmware include; bounded pure-Python tty/termios diagnostic explicitly sets CREAD|CLOCAL, 115200/8N1, clears all software/hardware flow control, handles partial I/O and absolute deadline, restores prior settings",
+    "progression": "Leaves uart_echo installed and stable route for explicit later replacement; serial_client not misused"
+  },
+  "code_files_read": [
+    "examples/pico/uart_echo.cpp",
+    "examples/pico/CMakeLists.txt",
+    ".deps/pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h"
+  ],
+  "checks_performed": [
+    "Read full authoring guide, plan, examples, assigned catalog entry, style exemplar and current 7.1",
+    "Browsed official current Pi UART source after rendered configuration page fetch timed out; checked overlay README and SDK UART API plus pinned installed header",
+    "Python heredoc AST parse passed",
+    "Top-level full firmware include and balanced fences verified",
+    "Local links checked: 7.1/5.2 present; 7.3 pending authoring/catalog canonical destination",
+    "Same-writer root-review repair: replaced GNU stty subprocess with explicit Python tty/termios configuration including receiver-enable CREAD; no configuration shim needed. Exact extracted heredoc tested with only device path substitution on macOS PTY: fragmented 20-byte echo, real five-second silent-peer deadline, unexpected extra-byte rejection, inherited IXON/IXOFF/IXANY and CREAD-off correction. Live settings asserted for CREAD/CLOCAL/CS8/parity/stop/CRTSCTS/baud. Prior settings restored on success and failures; comparison ignores macOS kernel PENDIN flag only.",
+    "Root source-link review: HTTP403 prevented checking SDK generated-page anchor. Both UART API references now use the official pinned SDK commit hardware_uart header, already inspected locally, avoiding an unverified fragment."
+  ],
+  "hardware_status": {
+    "firmware": "Existing root compilation evidence; not rebuilt by this writer",
+    "pi_boot_configuration": "Source-reviewed only, no actual Pi edits/run",
+    "uart_link": "Physical runtime not exercised",
+    "diagnostic": "Exact extracted diagnostic PTY logic/configuration tested on macOS; Pi GPIO/physical runtime not exercised"
+  },
+  "concerns": [
+    "Independent reviewer must verify command/config preservation and rendered code fence.",
+    "Boot restores describe standard Bookworm paths and explicitly require backing up/restoring alternate cmdline and included files if customized.",
+    "No physical transfer logs are claimed."
+  ],
+  "status": "ready_for_independent_review"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "7.1",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "9b9c41888f373d350fc623c2208925ec9a92cf962b8bd5ceac85411a8fe2632b",
+  "included_source_sha256": {},
+  "asset_sha256": {
+    "src/assets/circuit-uart.svg": "128a4c30917db9187fe77ce7b1fa7ad80fb08c6a4ccc80a6086cdf7420e45f4b"
+  },
+  "reviewed_dependency_sha256": {
+    "examples/pico/uart_echo.cpp": "2618e59b8c32af73960b16a7797af6ccea5f701842fbe12307a1f4dcd0735f95",
+    "examples/pico/uart_device.cpp": "f352a466e6a3bd7c58b9305feab5f50b7a41d550c0a0cd32c9e7e78b00e9c977",
+    "examples/common/protocol.hpp": "77c7529b2f7758a3e784c5752eaca01f377d67e6f672263c3cf6e5104bba8be7"
+  },
+  "paths_read": [
+    "src/7.1-make-a-uart-link-electrically-and-logically-correct.md",
+    "reviews/7.1-writer.json",
+    "src/assets/circuit-uart.svg",
+    "examples/pico/uart_echo.cpp",
+    "examples/pico/uart_device.cpp",
+    "examples/common/protocol.hpp",
+    "/tmp/hfs-review/rp2350-uart-frame.txt (official PDF pages874\u2013876)",
+    "verification.json"
+  ],
+  "sources_checked": [
+    "https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-uarts",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf"
+  ],
+  "scope_coverage": "Unpowered transition from SPI/I2C, exact crossed TX/RX and common ground table/diagram with retained local circuits, independent supplies and voltage/RS232/USB distinctions, asynchronous 8N1 bit order/frame and calculated timing, duplex/no flow control agreement, byte stream versus application framing, Pi UART ownership context, explicit no transfer/configuration yet, symptom interpretation and unpowered next state.",
+  "checks_performed": [
+    "Read all final prose and actual echo/device/protocol sources; UART settings and example request/reply match. Echo has no USB stdio or diagnostics, explicitly qualified in page.",
+    "Independently extracted and read official RP2350 UART transmission/receiver/character-frame sections; LSB-first, idle/start/stop, timing and finite-buffer claims agree. Recalculated 1/115200 and ten-bit overhead (11520 bytes/s ideal per direction).",
+    "Browsed official Pi UART configuration for 3.3V levels, Pi4 PL011/mini-UART mapping, serial0 alias and console/Bluetooth ownership. Existing independently reviewed official Pico/Pi pinouts support all physical positions.",
+    "Rendered complete shared UART SVG using a temporary square viewport retaining original viewBox. Traced both opposing TX-to-RX paths and ground; all labels visible and match table.",
+    "Rechecked same-writer repaired row: observed one-way bytes do not establish a return path, and successful round-trip echo uses both directions.",
+    "No executable include needed for this electrical-only lesson. Forward pages are canonical catalog links; root rendered/link/public checks precede publication.",
+    "Waited for root current shared-serial flow-control fix CI43079878334 success before acceptance/archive publication; no physical test inferred from that evidence."
+  ],
+  "findings": [
+    {
+      "issue": "Troubleshooting originally described an echo working only one way, although round-trip echo requires both paths.",
+      "resolution": "Same dedicated writer distinguished independently observed one-way bytes from failed round-trip echo; final row reread."
+    }
+  ],
+  "repairs": [
+    "Clarified one-way observation versus round-trip echo by the same writer."
+  ],
+  "hardware_status": "Source, physical pin map, diagram and calculated frame timing reviewed. No powered UART, configuration, transfer, voltage or physical observation exercised."
+}

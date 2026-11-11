@@ -1,0 +1,69 @@
+{
+  "id": "7.2",
+  "reviewer": "independent root",
+  "status": "accepted_source_review",
+  "canonical_sha256": "1dd6c60851edeacb17a50a21458df5c535fc591d55f66b3e6d8cb46848fe0664",
+  "included_source_sha256": {
+    "examples/pico/uart_echo.cpp": "2618e59b8c32af73960b16a7797af6ccea5f701842fbe12307a1f4dcd0735f95"
+  },
+  "asset_sha256": {},
+  "reviewed_dependency_sha256": {
+    "examples/pico/CMakeLists.txt": "82d60c4334f09dd190517c58d9331d3e5fd78d2a11855a790f8aaaea636fecc6"
+  },
+  "paths_read": [
+    "src/7.2-configure-the-pi-uart-and-test-an-echo.md",
+    "reviews/7.2-writer.json",
+    "examples/pico/uart_echo.cpp",
+    "examples/pico/CMakeLists.txt",
+    "scripts/build_examples.py"
+  ],
+  "sources_checked": [
+    "https://raw.githubusercontent.com/raspberrypi/documentation/master/documentation/asciidoc/computers/configuration/interfaces.adoc",
+    "https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-uarts",
+    "https://www.freedesktop.org/software/systemd/man/latest/systemd-getty-generator.html",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_uart/include/hardware/uart.h",
+    "https://docs.python.org/3.11/library/tty.html",
+    "https://docs.python.org/3.11/library/termios.html",
+    "https://docs.python.org/3.11/library/select.html#select.select"
+  ],
+  "scope_coverage": "Explicit Pi4 PL011/disable-bt/hciuart and kernel/getty console ownership, actual serial0 resolution and permissions, preserved boot/service state and reversible edits, exact UART echo source/build/isolated programming, safe wiring restoration, bounded raw binary roundtrip diagnostic with cleanup and next state.",
+  "checks_performed": [
+    "Read entire prose, firmware, shared CMake/buildscript and every shell/Python command. All shell fences sh -n pass and Python parses.",
+    "Verified primary Pi routing documentation and systemd getty generator console relationship; commands preserve unrelated boot arguments, included/alternate config and recorded service states.",
+    "Original firmware hash agrees with existing Pico2 compilation evidence. No USB greeting or local GPIO operation claimed.",
+    "Executed exact extracted diagnostic with only device path substituted against macOS PTYs: fragmented exact20-byte echo, corrupted data, extra data, and actual5second silent-peer deadline all behave as documented. Checked receiver enabled and software-flow flags cleared.",
+    "All4PTY cases restore saved configuration; comparison masks only macOS driver PENDIN transient bit. These tests do not establish Pi routing or physical UART operation.",
+    "Reread SAME-writer CREAD/purePython repair and pinned API link replacements; final tested embedded code matches current canonical Markdown byte-for-byte."
+  ],
+  "diagnostic_host_cases": [
+    {
+      "case": "fragmented",
+      "status": "pass",
+      "restored_configuration": true
+    },
+    {
+      "case": "corrupted",
+      "status": "pass",
+      "restored_configuration": true
+    },
+    {
+      "case": "extra",
+      "status": "pass",
+      "restored_configuration": true
+    },
+    {
+      "case": "timeout",
+      "status": "pass",
+      "restored_configuration": true
+    }
+  ],
+  "findings": [
+    "Initial stty diagnostic did not explicitly enable the receiver, allowing inherited CREAD-off state to break echo.",
+    "Generated SDK anchor was unverified."
+  ],
+  "repairs": [
+    "Original writer replaced stty with portable tty/termios setup explicitly enabling CREAD and setting flow/frame/speed state; root independently host-tested exact repaired code.",
+    "Original writer replaced both anchors with browsed official pinned UART header."
+  ],
+  "hardware_status": "Firmware previously target-compiled; diagnostic host-PTY tested. Pi boot edits, routing, physical flash/wiring/UART echo not exercised."
+}

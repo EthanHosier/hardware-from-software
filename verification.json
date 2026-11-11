@@ -1,6 +1,6 @@
 {
   "status": "authoring in progress",
-  "recorded_at": "2026-11-11T08:24:57.272665+00:00",
+  "recorded_at": "2026-11-11T18:40:57.342869+00:00",
   "baseline": {
     "pico_sdk": "2.3.1",
     "pico_sdk_commit": "079c6f39023649b154152db30f1d781e884879bc",
@@ -15,17 +15,18 @@
     "pico_targets": 12,
     "pico_compile": "passed",
     "host_protocol": "passed normal and ASan/UBSan",
-    "serial_pty_cases": 10,
-    "serial_pty": "passed",
+    "serial_pty_cases": 11,
+    "serial_pty": "passed including inherited IXON/IXOFF/IXANY clearing; macOS and Linux CI",
     "linux_arm64_cross_compile": "passed all seven applications (Zig0.14.1, Debian6.12.113 UAPI headers)",
-    "ci_url": "https://github.com/EthanHosier/hardware-from-software/actions/runs/42986688767",
-    "ci_commit": "c947977b7b3b70e20122552589fc04b33f304d7e",
+    "ci_url": "https://github.com/EthanHosier/hardware-from-software/actions/runs/43079878334",
+    "ci_commit": "c1af40cc8926c53e9630c42ab41403bc7ae2831c",
     "ci_result": "success",
     "ci_scope": "Linux host tests plus native Arm64 application and exact Pi kernel module compilation and DT overlay compilation",
     "i2c_pull_configuration_rebuild": "passed: i2c_target and bme280_i2c compiled/linked after explicitly disabling internal pulls; external board pull-ups retained",
     "example_archive": "Extracted independently: complete shared headers; host builds and normal/sanitized protocol tests pass",
     "kernel_failure_unwind": "LED low after IRQ/work cancellation on misc registration failure; source-reviewed and native Pi-header compiled, physical failure path not exercised",
-    "i2c_client_errors": "System errors capture errno at failure; semantic and partial-transfer errors independent; default I2C3 on Pi4. Native Linux and Arm64 CI compilation passed; physical bus untested."
+    "i2c_client_errors": "System errors capture errno at failure; semantic and partial-transfer errors independent; default I2C3 on Pi4. Native Linux and Arm64 CI compilation passed; physical bus untested.",
+    "serial_flow_control": "Explicitly clear inherited software-flow flags after cfmakeraw. Both header consumers compile on Mac; all native Linux/Arm64 applications and exact Pi-header modules pass CI."
   },
   "physical_runtime": "not exercised; no verified connection to boards",
   "limitations": [
@@ -50,7 +51,7 @@
     "examples/pico/button_irq.cpp": "98d5d773a21da23cac0a6c4eb618907e20ed5d02eb8c5986fc7aa9b67554feff",
     "examples/common/protocol.hpp": "77c7529b2f7758a3e784c5752eaca01f377d67e6f672263c3cf6e5104bba8be7",
     "examples/common/protocol_test.cpp": "c1e4da87336405a1ed37418af143249139b89fc6509e5969070da36daa9e6a03",
-    "examples/linux/serial_port.hpp": "647c34f36cef360eef38a95e965c70f678539f0beaf80571dff8023730391798",
+    "examples/linux/serial_port.hpp": "eb2a42df5baa75b6178f3d5b4cdc7aeddb0711e1cd0b5f43341698d5d3ce4e22",
     "examples/linux/gpio_events.cpp": "f7b0b37cfc082c0c3c5456bd237488a3aaecae597ea6d7715f9de57c6fb541d8",
     "examples/linux/memory_lab.cpp": "40eb02398993a0617f2b3a596ca77b467685cb1e61881c81047e3f89a2569fee",
     "examples/linux/hello.cpp": "0783b109723dac17e451051e0754e122b02c323970e626b0a6086eb11a045156",

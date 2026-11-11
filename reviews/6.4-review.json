@@ -33,7 +33,8 @@
     "Read official RP2350 cachedPDF SPI12.3.4.9/10 pages950/951: polarity0 rests low, phase0 firstedge sample, capture rising/change falling. Closed writer PDF clock-format concern.",
     "Reviewed physical pin map, source and SVG labels; visually inspected whole SVG in browser at localhost, no overlaps or clipping.",
     "All three shell blocks pass sh -n; full include unindented, CMake links and build outputs match.",
-    "Exact source hash remains within existing recorded Pico2 compilation evidence; no unchanged build repeated."
+    "Exact source hash remains within existing recorded Pico2 compilation evidence; no unchanged build repeated.",
+    "After publication, read rendered browser paragraph: screen quit shortcut displays one literal backslash correctly."
   ],
   "findings": [],
   "repairs": [],
