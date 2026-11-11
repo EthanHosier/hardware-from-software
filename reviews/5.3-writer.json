@@ -1,0 +1,52 @@
+{
+  "id": "5.3",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json (5.3 entry)",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/5.1-prepare-raspberry-pi-os-and-ssh.md",
+    "src/5.2-verify-the-linux-development-environment.md",
+    "examples/linux/gpio_events.cpp"
+  ],
+  "sources": [
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#40-pin-gpio-header",
+    "https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-reduced-schematics.pdf",
+    "https://www.kernel.org/doc/html/latest/userspace-api/gpio/chardev.html",
+    "https://www.kernel.org/doc/html/latest/userspace-api/gpio/sysfs.html",
+    "https://www.kernel.org/doc/html/latest/driver-api/pin-control.html",
+    "https://libgpiod.readthedocs.io/en/v2.3.1/gpio_tools.html",
+    "https://libgpiod.readthedocs.io/en/v2.3.1/gpioinfo.html",
+    "https://kernel.googlesource.com/pub/scm/libs/libgpiod/libgpiod/+/d0a9ddcb9cfe199cffcb6946dcc8b6e358b128ff/tools/gpioinfo.c",
+    "https://packages.debian.org/bookworm/gpiod",
+    "https://packages.debian.org/bookworm/acl",
+    "https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-uarts"
+  ],
+  "scope_audit": {
+    "physical_state": "Pi header unwired throughout; Pico retained circuit unplugged and separate",
+    "identity": "Physical/BCM/chip offset/legacy global distinctions, full 40-contact oriented SVG and relevant table",
+    "inspection": "Install gpiod and acl; actual OS/kernel, versions, nodes, chip labels and line metadata recorded; no fixed chip index",
+    "ownership": "Used state and consumers, alternate mux ownership, boot/service/debugfs read-only inspection, permissions and groups",
+    "versioning": "Separate documented CLI1/CLI2 chip syntax; kernel GPIOv2 C++ independent",
+    "progression": "No electrical reads, requests or output changes; later gpio_events.cpp identified but not run; next6.1 state explicit",
+    "i2c_labels": "SDA1/SCL1 explicitly describe familiar alternate-function labels, not a controller commitment; later6.1 selects actual controller/routing on the same BCM2/3 physical contacts."
+  },
+  "code_files_read": [
+    "examples/linux/gpio_events.cpp"
+  ],
+  "checks_performed": [
+    "Browsed official Pi schematic/header/UART, kernel GPIO/pinctrl/sysfs, upstream libgpiod source/manual and Debian package docs",
+    "Parsed all shell fences with bash -n (syntax only; commands not executed on Pi)",
+    "Checked Markdown fence parity and local or catalogued forward-link targets",
+    "Parsed SVG XML; rendered Quick Look preview and visually inspected all forty labels, orientation and layout",
+    "Same writer reread complete page after root-requested SDA1/SCL1 clarification; diagram physical identity remains unchanged"
+  ],
+  "hardware_status": "Physical runtime not exercised. No Pi reachable or commanded during authoring; no OS/kernel, ownership or electrical output fabricated.",
+  "concerns": [
+    "Forward8.1 page is catalogued but currently absent; accepted-only builder should route this link to roadmap until published",
+    "Optional pinctrl debugfs ownership inspection may be unavailable; page treats that as unknown, not proof of availability",
+    "Root acceptance pending same-page clarification recheck; no physical runtime exercised"
+  ],
+  "status": "ready_for_independent_review"
+}

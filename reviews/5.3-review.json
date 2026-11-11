@@ -1,0 +1,42 @@
+{
+  "id": "5.3",
+  "reviewer": "independent root",
+  "status": "accepted_source_review",
+  "canonical_sha256": "00ce80a426aba24e5198ab7d40354bb185b88c605474e4ce9bbdc00ebd521eda",
+  "included_source_sha256": {},
+  "asset_sha256": {
+    "src/assets/5.3-pi-header-identity.svg": "6e089b0063838ad8d34079b6d60bf92d9d6f535a182965370905f618058c39f5"
+  },
+  "paths_read": [
+    "src/5.3-establish-gpio-identity-and-ownership.md",
+    "src/assets/5.3-pi-header-identity.svg",
+    "reviews/5.3-writer.json",
+    "examples/linux/gpio_events.cpp",
+    "src/0.3-a-labelled-tour-of-your-raspberry-pi-4.md"
+  ],
+  "sources_checked": [
+    "https://libgpiod.readthedocs.io/en/v2.3.1/gpio_tools.html",
+    "https://libgpiod.readthedocs.io/en/v2.3.1/gpioinfo.html",
+    "https://kernel.googlesource.com/pub/scm/libs/libgpiod/libgpiod/+/d0a9ddcb9cfe199cffcb6946dcc8b6e358b128ff/tools/gpioinfo.c",
+    "https://www.kernel.org/doc/html/latest/userspace-api/gpio/chardev.html",
+    "https://www.kernel.org/doc/html/latest/driver-api/pin-control.html",
+    "https://packages.debian.org/bookworm/gpiod",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#40-pin-gpio-header",
+    "https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-uarts"
+  ],
+  "scope_coverage": "Physical/BCM/controller-local/global numbering, full oriented forty-pin map, actual chip discovery without fixed index, CLI version branches, consumer versus mux ownership, permission/ACL checks, no line requests or wiring, saved inventory and repeat-discovery progression.",
+  "checks_performed": [
+    "Read every paragraph, actual GPIO example and SVG labels; commands inspect metadata without requests.",
+    "Browsed upstream CLI1 source/help and CLI2 manual and Bookworm package; paths and no-argument all-chip inventories agree.",
+    "Checked all forty physical labels against canonical Pi header map and earlier reviewed orientation; visually inspected complete SVG in browser at localhost with no clipping/overlap.",
+    "Parsed all 9 shell blocks with sh -n; no Pi commands executed.",
+    "Checked alternate-function labels distinguish later I2C3 routing after SAME-writer clarification."
+  ],
+  "findings": [
+    "SDA1/SCL1 labels could imply enabling old I2C1 despite later I2C3 choice."
+  ],
+  "repairs": [
+    "Original writer added explicit alternate-function/controller distinction and cross-reference; root reread change."
+  ],
+  "hardware_status": "Source and command syntax reviewed; physical Pi inventory, permissions, electrical levels and requests not exercised."
+}

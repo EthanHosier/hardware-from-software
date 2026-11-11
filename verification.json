@@ -1,6 +1,6 @@
 {
   "status": "authoring in progress",
-  "recorded_at": "2026-11-10T22:00:10.971009+00:00",
+  "recorded_at": "2026-11-11T08:19:00.210038+00:00",
   "baseline": {
     "pico_sdk": "2.3.1",
     "pico_sdk_commit": "079c6f39023649b154152db30f1d781e884879bc",
@@ -18,13 +18,14 @@
     "serial_pty_cases": 10,
     "serial_pty": "passed",
     "linux_arm64_cross_compile": "passed all seven applications (Zig0.14.1, Debian6.12.113 UAPI headers)",
-    "ci_url": "https://github.com/EthanHosier/hardware-from-software/actions/runs/42910194223",
-    "ci_commit": "544c55d99dc4a91cf2246a638f9cc0d9ad1db44e",
+    "ci_url": "https://github.com/EthanHosier/hardware-from-software/actions/runs/42985865933",
+    "ci_commit": "e271c4d2ce68af216e9313d199af6120046eb27e",
     "ci_result": "success",
     "ci_scope": "Linux host tests plus native Arm64 application and exact Pi kernel module compilation and DT overlay compilation",
     "i2c_pull_configuration_rebuild": "passed: i2c_target and bme280_i2c compiled/linked after explicitly disabling internal pulls; external board pull-ups retained",
     "example_archive": "Extracted independently: complete shared headers; host builds and normal/sanitized protocol tests pass",
-    "kernel_failure_unwind": "LED low after IRQ/work cancellation on misc registration failure; source-reviewed and native Pi-header compiled, physical failure path not exercised"
+    "kernel_failure_unwind": "LED low after IRQ/work cancellation on misc registration failure; source-reviewed and native Pi-header compiled, physical failure path not exercised",
+    "i2c_client_errors": "System errors capture errno at failure; semantic and partial-transfer errors independent; default I2C3 on Pi4. Native Linux and Arm64 CI compilation passed; physical bus untested."
   },
   "physical_runtime": "not exercised; no verified connection to boards",
   "limitations": [
@@ -55,7 +56,7 @@
     "examples/linux/hello.cpp": "0783b109723dac17e451051e0754e122b02c323970e626b0a6086eb11a045156",
     "examples/linux/button_client.cpp": "6fb622fc3381b364ecc6bfc4fd0d8fbe3b1398dbb7a1ca47b3e6828270df6953",
     "examples/linux/serial_client.cpp": "fd54040d11499427d4a53e621fcf08000b88c4724eb5ee2cac5dd9cbc62fb70c",
-    "examples/linux/i2c_client.cpp": "609cc80acdfcdbb4becfdf39ced86cfbf6131ca6fd58c48f1eac43e1f17df92a",
+    "examples/linux/i2c_client.cpp": "db8813bbb7207d3a42eaf90e54bf3a4c7ff8695797c41fff480debbae6e709f7",
     "examples/linux/capstone.cpp": "3d15054e1a69c0db4769a9cd7f2c2d9caf6836a2931c76a6b4de3590e7b98dc2",
     "examples/kernel/mmio_fragment.c": "eaefa54f3dad35d5bfd31a6bacd778bbca31856a08a1ba1dfa23c4383bfddfb4",
     "examples/kernel/hello.c": "1a51bf1108031b6014c6e8496aef2b2500900a958fa4b6559524741e671c328a",

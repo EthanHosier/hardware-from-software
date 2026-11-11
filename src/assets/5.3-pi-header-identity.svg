@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="900" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+<title id="title">Pi 4 header identity, top view rotated with USB and Ethernet end below</title>
+<desc id="desc">All forty physical pins. Odd numbered pins are the left column toward board interior; even numbered pins are the right column toward board edge. Pin one is at the wireless and microSD end. No wires are attached.</desc>
+<rect width="700" height="900" fill="#f7fafc"/>
+<g font-family="system-ui,sans-serif" fill="#14283e">
+<text x="350" y="32" text-anchor="middle" font-size="23" font-weight="bold">Pi 4 — empty 40-pin header</text>
+<text x="350" y="60" text-anchor="middle" font-size="16">Top view, rotated: wireless / microSD end above</text>
+<text x="110" y="91" font-size="15">Board interior ←</text>
+<text x="453" y="91" font-size="15">→ Outer board edge</text>
+<rect x="276" y="106" width="148" height="700" rx="10" fill="#263749"/>
+<rect x="297" y="113" width="26" height="26" fill="#e19b87"/>
+<text x="310" y="131" text-anchor="middle" font-size="13" font-weight="bold">1</text>
+<text x="267" y="131" text-anchor="end" font-size="16">3V3</text>
+<circle cx="390" cy="126" r="13" fill="#e19b87"/>
+<text x="390" y="131" text-anchor="middle" font-size="13" font-weight="bold">2</text>
+<text x="433" y="131" text-anchor="start" font-size="16">5V</text>
+<circle cx="310" cy="160" r="13" fill="#e8c46c"/>
+<text x="310" y="165" text-anchor="middle" font-size="13" font-weight="bold">3</text>
+<text x="267" y="165" text-anchor="end" font-size="16">BCM2 / SDA1</text>
+<circle cx="390" cy="160" r="13" fill="#e19b87"/>
+<text x="390" y="165" text-anchor="middle" font-size="13" font-weight="bold">4</text>
+<text x="433" y="165" text-anchor="start" font-size="16">5V</text>
+<circle cx="310" cy="194" r="13" fill="#e8c46c"/>
+<text x="310" y="199" text-anchor="middle" font-size="13" font-weight="bold">5</text>
+<text x="267" y="199" text-anchor="end" font-size="16">BCM3 / SCL1</text>
+<circle cx="390" cy="194" r="13" fill="#b8c2cb"/>
+<text x="390" y="199" text-anchor="middle" font-size="13" font-weight="bold">6</text>
+<text x="433" y="199" text-anchor="start" font-size="16">GND</text>
+<circle cx="310" cy="228" r="13" fill="#e8c46c"/>
+<text x="310" y="233" text-anchor="middle" font-size="13" font-weight="bold">7</text>
+<text x="267" y="233" text-anchor="end" font-size="16">BCM4</text>
+<circle cx="390" cy="228" r="13" fill="#e8c46c"/>
+<text x="390" y="233" text-anchor="middle" font-size="13" font-weight="bold">8</text>
+<text x="433" y="233" text-anchor="start" font-size="16">BCM14 / TX later</text>
+<circle cx="310" cy="262" r="13" fill="#b8c2cb"/>
+<text x="310" y="267" text-anchor="middle" font-size="13" font-weight="bold">9</text>
+<text x="267" y="267" text-anchor="end" font-size="16">GND</text>
+<circle cx="390" cy="262" r="13" fill="#e8c46c"/>
+<text x="390" y="267" text-anchor="middle" font-size="13" font-weight="bold">10</text>
+<text x="433" y="267" text-anchor="start" font-size="16">BCM15 / RX later</text>
+<circle cx="310" cy="296" r="13" fill="#e8c46c"/>
+<text x="310" y="301" text-anchor="middle" font-size="13" font-weight="bold">11</text>
+<text x="267" y="301" text-anchor="end" font-size="16">BCM17 / LED later</text>
+<circle cx="390" cy="296" r="13" fill="#e8c46c"/>
+<text x="390" y="301" text-anchor="middle" font-size="13" font-weight="bold">12</text>
+<text x="433" y="301" text-anchor="start" font-size="16">BCM18</text>
+<circle cx="310" cy="330" r="13" fill="#e8c46c"/>
+<text x="310" y="335" text-anchor="middle" font-size="13" font-weight="bold">13</text>
+<text x="267" y="335" text-anchor="end" font-size="16">BCM27 / button later</text>
+<circle cx="390" cy="330" r="13" fill="#b8c2cb"/>
+<text x="390" y="335" text-anchor="middle" font-size="13" font-weight="bold">14</text>
+<text x="433" y="335" text-anchor="start" font-size="16">GND</text>
+<circle cx="310" cy="364" r="13" fill="#e8c46c"/>
+<text x="310" y="369" text-anchor="middle" font-size="13" font-weight="bold">15</text>
+<text x="267" y="369" text-anchor="end" font-size="16">BCM22</text>
+<circle cx="390" cy="364" r="13" fill="#e8c46c"/>
+<text x="390" y="369" text-anchor="middle" font-size="13" font-weight="bold">16</text>
+<text x="433" y="369" text-anchor="start" font-size="16">BCM23</text>
+<circle cx="310" cy="398" r="13" fill="#e19b87"/>
+<text x="310" y="403" text-anchor="middle" font-size="13" font-weight="bold">17</text>
+<text x="267" y="403" text-anchor="end" font-size="16">3V3</text>
+<circle cx="390" cy="398" r="13" fill="#e8c46c"/>
+<text x="390" y="403" text-anchor="middle" font-size="13" font-weight="bold">18</text>
+<text x="433" y="403" text-anchor="start" font-size="16">BCM24</text>
+<circle cx="310" cy="432" r="13" fill="#e8c46c"/>
+<text x="310" y="437" text-anchor="middle" font-size="13" font-weight="bold">19</text>
+<text x="267" y="437" text-anchor="end" font-size="16">BCM10</text>
+<circle cx="390" cy="432" r="13" fill="#b8c2cb"/>
+<text x="390" y="437" text-anchor="middle" font-size="13" font-weight="bold">20</text>
+<text x="433" y="437" text-anchor="start" font-size="16">GND</text>
+<circle cx="310" cy="466" r="13" fill="#e8c46c"/>
+<text x="310" y="471" text-anchor="middle" font-size="13" font-weight="bold">21</text>
+<text x="267" y="471" text-anchor="end" font-size="16">BCM9</text>
+<circle cx="390" cy="466" r="13" fill="#e8c46c"/>
+<text x="390" y="471" text-anchor="middle" font-size="13" font-weight="bold">22</text>
+<text x="433" y="471" text-anchor="start" font-size="16">BCM25</text>
+<circle cx="310" cy="500" r="13" fill="#e8c46c"/>
+<text x="310" y="505" text-anchor="middle" font-size="13" font-weight="bold">23</text>
+<text x="267" y="505" text-anchor="end" font-size="16">BCM11</text>
+<circle cx="390" cy="500" r="13" fill="#e8c46c"/>
+<text x="390" y="505" text-anchor="middle" font-size="13" font-weight="bold">24</text>
+<text x="433" y="505" text-anchor="start" font-size="16">BCM8</text>
+<circle cx="310" cy="534" r="13" fill="#b8c2cb"/>
+<text x="310" y="539" text-anchor="middle" font-size="13" font-weight="bold">25</text>
+<text x="267" y="539" text-anchor="end" font-size="16">GND</text>
+<circle cx="390" cy="534" r="13" fill="#e8c46c"/>
+<text x="390" y="539" text-anchor="middle" font-size="13" font-weight="bold">26</text>
+<text x="433" y="539" text-anchor="start" font-size="16">BCM7</text>
+<circle cx="310" cy="568" r="13" fill="#e8c46c"/>
+<text x="310" y="573" text-anchor="middle" font-size="13" font-weight="bold">27</text>
+<text x="267" y="573" text-anchor="end" font-size="16">BCM0 / ID_SD</text>
+<circle cx="390" cy="568" r="13" fill="#e8c46c"/>
+<text x="390" y="573" text-anchor="middle" font-size="13" font-weight="bold">28</text>
+<text x="433" y="573" text-anchor="start" font-size="16">BCM1 / ID_SC</text>
+<circle cx="310" cy="602" r="13" fill="#e8c46c"/>
+<text x="310" y="607" text-anchor="middle" font-size="13" font-weight="bold">29</text>
+<text x="267" y="607" text-anchor="end" font-size="16">BCM5</text>
+<circle cx="390" cy="602" r="13" fill="#b8c2cb"/>
+<text x="390" y="607" text-anchor="middle" font-size="13" font-weight="bold">30</text>
+<text x="433" y="607" text-anchor="start" font-size="16">GND</text>
+<circle cx="310" cy="636" r="13" fill="#e8c46c"/>
+<text x="310" y="641" text-anchor="middle" font-size="13" font-weight="bold">31</text>
+<text x="267" y="641" text-anchor="end" font-size="16">BCM6</text>
+<circle cx="390" cy="636" r="13" fill="#e8c46c"/>
+<text x="390" y="641" text-anchor="middle" font-size="13" font-weight="bold">32</text>
+<text x="433" y="641" text-anchor="start" font-size="16">BCM12</text>
+<circle cx="310" cy="670" r="13" fill="#e8c46c"/>
+<text x="310" y="675" text-anchor="middle" font-size="13" font-weight="bold">33</text>
+<text x="267" y="675" text-anchor="end" font-size="16">BCM13</text>
+<circle cx="390" cy="670" r="13" fill="#b8c2cb"/>
+<text x="390" y="675" text-anchor="middle" font-size="13" font-weight="bold">34</text>
+<text x="433" y="675" text-anchor="start" font-size="16">GND</text>
+<circle cx="310" cy="704" r="13" fill="#e8c46c"/>
+<text x="310" y="709" text-anchor="middle" font-size="13" font-weight="bold">35</text>
+<text x="267" y="709" text-anchor="end" font-size="16">BCM19</text>
+<circle cx="390" cy="704" r="13" fill="#e8c46c"/>
+<text x="390" y="709" text-anchor="middle" font-size="13" font-weight="bold">36</text>
+<text x="433" y="709" text-anchor="start" font-size="16">BCM16</text>
+<circle cx="310" cy="738" r="13" fill="#e8c46c"/>
+<text x="310" y="743" text-anchor="middle" font-size="13" font-weight="bold">37</text>
+<text x="267" y="743" text-anchor="end" font-size="16">BCM26</text>
+<circle cx="390" cy="738" r="13" fill="#e8c46c"/>
+<text x="390" y="743" text-anchor="middle" font-size="13" font-weight="bold">38</text>
+<text x="433" y="743" text-anchor="start" font-size="16">BCM20</text>
+<circle cx="310" cy="772" r="13" fill="#b8c2cb"/>
+<text x="310" y="777" text-anchor="middle" font-size="13" font-weight="bold">39</text>
+<text x="267" y="777" text-anchor="end" font-size="16">GND</text>
+<circle cx="390" cy="772" r="13" fill="#e8c46c"/>
+<text x="390" y="777" text-anchor="middle" font-size="13" font-weight="bold">40</text>
+<text x="433" y="777" text-anchor="start" font-size="16">BCM21</text>
+<text x="350" y="840" text-anchor="middle" font-size="16">USB / Ethernet end below · square marks physical pin 1</text>
+<text x="350" y="871" text-anchor="middle" font-size="16">BCM labels identify signals, not Linux chip device numbers.</text>
+</g></svg>
