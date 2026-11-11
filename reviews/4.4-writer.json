@@ -1,0 +1,65 @@
+{
+  "id": "4.4",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/3.1-attach-the-debug-probe-over-swd.md",
+    "src/3.2-load-the-elf-and-step-through-the-led-write.md",
+    "src/4.2-configure-and-acknowledge-a-gpio-interrupt.md",
+    "src/assets/circuit-pico-button.svg",
+    "src/assets/3.1-swd-connections.svg",
+    "scripts/build_examples.py",
+    "verification.json",
+    "/tmp/hfs-review/cortex-m33-guide.txt"
+  ],
+  "sources": [
+    "https://documentation-service.arm.com/static/641b2ec1de84571cc27f3ca3",
+    "https://documentation-service.arm.com/static/64c7832738511951cb7a246e",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://sourceware.org/gdb/current/onlinedocs/gdb.html/Set-Breaks.html",
+    "https://sourceware.org/gdb/current/onlinedocs/gdb.html/Memory.html",
+    "https://sourceware.org/gdb/current/onlinedocs/gdb.html/Continuing-and-Stepping.html",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_irq/irq.c",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/2.3.1/src/rp2350/hardware_regs/include/hardware/regs/intctrl.h",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/2.3.1/src/rp2350/hardware_regs/include/hardware/regs/m33.h"
+  ],
+  "scope_audit": {
+    "owned_files": [
+      "src/4.4-inspect-exception-entry-and-return.md",
+      "src/assets/4.4-exception-path.svg",
+      "reviews/4.4-writer.json"
+    ],
+    "practical": "Full canonical source top-level include; unchanged button/LED/SWD wiring, tables and shared diagrams; checkout-relative Mac tool commands; cm0 OpenOCD and matching ELF reset/load/reset; exact instruction-address hardware breakpoint, source/prologue distinction.",
+    "frame": "Decode EXC_RETURN before memory reads; same Secure basic Thread MSP or qualified exposed Secure PSP only; live xPSR-derived IPSR vs stacked IPSR; interrupted LR, return PC, xPSR, alignment padding and reconstructed pre-exception SP. Extended FP, lazy saving, security and nested-handler cases explicitly stop recipe; no imported M4 FP offset.",
+    "controller_and_return": "Runtime Secure VTOR entry37, GPIO INTR2/PROC0_INTS2, NVIC IRQ21 pending vs active; actual leaf ELF instructions, W1C step and conditional changed store; bx lr, saved resume address and temporary hardware breakpoint; tail-chaining and debug delivery caveats.",
+    "limits_and_cleanup": "No hardware measurements; breakpoint timing/USB/debounce distortion; event coalescing; polling versus notification versus optional WFI with lost-wakeup qualification; breakpoint deletion, reset/run and retained wiring."
+  },
+  "code_files_read": [
+    "examples/pico/button_irq.cpp",
+    "examples/pico/CMakeLists.txt",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/intctrl.h",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/m33.h",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/addressmap.h",
+    ".deps/openocd/scripts/target/rp2350.cfg"
+  ],
+  "checks_performed": [
+    "Read guide first, full plan/example contract and exact catalog entry; calibrated style against approved lesson.",
+    "Browsed official Arm guides, GDB manual and pinned SDK sources; RP2350 PDF browser fetch exceeded service size, so register claims cross-checked against installed official SDK definitions and prior accepted 4.2 register explanation.",
+    "Regenerated gpio_isr disassembly independently with bundled arm-none-eabi-objdump and arm-none-eabi-gdb from actual .build/pico/button_irq.elf: first instruction 0x100001e0, W1C at +10, bx lr at +22, no SP/LR changes or calls.",
+    "Offline GDB accepted exact symbol-address breakpoint and integer-mask expression; this is host parsing evidence, not a hardware breakpoint or register read.",
+    "Canonical button_irq.cpp SHA256 still equals verification.json target-compilation record. No new target compilation was needed or claimed.",
+    "Top-level unindented full source include, balanced fences, existing local links or canonical catalogued forward links, and SVG XML parse passed.",
+    "Corrected WFI reference to Cortex-M33 guide section3.6/4.13.17; exception model guide does not contain a WFI section.",
+    "Repaired coordinator sequence finding: optional halted-input/pending-state experiment now follows step7 at entry, before step8 executes the handler, rather than appearing after exception return."
+  ],
+  "hardware_status": "not exercised; no connected target, no SWD load/stop/step/register/physical LED/button/USB observations claimed",
+  "concerns": [
+    "Independent coordinator prose/source/command review and rendered-page/SVG visual verification pending.",
+    "Chapter5.1 canonical forward link is not yet authored; accepted-only publication should route it to roadmap.",
+    "Actual remote register availability and EXC_RETURN values require the reader's hardware session; page gives stop guidance instead of guessing unavailable security banks."
+  ],
+  "status": "ready_for_independent_review"
+}

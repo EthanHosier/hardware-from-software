@@ -1,0 +1,55 @@
+{
+  "id": "4.4",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "e3dc1ff6f0f63050d1a6fe75c6c3e025f829319dd47c0e63d24944c1b9d39d87",
+  "included_source_sha256": {
+    "examples/pico/button_irq.cpp": "98d5d773a21da23cac0a6c4eb618907e20ed5d02eb8c5986fc7aa9b67554feff"
+  },
+  "asset_sha256": {
+    "src/assets/circuit-pico-button.svg": "26cb2c83cfcf4561df63d00af2f5f2235265d3eb9e3cee6878bdb41d5a080191",
+    "src/assets/3.1-swd-connections.svg": "4b7a4dfc38f89e033f7d8b2098dfcce940175f9bde3b7caba9abcf34bd2439a6",
+    "src/assets/4.4-exception-path.svg": "f541f94f476004f21f4d99831796be04cd8fb2dbb06a3bb0b0e71f9ec32be65e"
+  },
+  "paths_read": [
+    "src/4.4-inspect-exception-entry-and-return.md",
+    "reviews/4.4-writer.json",
+    "examples/pico/button_irq.cpp",
+    "src/assets/circuit-pico-button.svg",
+    "src/assets/3.1-swd-connections.svg",
+    "src/assets/4.4-exception-path.svg",
+    "/tmp/hfs-review/cortex-m33-guide.txt (sections3.3.7/3.6/4.13.17)",
+    "/tmp/hfs-review/cortex-m33-guide.pdf (Figure3-6 visually inspected)",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/m33.h (VTOR/ISPR/IABR)",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/intctrl.h (IRQ21)"
+  ],
+  "sources_checked": [
+    "https://documentation-service.arm.com/static/641b2ec1de84571cc27f3ca3",
+    "https://documentation-service.arm.com/static/64c7832738511951cb7a246e",
+    "https://sourceware.org/gdb/current/onlinedocs/gdb.html/Set-Breaks.html",
+    "https://sourceware.org/gdb/current/onlinedocs/gdb.html/Continuing-and-Stepping.html",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_irq/irq.c",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/2.3.1/src/rp2350/hardware_regs/include/hardware/regs/m33.h"
+  ],
+  "scope_coverage": "Full unchanged practical source/wiring/load path, exact instruction entry breakpoint, hardware versus compiler saved state, EXC_RETURN secure basic Thread gate and MSP/qualified PSP selection, eight slots and alignment only under that gate, VTOR/vector37/NVICIRQ21 pending-active/GPIO state, real leaf ISR/W1C stepping and conditional notification, saved-PC return breakpoint/tail-chaining, read side effects, timing/USB/distorted debounce and optional WFI race qualifications, cleanup.",
+  "checks_performed": [
+    "Read complete prose and final same-writer repair; read complete source/include and all SVG sources.",
+    "Downloaded official Arm M33 guide and extracted complete text; independently read exception tables/stacking, visually inspected Figure3-6 and verified basic core slots and padding. Security/FP/nesting variants explicitly stop basic recipe rather than guessed offsets.",
+    "Independently regenerated current gpio_isr with bundled objdump and GDB; exact code matches firstinstruction, W1C+10, bxLR+22 and no stack/LR prologue. Ran offline GDB cast/symbol/mask expressions.",
+    "Checked IRQ21/exception37, mask0x200000, PPB VTOR/ISPR0/IABR0 offsets and IO_BANK0 word2 addresses with installed headers; source claims agree with independently reviewed4.2 SDK implementation.",
+    "Rendered complete new exception SVG; all text/arrows legible and flow accurate. Shared button/SWD SVGs unchanged from independent complete render checks4.2/3.1.",
+    "Checked WFI operation in officialM33 sections3.6/4.13.17 and maintained race qualification; no runnable sleep edit invented.",
+    "Rechecked optional halted-input experiment now appears immediately afterstep7 beforehandler instructions execute; final section explains effects afterreturn without demanding entry state.",
+    "Full-file include top-level/unindented. Root exact include/render/link/publication checks remain integration gate; no physical runtime evidence invented."
+  ],
+  "findings": [
+    {
+      "issue": "Optional halted-input experiment originally appeared after step9 returned/deletedentrybreakpoint, though it required entry state.",
+      "resolution": "Same dedicated writer moved experiment immediately afterstep7, before step8 executesbody. Rechecked full repaired sequence."
+    }
+  ],
+  "repairs": [
+    "Moved entry-state experiment to actual entry-state position by same writer."
+  ],
+  "hardware_status": "Existing canonical target-compilation evidence; actual ELF and host GDB expression/disassembly inspected. No connected target/SWD/IRQ/frame/register/LED/USB observations measured."
+}

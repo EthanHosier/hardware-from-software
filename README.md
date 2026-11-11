@@ -27,4 +27,4 @@ No credentials, real network identifiers, binaries, downloaded dependency trees 
 
 ## Current progress
 
-Seventeen of53catalog pages are published: Chapters0–3 are complete. Each had a dedicated fresh-context writer and independent review. Remaining lessons are in progress. `reviews/authoring-status.json` records current per-page progress. Every accepted page must be published immediately through the checked progressive-release command.
+Twenty-one of53catalog pages are published: Chapters0–4 are complete. Each had a dedicated fresh-context writer and independent review. Remaining lessons are in progress. `reviews/authoring-status.json` records current per-page progress. Every accepted page must be published immediately through the checked progressive-release command.
