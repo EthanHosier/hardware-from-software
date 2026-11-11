@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-11T08:21:59.414215+00:00",
+  "updated": "2026-11-11T08:25:35.825604+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -128,17 +128,17 @@
     },
     "6.2": {
       "path": "src/6.2-turn-the-pico-into-a-register-based-peripheral.md",
-      "writer": "active",
-      "reviewer": "pending"
+      "writer": "complete",
+      "reviewer": "accepted_source_review"
     },
     "6.3": {
       "path": "src/6.3-write-a-linux-i-c-client.md",
-      "writer": "pending",
+      "writer": "active",
       "reviewer": "pending"
     },
     "6.4": {
       "path": "src/6.4-compare-spi-with-a-loopback-experiment.md",
-      "writer": "pending",
+      "writer": "active",
       "reviewer": "pending"
     },
     "7.1": {

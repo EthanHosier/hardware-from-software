@@ -10,7 +10,7 @@
   "reviewed_dependency_sha256": {
     "examples/pico/i2c_target.cpp": "96f30fdfe3d1892e14fe8344d665a3eb801f6b7f09b85dd8c05487dad37c30d4",
     "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3",
-    "examples/linux/i2c_client.cpp": "db8813bbb7207d3a42eaf90e54bf3a4c7ff8695797c41fff480debbae6e709f7"
+    "examples/linux/i2c_client.cpp": "72d67baf85980f64f4d90a0a9d3041d60dafd839d41c58b911ebd1ea9dfb1bb3"
   },
   "paths_read": [
     "src/6.1-i-c-on-the-wires.md",
@@ -43,7 +43,8 @@
     "Compared NXP byte/ACK/data/START definitions and Linux i2c-dev/sysfs identity docs; read-onlyadapter inspection sendsnobusmessages; scan cautions accurate.",
     "Independently parsed all7shellblocks with sh -n. Configbackup/preserveincludes/disableoldbus/modulesnoclobber/persistence/identity/conditionalgroup/reboot/rollback sequence coherent. No targetcommands executed.",
     "Checked GitHubAPI: originalcommentanchor404; retrieved exact6by9commentIDs, samewriter corrected to1038929049, finalsource rechecked.",
-    "No program built/run thiselectricalpage; mandatoryinclude map empty. Source-derived protocol dependencies hashed separately. Root render/link/public checks precedepublication."
+    "No program built/run thiselectricalpage; mandatoryinclude map empty. Source-derived protocol dependencies hashed separately. Root render/link/public checks precedepublication.",
+    "Follow-up independent full client reread after c947977: explicit errno capture/system_error improves diagnostics only, defaultI2C3/read16/decode/deferredLEDprotocol unchanged. Root confirms CI42986688767 nativeArm64/Pi-header jobs passed; dependency hash refreshed without prose changes."
   ],
   "findings": [
     {

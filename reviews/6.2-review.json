@@ -1,0 +1,51 @@
+{
+  "id": "6.2",
+  "reviewer": "independent root",
+  "status": "accepted_source_review",
+  "canonical_sha256": "124edc69181193a710fe2a342d279e508ecf604c59454c559c18811153e3ea88",
+  "included_source_sha256": {
+    "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3",
+    "examples/pico/i2c_target.cpp": "96f30fdfe3d1892e14fe8344d665a3eb801f6b7f09b85dd8c05487dad37c30d4"
+  },
+  "asset_sha256": {
+    "src/assets/circuit-i2c.svg": "dbd430c0f5c5760127c4e9fd8b4662746dc67bf2158c5fc8e4e4391aa8e832ed",
+    "src/assets/circuit-pico-button.svg": "26cb2c83cfcf4561df63d00af2f5f2235265d3eb9e3cee6878bdb41d5a080191",
+    "src/assets/circuit-pico-led.svg": "eafabcb96c28ec2c507d2e6775168e8e55f50c193f588bda819d7410bcb29ac9"
+  },
+  "reviewed_dependency_sha256": {
+    "examples/pico/CMakeLists.txt": "82d60c4334f09dd190517c58d9331d3e5fd78d2a11855a790f8aaaea636fecc6"
+  },
+  "paths_read": [
+    "src/6.2-turn-the-pico-into-a-register-based-peripheral.md",
+    "reviews/6.2-writer.json",
+    "examples/pico/device_io.hpp",
+    "examples/pico/i2c_target.cpp",
+    "src/assets/circuit-i2c.svg",
+    "src/assets/circuit-pico-button.svg",
+    "src/assets/circuit-pico-led.svg",
+    "examples/pico/CMakeLists.txt",
+    "scripts/build_examples.py",
+    ".deps/pico-sdk/src/rp2_common/pico_i2c_slave/i2c_slave.c",
+    ".deps/pico-sdk/src/rp2_common/pico_i2c_slave/include/pico/i2c_slave.h"
+  ],
+  "sources_checked": [
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/pico_i2c_slave/i2c_slave.c",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/pico_i2c_slave/include/pico/i2c_slave.h",
+    "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html#group_hardware_adc",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://github.com/raspberrypi/linux/issues/4884"
+  ],
+  "scope_coverage": "Complete versioned16byte target, pointer and write semantics, multi-byte endian values, coherent publication and read snapshots, actual shared device helper, IRQ boundaries and deferred LED application, approximate temperature limits, standalone build/BOOTSEL sequence with inter-board isolation, readiness-only adapter checks, honest observation and cleanup.",
+  "checks_performed": [
+    "Read every paragraph and all actual included code; independent protocol walk including ignored writes, wrap, FINISH preserved cursor, snapshot lifetime and LED request coalescing.",
+    "Read pinned SDK callback API and actual ISR event dispatch, FINISH before data events and implicit clock stretching.",
+    "Checked RP2350 datasheet12.4.6 cached officialPDFpages970/971 and SDKADCAPI: input4 RP2350A, nominal formula and reference/device sensitivity.",
+    "Checked include hashes match existing recorded Pico compile evidence; no executable change or repeated unchanged compile.",
+    "Read all three shared SVGs; browser whole published I2C diagram visually correct; LED/button retain previously reviewed wiring.",
+    "Parsed all three shell fences with sh -n; checked buildscript target/options/artifacts and full unindented includes.",
+    "Power-off disconnect/program/reconnect state avoids attached unpowered bus endpoints; no USB greeting or measured bus success invented."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source reviewed and exact firmware/dependency versions previously target-compiled; physical flash, timing, bus transfers, temperatures, debounce and LED not exercised."
+}
