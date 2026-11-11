@@ -11,7 +11,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 int main(int argc,char** argv) {
-    const int fd=open(argc>1?argv[1]:"/dev/i2c-1",O_RDWR|O_CLOEXEC);
+    const int fd=open(argc>1?argv[1]:"/dev/i2c-3",O_RDWR|O_CLOEXEC);
     if(fd<0) { std::cerr<<"open: "<<std::strerror(errno)<<'\n'; return 1; }
     try {
         unsigned long functions=0;
