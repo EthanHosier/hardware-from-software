@@ -1,0 +1,41 @@
+{
+  "id": "6.4",
+  "reviewer": "independent root",
+  "status": "accepted_source_review",
+  "canonical_sha256": "4569516d5d5a70659969926c035467f1140942aaaaf39aedf24cdce7394bf58c",
+  "included_source_sha256": {
+    "examples/pico/spi_loopback.cpp": "0d88ceaccc5e629e0743db7cf73d8a1f2cb0e65b0e73094810fc8e7cfdfcf97d"
+  },
+  "asset_sha256": {
+    "src/assets/6.4-spi-loopback.svg": "ac170589e4e4899900daf225e2d727f076520348601efd32485ccadbb651ba9b"
+  },
+  "reviewed_dependency_sha256": {
+    "examples/pico/CMakeLists.txt": "82d60c4334f09dd190517c58d9331d3e5fd78d2a11855a790f8aaaea636fecc6"
+  },
+  "paths_read": [
+    "src/6.4-compare-spi-with-a-loopback-experiment.md",
+    "reviews/6.4-writer.json",
+    "examples/pico/spi_loopback.cpp",
+    "src/assets/6.4-spi-loopback.svg",
+    "examples/pico/CMakeLists.txt",
+    "scripts/build_examples.py"
+  ],
+  "sources_checked": [
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_spi/include/hardware/spi.h",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_spi/spi.c",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf"
+  ],
+  "scope_coverage": "One-wire external SPI0 loopback, exact GP19/20 physical pins and full connection diagram, I2C detach/unpowered transitions, clock/duplex/CS/mode0 concepts, complete build/flash/USB observation procedure, known patterns plus unplugged return-path negative control, achievable-rate distinction, meaningful limits versus real peripherals, cleanup and UART progression.",
+  "checks_performed": [
+    "Read every paragraph, source and diagram; no findings. No output claimed measured.",
+    "Read pinned SDK initialisation/defaultformat, divisor selection and simultaneous TX/RX FIFO implementation. Mode0 and requested rate narrative agree.",
+    "Read official RP2350 cachedPDF SPI12.3.4.9/10 pages950/951: polarity0 rests low, phase0 firstedge sample, capture rising/change falling. Closed writer PDF clock-format concern.",
+    "Reviewed physical pin map, source and SVG labels; visually inspected whole SVG in browser at localhost, no overlaps or clipping.",
+    "All three shell blocks pass sh -n; full include unindented, CMake links and build outputs match.",
+    "Exact source hash remains within existing recorded Pico2 compilation evidence; no unchanged build repeated."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source reviewed and exact source previously Pico2-target compiled. Physical loopback, removal negative control, USB terminal, timing and external devices not exercised."
+}

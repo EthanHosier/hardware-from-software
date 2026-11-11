@@ -1,0 +1,52 @@
+{
+  "id": "6.4",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json (6.4 entry)",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/6.1-i-c-on-the-wires.md",
+    "src/6.2-turn-the-pico-into-a-register-based-peripheral.md",
+    "src/6.3-write-a-linux-i-c-client.md",
+    "src/1.3-flash-with-bootsel-and-read-output.md",
+    "scripts/build_examples.py",
+    "verification.json"
+  ],
+  "sources": [
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html#group_hardware_spi",
+    "https://github.com/raspberrypi/pico-sdk/blob/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_spi/include/hardware/spi.h",
+    "https://github.com/raspberrypi/pico-sdk/blob/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_spi/spi.c"
+  ],
+  "scope_audit": {
+    "baseline": "External GP19 physical25 to GP20 physical26 jumper; SPI0 GP18 physical24 SCK externally unconnected; GP21 unused, no CS. No peripheral/analyser required.",
+    "mechanism": "Controller clock ownership; full-duplex bits; requested 100kHz vs actual divider rate; explicit/default 8-bit MSB mode0; CPOL/CPHA; FIFO transfer and all-byte array comparison.",
+    "safety_and_transition": "Pi shutdown and both supplies removed; all three I2C SDA/SCL/GND jumpers removed; Pi off/header unwired; local Pico GP16 LED and GP17 button retained explicitly; no conflicting outputs; power-off for every jumper change.",
+    "comparison": "I2C shared open-drain/address/ACK/START framing vs SPI push-pull/separate data/CS/per-device command framing.",
+    "experiment": "Complete actual source include; exact Mac setup/build/BOOTSEL/USB screen path; illustrative output; remove-jumper negative check with no fixed bad byte claim, then restore; cleanup for UART.",
+    "limits": "Local transfer success does not validate external CS/SCK/device timing, identity or commands."
+  },
+  "code_files_read": [
+    "examples/pico/spi_loopback.cpp",
+    "examples/pico/CMakeLists.txt",
+    ".deps/pico-sdk/src/rp2_common/hardware_spi/spi.c",
+    ".deps/pico-sdk/src/rp2_common/hardware_spi/include/hardware/spi.h",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/spi.h"
+  ],
+  "checks_performed": [
+    "Read complete prose and include source; full include at unindented top-level cpp fence.",
+    "cmake --build .build/pico --target spi_loopback passed: ninja reports no work to do. Existing Pico 2 compiled target source SHA256 matches recorded successful compile in verification.json.",
+    "Local relative link paths exist or match canonical future catalog entries; all source/asset paths exist.",
+    "SVG XML parsed successfully; signal labels manually checked against source, pin contract and table.",
+    "Official SDK frozen header/implementation and current API browsed. Pico 2 official PDF opened. RP2350 PDF exceeds web size limit; direct curl retrieves PDF, but local pdftotext unavailable."
+  ],
+  "hardware_status": "Physical runtime not exercised; no recorded SPI bytes, clock measurement or jumper test. Expected console output labelled illustrative.",
+  "concerns": [
+    "Independent root review/render/visual inspection still required.",
+    "Canonical appendix-c-4.md and chapter7.1 forward links rely on accepted-only publication roadmap routing while unpublished.",
+    "RP2350 PDF clock-format diagrams require reviewer cross-check; writer checked format selection against actual pinned SDK source but could not extract the large PDF locally."
+  ],
+  "status": "ready_for_independent_review"
+}
