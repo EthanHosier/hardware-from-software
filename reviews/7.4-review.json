@@ -1,0 +1,57 @@
+{
+  "id": "7.4",
+  "reviewer": "independent root",
+  "status": "accepted_source_review",
+  "canonical_sha256": "01404af36e632ca8b4dc85c4f62309f77a92affc679572a37aaddebc80472794",
+  "included_source_sha256": {
+    "examples/common/protocol.hpp": "77c7529b2f7758a3e784c5752eaca01f377d67e6f672263c3cf6e5104bba8be7",
+    "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3",
+    "examples/pico/uart_device.cpp": "f352a466e6a3bd7c58b9305feab5f50b7a41d550c0a0cd32c9e7e78b00e9c977"
+  },
+  "asset_sha256": {
+    "src/assets/circuit-uart.svg": "128a4c30917db9187fe77ce7b1fa7ad80fb08c6a4ccc80a6086cdf7420e45f4b"
+  },
+  "reviewed_dependency_sha256": {
+    "examples/linux/serial_client.cpp": "fd54040d11499427d4a53e621fcf08000b88c4724eb5ee2cac5dd9cbc62fb70c",
+    "examples/linux/serial_port.hpp": "eb2a42df5baa75b6178f3d5b4cdc7aeddb0711e1cd0b5f43341698d5d3ce4e22",
+    "examples/pico/CMakeLists.txt": "82d60c4334f09dd190517c58d9331d3e5fd78d2a11855a790f8aaaea636fecc6"
+  },
+  "paths_read": [
+    "src/7.4-trace-a-command-end-to-end.md",
+    "reviews/7.4-writer.json",
+    "examples/common/protocol.hpp",
+    "examples/pico/device_io.hpp",
+    "examples/pico/uart_device.cpp",
+    "examples/linux/serial_client.cpp",
+    "examples/linux/serial_port.hpp",
+    "src/assets/circuit-uart.svg",
+    ".deps/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h",
+    ".deps/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio_coproc.h"
+  ],
+  "sources_checked": [
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_gpio/include/hardware/gpio_coproc.h",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_uart/uart.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/tty/serial/amba-pl011.c",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://strace.io/"
+  ],
+  "scope_coverage": "Exact identified command from SSH/Pi userspace through TTY/PL011/UART/Line/parser/Device and actual SIO output operation, returned and validated acknowledgement, physical versus software evidence, source includes/download paths, offline actual disassembly and optional live/debugger/strace/analyser evidence, ideal rate versus measured latency and recovery.",
+  "checks_performed": [
+    "Read entire final prose and all five relevant source files. Request8/reply7bytes and endian/parser/result/deadline/ID1 behavior match actual files.",
+    "Independently disassembled actual uart_device ELF main: ldrb5a8, strb5ac RAMstate, movs r2#16, mcrr0,4,r2,r3,cr0 at100005b2. Address caveat and physical-unmeasured distinction clear.",
+    "Read pinned GPIO default/coprocessor headers and official cached RP2350PDF page98 Table111: indexedpin Rt and Rt2bit0 output operation. Read SDK uart_init FIFOenable and frozen LinuxPL011 driver source.",
+    "Read primary strace descriptor/filter documentation; all shell fences pass sh -n. No syscall transcript or latency invented.",
+    "Visually inspected full public UART SVG: exact crossedpins/directions andground match canonical wiring.",
+    "Rechecked SAME-writer repair: explicit halted reset/load/reset/mainbreak then outputbreak/continue, controlled2s timeout and reset/flush cleanup; Bluetooth explicitly disabled.",
+    "Source hashes agree with existing Pico and current nativeArm64 CI/11PTY evidence; no physical or live SWD test claimed."
+  ],
+  "findings": [
+    "Bluetooth moved-off wording could imply rerouting rather than disabling.",
+    "Optional live debugger initially omitted an explicit halted/running sequence around initialization and breakpoint installation."
+  ],
+  "repairs": [
+    "Original writer explicitly states Bluetooth is disabled.",
+    "Original writer added full GDB halted reset/load/reset/mainbreak/deletion/outputbreak/continue sequence; root rechecked each target state."
+  ],
+  "hardware_status": "Actual local ELF inspected and source reviewed; existing compile/software evidence applies. Physical LED/UART, liveSWD, strace onPi and wire timing not exercised."
+}

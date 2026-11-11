@@ -1,0 +1,68 @@
+{
+  "id": "7.4",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/7.1-make-a-uart-link-electrically-and-logically-correct.md",
+    "src/7.2-configure-the-pi-uart-and-test-an-echo.md",
+    "src/7.3-build-a-robust-c-serial-client.md",
+    "src/3.1-attach-the-debug-probe-over-swd.md",
+    "src/3.2-load-the-elf-and-step-through-the-led-write.md",
+    "verification.json",
+    "scripts/build_examples.py",
+    "/tmp/7.1-rp2350.txt"
+  ],
+  "sources": [
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://github.com/raspberrypi/pico-sdk/blob/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_gpio/include/hardware/gpio_coproc.h",
+    "https://github.com/raspberrypi/pico-sdk/blob/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_uart/include/hardware/uart.h",
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/tty/serial/amba-pl011.c",
+    "https://strace.io/",
+    "https://packages.debian.org/bookworm/strace",
+    "https://sourceware.org/gdb/current/onlinedocs/gdb.html/Continuing-and-Stepping.html"
+  ],
+  "scope_audit": {
+    "command": "Exact ./.build/serial_client /dev/serial0 LED 1; ID1, eight-byte request and seven-byte reply.",
+    "path": "Mac SSH input -> Pi process termios/poll/write -> Linux TTY/PL011 -> BCM14/GP1 -> UART RX FIFO -> Line/parse -> Device.led -> GPIO coprocessor/SIO -> pad/LED -> UART TX -> Pi TTY/read -> ID/status/full numeric/LED result validation -> stdout over SSH.",
+    "state": "Preserves 7.3 uart_device, wiring and client. Includes complete uart_device.cpp/device_io.hpp/protocol.hpp; links actual full host code in 7.3 plus individual downloads/archive.",
+    "evidence": "Source/build, physical LED observation, decoded protocol, optional strace, offline actual disassembly, optional live SWD with deliberate timeout, optional analyser and absent USB logs distinguished.",
+    "limits": "No retries/authentication/dedup claims; reply is software application, no voltage/current proof; COUNT accepted debounced presses and TEMP approximate chip temperature; ideal serial budget not measured latency.",
+    "cleanup": "LED off, no readers, firmware retained; both boards off before future chapter8 wiring; 7.2 rollback link."
+  },
+  "code_files_read": [
+    "examples/pico/uart_device.cpp",
+    "examples/pico/device_io.hpp",
+    "examples/common/protocol.hpp",
+    "examples/linux/serial_client.cpp",
+    "examples/linux/serial_port.hpp",
+    "examples/pico/CMakeLists.txt",
+    ".deps/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h",
+    ".deps/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio_coproc.h",
+    ".deps/pico-sdk/src/rp2_common/hardware_gpio/gpio.c",
+    ".deps/pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h",
+    ".deps/pico-sdk/src/rp2_common/hardware_uart/uart.c"
+  ],
+  "checks_performed": [
+    "Ran python3 scripts/build_examples.py --pico successfully; forced ELF relink by deleting only generated .build/pico/uart_device.elf and rerunning successful canonical build.",
+    "Inspected regenerated ELF using bundled arm-none-eabi-objdump: 0x100005a8 ldrb.w r3,[sp,#20]; 0x100005ac strb.w r3,[sp,#160]; 0x100005b0 movs r2,#16; 0x100005b2 mcrr 0,4,r2,r3,cr0.",
+    "Checked datasheet section3.6.1.3 Table111 and pinned gpio_coproc.h gpioc_bit_out_put semantics. Verified GPIO_OUT readable address/bit vs write-only aliases.",
+    "Checked all three include targets exist, top-level fences balance (22 fence delimiters), existing local links resolve. Two canonical future links require normal roadmap handling: appendix-d.md and 8.1-establish-a-userspace-gpio-baseline.md.",
+    "Calculated 8*10/115200=0.6944ms, 7*10/115200=0.6076ms, total1.3021ms ideal serialization only.",
+    "Read existing verification.json for host/Arm64/Pico compilation and 11 PTY cases; did not claim or repeat these as fresh physical tests.",
+    "After independent review, corrected disable-bt wording: overlay disables Bluetooth rather than moving it to another UART. Reread final page after this wording repair; source, command and debugger sequence unchanged."
+  ],
+  "hardware_status": "not exercised; no connected physical target, no measured registers, UART traces, electrical captures or latency samples",
+  "concerns": [
+    "Future appendixD/chapter8.1 links rely on root staged-build roadmap rewriting until published.",
+    "No source changes requested; generated instruction matches pinned SDK.",
+    "Root must independently render, verify downloadable paths and acceptance."
+  ],
+  "status": "ready for independent acceptance after requested wording repair",
+  "owned_files": [
+    "src/7.4-trace-a-command-end-to-end.md",
+    "reviews/7.4-writer.json"
+  ]
+}
