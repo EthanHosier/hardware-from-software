@@ -1,0 +1,44 @@
+{
+  "id": "5.1",
+  "reviewer": "root (independent of fresh dedicated writer)",
+  "status": "accepted_source_review",
+  "canonical_sha256": "3b7e4439b9d8abc1be01ae83ded5a36fd2fab5d648e5323304c97480c070989c",
+  "included_source_sha256": {},
+  "asset_sha256": {},
+  "paths_read": [
+    "src/5.1-prepare-raspberry-pi-os-and-ssh.md",
+    "reviews/5.1-writer.json",
+    "prior0.3/0.4 bench/board references",
+    "EXAMPLES.md Pi-image baseline"
+  ],
+  "sources_checked": [
+    "https://www.raspberrypi.com/software/operating-systems/",
+    "https://www.raspberrypi.com/documentation/computers/getting-started.html",
+    "https://www.raspberrypi.com/documentation/computers/remote-access.html",
+    "https://www.raspberrypi.com/documentation/computers/configuration.html#led-warning-flash-codes",
+    "https://www.raspberrypi.com/documentation/computers/os.html",
+    "https://man.openbsd.org/ssh-keygen",
+    "https://raw.githubusercontent.com/openssh/openssh-portable/master/ssh-keygen.c"
+  ],
+  "scope_coverage": "Complete headless Pi4bringup with existing-card preservation first, exact unconnectedheader/Picooff state, power/card/network inventory, explicit LegacyLite64Bookworm/date6.12family versus currentTrixie6.18 validation limits, currentImager tabcustomisation/cardidentity/erase/verify, MacSSHkey/public-private distinction, hostname/mDNS/routerIPfallback and keys/password route, transparent host-key first-use/trustedfingerprint checks, Pi model/OS/arch/kernel/rootspace/power-status checks, APT/reboot/reconnect and exact5.2orhaltcleanup. No hardware imaging/login claimed.",
+  "checks_performed": [
+    "Read every final prose word and writerreport; current official image listing confirms6Oct2026LegacyLite64Bookworm6.12 and currentTrixie6.18, no exactkernelboot claim.",
+    "Official Imager walkthrough confirms tab names/customization, capital-city regulatory domain, username/auth settings and storage confirmation flow.",
+    "Checked SSH method/identityfile/keygen/host-fingerprint/confirmed-old-entry removal against official manuals; real localnetwork/credentials never used.",
+    "All10 shell code blocks independently parse with zsh -n; no Pi/SSH/imaging/update/power commands executed.",
+    "Isolated temporary keygen test reproduced missing-parent failure. Original writer added mkdir/chmod; rechecked text and temporary fresh-directory generation succeeds with privatekey0600. Temporary test files removed.",
+    "Official HALT table confirms0long10short; status bits/update sequence sourcechecked.",
+    "No program source or new wiring diagram required; existing board reference remains linked."
+  ],
+  "findings": [
+    {
+      "issue": "Explicit SSHkey output filename requires existingparentdirectory on freshMac",
+      "resolution": "Same writer addedmkdir-p/chmod700 before newkeygen; root reread and isolatedtest passed."
+    }
+  ],
+  "repairs": [
+    "Same-writer SSHdirectory prerequisite correction"
+  ],
+  "hardware_status": "Shell syntax and isolated host key-file workflow tested; physical Pi/card/network/SSH/update/shutdown not exercised",
+  "reviewed_at": "2026-11-11T08:11:55.691429+00:00"
+}

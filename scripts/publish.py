@@ -10,9 +10,11 @@ def main():
     subprocess.run(['python3','scripts/check_book.py','--partial'],cwd=ROOT,check=True)
     expected=json.loads((ROOT/'book/publication.json').read_text())
     command=['vercel','deploy','--prebuilt','--prod','--yes','--no-wait']
-    result=subprocess.run(command,cwd=ROOT,check=True,capture_output=True,text=True,timeout=120)
+    result=subprocess.run(command,cwd=ROOT,capture_output=True,text=True,timeout=120)
     # Current CLI emits structured JSON after progress lines. Save full output ignored.
     (ROOT/'.authoring/last-deploy.log').write_text(result.stdout+'\n'+result.stderr)
+    if result.returncode:
+        raise RuntimeError('Vercel CLI failed; details saved in .authoring/last-deploy.log: '+result.stderr[-1800:])
     decoder=json.JSONDecoder();deployment=None
     for n,char in enumerate(result.stdout):
         if char=='{':

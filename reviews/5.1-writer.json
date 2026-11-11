@@ -1,0 +1,57 @@
+{
+  "id": "5.1",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json (5.1 entry)",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/0.3-a-labelled-tour-of-your-raspberry-pi-4.md",
+    "src/0.4-a-labelled-tour-of-the-debug-probe-and-cables.md",
+    "src/0.6-assemble-the-bench-and-understand-the-electrical-rules.md",
+    "src/4.4-inspect-exception-entry-and-return.md"
+  ],
+  "sources": [
+    "https://www.raspberrypi.com/software/",
+    "https://www.raspberrypi.com/software/operating-systems/",
+    "https://www.raspberrypi.com/documentation/computers/getting-started.html",
+    "https://www.raspberrypi.com/documentation/computers/remote-access.html",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html",
+    "https://www.raspberrypi.com/products/raspberry-pi-4-model-b/#specifications",
+    "https://www.raspberrypi.com/documentation/computers/os.html",
+    "https://www.raspberrypi.com/documentation/computers/configuration.html",
+    "https://man.openbsd.org/ssh",
+    "https://man.openbsd.org/ssh-keygen",
+    "Local macOS man ssh and man ssh-keygen"
+  ],
+  "scope_audit": {
+    "owned_files": [
+      "src/5.1-prepare-raspberry-pi-os-and-ssh.md",
+      "reviews/5.1-writer.json"
+    ],
+    "storage": "Inspect working preinstalled card first; no default pi credential assumption. Explain image versus copied file/Pico UF2 and EEPROM. Identify 64GB microSD/passive SD adapter, storage disappearance identity check, exclude system drives, concrete whole-device erase warning, write verification and eject.",
+    "baseline": "Coordinator-directed official Legacy Lite64 Bookworm primary imaging route, dated6Oct2026/kernel6.12 family. Acknowledge current Trixie6.18; don't require erasing working64bitOS or imply6.18validated. Actual kernel may differ from compiled6.12.96 header evidence after imaging/updates.",
+    "configuration": "Current tab workflow; hostname, localisation/regulatorydomain, account, WiFi, SSH publickey preferred/password alternative, dedicated Mac key path, privatekey remains Mac, keypassphrase/accountpassword distinction.",
+    "network_and_trust": "Pi4 supports2.4/5GHz, no6GHzonly; existing router network, guestisolation, optional Ethernet fallback, hostname.local mDNS then router DHCP IP. User/host placeholders; hostkey fingerprint verification versus explicit firstuse trust, safe confirmedreimage entry removal only.",
+    "bringup": "Pi-only supply/network with empty40pinheader; no PiPico power or signal links. Exact Mac/Pi-labelled commands; whoami/hostname/model/os-release/architecture/kernel/rootmount/freespace/throttle checks; APT/reboot/reconnect. Symptom troubleshooting and cleanpoweroff HALT indication; exact5.2nextstate.",
+    "source_and_visuals": "No program source is taught or required, so no fictitious source include. No new circuit or pin assignment; refers to accepted0.3physical diagram. No new SVG needed."
+  },
+  "code_files_read": [],
+  "checks_performed": [
+    "Read authoring guide first, full PLAN/EXAMPLES, required prior pages, style sample and catalog5.1.",
+    "Browsed current primary official Imager setup and OS listings on10/11Nov2026; current workflow uses Device/OS/Storage/Customisation/Writing tabs, not recalled2023gear workflow.",
+    "Confirmed official OS listing6Oct2026 LegacyLite64 Bookworm6.12 and currentLite64 Trixie6.18; communicated downstream baseline issue and incorporated coordinator decision.",
+    "Checked OpenSSH primary manuals and installed Mac manual options for ed25519 generation, identityfile, fingerprint and knownhostentry removal.",
+    "Checked official vcgencmd status flags, official APTfull-upgrade route, official0long10short HALT LED table.",
+    "All10 shell fences passed zsh -n syntax checks without executing any sample commands;19 links inspected for external/local canonical targets; fences balanced.",
+    "Repaired root review finding: explicit-f ssh-keygen requires an existing parent directory. Added mkdir -p ~/.ssh and chmod700 before generation after existing-key check, with directory access explanation; rechecked shell syntax."
+  ],
+  "hardware_status": "not exercised; no physical Pi/card imaging, network boot, host fingerprint, SSH login, power measurement, update or shutdown observed",
+  "concerns": [
+    "Independent substantive coordinator review and rendered-page validation pending.",
+    "Image menu nesting can change; page uses edition/architecture/release description checks and a dated baseline.",
+    "CurrentOS6.18 has no module validation evidence here; downstream lessons must keep frozencompiledheader evidence distinct from actualreader runningkernel/header match.",
+    "Firstuse headless server identity is explicitly trustonfirstuse unless independent trustedconsole fingerprint is available; router identification does not independently authenticate key."
+  ],
+  "status": "ready_for_independent_review"
+}
