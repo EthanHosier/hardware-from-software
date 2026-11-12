@@ -1,0 +1,46 @@
+{
+  "id": "C.1",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "4d38f19ff2ed6c6ea2dc91b897ea3909745ef73cfd004886c6bd10b51bdb4fb2",
+  "included_source_sha256": {},
+  "asset_sha256": {
+    "src/assets/C.1-bme280-orientation.svg": "66f2ff08994c0d92c153d8b0e706494c08a575d753e9879c570e6f4e682cce19"
+  },
+  "reviewed_dependency_sha256": {
+    "examples/pico/bme280_i2c.cpp": "cf958229b065e3c47df8859d8c32c81f2762c21cd7d6801af9fe3733fb71bce5",
+    "examples/pico/bme280_spi.cpp": "8cdbd28f258ffd599d8b1260fe94df187962c7a35b07aea946ffd40861a74e31",
+    "examples/pico/bme280_common.hpp": "08dabf4417c9147b49414e4a93d5fa5a8b8a824b4f0d0733d131b9db8ac3c781"
+  },
+  "paths_read": [
+    "src/appendix-c-1.md",
+    "reviews/C.1-writer.json",
+    "src/assets/C.1-bme280-orientation.svg",
+    "examples/pico/bme280_i2c.cpp",
+    "examples/pico/bme280_spi.cpp",
+    "examples/pico/bme280_common.hpp",
+    "verification.json"
+  ],
+  "sources_checked": [
+    "https://www.adafruit.com/product/2652",
+    "https://learn.adafruit.com/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout/pinouts",
+    "https://learn.adafruit.com/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout/downloads",
+    "https://learn.adafruit.com/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout/assembly",
+    "https://raw.githubusercontent.com/adafruit/Adafruit-BMP280-Breakout-PCB/master/Adafruit%20BMP280%20STEMMA%20QT.brd",
+    "https://raw.githubusercontent.com/adafruit/Adafruit-BMP280-Breakout-PCB/master/Adafruit%20BMP280%20STEMMA%20QT.sch",
+    "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf"
+  ],
+  "scope_coverage": "Optional exact product identity/board versus chip/component tour; soldered header and extra-space prerequisites; all seven contacts and I2C/SPI aliases; bare-chip versus breakout voltages; default0x77 straps; register landmarks and exact temperature-only source scope; power-off capstone teardown and unpowered sensor-next state.",
+  "checks_performed": [
+    "Read complete final prose, full SVG XML and all three actual BME280 transport/common sources. Source dependencies match recorded compiled firmware versions. No source includes or runnable new code on orientation page.",
+    "Independently browsed official product revision/pinout/assembly/download pages and Bosch current60-page datasheet relevant electrical/register/ID/calibration sections. Default0x77, alternative0x76, BMP280IDs, rawchannel locations and0x21 temp-only forced mode agree.",
+    "Independently fetched official QT Eagle board/schematic XML and parsed element coordinates, JP1pad nets and header layout. U2regulator left of U1sensor, support right/above, sideQT and uppermountingholes match original grouped drawing; ADDR reverse side not misrepresented as visible.",
+    "Independently traced schematic R5 from3.3V toCS_3V/CSB and R4 from3.3V toSDO/ADR plusSJ1ground. This supports leavingCS/SDO externally unconnected withADDRopen for the specified board; no bare-chipfloating claim.",
+    "Rendered and visually inspected complete1100px letterboxedSVG: all labels/leader endpoints/headerorder and separate conceptual panel legible, no cropping. ReferenceQT layout clearly distinguished from actual unidentified board and wiring recipe.",
+    "Compared contact table against root GP4/5 I2C and GP18/19/20/21 SPI sources;3Vo unused and Pico36VIN/GND8 route aligned with parallelC2. No pressure/humidity conversion, rawID print, reset/configwrite or ambientaccuracy proof invented.",
+    "Checked extra soldering/equipment/space and isolatedPi/Pico power transitions; all3UARTwires removed before sensor setup, no hidden hot wiring. Local links resolve or are catalogued forwardC3/C4; root handles staged render/link/public checks."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Root recorded successful Pico target compilation for both transport images; source, officialboard documents and originaldiagram reviewed independently. No sensor identity/soldering/wiring/bus readings or physical runtime verified."
+}

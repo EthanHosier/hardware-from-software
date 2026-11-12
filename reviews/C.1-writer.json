@@ -1,0 +1,61 @@
+{
+  "id": "C.1",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/0.5-recognise-the-breadboard-and-kit-components.md",
+    "src/0.6-assemble-the-bench-and-understand-the-electrical-rules.md",
+    "src/6.1-i-c-on-the-wires.md",
+    "src/6.4-compare-spi-with-a-loopback-experiment.md",
+    "src/appendix-a.md",
+    "verification.json"
+  ],
+  "sources": [
+    "https://www.adafruit.com/product/2652",
+    "https://learn.adafruit.com/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout/pinouts",
+    "https://learn.adafruit.com/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout/assembly",
+    "https://learn.adafruit.com/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout/downloads",
+    "https://github.com/adafruit/Adafruit-BMP280-Breakout-PCB",
+    "https://raw.githubusercontent.com/adafruit/Adafruit-BMP280-Breakout-PCB/master/Adafruit%20BMP280%20STEMMA%20QT.brd",
+    "https://raw.githubusercontent.com/adafruit/Adafruit-BMP280-Breakout-PCB/master/Adafruit%20BMP280%20STEMMA%20QT.sch",
+    "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf"
+  ],
+  "scope_audit": {
+    "optional_equipment_and_soldering": "Explicit optional product2652, soldered seven-pin headers, space/jumpers; no sensor or soldering kit assumed",
+    "physical_identification": "Original top-view SVG with regulator, sensor, interface, header, QT, reverse ADDR distinction; header order verified from JP1 pad positions and signal netlist",
+    "electrical_map": "3.3V Pico36 to VIN, Pico8GND, alternative I2C GP4/5 and SPI18/19/20 CS21;3Vo unused",
+    "address_and_mode": "Exact source0x77; ADDR open, SDO and CS externally unconnected using board pull-ups;0x76 only alternative strap; no combined bus state",
+    "register_map": "ID/reset/status/calibration/ctrl_hum/ctrl_meas/config/data landmarks; exact source temp-only0x21/no reset or config writes",
+    "transition": "Stops clients, shuts down Pi, removes supplies, all three UART wires and all other buses/debug, leaves Pi off/separate; sensor unattached untilC.2",
+    "measurement_limits": "Distinct capability versus implemented temperature-only; no claimed pressure/humidity conversion or ambient accuracy"
+  },
+  "code_files_read": [
+    "examples/pico/bme280_i2c.cpp",
+    "examples/pico/bme280_spi.cpp",
+    "examples/pico/bme280_common.hpp",
+    "examples/pico/CMakeLists.txt"
+  ],
+  "checks_performed": [
+    "Read complete root BME280 transport/shared source and CMake",
+    "Browsed official Adafruit identity/pinout/download/assembly sources and Bosch datasheet",
+    "Parsed official QT Eagle board and schematic in memory, checked component positions, JP1 pad coordinates and header nets, CS R5 and SDO R4 pull-ups",
+    "Parsed SVG XML successfully",
+    "Inspected Quick Look rendered thumbnail; expanded SVG canvas to1100 after checking right-side labels",
+    "Local link check; pending parallel pages recorded separately",
+    "No source includes or new runtime example needed on orientation page"
+  ],
+  "hardware_status": {
+    "source_reviewed": true,
+    "compiled": "Existing root verification.json records both firmware targets compiled for Pico2; not rebuilt by this writer",
+    "physical_runtime": "Not exercised: no sensor identity, soldering, wiring, bus transfer or readings verified"
+  },
+  "concerns": [
+    "Coordinator must independently review every word, source claim and diagram before acceptance",
+    "Full book/browser render remains coordinator-owned",
+    "Parallel forward links may not yet exist: appendix-c-3.md, appendix-c-4.md"
+  ],
+  "status": "ready_for_independent_review"
+}
