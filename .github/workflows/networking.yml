@@ -1,0 +1,29 @@
+name: Verify networking
+on:
+  workflow_dispatch:
+  push:
+    paths: ['examples/network/**', 'scripts/build_network.py', 'scripts/test_network.py', 'scripts/network_lab.py', '.github/workflows/networking.yml']
+permissions:
+  contents: read
+jobs:
+  native-arm64:
+    runs-on: ubuntu-24.04-arm
+    container: debian:bookworm
+    steps:
+      - uses: actions/checkout@v4
+      - run: apt-get update && apt-get install -y build-essential python3 clang llvm libbpf-dev libxdp-dev pkg-config libelf-dev zlib1g-dev
+      - run: python3 scripts/build_network.py
+  linux-integration:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y build-essential python3 clang llvm libbpf-dev libxdp-dev pkg-config libelf-dev zlib1g-dev iproute2 iputils-ping ethtool
+      - run: python3 scripts/build_network.py
+      - name: Run isolated namespace packet and XDP integration
+        run: sudo python3 scripts/test_network.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: networking-integration-evidence
+          path: .build/network/*.json
+          retention-days: 30
