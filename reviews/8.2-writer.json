@@ -1,0 +1,62 @@
+{
+  "id": "8.2",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md (full)",
+    "EXAMPLES.md",
+    "catalog.json:8.2",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/8.1-establish-a-userspace-gpio-baseline.md",
+    "src/5.2-verify-the-linux-development-environment.md",
+    "verification.json",
+    ".github/workflows/examples.yml"
+  ],
+  "sources": [
+    "https://www.raspberrypi.com/documentation/computers/linux_kernel.html#kernel-headers",
+    "https://www.kernel.org/doc/html/latest/kbuild/modules.html",
+    "https://www.kernel.org/doc/html/latest/driver-api/basics.html#driver-entry-and-exit-points",
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/include/linux/init.h",
+    "https://www.kernel.org/doc/html/latest/core-api/printk-basics.html",
+    "https://www.kernel.org/doc/html/latest/process/license-rules.html#module-license",
+    "https://www.kernel.org/doc/html/latest/process/stable-api-nonsense.html",
+    "https://www.kernel.org/doc/html/latest/admin-guide/tainted-kernels.html"
+  ],
+  "scope_audit": {
+    "owned_files": [
+      "src/8.2-build-and-load-the-smallest-external-module.md",
+      "reviews/8.2-writer.json"
+    ],
+    "coverage": [
+      "Pi-only retained circuit, unplugged separate Pico, released userspace requests and no button binding",
+      "Recorded running OS, kernel, architecture, compiler identities/versions; exact full kernelrelease equality",
+      "Official native distribution headers and tools; package/meta recovery and reboot linked to 5.2",
+      "Complete actual hello.c and shared two-module Makefile, top-level unindented includes",
+      "Kernel C, privileged execution/address-space boundary, init/exit logging and annotations, metadata/GPL, unstable internal API",
+      "Native kbuild command with W=1, source/MODPOST/link stages, ELF/UF2 distinction, file/modinfo/vermagic inspection",
+      "Explicit file-path hello-only load, pre-existing-module collision check, per-shell insertion ownership flag and guarded normal removal",
+      "Illustrative exact source log strings, log watcher, loaded-state inspection, out-of-tree taint distinct from proprietary taint",
+      "Symptom-based troubleshooting and optional all-module generated-artifact cleanup; no boot persistence or GPIO operation"
+    ],
+    "shared_code_scripts_git_or_deploy_changed": false
+  },
+  "code_files_read": [
+    "examples/kernel/hello.c",
+    "examples/kernel/Makefile",
+    ".github/workflows/examples.yml"
+  ],
+  "checks_performed": [
+    "Read actual source and shared Makefile and compared every module-specific claim",
+    "Browsed official Linux and Raspberry Pi references for headers, kbuild, entry/exit, init annotations, logging, license metadata, internal interface and taint",
+    "Parsed 14 balanced fenced blocks; all 10 shell blocks pass sh -n without executing commands",
+    "Verified both source includes exist and are top-level/unindented",
+    "Verified existing local page links and heading anchors; identified 8.3 as canonical forward link",
+    "Read verification.json and workflow: native Arm64 compile-only evidence against exact official 6.12.96+rpt-rpi-v8 headers; writer did not rerun module compilation or load a module",
+    "Reread complete final draft after session reset; no claims of measured runtime"
+  ],
+  "hardware_status": "Physical Pi module insertion, messages, removal and circuit behavior have not been exercised. Expected log strings are explicitly illustrative and taken from actual hello.c. Hosted CI is compilation evidence only.",
+  "concerns": [
+    "Canonical 8.3 forward page is absent at writer check; root must retain accepted-only roadmap routing and verify the final staged render.",
+    "Independent root review, render/inclusion checks and publication pending."
+  ],
+  "status": "ready_for_independent_review"
+}

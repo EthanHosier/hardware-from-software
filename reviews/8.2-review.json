@@ -1,0 +1,41 @@
+{
+  "id": "8.2",
+  "reviewer": "independent root",
+  "status": "accepted_source_review",
+  "canonical_sha256": "8685211c513385d85889b22eaf47817f375e6872f2c3b0ed62762d79d612951f",
+  "included_source_sha256": {
+    "examples/kernel/hello.c": "1a51bf1108031b6014c6e8496aef2b2500900a958fa4b6559524741e671c328a",
+    "examples/kernel/Makefile": "4e205ebdc4eb9545724b32f7067b512881ba2ab2aea08b5f631e900d41b2acaf"
+  },
+  "asset_sha256": {},
+  "paths_read": [
+    "src/8.2-build-and-load-the-smallest-external-module.md",
+    "reviews/8.2-writer.json",
+    "examples/kernel/hello.c",
+    "examples/kernel/Makefile",
+    ".github/workflows/examples.yml",
+    "verification.json"
+  ],
+  "sources_checked": [
+    "https://www.kernel.org/doc/html/latest/kbuild/modules.html",
+    "https://www.kernel.org/doc/html/latest/admin-guide/tainted-kernels.html",
+    "https://www.kernel.org/doc/html/latest/process/stable-api-nonsense.html",
+    "https://www.raspberrypi.com/documentation/computers/linux_kernel.html#kernel-headers",
+    "https://raw.githubusercontent.com/util-linux/util-linux/v2.38.1/sys-utils/dmesg.1.adoc",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/include/linux/init.h",
+    "https://www.kernel.org/doc/html/latest/driver-api/basics.html#driver-entry-and-exit-points",
+    "https://www.kernel.org/doc/html/latest/process/license-rules.html#module-license"
+  ],
+  "scope_coverage": "Pi-only idle wiring and closed requests; kernel privilege/C and API boundary; complete running-kernel/header/compiler record and matching-package recovery; actual module/Makefile; native kbuild/MODPOST/artifact/vermagic checks; only owned hello insertion/removal and real source log strings; taint, failures and cleanup without persistent installation.",
+  "checks_performed": [
+    "Read every paragraph, command and both included files. Exact source hashes match current native Arm64 compilation evidence against official Pi headers.",
+    "All ten shell blocks pass sh -n. The same first-shell insertion flag guards removal; no unexpected module is forcibly unloaded.",
+    "Independently browsed official kbuild, header, init/exit, licensing metadata, internal API and taint documentation. Verified dmesg follow-new in upstream util-linux 2.38.1 manual.",
+    "Checked that shared Makefile builds both hello and mybutton while only hello is inserted. Source name, logger strings, no GPIO or device node and no Device Tree binding claims agree.",
+    "Architecture/full-release/header equality and failed-build/stale-artifact conditions are explicit; runtime outputs are illustrative. No unnecessary unchanged compilation repeated.",
+    "All practical commands are labelled Pi SSH; no modules loaded in the authoring environment."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source and shell syntax reviewed; exact source previously native Arm64 compiled against official 6.12.96 Pi headers. Physical Pi insertion, logs, removal and hardware state not exercised."
+}
