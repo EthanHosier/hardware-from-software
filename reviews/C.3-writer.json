@@ -1,0 +1,49 @@
+{
+  "id": "C.3",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "verification.json",
+    "src/appendix-c-1.md",
+    "src/appendix-c-2.md",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md"
+  ],
+  "sources": [
+    "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf",
+    "https://github.com/boschsensortec/BME280_SensorAPI/blob/master/bme280.c",
+    "https://raw.githubusercontent.com/boschsensortec/BME280_SensorAPI/master/bme280.c"
+  ],
+  "scope_audit": {
+    "complete_conversion_lesson": "Calibration bytes, explicit signed arithmetic, 20-bit sample decode, reserved nibble, skip sentinel and complete floating formula explained.",
+    "synthetic_example": "Clearly labelled illustrative, not a recorded sensor read or asserted Bosch vector; coefficients are not firmware replacements.",
+    "actual_source": "Entire actual common header included in top-level cpp fence; transport sources linked to C.2/C.4. No code changed.",
+    "state_machine": "ID, once-only calibration, T1 sanity limits, forced0x21, reset humidity scope, no reset/config write, fresh power-on, 10ms wait,100 status attempts mask09, per-call I2C timeout caveat, burst8, print/sleep/error path.",
+    "scope_limits": "Temperature only; pressure/humidity coefficient/formula/t_fine and channel-enable requirements explained without invented implementation.",
+    "bench": "Unchanged isolated C.2 four-wire I2C Pico+Adafruit state; Pi off/separate, no probe, optional local LED/button; cleanup removes Pico/sensor power before C.4 rewiring."
+  },
+  "code_files_read": [
+    "examples/pico/bme280_common.hpp",
+    "examples/pico/bme280_i2c.cpp",
+    "examples/pico/bme280_spi.cpp",
+    "examples/pico/CMakeLists.txt"
+  ],
+  "checks_performed": [
+    "Read common/transport full sources and build definition.",
+    "Browsed official Bosch datasheet calibration table, data shadowing, status/control/register layout, appendix8.1 floating formula.",
+    "Compared common formula and coefficient pairings with official Bosch SensorAPI v3.5.1 source, including API range clamp difference and t_fine truncation distinction.",
+    "Independently calculated synthetic inputs using Python Decimal and native floating arithmetic:25.08247793081682175397872926 and25.08247793081682 C.",
+    "Reproduced synthetic calibration little-endian bytes70 6b43 6718 fc and raw bytes7e ed00.",
+    "Executed the exact embedded Python calculator extracted from Markdown.",
+    "Checked fence balance, top-level common source include existence, local targets; only canonical future C.4 link is pending.",
+    "Consulted verification.json: both targets root-compiled, sensor physical runtime unexercised. No redundant compilation or hardware claim.",
+    "Independent review repair: removed brittle master line anchors and named parse_temp_press_calib_data and the double compensate_temperature function explicitly; arithmetic and conversion prose unchanged."
+  ],
+  "hardware_status": "Not exercised: no physical BME280 communication, calibration record, measured temperature, thermal/ambient accuracy or sensor timing evidence.",
+  "concerns": [
+    "C.4 is a canonical forward link whose page is not yet present at writer handoff; accepted-only publication is expected to route unpublished pages to roadmap.",
+    "No writer-side render or production checks; coordinator/root owns integration, independent review, build and publication."
+  ],
+  "status": "ready_for_independent_recheck"
+}

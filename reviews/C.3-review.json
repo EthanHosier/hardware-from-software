@@ -1,0 +1,49 @@
+{
+  "id": "C.3",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "f639142a53bacf18135ea48d87478f8d138b5924fe0d9be88d981c9b07f5ad07",
+  "included_source_sha256": {
+    "examples/pico/bme280_common.hpp": "08dabf4417c9147b49414e4a93d5fa5a8b8a824b4f0d0733d131b9db8ac3c781"
+  },
+  "asset_sha256": {
+    "src/assets/C.2-bme280-i2c.svg": "125f7900163c5e6d24c8ba1ba15443b0ccc95d1128c930d7a8fb83a604bfb813"
+  },
+  "reviewed_dependency_sha256": {
+    "examples/pico/bme280_i2c.cpp": "cf958229b065e3c47df8859d8c32c81f2762c21cd7d6801af9fe3733fb71bce5",
+    "examples/pico/bme280_spi.cpp": "8cdbd28f258ffd599d8b1260fe94df187962c7a35b07aea946ffd40861a74e31"
+  },
+  "paths_read": [
+    "src/appendix-c-3.md",
+    "reviews/C.3-writer.json",
+    "examples/pico/bme280_common.hpp",
+    "examples/pico/bme280_i2c.cpp",
+    "examples/pico/bme280_spi.cpp",
+    "src/assets/C.2-bme280-i2c.svg",
+    "verification.json"
+  ],
+  "sources_checked": [
+    "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf",
+    "https://raw.githubusercontent.com/boschsensortec/BME280_SensorAPI/master/bme280.c",
+    "https://github.com/boschsensortec/BME280_SensorAPI/blob/master/bme280.c"
+  ],
+  "scope_coverage": "Whole actual common header; signedLE calibration and20bit temperature assembly; skip sentinel/sanity limits; clearly synthetic worked bytes and exact Decimal calculator; Bosch floating equivalence and API clamp distinction; exact power-on/forcedconversion/status attempts/burst/error timing; temp-only scope, other-channel requirements, measurement limits and C2\u2192C4 bench state.",
+  "checks_performed": [
+    "Read all final prose and actual full shared/transport sources. Header and transport hashes match recorded compiled firmware; no redundant unchanged compile rerun.",
+    "Independently checked Bosch calibration table, raw/temp sentinel, forced-mode/status/control and normal-mode shadowing sections plus floating appendix8.1. Actual code uses untruncated v1+v2 fortemperature and does not implement stored t_fine/otherchannels.",
+    "Fetched current official SensorAPI source and checked actual double compensate_temperature, range clamp and calibration parser behavior. Found initial citation line anchors stale; SAME writer replaced them with source links naming exact functions, and repaired prose reread.",
+    "Executed exact extracted Decimal calculator and parsed its shell fence with sh -n. Result25.08247793081682175397872926 matches stated synthetic bytes, intermediate terms and nativefloating25.08247793081682/printed25.08. No measurement or Boschtest-vector provenance invented.",
+    "Traced limitedT1sanity, calibrationonce,0x21/temp\u00d71/pressure skip/reset humidity,100statusATTEMPTS versus walltime/per-callI2Ctimeout, one-shotfailures/no retry and1secsleep not exactperiod. No all-coefficientvalidation or accuracy claim.",
+    "Read full direct C2SVG XML and compared current hash to accepted C2 full browser render/pin check; unchanged four-wire state matches prose and optionalpowercycle cleanup. Direct localSVG hashed, top-level fullinclude verified. Root publication performs staged render/link/exactinclude/public checks."
+  ],
+  "findings": [
+    {
+      "issue": "Bosch calibration and temperature source links used moving line anchors that no longer selected the described complete functions.",
+      "resolution": "Same writer removed brittle anchors and named parse_temp_press_calib_data and double compensate_temperature; actual current functions independently checked and final links reread."
+    }
+  ],
+  "repairs": [
+    "Replaced stale source line anchors with function-named official source references."
+  ],
+  "hardware_status": "Root target-compilation evidence covers sharedheader and both transports. Host synthetic arithmetic independently reproduced; no physical calibration bytes, sensor communication, temperature accuracy, thermal behavior or timing measured."
+}
