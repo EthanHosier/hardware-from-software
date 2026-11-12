@@ -1,0 +1,52 @@
+{
+  "id": "9.1",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "verification.json",
+    "src/8.5-expose-dev-mybutton-to-a-c-client.md",
+    "src/8.6-make-failure-and-teardown-behaviour-explicit.md",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md"
+  ],
+  "sources": [
+    "https://docs.kernel.org/admin-guide/mm/concepts.html",
+    "https://www.kernel.org/doc/html/v6.12/filesystems/proc.html",
+    "https://man7.org/linux/man-pages/man5/proc_pid_maps.5.html",
+    "https://man7.org/linux/man-pages/man2/mmap.2.html",
+    "https://man7.org/linux/man-pages/man3/sysconf.3.html",
+    "https://www.kernel.org/doc/html/v6.12/admin-guide/sysctl/kernel.html#randomize-va-space",
+    "https://man7.org/linux/man-pages/man3/malloc.3.html",
+    "https://man7.org/linux/man-pages/man5/core.5.html"
+  ],
+  "scope_audit": {
+    "mappings": "/proc/self/maps self identity, pre-allocation snapshot, half-open hex ranges, permissions/private/shared, offsets/device/inode/path, libraries, heap and anonymous allocations, mapped stack versus resident RAM.",
+    "allocation": "Complete source include; native ordinary-user g++ commands; sysconf page size and 128-page mapping; MAP_PRIVATE/ANONYMOUS flags, kernel-selected pointer and MAP_FAILED.",
+    "address_interpretation": "Two saved runs with status checks; typical ASLR, no guaranteed difference; virtual addresses cannot reveal physical backing; MCU MMIO address cast does not map Pi hardware.",
+    "progression": "Reads actual 8.6 final state, retains bound driver/Pi-only circuit/no clients, Pico unplugged and inter-board/debug absent. No hardware changes. Entire source includes 9.2 work but this page postpones detailed demand paging and child mprotect analysis.",
+    "limitations": "No new mmap claimed in earlier maps output; no continuous or post-exit process inspection; no privileged mapping, ASLR changes or ptrace dependence."
+  },
+  "code_files_read": [
+    "examples/linux/memory_lab.cpp"
+  ],
+  "checks_performed": [
+    "Read the complete canonical memory_lab.cpp and traced source/output order.",
+    "Checked every shell fence using bash -n; all passed.",
+    "Checked source include exists and uses top-level unindented cpp fence.",
+    "Checked local links exist or match catalogued forward pages.",
+    "Read verification.json and coordinator instruction documenting Linux compile/host exercise evidence; did not claim own Pi execution.",
+    "Browsed primary Linux man-pages and kernel documentation."
+  ],
+  "hardware_status": {
+    "source_reviewed": true,
+    "prior_compilation": "verification.json records all Linux applications compiled including hosted native Arm64.",
+    "host_runtime": "Coordinator supplied root-verified Linux memory exercise; writer did not independently run Linux executable on this macOS workstation.",
+    "physical_runtime": "UNEXERCISED; no physical Pi or Pico action or observed GPIO outcome claimed."
+  },
+  "concerns": [
+    "Independent review and rendered-page validation remain coordinator responsibilities.",
+    "Source requests child RLIMIT_CORE=0 without checking return; page uses bounded subshell core limit and qualifies pipe-based crash collectors."
+  ],
+  "status": "ready for independent review"
+}
