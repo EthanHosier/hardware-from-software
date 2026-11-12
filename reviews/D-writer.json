@@ -1,0 +1,86 @@
+{
+  "id": "D",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/6.1-i-c-on-the-wires.md",
+    "src/6.2-turn-the-pico-into-a-register-based-peripheral.md",
+    "src/6.3-write-a-linux-i-c-client.md",
+    "src/6.4-compare-spi-with-a-loopback-experiment.md",
+    "src/7.1-make-a-uart-link-electrically-and-logically-correct.md",
+    "src/7.2-configure-the-pi-uart-and-test-an-echo.md",
+    "src/7.3-build-a-robust-c-serial-client.md",
+    "src/7.4-trace-a-command-end-to-end.md",
+    "src/10.1-use-a-linux-device-event-to-control-pico-hardware.md",
+    "src/10.2-verify-troubleshoot-and-explain-the-system.md",
+    "src/appendix-a.md",
+    "src/appendix-c-4.md"
+  ],
+  "sources": [
+    "https://www.saleae.com/downloads",
+    "https://www.saleae.com/support/logic-software/download-and-installation/supported-operating-systems",
+    "https://downloads.saleae.com/specs/logic_8_data_sheet.pdf",
+    "https://www.saleae.com/support/logic-software/capturing-data/connecting-the-logic-hardware",
+    "https://www.saleae.com/support/specifications-hardware/electrical-characteristics/supported-voltages",
+    "https://www.saleae.com/support/logic-software/capturing-data/capture-settings",
+    "https://www.saleae.com/support/logic-software/download-and-installation/sw-installation",
+    "https://www.saleae.com/support/logic-software/viewing-and-analyzing-data/navigating-the-software",
+    "https://github.com/saleae/gitbook-docs/blob/master/product/user-guide/using-logic/demo-mode.md",
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf",
+    "https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-uarts",
+    "https://www.saleae.com/support/logic-software/capturing-data/connecting-accessories",
+    "https://www.saleae.com/support/specifications-hardware/product-comparison-and-selection/safety-and-warranty",
+    "https://www.saleae.com/support/logic-software/capturing-data/capture-modes",
+    "https://www.saleae.com/support/logic-software/capturing-data/what-sample-rate-is-required",
+    "https://www.saleae.com/support/protocol-analyzers/analyzer-user-guides/using-async-serial",
+    "https://github.com/saleae/serial-analyzer/blob/master/src/SerialAnalyzerSettings.cpp",
+    "https://www.saleae.com/support/logic-software/viewing-and-analyzing-data/measurements-timing-markers",
+    "https://www.saleae.com/support/logic-software/saving-and-exporting-data/saving-loading-and-exporting-data",
+    "https://www.saleae.com/support/logic-software/saving-and-exporting-data/exporting-data",
+    "https://www.saleae.com/support/protocol-analyzers/analyzer-user-guides/using-i2c",
+    "https://www.saleae.com/support/protocol-analyzers/analyzer-user-guides/using-spi"
+  ],
+  "scope_audit": {
+    "main_route": "Genuine Saleae Logic8, official Logic2, Apple Silicon macOS12+; optional no-purchase prerequisite checks; real model recognition and Demo Mode distinction; exact passive taps and ground; 10MS/s digital-only; short falling-edge trigger; actual serial_client LED request; two serial decoders; save native capture and per-analyzer CSV; troubleshooting and unpowered cleanup.",
+    "alternatives": [
+      "GPIO GP16 third trace",
+      "Pi I2C3/Pico0x42 repeated START snapshot and separate LED-write trace",
+      "Pico-only no-CS SPI loopback",
+      "Optional owned Adafruit BME280 C4 startup ID transaction with CS"
+    ],
+    "limits": "No other-device compatibility, purchased hardware assumption, invented measurements or screenshots. No analogue/electrical quality proof from digital traces."
+  },
+  "code_files_read": [
+    "examples/pico/uart_device.cpp",
+    "examples/pico/device_io.hpp",
+    "examples/common/protocol.hpp",
+    "examples/linux/serial_client.cpp",
+    "examples/linux/serial_port.hpp",
+    "examples/linux/i2c_client.cpp",
+    "examples/pico/i2c_target.cpp",
+    "examples/pico/spi_loopback.cpp",
+    "examples/pico/bme280_spi.cpp",
+    "examples/pico/bme280_common.hpp",
+    "examples/pico/CMakeLists.txt"
+  ],
+  "checks_performed": [
+    "Read authoring guide, plan, examples contract, full catalog, style calibration and named preceding lessons.",
+    "Cross-checked UART request and reply against client, serial owner, parser and device firmware; verified bytes and nominal serialization arithmetic with Python:8/7 bytes,80/70 bits,694.444/607.639us.",
+    "Cross-checked I2C sixteen-byte combined transaction, target0x42 and post-read LED write against actual source.",
+    "Cross-checked SPI mode0 100kHz source, no-CS loopback and startup-only BME ID command d0/dummy00/response60 against source.",
+    "Browsed official Saleae installation, operating systems, download, connection, channel settings, capture modes, thresholds, sampling, safety, decoder and export guides; consulted official Saleae GitHub docs and Async Serial settings source.",
+    "Inspected official Saleae trigger/pretrigger/posttrigger screenshots from official docs repository: Pattern and Channel/Falling Edge, Trim pre-trigger data, Capture duration after trigger.",
+    "All local Markdown targets exist; eight balanced code fences; SVG XML parses. No shared build/config/code modified.",
+    "Original D UART tap diagram authored; QuickLook thumbnail inspected but QuickLook crops the right edge independently of SVG viewBox. Browser rendering remains for independent integration review."
+  ],
+  "hardware_status": "UNEXERCISED: no actual Logic2 application installation, device enumeration, board wiring, physical transaction, capture, screenshot, export or measured timing in authoring.",
+  "concerns": [
+    "Official current Logic8 PDF DOC_620-00011_V20260521 contains apparent copy/template inconsistencies (LogicMSO caption and selectable-threshold wording). Page follows Supported Voltages + Device Settings, corroborated by official automation API, for fixed0.6/1.2V thresholds. It does not repeat absolute protection voltage as permission for high-voltage probing.",
+    "UI procedure is documentation/source reviewed, not manually exercised in Logic2. Integration reviewer should render the SVG and page at desktop/narrow widths.",
+    "No new complete program is introduced: practical commands reuse prerequisite7.3 full source and existing6.3/6.4/C4 code; D does not duplicate all their full-file includes."
+  ],
+  "status": "ready_for_independent_review"
+}

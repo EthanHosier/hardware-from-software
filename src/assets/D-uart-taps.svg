@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="490" viewBox="0 0 960 490" role="img" aria-labelledby="title desc">
+<title id="title">Passive Logic 8 taps on the Pi–Pico UART</title>
+<desc id="desc">Connection map, not physical placement. Pi BCM14 physical 8 TX goes to Pico GP1 physical 2 RX and branches to analyser channel 0. Pico GP0 physical 1 TX goes to Pi BCM15 physical 10 RX and branches to channel 1. Pi ground physical 6 connects Pico ground physical 8 and analyser ground. No power rails connect.</desc>
+<rect width="960" height="490" fill="#f7f9fc"/>
+<g font-family="Arial, sans-serif" fill="#162a43">
+<text x="30" y="35" font-size="23" font-weight="bold">UART connection map — passive recording inputs</text>
+<text x="30" y="63" font-size="16">Fit or move every tap only with Pi, Pico and analyser USB power disconnected.</text>
+<rect x="25" y="90" width="250" height="218" rx="12" fill="#e4f0e8" stroke="#355b49" stroke-width="2"/>
+<rect x="685" y="90" width="250" height="218" rx="12" fill="#e4f0e8" stroke="#355b49" stroke-width="2"/>
+<text x="45" y="121" font-size="22" font-weight="bold">Pi 4 header</text>
+<text x="705" y="121" font-size="22" font-weight="bold">Pico 2 header</text>
+<text x="45" y="161" font-size="18">BCM14 TX · physical 8</text>
+<text x="705" y="161" font-size="18">GP1 RX · physical 2</text>
+<text x="45" y="221" font-size="18">BCM15 RX · physical 10</text>
+<text x="705" y="221" font-size="18">GP0 TX · physical 1</text>
+<text x="45" y="281" font-size="18">GND · physical 6</text>
+<text x="705" y="281" font-size="18">GND · physical 8</text>
+<g fill="none" stroke-width="3">
+<path d="M275 155H685 M390 155V360" stroke="#216a9a"/>
+<path d="M275 215H685 M480 215V360" stroke="#976215"/>
+<path d="M275 275H685 M570 275V360" stroke="#45515d"/>
+</g>
+<g><circle cx="390" cy="155" r="5" fill="#216a9a"/><circle cx="480" cy="215" r="5" fill="#976215"/><circle cx="570" cy="275" r="5" fill="#45515d"/></g>
+<text x="298" y="144" font-size="15">request →</text>
+<text x="583" y="204" font-size="15">← reply</text>
+<rect x="310" y="360" width="340" height="84" rx="10" fill="#e5eaf2" stroke="#45515d" stroke-width="2"/>
+<text x="363" y="386" font-size="17">CH0</text><text x="456" y="386" font-size="17">CH1</text><text x="548" y="386" font-size="17">GND</text>
+<text x="345" y="420" font-size="20" font-weight="bold">Saleae Logic 8</text>
+<text x="30" y="345" font-size="16">Pi: own USB-C supply</text>
+<text x="685" y="345" font-size="16">Pico: USB from Mac</text>
+<text x="30" y="405" font-size="16">3.3 V logic</text>
+<text x="30" y="430" font-size="16">115200 · 8N1</text>
+<text x="685" y="405" font-size="16">Analyser USB → Mac</text>
+<text x="685" y="430" font-size="16">No analyser power output</text>
+<text x="30" y="472" font-size="17" font-weight="bold">No Pi–Pico 3V3, 5V, VBUS or VSYS connection. Retain each board's local circuits.</text>
+</g></svg>

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12T21:47:29.740932+00:00",
+  "updated": "2026-11-12T21:57:17.405688+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -267,24 +267,26 @@
     "C.4": {
       "path": "src/appendix-c-4.md",
       "writer": "complete",
-      "reviewer": "root_review_pending",
+      "reviewer": "accepted_source_review",
       "writer_agent": "/root/book_coordinator/page_c_4"
     },
     "D": {
       "path": "src/appendix-d.md",
-      "writer": "active",
-      "reviewer": "pending",
+      "writer": "complete",
+      "reviewer": "accepted_source_review",
       "writer_agent": "/root/book_coordinator/page_d"
     },
     "E": {
       "path": "src/appendix-e.md",
-      "writer": "pending",
-      "reviewer": "pending"
+      "writer": "complete",
+      "reviewer": "root_review_in_progress",
+      "writer_agent": "/root/book_coordinator/page_e"
     },
     "F": {
       "path": "src/appendix-f.md",
-      "writer": "pending",
-      "reviewer": "pending"
+      "writer": "active",
+      "reviewer": "pending",
+      "writer_agent": "/root/book_coordinator/page_f"
     }
   }
 }
