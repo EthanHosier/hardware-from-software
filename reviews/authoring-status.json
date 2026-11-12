@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12T07:35:34.441605+00:00",
+  "updated": "2026-11-12T07:37:20.733368+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -177,7 +177,7 @@
     "8.3": {
       "path": "src/8.3-describe-the-device-and-bind-the-driver.md",
       "writer": "complete",
-      "reviewer": "reviewing_waiting_publication_order",
+      "reviewer": "accepted_source_review",
       "writer_agent": "/root/book_coordinator/page_8_3"
     },
     "8.4": {
@@ -188,8 +188,9 @@
     },
     "8.5": {
       "path": "src/8.5-expose-dev-mybutton-to-a-c-client.md",
-      "writer": "pending",
-      "reviewer": "pending"
+      "writer": "active",
+      "reviewer": "pending",
+      "writer_agent": "/root/book_coordinator/page_8_5"
     },
     "8.6": {
       "path": "src/8.6-make-failure-and-teardown-behaviour-explicit.md",

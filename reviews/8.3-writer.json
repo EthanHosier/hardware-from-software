@@ -1,0 +1,54 @@
+{
+  "id": "8.3",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "verification.json",
+    "src/8.1-establish-a-userspace-gpio-baseline.md",
+    "src/8.2-build-and-load-the-smallest-external-module.md",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md"
+  ],
+  "sources": [
+    "https://www.raspberrypi.com/documentation/computers/configuration.html#device-trees-overlays-and-parameters",
+    "https://www.kernel.org/doc/html/v6.12/driver-api/gpio/consumer.html",
+    "https://www.kernel.org/doc/html/v6.12/driver-api/gpio/board.html",
+    "https://www.kernel.org/doc/html/v6.12/driver-api/driver-model/platform.html",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/Documentation/devicetree/bindings/pinctrl/brcm,bcm2835-gpio.txt",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/include/dt-bindings/gpio/gpio.h"
+  ],
+  "scope_audit": {
+    "overlay": "Complete source included; fragments, compatible, per-pin mux/pulls, polarity and named lookup explained; supported deprecated legacy syntax qualified.",
+    "driver": "Complete actual source included; registration, match/probe, exclusivity, error pointers, devm and explicit IRQ/work failure cleanup explained.",
+    "reproducibility": "Pi-only wiring retained; exact-header prerequisite and build; collision inspection, boot install/edit/reboot; of_node-based platform discovery; module versus binding checks; manual load with no persistent autoload; unload and boot-disable cleanup.",
+    "progression": "Full source introduces mechanisms developed in 8.4\u20138.6, while page concentrates on binding. Permissions rule inspected but deferred to 8.5."
+  },
+  "code_files_read": [
+    "examples/kernel/mybutton.c",
+    "examples/kernel/hardware-button-overlay.dts",
+    "examples/kernel/Makefile",
+    "examples/kernel/99-mybutton.rules"
+  ],
+  "checks_performed": [
+    "Read all required guides and entire catalog.",
+    "Browsed primary Linux 6.12 and official Raspberry Pi documentation and frozen binding/header.",
+    "Checked source names, compatible, named descriptor mappings, polarity and exact failure-unwind ordering against actual code.",
+    "All 8 shell blocks pass bash -n; no target commands executed.",
+    "All three includes exist, are full-file and top-level/unindented; all local page/asset targets resolve.",
+    "Compilation evidence taken only from verification.json: hosted native Arm64 with official Pi 6.12.96+rpt-rpi-v8 headers and overlay compile, no new compilation claimed.",
+    "Independent-review repair: clarified that only the driver compilation uses official Pi kernel headers; the overlay is compiled separately by dtc. Neither artifact has target-runtime evidence."
+  ],
+  "hardware_status": "Physical runtime not exercised; no Pi connection, GPIO requests, module insertion, reboot, electrical state or failure-path observation performed.",
+  "concerns": [
+    "Longer than general word target because complete reversible setup, binding checks and teardown require explicit instruction.",
+    "Independent reviewer must check rendered page/includes and commands; no publication or shared-file edits performed.",
+    "Live target kernel/API, configuration path, pin ownership and physical wiring require reader verification."
+  ],
+  "status": "ready for independent review",
+  "included_source_sha256": {
+    "../examples/kernel/hardware-button-overlay.dts": "72fd129f2ebab3565a0d65d0fef67a0f29322ec2aa9dd1f72b9a9df3cc1632e9",
+    "../examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826",
+    "../examples/kernel/Makefile": "4e205ebdc4eb9545724b32f7067b512881ba2ab2aea08b5f631e900d41b2acaf"
+  }
+}
