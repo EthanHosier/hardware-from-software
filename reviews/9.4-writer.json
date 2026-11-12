@@ -1,0 +1,58 @@
+{
+  "id": "9.4",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "verification.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/9.1-observe-your-linux-process-s-mappings.md",
+    "src/9.2-observe-demand-paging-and-protection-faults.md",
+    "src/9.3-trace-a-real-kernel-mmio-mapping.md"
+  ],
+  "sources": [
+    "https://www.kernel.org/doc/html/v6.12/driver-api/device-io.html",
+    "https://www.kernel.org/doc/html/v6.12/driver-api/io_ordering.html",
+    "https://www.kernel.org/doc/html/v6.12/core-api/wrappers/memory-barriers.html",
+    "https://www.kernel.org/doc/html/v6.12/driver-api/driver-model/devres.html",
+    "https://www.kernel.org/doc/html/v6.12/dev-tools/sparse.html",
+    "https://www.kernel.org/doc/html/v6.12/core-api/wrappers/atomic_t.html",
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/lib/devres.c",
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/base/platform.c",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://github.com/raspberrypi/pico-sdk/blob/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_base/include/hardware/address_mapped.h",
+    "https://github.com/raspberrypi/pico-sdk/blob/079c6f39023649b154152db30f1d781e884879bc/src/rp2350/hardware_regs/include/hardware/regs/io_bank0.h",
+    "https://gcc.gnu.org/onlinedocs/gcc/Volatiles.html"
+  ],
+  "scope_audit": {
+    "resource_fragment": "Full include; platform resource lookup, managed claim/map, precise errors, illustrative read, dev_dbg and return0. No nonexistent size check, write or readback claimed; no module/device/Makefile target.",
+    "access_semantics": "Pico volatile vs kernel accessors; SIO dedicated SET/CLR vs aliases; GP17 INTR2 W1C bits6/7; RMW failure modes; ordinary RAM atomics/locks do not supply device semantics.",
+    "ordering": "Default mapping same-thread/peripheral ordering, normal-memory relationship, relaxed limitations, barrier vs delivery vs completion, device-specific safe posted-write readback.",
+    "ownership_lifetime": "__iomem/Sparse, KVA/device attributes vs userspace RAM; managed release vs quiescence; retained controller owner and GPIO descriptors; SDK startup boundary.",
+    "practical": "Read-only ordinary-user source commands; no build/load or MMIO execution. Bound driver, stopped clients, Pi-only circuit, unplugged Pico, absent bus/debug wires retained; cleanup and capstone transition."
+  },
+  "code_files_read": [
+    "examples/kernel/mmio_fragment.c",
+    "examples/kernel/mybutton.c",
+    "examples/kernel/Makefile",
+    "examples/pico/blink_registers.cpp",
+    "examples/pico/button_irq.cpp",
+    ".deps/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h",
+    ".deps/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/sio.h",
+    ".deps/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/io_bank0.h"
+  ],
+  "checks_performed": [
+    "Complete included-source and surrounding example review",
+    "Frozen platform and lib/devres source lookup and error-code check",
+    "Versioned primary Linux docs checked including precise I/O barrier bullets",
+    "Current official RP2350 PDF downloaded; metadata creation 2026-10-01; atomic section and SIO SET description extracted; SDK WC bits checked",
+    "Balanced Markdown fences, exact top-level full include, canonical local links checked",
+    "Only own Markdown and writer report changed; no shared build/deployment action"
+  ],
+  "hardware_status": "No hardware accessed. Fragment unexecuted; no target compilation entry in verification.json. Prior compiled project modules explicitly distinguished.",
+  "concerns": [
+    "10.1 canonical forward link target not authored at writer check; accepted-only publication must route it through roadmap as normal."
+  ],
+  "status": "ready_for_independent_review"
+}

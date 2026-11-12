@@ -1,0 +1,51 @@
+{
+  "id": "9.4",
+  "reviewer": "independent root",
+  "status": "accepted_source_review",
+  "canonical_sha256": "5ce665a979caaa3a45e3b29cd9d659efd7d782d4a97610283c8f61a13f4f30d9",
+  "included_source_sha256": {
+    "examples/kernel/mmio_fragment.c": "eaefa54f3dad35d5bfd31a6bacd778bbca31856a08a1ba1dfa23c4383bfddfb4"
+  },
+  "asset_sha256": {},
+  "reviewed_dependency_sha256": {
+    "examples/pico/blink_registers.cpp": "fbd45b4d97c4fb73c23046fbcdbd8435a1fda858cf5607b8dd119a74248acd1d",
+    "examples/pico/button_irq.cpp": "98d5d773a21da23cac0a6c4eb618907e20ed5d02eb8c5986fc7aa9b67554feff",
+    "examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826",
+    "examples/kernel/Makefile": "4e205ebdc4eb9545724b32f7067b512881ba2ab2aea08b5f631e900d41b2acaf"
+  },
+  "paths_read": [
+    "src/9.4-explain-ordering-access-semantics-and-ownership.md",
+    "reviews/9.4-writer.json",
+    "examples/kernel/mmio_fragment.c",
+    "examples/kernel/mybutton.c",
+    "examples/kernel/Makefile",
+    "examples/pico/blink_registers.cpp",
+    "examples/pico/button_irq.cpp",
+    "verification.json"
+  ],
+  "sources_checked": [
+    "https://www.kernel.org/doc/html/v6.12/driver-api/device-io.html",
+    "https://www.kernel.org/doc/html/v6.12/driver-api/io_ordering.html",
+    "https://www.kernel.org/doc/html/v6.12/core-api/wrappers/memory-barriers.html",
+    "https://www.kernel.org/doc/html/v6.12/driver-api/driver-model/devres.html",
+    "https://www.kernel.org/doc/html/v6.12/dev-tools/sparse.html",
+    "https://www.kernel.org/doc/html/v6.12/core-api/wrappers/atomic_t.html",
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/lib/devres.c",
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/base/platform.c",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://github.com/raspberrypi/pico-sdk/blob/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_base/include/hardware/address_mapped.h",
+    "https://github.com/raspberrypi/pico-sdk/blob/079c6f39023649b154152db30f1d781e884879bc/src/rp2350/hardware_regs/include/hardware/regs/io_bank0.h",
+    "https://gcc.gnu.org/onlinedocs/gcc/Volatiles.html"
+  ],
+  "scope_coverage": "Ordinary RAM versus device commands; dedicated SIO SET/CLR and supported aliases; GP17 W1C masks and RMW hazards; volatile limitations and software synchronization; complete contextual fragment with resource/error/lifetime/access trace; default accessor ordering and relaxed limits; posted delivery versus completion; source-only exercise and retained hardware state.",
+  "checks_performed": [
+    "Read all prose, actual included fragment and four referenced project sources. Checked each claim against actual code; fragment has no size validation, write, readback, registered module or build target and page states these limits.",
+    "Independently browsed versioned Linux device I/O, precise barrier guarantees, atomic_t, Sparse, io_ordering, devres, GCC volatile rules and frozen platform/libdevres implementations. Traced resource0 lookup and EINVAL/EBUSY/ENOMEM branches.",
+    "Checked installed pinned SDK alias helper and io_rw_32 typedef, GPIO17 INTR2 edge bit6/7 WC fields, adjacent RO level fields, and already reviewed datasheet SIO/atomic-access definitions.",
+    "Only shell fence sh -n parsed; commands are source inspection, not hardware operations. No new compile/runtime claim for fragment.",
+    "Reviewed top-level full include, local chapter links and absence of direct SVG. Source hash matches recorded inventory; fragment compilation remains unclaimed."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source/API and command syntax reviewed. Fragment not target-compiled or executed. Existing compiled project modules do not validate this contextual fragment. No physical hardware operation."
+}

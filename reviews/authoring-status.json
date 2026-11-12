@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12T08:04:03.464701+00:00",
+  "updated": "2026-11-12T18:43:11.392373+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -218,8 +218,8 @@
     },
     "9.4": {
       "path": "src/9.4-explain-ordering-access-semantics-and-ownership.md",
-      "writer": "active",
-      "reviewer": "pending",
+      "writer": "complete",
+      "reviewer": "accepted_source_review",
       "writer_agent": "/root/book_coordinator/page_9_4"
     },
     "10.1": {
@@ -230,8 +230,9 @@
     },
     "10.2": {
       "path": "src/10.2-verify-troubleshoot-and-explain-the-system.md",
-      "writer": "pending",
-      "reviewer": "pending"
+      "writer": "active",
+      "reviewer": "pending",
+      "writer_agent": "/root/book_coordinator/page_10_2"
     },
     "A": {
       "path": "src/appendix-a.md",

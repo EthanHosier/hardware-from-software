@@ -1,6 +1,6 @@
 {
   "status": "authoring in progress",
-  "recorded_at": "2026-11-11T18:40:57.342869+00:00",
+  "recorded_at": "2026-11-12T18:43:06.758976+00:00",
   "baseline": {
     "pico_sdk": "2.3.1",
     "pico_sdk_commit": "079c6f39023649b154152db30f1d781e884879bc",
@@ -26,7 +26,8 @@
     "example_archive": "Extracted independently: complete shared headers; host builds and normal/sanitized protocol tests pass",
     "kernel_failure_unwind": "LED low after IRQ/work cancellation on misc registration failure; source-reviewed and native Pi-header compiled, physical failure path not exercised",
     "i2c_client_errors": "System errors capture errno at failure; semantic and partial-transfer errors independent; default I2C3 on Pi4. Native Linux and Arm64 CI compilation passed; physical bus untested.",
-    "serial_flow_control": "Explicitly clear inherited software-flow flags after cfmakeraw. Both header consumers compile on Mac; all native Linux/Arm64 applications and exact Pi-header modules pass CI."
+    "serial_flow_control": "Explicitly clear inherited software-flow flags after cfmakeraw. Both header consumers compile on Mac; all native Linux/Arm64 applications and exact Pi-header modules pass CI.",
+    "linux_memory_host_runtime": "Passed hosted Ubuntu Linux: canonical memory_lab mappings/page-touch loop and child-only PROT_NONE write; parent reported expected SIGSEGV and exited0. Not a physical Pi run."
   },
   "physical_runtime": "not exercised; no verified connection to boards",
   "limitations": [
