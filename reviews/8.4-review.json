@@ -1,0 +1,40 @@
+{
+  "id": "8.4",
+  "reviewer": "independent root",
+  "status": "accepted_source_review",
+  "canonical_sha256": "365d1e91e39e9909e35ae8a1e0804c7d3ca7dfc65c504962722288566ffcf0ca",
+  "included_source_sha256": {
+    "examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826"
+  },
+  "asset_sha256": {
+    "src/assets/8.1-pi-userspace-circuit.svg": "6b2b551bfb03ce76feff02c28ab231d3d88d29bf98298ad1bab1330ccd0fe182"
+  },
+  "reviewed_dependency_sha256": {
+    "examples/kernel/hardware-button-overlay.dts": "72fd129f2ebab3565a0d65d0fef67a0f29322ec2aa9dd1f72b9a9df3cc1632e9"
+  },
+  "paths_read": [
+    "src/8.4-convert-gpio-events-into-driver-state.md",
+    "reviews/8.4-writer.json",
+    "examples/kernel/mybutton.c",
+    "examples/kernel/hardware-button-overlay.dts",
+    "src/assets/8.1-pi-userspace-circuit.svg"
+  ],
+  "sources_checked": [
+    "https://www.kernel.org/doc/html/v6.12/core-api/genericirq.html",
+    "https://www.kernel.org/doc/html/v6.12/core-api/workqueue.html",
+    "https://www.kernel.org/doc/html/v6.12/driver-api/gpio/consumer.html",
+    "https://www.kernel.org/doc/html/v6.12/locking/spinlocks.html"
+  ],
+  "scope_coverage": "Descriptor/Linux IRQ identity and input prerequisite; default primary plus threaded IRQ callback; both physical edges versus logical active-low sample; ONESHOT scope; delayed work filtering with scheduling/quantization/missed-event limits; sleepable GPIO access outside locked compound state; accepted counter and separate LED publication; bound-driver slow observation and IRQ-statistics distinction; retained wiring, failures and cleanup.",
+  "checks_performed": [
+    "Read every paragraph, actual complete driver and active-low overlay. Source hash agrees with recorded exact Pi-header native Arm64 compilation.",
+    "Independently browsed official Linux 6.12 IRQ, workqueue, descriptor and locking documentation. Callback contexts, delay eligibility and cansleep/lock boundaries agree with actual calls.",
+    "Checked sampled-state table, initial held state, online guard, IRQ/work shutdown and probe-error unwind against implementation. No continuous stability, precise latency or per-edge queue guarantee claimed.",
+    "Visually inspected whole retained Pi circuit SVG in public browser: pull-up, switch groups, LED polarity, resistors and physical/BCM labels all match.",
+    "All three shell blocks pass sh -n; existing driver discovery and future ABI links are canonical. IRQ statistics are correctly distinct from accepted sequence.",
+    "No unchanged build repeated and no physical or kernel runtime performed."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source and command syntax reviewed; exact source previously compiled against official Pi headers. Physical GPIO, IRQ, debounce, LED and teardown not exercised."
+}

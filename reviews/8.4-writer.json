@@ -1,0 +1,47 @@
+{
+  "id": "8.4",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/8.1-establish-a-userspace-gpio-baseline.md",
+    "src/8.2-build-and-load-the-smallest-external-module.md",
+    "src/8.3-describe-the-device-and-bind-the-driver.md",
+    "verification.json"
+  ],
+  "sources": [
+    "https://www.kernel.org/doc/html/v6.12/core-api/genericirq.html",
+    "https://www.kernel.org/doc/html/v6.12/core-api/workqueue.html",
+    "https://www.kernel.org/doc/html/v6.12/driver-api/gpio/consumer.html",
+    "https://www.kernel.org/doc/html/v6.12/locking/spinlocks.html",
+    "https://www.kernel.org/doc/html/v6.12/core-api/irq/irq-domain.html",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/pinctrl/bcm/pinctrl-bcm2835.c"
+  ],
+  "scope_audit": {
+    "descriptor_irq": "Input prerequisite, negative errors, mapping versus handler registration, physical contact / BCM / hwirq-domain / Linux IRQ identities.",
+    "contexts": "Default primary and threaded hfs_irq; ONESHOT masks only through thread; system_wq worker can sleep outside spinlock.",
+    "debounce": "Both physical edges, logical active-low sample, 20ms delayed rescheduling; no continuous stability claim, no guaranteed latency, missed transitions, long bounce and work-already-running caveat.",
+    "state": "Lock protects pressed, sequence, light and online; accepted press counter; initial held sample does not count; LED write after lock; latest-state interface deferred to 8.5.",
+    "practical": "Bound 8.3 module and Pi-only circuit; slow press/hold/release LED observation; discovered /proc/interrupts statistics distinguished from accepted sequence; troubleshooting and bound next state with cleanup link."
+  },
+  "code_files_read": [
+    "examples/kernel/mybutton.c",
+    "examples/kernel/hardware-button-overlay.dts"
+  ],
+  "checks_performed": [
+    "Read complete driver and overlay against prose; no shared code changes.",
+    "Browsed official Linux 6.12 API sources and frozen Pi controller source.",
+    "Local Markdown targets exist or are catalog canonical future pages.",
+    "Balanced fences; complete driver uses top-level unindented include.",
+    "Read verification.json for existing module and separate overlay compile evidence."
+  ],
+  "hardware_status": "Physical runtime not exercised; no board connection claimed. Bench observations are predictions. Existing recorded build: official 6.12.96+rpt-rpi-v8 headers and separate dtc overlay build.",
+  "concerns": [
+    "Independent root review and rendering pending.",
+    "Canonical 8.5/8.6 destinations are pending files; accepted-only publication must route unpublished forward references to roadmap.",
+    "GPIO, IRQ timing and teardown lack physical runtime evidence; page states this."
+  ],
+  "status": "ready_for_independent_review"
+}

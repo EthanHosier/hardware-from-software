@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12T07:37:20.733368+00:00",
+  "updated": "2026-11-12T07:38:50.232511+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -182,8 +182,8 @@
     },
     "8.4": {
       "path": "src/8.4-convert-gpio-events-into-driver-state.md",
-      "writer": "active",
-      "reviewer": "pending",
+      "writer": "complete",
+      "reviewer": "root_review_pending",
       "writer_agent": "/root/book_coordinator/page_8_4"
     },
     "8.5": {
