@@ -39,5 +39,6 @@
     "EXAMPLES.md": "4ee65a9ca2f6fac52830a8b07d631f4c02dd3d01a2bea5ab10d21e248149c3fe",
     "README.md": "d40db4cad0ee415bfb4ed8a2d6df73b4b5c22a5b4323d7c6951f7bb2177a5c31"
   },
-  "physical_runtime": "not exercised"
+  "physical_runtime": "not exercised",
+  "production_archive": "Published archive members exactly match freshly extracted and tested source/script/document members"
 }

@@ -1,6 +1,6 @@
 {
   "status": "complete",
-  "checked_at": "2026-11-12T22:04:17.754038+00:00",
+  "checked_at": "2026-11-12T23:10:06.230261+00:00",
   "catalog_pages": 53,
   "main_lessons": 44,
   "appendix_pages": 9,
@@ -15,8 +15,18 @@
   "anonymous_resources": 128,
   "public_repository": "https://github.com/EthanHosier/hardware-from-software",
   "public_site": "https://hardware-from-software.vercel.app",
-  "final_deployment": "dpl_96sQbDsmHaHr8eqGtSVT4XWaTbcQ",
-  "archive": "Final36members byte-identical to independentlycompiled/sanitized/11PTY-tested extraction; seebundle-check.json",
+  "final_deployment": "dpl_HDqaMakQ7TVyFmvT32ZvSFo23UMR",
+  "archive": "Fresh extraction compiled and passed normal/sanitized parser tests plus11PTYcases; production ZIP members exactly match tested extraction.",
   "browser": "Representative desktop/mobile/search/diagram checks passed; seebrowser-check.json",
-  "physical_runtime": "not exercised; source/software/target-compilation evidence remains distinct"
+  "physical_runtime": "not exercised; source/software/target-compilation evidence remains distinct",
+  "readability_update": {
+    "status": "complete",
+    "independent_review": "reviews/readability-review.json",
+    "scope": "27C/C++ examples and whitespace-only CMake formatted; descriptive names and33affectedlessons reviewed for equivalent behavior.",
+    "final_ci": "https://github.com/EthanHosier/hardware-from-software/actions/runs/43326320423",
+    "ci_source": "0c479133ed6d948e5fb5d8deed9e6ce0187abfff",
+    "ci_result": "success: Linuxhost andnativeArm64apps, bothPi kernelmodules, DeviceTreeoverlay",
+    "pico_build": "all12targets passed locally",
+    "physical_runtime": "not exercised"
+  }
 }

@@ -43,5 +43,15 @@
     "search": "DMA query returns5results includingfinalAppendixF; clickedsectionresult and verified actualFURL andDMAheading.",
     "mobile": "PublicAppendixE fresh390x844 load: readabletitle/body,sidebarcollapsed,documentwidth390. Six reference tables constrainedto350px with pertablehorizontal scrolling; no pageoverflow.",
     "viewport_restored": true
+  },
+  "readability_update": {
+    "checked_at": "2026-11-12T23:10:06.230261+00:00",
+    "status": "pass",
+    "checks": [
+      "Production2.3register example visually inspected: separate statements, indentation, braces and descriptive names render correctly with syntax highlighting.",
+      "Local7.3Serial example:154lines, preserved indentation,white-spacepre and242highlightspans.",
+      "Updated4.4exceptionSVG visually inspected:edge_pendinglabels fit and remain legible."
+    ],
+    "public_url": "https://hardware-from-software.vercel.app/2.3-replace-gpio-calls-with-register-accesses.html#build-and-run-the-replacement"
   }
 }
