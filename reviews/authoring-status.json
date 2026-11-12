@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12T21:58:06.059910+00:00",
+  "updated": "2026-11-12T22:01:23.202595+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -284,8 +284,8 @@
     },
     "F": {
       "path": "src/appendix-f.md",
-      "writer": "active",
-      "reviewer": "pending",
+      "writer": "complete",
+      "reviewer": "accepted_source_review",
       "writer_agent": "/root/book_coordinator/page_f"
     }
   }

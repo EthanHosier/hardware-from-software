@@ -1,0 +1,71 @@
+{
+  "id": "F",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/1.2-understand-the-smallest-useful-project.md",
+    "src/6.4-compare-spi-with-a-loopback-experiment.md",
+    "src/10.2-verify-troubleshoot-and-explain-the-system.md",
+    "src/appendix-e.md",
+    "reviews/D-writer.json"
+  ],
+  "sources": [
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_dma/include/hardware/dma.h",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/hardware_pio/include/hardware/pio.h",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/common/pico_util/include/pico/util/queue.h",
+    "https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal-examples",
+    "https://doc.rust-lang.org/rustc/platform-support/thumbv8m.main-none-eabi.html",
+    "https://github.com/rp-rs/rp-hal-boards/blob/main/boards/rp-pico/src/lib.rs",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2350/pico_platform/memmap_default.ld",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/pico_crt0/crt0.S",
+    "https://github.com/raspberrypi/pico-sdk/blob/2.3.1/src/rp2_common/pico_standard_link/script_include/section_boot2.incl",
+    "https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf",
+    "https://www.raspberrypi.com/documentation/pico-sdk/hardware.html",
+    "https://github.com/rp-rs/rp-hal/tree/main/rp235x-hal",
+    "https://raw.githubusercontent.com/rp-rs/rp-hal/main/rp235x-hal-examples/.cargo/config.toml",
+    "https://raw.githubusercontent.com/rp-rs/rp-hal/main/rp235x-hal-examples/src/bin/blinky.rs",
+    "https://docs.rs/rp235x-hal/latest/rp235x_hal/",
+    "https://raw.githubusercontent.com/rp-rs/rp235x-project-template/main/README.md",
+    "https://raw.githubusercontent.com/raspberrypi/pico-sdk/2.3.1/src/rp2_common/pico_crt0/embedded_start_block.inc.S"
+  ],
+  "scope_audit": {
+    "DMA": "Finite distinct-buffer SRAM copy, transfer width/increment/completion, buffer lifetime, exclusive CPU/DMA ownership, compiler ordering, comparison/error evidence; no unsupported performance claim.",
+    "PIO": "Slow existing GP16 LED, state-machine/instruction-memory claim, mux/direction, CPU ownership, clock/divider/instruction timing and FIFO stall limits, optional analyser evidence, disable before restoring pin.",
+    "multicore": "Finite value jobs, copied-value spinlocked queues, queue-full policy, peripheral owner, one-core IRQ masking insufficient, no volatile synchronisation, acknowledged storage teardown.",
+    "Rust": "Verified current rp-rs RP235x example target thumbv8m.main-none-eabihf and GPIO25 baseline. Verified rp-pico BSP re-exports RP2040 HAL; no guessed Pico2 BSP, no unvalidated code/build promise; pin dependencies and separately establish target link versus physical boot.",
+    "startup_linker": "SDK2.3.1 RP2350 linker include tree, Arm startup/vector/data/BSS/runtime, ROM/XIP metadata and optional historic boot2 section responsibilities; no RP2040 boot recipe or M4 exception transplant.",
+    "boundary": "Optional reference/proposals, not practical runnable lessons. Main single application Arm M33 core/no RTOS route retained. No new wiring/parts or compilation/physical evidence asserted."
+  },
+  "code_files_read": [
+    "examples/pico/spi_loopback.cpp",
+    "examples/pico/blink_sdk.cpp",
+    ".deps/pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h (relevant configuration, claiming, busy/completion and abort sections)",
+    ".deps/pico-sdk/src/rp2_common/hardware_pio/include/hardware/pio.h (relevant overview, claiming, pin and divider sections)",
+    ".deps/pico-sdk/src/common/pico_util/include/pico/util/queue.h (type, safe/unsafe queue operations)",
+    ".deps/pico-sdk/src/rp2_common/pico_multicore/include/pico/multicore.h (overview and launch contract)",
+    ".deps/pico-sdk/src/rp2_common/pico_crt0/crt0.S (vectors, reset, copy/BSS/runtime path)",
+    ".deps/pico-sdk/src/rp2350/pico_platform/memmap_default.ld",
+    ".deps/pico-sdk/src/rp2_common/pico_standard_link/script_include/section_default_text.incl",
+    ".deps/pico-sdk/src/rp2_common/pico_standard_link/script_include/section_boot2.incl"
+  ],
+  "checks_performed": [
+    "Read guide/plan/examples/catalog and approved style; final word-by-word self-check against scope.",
+    "Browsed primary SDK2.3.1 source and official API docs; checked local installed header completion compiler barrier and queue copy/spinlock claims.",
+    "Browsed primary rp-rs source/config/example and official rustc target docs; checked HAL versus BSP distinction and RP2350 secure image metadata.",
+    "All relative Markdown link target files exist. No code fences, includes, commands, new examples or new diagrams require compilation.",
+    "Only assigned page and writer report written; no shared code/config/script/Git/deployment mutations.",
+    "Independent review citation repair: replaced ambiguous hardware_pio documentation fragment with exact SDK2.3.1 hardware/pio.h primary source; no prose or scope changes."
+  ],
+  "hardware_status": "Physical runtime not exercised. F introduces no compiled/host-tested/target-tested extension code; source-reviewed proposals only.",
+  "concerns": [
+    "Independent full prose/source review and rendered-page check remain required before acceptance.",
+    "RP2350 datasheet browser fetch exceeded tool size cap; detailed claims checked against pinned local SDK and official primary source/API instead. Datasheet remains a general further reference.",
+    "Current rp-rs main links can evolve; page explicitly tells the reader to pin an example revision and dependencies. No Rust version or ready-to-flash port is promised."
+  ],
+  "status": "ready_for_independent_review",
+  "word_count_whitespace": 706,
+  "page_sha256": "b2c136a697f3673fc5cf8f694cd99a44e688925bbc3f4046c16d83892043dedb"
+}

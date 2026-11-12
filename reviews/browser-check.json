@@ -1,6 +1,6 @@
 {
-  "status": "pass for published Chapter0",
-  "checked_at": "2026-11-10T21:18:41.937681+00:00",
+  "status": "pass: representative desktop/mobile/search/diagram checks",
+  "checked_at": "2026-11-12T22:04:17.754038+00:00",
   "public_domain": "https://hardware-from-software.vercel.app",
   "checks": [
     "Public0.5lesson loaded in unauthenticated in-app browser; all3SVGs loaded.",
@@ -36,5 +36,12 @@
     "checked_at": "2026-11-12T18:50:29.190447+00:00",
     "url": "https://hardware-from-software.vercel.app/assets/10.1-capstone-circuit.svg",
     "result": "Root inspected full public1200x970SVG: both LED polarities/resistors, button contact/pullup circuits, TX/RX directions, allphysicalpinlabels/grounds, separatepower note and allbottomtext visible; no clipping or overlap."
+  },
+  "published_catalog_pages": 53,
+  "final_complete_book": {
+    "desktop": "Public homepage1280px visually inspected, no overflow and complete53-page readingprogress text verified inDOM.",
+    "search": "DMA query returns5results includingfinalAppendixF; clickedsectionresult and verified actualFURL andDMAheading.",
+    "mobile": "PublicAppendixE fresh390x844 load: readabletitle/body,sidebarcollapsed,documentwidth390. Six reference tables constrainedto350px with pertablehorizontal scrolling; no pageoverflow.",
+    "viewport_restored": true
   }
 }

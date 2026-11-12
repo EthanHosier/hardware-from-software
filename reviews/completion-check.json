@@ -1,0 +1,22 @@
+{
+  "status": "complete",
+  "checked_at": "2026-11-12T22:04:17.754038+00:00",
+  "catalog_pages": 53,
+  "main_lessons": 44,
+  "appendix_pages": 9,
+  "review_inventory": "All53writer/reviewer records and allcanonical/include/SVG/dependency hashes validated;31examplehashes valid",
+  "full_book_checks": {
+    "catalog_pages": 53,
+    "rendered_html": 60,
+    "local_link_checks": 2445,
+    "exact_includes_checked": 51,
+    "errors": []
+  },
+  "anonymous_resources": 128,
+  "public_repository": "https://github.com/EthanHosier/hardware-from-software",
+  "public_site": "https://hardware-from-software.vercel.app",
+  "final_deployment": "dpl_96sQbDsmHaHr8eqGtSVT4XWaTbcQ",
+  "archive": "Final36members byte-identical to independentlycompiled/sanitized/11PTY-tested extraction; seebundle-check.json",
+  "browser": "Representative desktop/mobile/search/diagram checks passed; seebrowser-check.json",
+  "physical_runtime": "not exercised; source/software/target-compilation evidence remains distinct"
+}

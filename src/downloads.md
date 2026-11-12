@@ -1,8 +1,8 @@
 # Download the examples
 
-[Download every example and build script](downloads/hardware-examples.zip). Extract the archive, then follow the lesson’s commands from its root directory. The archive includes shared headers used by the examples.
+[Download every example and build script](downloads/hardware-examples.zip). Extract it and work from its root directory. Shared headers are included.
 
-The scripts install dependencies locally; no prebuilt firmware is included.
+These programs have compilation/software checks, but physical runtime has not been exercised; use the relevant lesson and verification matrix before operating hardware.
 
 - [examples/common/protocol.hpp](downloads/examples/common/protocol.hpp)
 - [examples/common/protocol_test.cpp](downloads/examples/common/protocol_test.cpp)

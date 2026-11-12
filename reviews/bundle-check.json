@@ -1,13 +1,16 @@
 {
   "status": "pass",
-  "checked_at": "2026-11-12T21:41:43.070549+00:00",
-  "published_catalog_pages": 48,
-  "archive_sha256": "ff634b1622434bb09ff56ffdabc3ce43a6e3be2c6d518c0587927df0488bc48e",
+  "checked_at": "2026-11-12T22:02:20.166114+00:00",
+  "published_catalog_pages": 53,
+  "archive_sha256": "272e52298293c201f44cea756824e352d817a4b567fbe76ce33fcfcf584ecfea",
   "checks": [
     "Extracted exact published48-page example archive into isolated ignored directory",
     "Shared headers and all three intended setup/build/test scripts present; website publisher excluded",
     "Extracted host build passed all4portable applications and normal/ASan+UBSan protocol tests",
-    "Extracted serial tests passed all11PTYcases, including inheritedsoftwareflowflag clearing"
+    "Extracted serial tests passed all11PTYcases, including inheritedsoftwareflowflag clearing",
+    "Final53-page archive compared member-for-member with independently tested extraction; no source/script/document content change"
   ],
-  "physical_runtime": "not exercised"
+  "physical_runtime": "not exercised",
+  "software_test_archive_sha256": "ff634b1622434bb09ff56ffdabc3ce43a6e3be2c6d518c0587927df0488bc48e",
+  "final_archive_content_identity": "All 36 uncompressed members byte-identical to the independently compiled/sanitizer/11PTY-tested48-page archive; ZIP container metadata may differ."
 }

@@ -1,6 +1,6 @@
 {
-  "status": "authoring in progress",
-  "recorded_at": "2026-11-12T18:43:06.758976+00:00",
+  "status": "complete: 53 pages independently reviewed; software checks passed; physical runtime unexercised",
+  "recorded_at": "2026-11-12T22:01:48.892755+00:00",
   "baseline": {
     "pico_sdk": "2.3.1",
     "pico_sdk_commit": "079c6f39023649b154152db30f1d781e884879bc",
@@ -27,7 +27,8 @@
     "kernel_failure_unwind": "LED low after IRQ/work cancellation on misc registration failure; source-reviewed and native Pi-header compiled, physical failure path not exercised",
     "i2c_client_errors": "System errors capture errno at failure; semantic and partial-transfer errors independent; default I2C3 on Pi4. Native Linux and Arm64 CI compilation passed; physical bus untested.",
     "serial_flow_control": "Explicitly clear inherited software-flow flags after cfmakeraw. Both header consumers compile on Mac; all native Linux/Arm64 applications and exact Pi-header modules pass CI.",
-    "linux_memory_host_runtime": "Passed hosted Ubuntu Linux: canonical memory_lab mappings/page-touch loop and child-only PROT_NONE write; parent reported expected SIGSEGV and exited0. Not a physical Pi run."
+    "linux_memory_host_runtime": "Passed hosted Ubuntu Linux: canonical memory_lab mappings/page-touch loop and child-only PROT_NONE write; parent reported expected SIGSEGV and exited0. Not a physical Pi run.",
+    "inline_uart_diagnostics": "Exact 7.2 echo and10.2 raw diagnostics each passed four macOSPTYcases including deadlines and restored settings; physical UART unexercised."
   },
   "physical_runtime": "not exercised; no verified connection to boards",
   "limitations": [
@@ -66,5 +67,11 @@
     "examples/kernel/Makefile": "4e205ebdc4eb9545724b32f7067b512881ba2ab2aea08b5f631e900d41b2acaf",
     "examples/kernel/hardware-button-overlay.dts": "72fd129f2ebab3565a0d65d0fef67a0f29322ec2aa9dd1f72b9a9df3cc1632e9",
     "examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826"
+  },
+  "documentation": {
+    "catalog_pages": 53,
+    "main_lessons": 44,
+    "appendix_pages": 9,
+    "independent_review": "All 53 canonical pages accepted_source_review; included source and asset hashes enforced at build."
   }
 }
