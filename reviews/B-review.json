@@ -1,0 +1,46 @@
+{
+  "id": "B",
+  "reviewer": "independent root",
+  "status": "accepted_source_review",
+  "canonical_sha256": "e95a2ebd0426f8ea4ce1341b1e0d3a0256630e149de638e602adc17aba482586",
+  "included_source_sha256": {
+    "examples/kernel/Makefile": "4e205ebdc4eb9545724b32f7067b512881ba2ab2aea08b5f631e900d41b2acaf"
+  },
+  "asset_sha256": {},
+  "reviewed_dependency_sha256": {
+    "scripts/setup_deps.py": "036970ac104491b3bda3475652faba6898169c91cd4798d5db3a003b0cbabd93",
+    "scripts/build_examples.py": "4a574be40a0ae3149876ba20171df9a77cb01d194bf3fd550cc6451d27f18b26",
+    "scripts/test_serial.py": "25daab1232d6391d1d12225c1128c1916c1fa2c414fff87f11edb651e61e3e3d",
+    "examples/pico/CMakeLists.txt": "82d60c4334f09dd190517c58d9331d3e5fd78d2a11855a790f8aaaea636fecc6",
+    "examples/kernel/hardware-button-overlay.dts": "72fd129f2ebab3565a0d65d0fef67a0f29322ec2aa9dd1f72b9a9df3cc1632e9"
+  },
+  "paths_read": [
+    "src/appendix-b.md",
+    "reviews/B-writer.json",
+    "examples/kernel/Makefile",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py",
+    "scripts/test_serial.py",
+    "examples/pico/CMakeLists.txt",
+    "examples/kernel/hardware-button-overlay.dts",
+    ".deps/openocd/scripts/target/rp2350.cfg",
+    "verification.json"
+  ],
+  "sources_checked": [
+    "https://www.kernel.org/doc/html/latest/kbuild/modules.html",
+    "https://openocd.org/doc/html/GDB-and-OpenOCD.html",
+    "https://github.com/raspberrypi/pico-sdk-tools/releases/tag/v2.3.1-0",
+    "https://www.raspberrypi.com/documentation/computers/linux_kernel.html#kernel-headers"
+  ],
+  "scope_coverage": "Newrepo/archive root; exactMacAppleSilicon pinned installer/toolpaths/SDKoverride/manualCMake; preserved unique backups for cache/SDK/download recovery; isolatedBOOTSEL and savedELF/UF2; SWDcore selection and startup-through-main debugger sequence; portablehost tests and nativeLinux apps; exactrunningkernelheader/module/DT build distinction; permissions/SSH/bootSD recovery; oneowner and powered-off nextstate.",
+  "checks_performed": [
+    "Read every word, all24shellblocks, completeMakefile and actual setup/build/test/CMake/DT implementations plus installedOpenOCD configuration. Checked claims against exact source behavior and existing accepted detailed procedures.",
+    "All24shellfences independently sh -n parsed. Inspected moves/backups for preservation, correctworkingdirectories/hostlabels, noforcecleanup, firmware/app/module distinction and no unintended deviceoperation.",
+    "Independently executed installedNinja/OpenOCD/GDB/picotool version commands; exact prose versions match. SDK path, picotool_DIR and USE_CORE-before-target sequence match files.",
+    "Browsed primary current Linuxkbuild/OpenOCD/toolbundle/Piheader guidance; retained baseline/currentkernel qualifications. Existing root compilation/hostevidence and writerfreshhost11PTYchecks support actual commands; no newphysicalrun.",
+    "Inspected complete GDB load/reset/main/led_on sequence and disconnectcleanup, sourceinclude and canonicalchapterlinks; publisher performs exactrenderedMakefile/anchors/archive checks. No directdiagramasset."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source/API and shell syntax reviewed; exact local tool version queries performed. Existing Pico/nativeLinux/Piheader compilations and host tests support software route. No flash,SWD,GPIO,bus,moduleload or physical recovery exercised."
+}

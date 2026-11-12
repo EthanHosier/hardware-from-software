@@ -1,0 +1,83 @@
+{
+  "id": "B",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "verification.json",
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py",
+    "scripts/test_serial.py",
+    "examples/pico/CMakeLists.txt",
+    "examples/kernel/Makefile",
+    "examples/kernel/hardware-button-overlay.dts",
+    ".deps/pico-sdk/tools/Findpicotool.cmake",
+    ".deps/openocd/scripts/target/rp2350.cfg",
+    "examples/linux/hello.cpp",
+    "src/1.1-install-a-reproducible-macos-toolchain.md",
+    "src/1.2-understand-the-smallest-useful-project.md",
+    "src/1.3-flash-with-bootsel-and-read-output.md",
+    "src/1.4-make-the-build-flash-observe-loop-repeatable.md",
+    "src/3.1-attach-the-debug-probe-over-swd.md",
+    "src/3.2-load-the-elf-and-step-through-the-led-write.md",
+    "src/3.3-diagnose-a-broken-program-systematically.md",
+    "src/5.2-verify-the-linux-development-environment.md",
+    "src/7.2-configure-the-pi-uart-and-test-an-echo.md",
+    "src/8.2-build-and-load-the-smallest-external-module.md",
+    "src/8.3-describe-the-device-and-bind-the-driver.md",
+    "src/5.1-prepare-raspberry-pi-os-and-ssh.md (recovery section)",
+    "src/8.5-expose-dev-mybutton-to-a-c-client.md (permissions/cleanup context)",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md"
+  ],
+  "sources": [
+    "https://github.com/raspberrypi/pico-sdk/releases/tag/2.3.1",
+    "https://github.com/raspberrypi/pico-sdk-tools/releases/tag/v2.3.1-0",
+    "https://www.raspberrypi.com/documentation/microcontrollers/c_sdk.html",
+    "https://www.kernel.org/doc/html/latest/kbuild/modules.html",
+    "https://github.com/raspberrypi/openocd/blob/rpi-common/tcl/target/rp2350.cfg",
+    "https://openocd.org/doc/html/GDB-and-OpenOCD.html",
+    "https://www.raspberrypi.com/documentation/computers/linux_kernel.html",
+    "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html",
+    "https://www.raspberrypi.com/documentation/computers/config_txt.html",
+    "https://www.raspberrypi.com/documentation/computers/remote-access.html",
+    "https://github.com/raspberrypi/pico-vscode"
+  ],
+  "scope_audit": {
+    "root_and_archive": "public repository / direct archive layout, no credentials or maintainer flow",
+    "mac": "actual Darwin/arm64 installer, exact paths and pins, script SDK override and PATH fallback, explicit CMake equivalent",
+    "recovery": "unique retained cache/SDK/download backups; UF2/ELF, ROM BOOTSEL, serial discovery, SWD and GDB load/run order, ownership, SSH and SD boot-overlay recovery",
+    "linux": "portable normal/sanitized parser plus 11 serial PTY cases; --host --linux all seven apps; matching official Pi kbuild headers and standalone dtc overlay compilation; separate build/load",
+    "optional_linux_firmware": "No alternate Linux firmware recipe claimed validated; official manual setup linked with explicit script incompatibility and separate build-directory guidance",
+    "full_source": "top-level Makefile include only; no invented complete sources"
+  },
+  "code_files_read": [
+    "scripts/setup_deps.py",
+    "scripts/build_examples.py",
+    "scripts/test_serial.py",
+    "examples/pico/CMakeLists.txt",
+    "examples/kernel/Makefile",
+    "examples/kernel/hardware-button-overlay.dts",
+    ".deps/pico-sdk/tools/Findpicotool.cmake",
+    ".deps/openocd/scripts/target/rp2350.cfg",
+    "examples/linux/hello.cpp"
+  ],
+  "checks_performed": [
+    "Read actual build/test/setup implementations and accepted prerequisite/recovery pages",
+    "Browsed official primary sources listed above; Arm download landing page attempted but redirected to JavaScript verification, so no claim based on that page",
+    "python3 scripts/build_examples.py --host passed normal protocol, ASan/UBSan protocol and all four portable application builds",
+    "python3 scripts/test_serial.py passed all 11 cases",
+    "Explicit local CMake/Ninja/OpenOCD/picotool/GDB versions checked and matched prose",
+    "Explicit bundled readelf inspected existing heartbeat ELF: ELF32 ARM",
+    "All local Markdown source links and include paths exist; generated download link reserved for root build",
+    "All 24 shell blocks pass zsh -n",
+    "Full draft reread; no physical operation performed; no shared source/config/Git/deployment edits"
+  ],
+  "hardware_status": "Not exercised. No physical boards, flashing, SWD, buses, driver load or GPIO runtime verified. Existing CI/compilation evidence attributed to verification.json.",
+  "concerns": [
+    "No dependencies.lock.json or other dependency manifest exists; pins correctly taken from actual setup_deps.py and verification.json (coordinator confirmed).",
+    "Reader recovery commands involving devices, SSH, sudo, moves and downloads were source-reviewed, not executed on user hardware.",
+    "Independent reviewer must render and verify the new page, included Makefile, anchors and generated archive link before acceptance."
+  ],
+  "status": "ready for independent review"
+}
