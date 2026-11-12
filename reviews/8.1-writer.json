@@ -1,0 +1,64 @@
+{
+  "id": "8.1",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json:8.1",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/5.3-establish-gpio-identity-and-ownership.md",
+    "src/7.4-trace-a-command-end-to-end.md",
+    "src/0.3-a-labelled-tour-of-your-raspberry-pi-4.md",
+    "src/0.5-recognise-the-breadboard-and-kit-components.md",
+    "src/assets/circuit-pi-button.svg",
+    "src/assets/0.5-switch.svg"
+  ],
+  "sources": [
+    "https://www.kernel.org/doc/html/latest/userspace-api/gpio/chardev.html",
+    "https://www.kernel.org/doc/html/latest/userspace-api/gpio/gpio-v2-get-line-ioctl.html",
+    "https://www.kernel.org/doc/html/latest/userspace-api/gpio/gpio-v2-line-event-read.html",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#40-pin-gpio-header",
+    "https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-reduced-schematics.pdf",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/include/uapi/linux/gpio.h",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/gpio/gpiolib-cdev.c",
+    "https://libgpiod.readthedocs.io/en/v2.3.1/gpioinfo.html",
+    "https://manpages.debian.org/bookworm/gpiod/gpioinfo.1.en.html"
+  ],
+  "scope_audit": {
+    "owned_files": [
+      "src/8.1-establish-a-userspace-gpio-baseline.md",
+      "src/assets/8.1-pi-userspace-circuit.svg",
+      "reviews/8.1-writer.json"
+    ],
+    "coverage": [
+      "Unpowered transition from UART; all three wires removed, separate unplugged Pico and retained local circuits",
+      "Pi-only pull-up/button and resistor/LED circuit, contact pairs and official orientation references",
+      "Chip/name/offset and ownership discovery with CLI 1.x/2.x branches, conditional gpio group policy",
+      "Actual whole-source include, native Pi warning build, exact three-argument run",
+      "Physical falling edge without ACTIVE_LOW; request-relative value bitmap",
+      "Monotonic timestamps, event queue/sequence limits and 20ms last-accepted-edge lockout",
+      "Five accepted edges, per-poll30s timeout, LED final-low attempt and Ctrl-C distinction",
+      "Troubleshooting and released/unbound state before smallest module; userspace versus kernel responsibility"
+    ],
+    "shared_code_or_git_changed": false
+  },
+  "code_files_read": [
+    "examples/linux/gpio_events.cpp",
+    "official baseline include/uapi/linux/gpio.h",
+    "official baseline drivers/gpio/gpiolib-cdev.c: output-value default and request implementation"
+  ],
+  "checks_performed": [
+    "Compared all prose claims with actual C++ source",
+    "Browsed official kernel and Raspberry Pi references plus libgpiod manuals",
+    "Verified all existing local link target files; checked 0.5 anchor against heading",
+    "Full source include is top-level unindented cpp fence",
+    "SVG XML parsed and rendered using macOS Quick Look; PNG visually inspected for clipping, legibility and wiring",
+    "Native Arm64 compilation evidence taken from root-owned EXAMPLES.md; no compilation rerun or physical execution by writer"
+  ],
+  "hardware_status": "Physical GPIO operation, LED observation, real events, voltage/current and timing not exercised; all sample output explicitly illustrative.",
+  "concerns": [
+    "8.2 forward Markdown file absent at writer check; canonical catalog path retained for roadmap routing. Coordinator should verify staging and final render.",
+    "Independent coordinator review and publication pending."
+  ],
+  "status": "ready_for_independent_review"
+}

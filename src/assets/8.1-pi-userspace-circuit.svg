@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 570" role="img" aria-labelledby="title desc">
+<title id="title">Pi 4 userspace GPIO circuit</title><desc id="desc">Electrical schematic, not header positions. Pi 3V3 physical 17 pulls BCM27 physical 13 up through 4.7 kilohms. A normally open switch pulls that node to ground physical 14. BCM17 physical 11 drives a one kilohm resistor then LED anode; cathode goes to ground physical 9. No connection to Pico.</desc>
+<style>text{font-family:Arial,sans-serif;fill:#172b46;font-size:19px}.small{font-size:16px}.title{font-size:26px;font-weight:bold}.wire{fill:none;stroke:#286ba3;stroke-width:3}.component{fill:#fff;stroke:#506b85;stroke-width:2}</style>
+<rect width="1000" height="570" rx="12" fill="#f7f9fc"/>
+<text x="28" y="40" class="title">Pi 4 only: button input and LED output</text>
+<text x="28" y="71" class="small">Electrical connections — not physical header positions. Pico remains separate and unplugged.</text>
+<text x="30" y="133">3V3 · physical 17</text><path class="wire" d="M230 127 H315"/>
+<rect class="component" x="315" y="107" width="130" height="40"/><text x="345" y="134">4.7 kΩ</text>
+<path class="wire" d="M445 127 H535 V207 H650 M535 207 H230"/><circle cx="535" cy="207" r="5" fill="#286ba3"/>
+<text x="30" y="214">BCM27 · physical 13</text>
+<circle cx="650" cy="207" r="5" fill="#286ba3"/><circle cx="730" cy="207" r="5" fill="#286ba3"/>
+<path d="M650 207 L720 176" stroke="#506b85" stroke-width="3" fill="none"/>
+<text x="606" y="157" class="small">Button (normally open)</text><text x="639" y="240" class="small">A</text><text x="721" y="240" class="small">B</text>
+<path class="wire" d="M730 207 H835 V276"/><path class="wire" d="M815 276 H855 M822 284 H848 M830 292 H840"/>
+<text x="747" y="325">GND · physical 14</text>
+<text x="30" y="382">BCM17 · physical 11</text><path class="wire" d="M230 375 H315"/>
+<rect class="component" x="315" y="355" width="130" height="40"/><text x="353" y="382">1 kΩ</text><path class="wire" d="M445 375 H600 M680 375 H835 V426"/>
+<path d="M600 354 L600 396 L643 375 Z M646 353 V397" fill="none" stroke="#506b85" stroke-width="3"/><path class="wire" d="M646 375 H680"/>
+<path d="M626 344 L650 320 M645 347 L670 323 M650 320 L640 323 M650 320 L647 330 M670 323 L660 326 M670 323 L667 333" stroke="#506b85" stroke-width="2" fill="none"/>
+<text x="555" y="427" class="small">Anode (+)</text><text x="661" y="427" class="small">Cathode (−)</text>
+<path class="wire" d="M815 426 H855 M822 434 H848 M830 442 H840"/><text x="747" y="475">GND · physical 9</text>
+<text x="30" y="517" class="small">Released: BCM27 high. Pressed: BCM27 low → physical falling edge.</text>
+<text x="30" y="546" class="small">Wire only when unpowered. Use 3V3, never 5V. No Pi–Pico signal, ground or power connection here.</text>
+</svg>

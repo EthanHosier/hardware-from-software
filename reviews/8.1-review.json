@@ -1,0 +1,42 @@
+{
+  "id": "8.1",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "dbefee613de454677533f8bd98120ed2ddf1d0ed2c87123e05f79578cf58391f",
+  "included_source_sha256": {
+    "examples/linux/gpio_events.cpp": "f7b0b37cfc082c0c3c5456bd237488a3aaecae597ea6d7715f9de57c6fb541d8"
+  },
+  "asset_sha256": {
+    "src/assets/8.1-pi-userspace-circuit.svg": "6b2b551bfb03ce76feff02c28ab231d3d88d29bf98298ad1bab1330ccd0fe182"
+  },
+  "paths_read": [
+    "src/8.1-establish-a-userspace-gpio-baseline.md",
+    "reviews/8.1-writer.json",
+    "examples/linux/gpio_events.cpp",
+    "src/assets/8.1-pi-userspace-circuit.svg",
+    "verification.json",
+    "src/5.3-establish-gpio-identity-and-ownership.md",
+    "src/0.5-recognise-the-breadboard-and-kit-components.md"
+  ],
+  "sources_checked": [
+    "https://www.kernel.org/doc/html/v6.12/userspace-api/gpio/chardev.html",
+    "https://www.kernel.org/doc/html/v6.12/userspace-api/gpio/gpio-v2-get-line-ioctl.html",
+    "https://www.kernel.org/doc/html/v6.12/userspace-api/gpio/gpio-v2-line-event-read.html",
+    "https://www.kernel.org/doc/html/v6.12/userspace-api/gpio/gpio-v2-line-set-values-ioctl.html",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/gpio/gpiolib-cdev.c",
+    "https://manpages.debian.org/bookworm/gpiod/gpioinfo.1.en.html",
+    "https://libgpiod.readthedocs.io/en/v2.3.1/gpioinfo.html"
+  ],
+  "scope_coverage": "Complete Pi-only circuit and powered-off UART teardown; actual chip/name/offset and CLI version discovery; ACL policy; complete C++ source/build/run; exclusive request descriptors, polarity, relative masks, initial output; timestamps/queue loss and lockout limits; timeout/error/cleanup behavior; userspace baseline before custom driver.",
+  "checks_performed": [
+    "Read all final prose and actual included C++ independently, including every error/cleanup path. Reread unchanged final files after continuation before hashing.",
+    "Checked official v6.12 request/event/value API and frozen gpiolib implementation: default output zero, no ACTIVE_LOW inversion, request-relative bit0, default one-line queue and monotonic timestamp behavior agree.",
+    "Compared CLI1.x and2.x commands against corresponding official manuals and verified getfacl prerequisite in5.3. Parsed all8shell blocks with sh -n; no target GPIO commands executed.",
+    "Read complete unique SVG XML and visually inspected complete letterboxed render, checking all physical pins, resistor/LED polarity, switch nodes and legible labels. Diagram intentionally avoids later kernel ACTIVE_LOW API wording.",
+    "Checked contact-pair and controller identity prerequisites, local link targets and top-level full-source include fence. Root final staged render/link/exact-include/public checks remain publication layer.",
+    "Verified gpio_events.cpp SHA matches recorded native Arm64 compilation evidence; no redundant unchanged compile rerun. Traced five accepted events, restarted30s poll timeout, unchecked final-low write and Ctrl-C cleanup distinctions."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source and diagram independently reviewed; native Arm64 compilation recorded by root. Physical Pi GPIO, button bounce, LED operation, electrical levels and timing not exercised. Output is explicitly illustrative."
+}

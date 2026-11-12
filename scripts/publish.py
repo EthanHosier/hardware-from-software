@@ -14,7 +14,7 @@ def main():
     # Current CLI emits structured JSON after progress lines. Save full output ignored.
     (ROOT/'.authoring/last-deploy.log').write_text(result.stdout+'\n'+result.stderr)
     if result.returncode:
-        raise RuntimeError('Vercel CLI failed; details saved in .authoring/last-deploy.log: '+result.stderr[-1800:])
+        raise RuntimeError('Vercel CLI failed (exit '+str(result.returncode)+'); details saved in .authoring/last-deploy.log: '+result.stderr[-1800:])
     decoder=json.JSONDecoder();deployment=None
     for n,char in enumerate(result.stdout):
         if char=='{':
