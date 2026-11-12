@@ -2,9 +2,9 @@
   "id": "8.4",
   "reviewer": "independent root",
   "status": "accepted_source_review",
-  "canonical_sha256": "365d1e91e39e9909e35ae8a1e0804c7d3ca7dfc65c504962722288566ffcf0ca",
+  "canonical_sha256": "6a04292f353270ae4fdec222d886ae88c014cb87206a13589694891394c78d05",
   "included_source_sha256": {
-    "examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826"
+    "examples/kernel/mybutton.c": "519501c09961f2b2a1702e26aab6cf29a1f9b9e666a2027fc8a007f50b02a371"
   },
   "asset_sha256": {
     "src/assets/8.1-pi-userspace-circuit.svg": "6b2b551bfb03ce76feff02c28ab231d3d88d29bf98298ad1bab1330ccd0fe182"
@@ -32,9 +32,11 @@
     "Checked sampled-state table, initial held state, online guard, IRQ/work shutdown and probe-error unwind against implementation. No continuous stability, precise latency or per-edge queue guarantee claimed.",
     "Visually inspected whole retained Pi circuit SVG in public browser: pull-up, switch groups, LED polarity, resistors and physical/BCM labels all match.",
     "All three shell blocks pass sh -n; existing driver discovery and future ABI links are canonical. IRQ statistics are correctly distinct from accepted sequence.",
-    "No unchanged build repeated and no physical or kernel runtime performed."
+    "No unchanged build repeated and no physical or kernel runtime performed.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
-  "hardware_status": "Source and command syntax reviewed; exact source previously compiled against official Pi headers. Physical GPIO, IRQ, debounce, LED and teardown not exercised."
+  "hardware_status": "Source and command syntax reviewed; exact source previously compiled against official Pi headers. Physical GPIO, IRQ, debounce, LED and teardown not exercised.",
+  "readability_review": "reviews/readability-review.json"
 }

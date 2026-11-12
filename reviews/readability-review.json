@@ -1,0 +1,429 @@
+{
+  "reviewer": "readability_review (independent source and prose reviewer)",
+  "status": "accepted_source_review",
+  "reviewed_at": "2026-11-12T23:07:44.383537+00:00",
+  "comparison_base": "229b6abca3f8639923638db8a909f85a0e390e7e",
+  "reviewed_source_commit": "253918b8bc1a8270cd63c1c986bd804d73381378",
+  "scope": "Formatting and descriptive identifier renames only. Delta review of all 27 changed C/C++ examples, whitespace-only Pico CMake, all 33 affected catalog pages, inline snippets, debugger references and the changed exception diagram. Existing page factual/wiring acceptance is retained; this report does not claim a fresh external-source research pass.",
+  "audited_pages": [
+    {
+      "id": "1.2",
+      "path": "src/1.2-understand-the-smallest-useful-project.md",
+      "changed_included_sources": [
+        "examples/pico/heartbeat.cpp",
+        "examples/pico/CMakeLists.txt"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "1.3",
+      "path": "src/1.3-flash-with-bootsel-and-read-output.md",
+      "changed_included_sources": [
+        "examples/pico/heartbeat.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "1.4",
+      "path": "src/1.4-make-the-build-flash-observe-loop-repeatable.md",
+      "changed_included_sources": [
+        "examples/pico/heartbeat.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "2.1",
+      "path": "src/2.1-wire-and-verify-an-external-led.md",
+      "changed_included_sources": [
+        "examples/pico/blink_sdk.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "2.3",
+      "path": "src/2.3-replace-gpio-calls-with-register-accesses.md",
+      "changed_included_sources": [
+        "examples/pico/blink_registers.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "2.4",
+      "path": "src/2.4-follow-the-generated-machine-instructions.md",
+      "changed_included_sources": [
+        "examples/pico/blink_registers.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "3.2",
+      "path": "src/3.2-load-the-elf-and-step-through-the-led-write.md",
+      "changed_included_sources": [
+        "examples/pico/blink_registers.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "3.3",
+      "path": "src/3.3-diagnose-a-broken-program-systematically.md",
+      "changed_included_sources": [
+        "examples/pico/blink_registers.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "4.1",
+      "path": "src/4.1-read-a-button-by-polling.md",
+      "changed_included_sources": [
+        "examples/pico/button_poll.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "4.2",
+      "path": "src/4.2-configure-and-acknowledge-a-gpio-interrupt.md",
+      "changed_included_sources": [
+        "examples/pico/button_irq_sdk.cpp",
+        "examples/pico/button_irq.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "4.3",
+      "path": "src/4.3-share-state-and-debounce-correctly.md",
+      "changed_included_sources": [
+        "examples/pico/button_irq.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "4.4",
+      "path": "src/4.4-inspect-exception-entry-and-return.md",
+      "changed_included_sources": [
+        "examples/pico/button_irq.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "5.2",
+      "path": "src/5.2-verify-the-linux-development-environment.md",
+      "changed_included_sources": [
+        "examples/linux/hello.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "6.2",
+      "path": "src/6.2-turn-the-pico-into-a-register-based-peripheral.md",
+      "changed_included_sources": [
+        "examples/pico/i2c_target.cpp",
+        "examples/pico/device_io.hpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "6.3",
+      "path": "src/6.3-write-a-linux-i-c-client.md",
+      "changed_included_sources": [
+        "examples/linux/i2c_client.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "6.4",
+      "path": "src/6.4-compare-spi-with-a-loopback-experiment.md",
+      "changed_included_sources": [
+        "examples/pico/spi_loopback.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "7.2",
+      "path": "src/7.2-configure-the-pi-uart-and-test-an-echo.md",
+      "changed_included_sources": [
+        "examples/pico/uart_echo.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "7.3",
+      "path": "src/7.3-build-a-robust-c-serial-client.md",
+      "changed_included_sources": [
+        "examples/common/protocol.hpp",
+        "examples/pico/uart_device.cpp",
+        "examples/pico/device_io.hpp",
+        "examples/linux/serial_client.cpp",
+        "examples/linux/serial_port.hpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "7.4",
+      "path": "src/7.4-trace-a-command-end-to-end.md",
+      "changed_included_sources": [
+        "examples/pico/uart_device.cpp",
+        "examples/common/protocol.hpp",
+        "examples/pico/device_io.hpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "8.1",
+      "path": "src/8.1-establish-a-userspace-gpio-baseline.md",
+      "changed_included_sources": [
+        "examples/linux/gpio_events.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "8.2",
+      "path": "src/8.2-build-and-load-the-smallest-external-module.md",
+      "changed_included_sources": [
+        "examples/kernel/hello.c"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "8.3",
+      "path": "src/8.3-describe-the-device-and-bind-the-driver.md",
+      "changed_included_sources": [
+        "examples/kernel/mybutton.c"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "8.4",
+      "path": "src/8.4-convert-gpio-events-into-driver-state.md",
+      "changed_included_sources": [
+        "examples/kernel/mybutton.c"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "8.5",
+      "path": "src/8.5-expose-dev-mybutton-to-a-c-client.md",
+      "changed_included_sources": [
+        "examples/kernel/mybutton.c",
+        "examples/linux/button_client.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "8.6",
+      "path": "src/8.6-make-failure-and-teardown-behaviour-explicit.md",
+      "changed_included_sources": [
+        "examples/kernel/mybutton.c"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "9.1",
+      "path": "src/9.1-observe-your-linux-process-s-mappings.md",
+      "changed_included_sources": [
+        "examples/linux/memory_lab.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "9.2",
+      "path": "src/9.2-observe-demand-paging-and-protection-faults.md",
+      "changed_included_sources": [
+        "examples/linux/memory_lab.cpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "9.3",
+      "path": "src/9.3-trace-a-real-kernel-mmio-mapping.md",
+      "changed_included_sources": [],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "9.4",
+      "path": "src/9.4-explain-ordering-access-semantics-and-ownership.md",
+      "changed_included_sources": [
+        "examples/kernel/mmio_fragment.c"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "10.1",
+      "path": "src/10.1-use-a-linux-device-event-to-control-pico-hardware.md",
+      "changed_included_sources": [
+        "examples/linux/capstone.cpp",
+        "examples/linux/serial_port.hpp",
+        "examples/common/protocol.hpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "C.2",
+      "path": "src/appendix-c-2.md",
+      "changed_included_sources": [
+        "examples/pico/bme280_i2c.cpp",
+        "examples/pico/bme280_common.hpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "C.3",
+      "path": "src/appendix-c-3.md",
+      "changed_included_sources": [
+        "examples/pico/bme280_common.hpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    },
+    {
+      "id": "C.4",
+      "path": "src/appendix-c-4.md",
+      "changed_included_sources": [
+        "examples/pico/bme280_spi.cpp",
+        "examples/pico/bme280_common.hpp"
+      ],
+      "review_scope": "Readability regression audit: current prose and inline fragment references against renamed included sources; prior substantive factual acceptance retained."
+    }
+  ],
+  "source_files_read": [
+    "examples/common/protocol.hpp",
+    "examples/common/protocol_test.cpp",
+    "examples/kernel/hello.c",
+    "examples/kernel/mmio_fragment.c",
+    "examples/kernel/mybutton.c",
+    "examples/linux/button_client.cpp",
+    "examples/linux/capstone.cpp",
+    "examples/linux/gpio_events.cpp",
+    "examples/linux/hello.cpp",
+    "examples/linux/i2c_client.cpp",
+    "examples/linux/memory_lab.cpp",
+    "examples/linux/serial_client.cpp",
+    "examples/linux/serial_port.hpp",
+    "examples/pico/CMakeLists.txt",
+    "examples/pico/blink_registers.cpp",
+    "examples/pico/blink_sdk.cpp",
+    "examples/pico/bme280_common.hpp",
+    "examples/pico/bme280_i2c.cpp",
+    "examples/pico/bme280_spi.cpp",
+    "examples/pico/button_irq.cpp",
+    "examples/pico/button_irq_sdk.cpp",
+    "examples/pico/button_poll.cpp",
+    "examples/pico/device_io.hpp",
+    "examples/pico/heartbeat.cpp",
+    "examples/pico/i2c_target.cpp",
+    "examples/pico/spi_loopback.cpp",
+    "examples/pico/uart_device.cpp",
+    "examples/pico/uart_echo.cpp"
+  ],
+  "source_sha256": {
+    "examples/common/protocol.hpp": "dcff438a3a1d7695e497130ca2c757f7979a165c041a6e19037bb12e52bad34a",
+    "examples/common/protocol_test.cpp": "34eb4107b8fba4034d90e07c1ebe96767c9c7a90ea974b8b0c68157eedd284f5",
+    "examples/kernel/hello.c": "5c442e948ef81c01fef17c980ca1c6014940b0c148efc2a10198570c7eb8677a",
+    "examples/kernel/mmio_fragment.c": "6664bd5c9d79d8dba7716e943f355f949765990e02e2a680e8e3542696955cb4",
+    "examples/kernel/mybutton.c": "519501c09961f2b2a1702e26aab6cf29a1f9b9e666a2027fc8a007f50b02a371",
+    "examples/linux/button_client.cpp": "a8721778047a19e1776879ded20d699620beb23192cbaa685decae2183986c85",
+    "examples/linux/capstone.cpp": "14acf7764f555eae2997b84eeaf9b82d73636b7c652847f128e720015248dafa",
+    "examples/linux/gpio_events.cpp": "9cae63a6f836a662a8ee8c4ccce538e639e59fa211fb9f200002f8c126248654",
+    "examples/linux/hello.cpp": "a97015c4e50f46a66fe2785e755e8d9e4e73f9efab32ec2c2ef9eac8d2215af1",
+    "examples/linux/i2c_client.cpp": "f2c5b98d5519b84803fa0e0acaa9e132922bef7f1bd4b7d4853172980f95e24e",
+    "examples/linux/memory_lab.cpp": "f911dc986b5aec5b57553a15076f356df867488d898208d966ff110ef18b4533",
+    "examples/linux/serial_client.cpp": "e8f8f3e802678542d47cc073b35b91c007ed9ae54d900936fe9c09adddf194d4",
+    "examples/linux/serial_port.hpp": "9af00b0838507484321c25ffaeb5f0da20423582e23a84ad0bc8014eab89455c",
+    "examples/pico/CMakeLists.txt": "80d25c26d6596dd196df88b455bf0cf555dfc91db49806e1e87f93579d586a4f",
+    "examples/pico/blink_registers.cpp": "eab9c79710931628f3d37adcd09d1629f93618810c29b8caf7c840765df17f20",
+    "examples/pico/blink_sdk.cpp": "661ec0d4a26c86b551541b39d43259f3fd99874a7f26c91d3961a7fc5b42bb07",
+    "examples/pico/bme280_common.hpp": "1c1aef4e307d4063b759abf50effec61c8f82774099aebecc8da0a11f7dc0253",
+    "examples/pico/bme280_i2c.cpp": "046d35699179087a5eacacd3c6cc77742f0fe3b6a585513b24ddc97d74fce02a",
+    "examples/pico/bme280_spi.cpp": "8111b1c15a2a8ce48a9e8f2c867a8b234f1f4113914ad5930c4270a390d36b49",
+    "examples/pico/button_irq.cpp": "25eb8f61378794c18458d9880f25b9b67367b81f3258582a3ea765686f6ebe1a",
+    "examples/pico/button_irq_sdk.cpp": "06d9836f1b597c87e409da46cfe4b0232f1610f2cd01b6c7eb904477f9262d19",
+    "examples/pico/button_poll.cpp": "82d1ceffa3f87edb4048bb98e760ce57581a76dc752541c7277d3d5f35f111c4",
+    "examples/pico/device_io.hpp": "0d593a82264c496d0ff28ff909842187a0e6198df76192fe0a9d134aa1e36df7",
+    "examples/pico/heartbeat.cpp": "020c4428f109e8426b40abfbfabac38921f6d2d0e24461bbf282b4db17b3914e",
+    "examples/pico/i2c_target.cpp": "9679ada7fb22e05bba3cc126c3c8b618bff2135fe832beb362c9d0e83c02e6b6",
+    "examples/pico/spi_loopback.cpp": "b34004bb1bd61d1a54898277b67f93397bca712a2441861aa900f73d4d1bf6a9",
+    "examples/pico/uart_device.cpp": "6a2cb3b6d412fbb17ae7c559f619078624207c7775304fccce47a4adee9d21fb",
+    "examples/pico/uart_echo.cpp": "bfa99e7eb414c29b170472bcd18bb90b64371419fd13a6a12db059efb2e89692"
+  },
+  "page_sha256": {
+    "src/1.2-understand-the-smallest-useful-project.md": "b10b59e850f19fe30dc41ff39d554d297761cb4d2f746f7b5ac5c99e9f1d7ca0",
+    "src/1.3-flash-with-bootsel-and-read-output.md": "9aedec41910583a8f15dbed362315f9f2c46761083ab26db8074dfa90392597d",
+    "src/1.4-make-the-build-flash-observe-loop-repeatable.md": "b11315b4f007119fca303990ce9b664f39a6d2b74e8b5f464775c81de5ffec70",
+    "src/2.1-wire-and-verify-an-external-led.md": "48e3067f2acb1ec578be134a657ee5e4fc8efd4175450e70007395aec28637fa",
+    "src/2.3-replace-gpio-calls-with-register-accesses.md": "69513d5ff1810c778a48cb1f806dee30f1f34f21a09296c153a9435334ab09e2",
+    "src/2.4-follow-the-generated-machine-instructions.md": "abe18125d606c654a25fd675e63248a8499cb9aa8fe22cf89c3ea64a489ef438",
+    "src/3.2-load-the-elf-and-step-through-the-led-write.md": "5e4fcec7c5f0158a2ec2648da919e6026e9bbd66a617473b644a553c06efdb5b",
+    "src/3.3-diagnose-a-broken-program-systematically.md": "009d8b65edbbf59f27031c669579ad1e7f18d5606cb11ffb77c8f4ef8ba56fdb",
+    "src/4.1-read-a-button-by-polling.md": "7adf51b746502d9212af8f98ee1c1b808e212415593415b1ba7ef4a343b61c62",
+    "src/4.2-configure-and-acknowledge-a-gpio-interrupt.md": "10f5a165f57222287f27a5b408bfc6546655e541d670f2cad04a2edad8da4386",
+    "src/4.3-share-state-and-debounce-correctly.md": "eede4af128f0dc22dace8502766220fca70c924eb5bf5c462fe62286a02f619b",
+    "src/4.4-inspect-exception-entry-and-return.md": "9ed54260191c6794861bfd638e989db4eb0e65bd3d14b1988447cd06660c96a0",
+    "src/5.2-verify-the-linux-development-environment.md": "d95651000629b0d99e4e97d548c06c6bb92004e518da773854a017ed038e7a19",
+    "src/6.2-turn-the-pico-into-a-register-based-peripheral.md": "a7e547dc5483806c7fff39d6da1033704b9879ae8861a6c9ea8b080998134893",
+    "src/6.3-write-a-linux-i-c-client.md": "6724fd15b8de79b4676ff90a6a66d32e9ee581e87c915df12890b0f591f0b335",
+    "src/6.4-compare-spi-with-a-loopback-experiment.md": "4569516d5d5a70659969926c035467f1140942aaaaf39aedf24cdce7394bf58c",
+    "src/7.2-configure-the-pi-uart-and-test-an-echo.md": "1dd6c60851edeacb17a50a21458df5c535fc591d55f66b3e6d8cb46848fe0664",
+    "src/7.3-build-a-robust-c-serial-client.md": "94fd4dabf1aac904ba59a0ef7c07c2402a4e34d755285984521dc8b31e0fa543",
+    "src/7.4-trace-a-command-end-to-end.md": "4ef970d5c92b2e820445dd6e5f2c6be1e4aee9efb0f88a84e3c1665f21ee5dbd",
+    "src/8.1-establish-a-userspace-gpio-baseline.md": "b431dc2184d5ed993e7158506829b2f18a74306dff781f88e6d6f1a843d32e4f",
+    "src/8.2-build-and-load-the-smallest-external-module.md": "8685211c513385d85889b22eaf47817f375e6872f2c3b0ed62762d79d612951f",
+    "src/8.3-describe-the-device-and-bind-the-driver.md": "8b0e4f12d45df8842d1fea8d766964befce6cb73e2d9512ad19023b272d098b7",
+    "src/8.4-convert-gpio-events-into-driver-state.md": "6a04292f353270ae4fdec222d886ae88c014cb87206a13589694891394c78d05",
+    "src/8.5-expose-dev-mybutton-to-a-c-client.md": "fafcfd0b7431f5d36374f639a675e416e603988ca090c416abbfb011944684fb",
+    "src/8.6-make-failure-and-teardown-behaviour-explicit.md": "98db65ba469cc472dafb5827f90cd9e646d8613df93a790753350cdd9f4d7302",
+    "src/9.1-observe-your-linux-process-s-mappings.md": "45f8cb323866580a330a093c644c3b3c5de5b3e58f266c53b27395c938d24cab",
+    "src/9.2-observe-demand-paging-and-protection-faults.md": "8aea152df00a4c3b7c46a50fa2a78732ab76577a308ac23052ba56b9893d7e3a",
+    "src/9.3-trace-a-real-kernel-mmio-mapping.md": "50935987512682cba9f5695d8599ab5dd9623d1c8f2a7bc12f73e7ed5881b9c6",
+    "src/9.4-explain-ordering-access-semantics-and-ownership.md": "0e7058064c06cef7181e8e802f8c52eb6716922668e73c6601a9332512f91624",
+    "src/10.1-use-a-linux-device-event-to-control-pico-hardware.md": "4677a9f280c5f72207ad189a8f761025e10934ac1747064cc1f683e52430dd9d",
+    "src/appendix-c-2.md": "b7c25084054318fbced8a3e3c3fe93a308a50d2cd926c19116ca8910ae4fe719",
+    "src/appendix-c-3.md": "36c732d748fe19e7c6ac27f02793945d14cd163d068d56093810233612c084dd",
+    "src/appendix-c-4.md": "f57995abe89b1777d1af7b84ddfb128901282b2ce715f263d1895688d21eb2b7"
+  },
+  "asset_sha256": {
+    "src/assets/4.4-exception-path.svg": "6fc85669047cd453cdef8bd4aef6872b8b294e04f8315659cb46d21b4c937420"
+  },
+  "checks_performed": [
+    "Read all changed C/C++ source diffs and full current examples. Compared original and new token streams under per-file identifier renames, ignoring comments/whitespace and then manually reviewing inserted braces for unchanged control flow and scope.",
+    "Manually resolved token-comparison exceptions: public Line::Result::ready and std::array::data() retain API names; protocol-test adjacent string literals concatenate to identical output; parsed_end and poll_result correctly distinguish parse-end and poll-return roles.",
+    "Inspected CMake diff: same foreach target names and target_link_libraries tokens in same order; only line breaks/indentation changed.",
+    "Reviewed wire commands, pin numbers, register addresses, masks, timing thresholds, parser limits, callback/main ordering, serial deadline handling, BME280 arithmetic operation order, and kernel open/read/IRQ/unbind lifetime and cleanup paths; all retained.",
+    "Scanned every affected catalog page for renamed identifiers and inspected inline C/C++/GDB fragments, sample protocol/output strings, shared public Device/Request and kernel reader fields, and literal command flags/paths/consumer labels.",
+    "Ran actual bundled arm-none-eabi-objdump against rebuilt blink_registers, button_irq and uart_device ELFs: led_on store stays 0x100001e8; gpio_isr W1C store stays 0x100001ea (offset +10), leaf frame unchanged; UART GPIO coprocessor operation stays mcrr at 0x100005b2.",
+    "Rechecked current source/prose after root repairs. No residual accidental literal substitutions, stale GDB led/mask names or old changed-flag labels found in final targeted scan.",
+    "9.3 third-party frozen kernel C excerpts retain original tabs, braces and spelling verbatim; only our driver pointer references change."
+  ],
+  "findings_resolved": [
+    {
+      "finding": "BME280 SPI main still used Bus::cs after declaration rename.",
+      "resolution": "All three uses now Bus::chip_select_pin; source and full Pico compile checked by root."
+    },
+    {
+      "finding": "poll return and parse-end pointer had misleading generated names.",
+      "resolution": "Serial::ready uses poll_result; GPIO offset parser uses parsed_end. I/O transfer counts retain transferred_bytes."
+    },
+    {
+      "finding": "Broad Markdown substitution damaged newline/CR escapes, uname flags, literal GPIO consumer labels, /proc/self/maps and expected output, and confused kernel seen with client events_received.",
+      "resolution": "Root regenerated prose from the original baseline with protected literals and contextual short-name changes; all reported literal and public-field regressions rechecked and restored."
+    },
+    {
+      "finding": "Debugger commands and exception diagram/disassembly comment retained old identifiers.",
+      "resolution": "3.2 and 3.3 GDB commands use led_pin/led_mask; 4.4 diagram and disassembly comment use edge_pending."
+    },
+    {
+      "finding": "3.3 described baseline while loop as single-line after formatting expanded it.",
+      "resolution": "Instruction now says entire while loop."
+    },
+    {
+      "finding": "Kernel allocation and callback-cookie prose retained standalone b.",
+      "resolution": "8.3/8.4 now use button_device; kernel teardown comment also updated."
+    }
+  ],
+  "functional_equivalence": "Accepted at source-review level: same executable expressions, constants, API calls, public data contracts, ordering, conditions and output strings. Compiler/debug line metadata may differ because source lines and local names changed. This is not physical-runtime validation.",
+  "verification_reported_by_root": {
+    "pico": "All 12 targets warning-clean compilation passed after edits.",
+    "host": "Existing parser and sanitizer checks plus 11 serial PTY cases passed.",
+    "linux_ci": "https://github.com/EthanHosier/hardware-from-software/actions/runs/43325840344 (root reports successful Linux host and native Arm64 application/kernel-module jobs)."
+  },
+  "hardware_status": "Physical runtime not exercised. No hardware, module loading, GPIO wiring or sensor observations performed by this reviewer.",
+  "unresolved_findings": [],
+  "acceptance": "Accepted for existing page/source review inventory refresh, subject to root completing final build, rendered-site checks, public publication and deployment verification."
+}

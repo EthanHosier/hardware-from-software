@@ -2,9 +2,9 @@
   "id": "8.1",
   "reviewer": "independent coordinator",
   "status": "accepted_source_review",
-  "canonical_sha256": "dbefee613de454677533f8bd98120ed2ddf1d0ed2c87123e05f79578cf58391f",
+  "canonical_sha256": "b431dc2184d5ed993e7158506829b2f18a74306dff781f88e6d6f1a843d32e4f",
   "included_source_sha256": {
-    "examples/linux/gpio_events.cpp": "f7b0b37cfc082c0c3c5456bd237488a3aaecae597ea6d7715f9de57c6fb541d8"
+    "examples/linux/gpio_events.cpp": "9cae63a6f836a662a8ee8c4ccce538e639e59fa211fb9f200002f8c126248654"
   },
   "asset_sha256": {
     "src/assets/8.1-pi-userspace-circuit.svg": "6b2b551bfb03ce76feff02c28ab231d3d88d29bf98298ad1bab1330ccd0fe182"
@@ -34,9 +34,11 @@
     "Compared CLI1.x and2.x commands against corresponding official manuals and verified getfacl prerequisite in5.3. Parsed all8shell blocks with sh -n; no target GPIO commands executed.",
     "Read complete unique SVG XML and visually inspected complete letterboxed render, checking all physical pins, resistor/LED polarity, switch nodes and legible labels. Diagram intentionally avoids later kernel ACTIVE_LOW API wording.",
     "Checked contact-pair and controller identity prerequisites, local link targets and top-level full-source include fence. Root final staged render/link/exact-include/public checks remain publication layer.",
-    "Verified gpio_events.cpp SHA matches recorded native Arm64 compilation evidence; no redundant unchanged compile rerun. Traced five accepted events, restarted30s poll timeout, unchecked final-low write and Ctrl-C cleanup distinctions."
+    "Verified gpio_events.cpp SHA matches recorded native Arm64 compilation evidence; no redundant unchanged compile rerun. Traced five accepted events, restarted30s poll timeout, unchecked final-low write and Ctrl-C cleanup distinctions.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
-  "hardware_status": "Source and diagram independently reviewed; native Arm64 compilation recorded by root. Physical Pi GPIO, button bounce, LED operation, electrical levels and timing not exercised. Output is explicitly illustrative."
+  "hardware_status": "Source and diagram independently reviewed; native Arm64 compilation recorded by root. Physical Pi GPIO, button bounce, LED operation, electrical levels and timing not exercised. Output is explicitly illustrative.",
+  "readability_review": "reviews/readability-review.json"
 }

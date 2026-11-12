@@ -4,11 +4,11 @@
   "status": "accepted_source_review",
   "canonical_sha256": "1dd6c60851edeacb17a50a21458df5c535fc591d55f66b3e6d8cb46848fe0664",
   "included_source_sha256": {
-    "examples/pico/uart_echo.cpp": "2618e59b8c32af73960b16a7797af6ccea5f701842fbe12307a1f4dcd0735f95"
+    "examples/pico/uart_echo.cpp": "bfa99e7eb414c29b170472bcd18bb90b64371419fd13a6a12db059efb2e89692"
   },
   "asset_sha256": {},
   "reviewed_dependency_sha256": {
-    "examples/pico/CMakeLists.txt": "82d60c4334f09dd190517c58d9331d3e5fd78d2a11855a790f8aaaea636fecc6"
+    "examples/pico/CMakeLists.txt": "80d25c26d6596dd196df88b455bf0cf555dfc91db49806e1e87f93579d586a4f"
   },
   "paths_read": [
     "src/7.2-configure-the-pi-uart-and-test-an-echo.md",
@@ -33,7 +33,8 @@
     "Original firmware hash agrees with existing Pico2 compilation evidence. No USB greeting or local GPIO operation claimed.",
     "Executed exact extracted diagnostic with only device path substituted against macOS PTYs: fragmented exact20-byte echo, corrupted data, extra data, and actual5second silent-peer deadline all behave as documented. Checked receiver enabled and software-flow flags cleared.",
     "All4PTY cases restore saved configuration; comparison masks only macOS driver PENDIN transient bit. These tests do not establish Pi routing or physical UART operation.",
-    "Reread SAME-writer CREAD/purePython repair and pinned API link replacements; final tested embedded code matches current canonical Markdown byte-for-byte."
+    "Reread SAME-writer CREAD/purePython repair and pinned API link replacements; final tested embedded code matches current canonical Markdown byte-for-byte.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "diagnostic_host_cases": [
     {
@@ -65,5 +66,6 @@
     "Original writer replaced stty with portable tty/termios setup explicitly enabling CREAD and setting flow/frame/speed state; root independently host-tested exact repaired code.",
     "Original writer replaced both anchors with browsed official pinned UART header."
   ],
-  "hardware_status": "Firmware previously target-compiled; diagnostic host-PTY tested. Pi boot edits, routing, physical flash/wiring/UART echo not exercised."
+  "hardware_status": "Firmware previously target-compiled; diagnostic host-PTY tested. Pi boot edits, routing, physical flash/wiring/UART echo not exercised.",
+  "readability_review": "reviews/readability-review.json"
 }

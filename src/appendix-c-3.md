@@ -22,15 +22,15 @@ The six-byte read beginning at `0x88` supplies three **little-endian** words: lo
 
 | Registers | Array positions | Bosch name | Interpretation |
 | --- | --- | --- | --- |
-| `0x88`, `0x89` | `cal[0]`, `cal[1]` | `dig_T1` (`t1`) | Unsigned 16-bit |
-| `0x8a`, `0x8b` | `cal[2]`, `cal[3]` | `dig_T2` (`t2`) | Signed 16-bit |
-| `0x8c`, `0x8d` | `cal[4]`, `cal[5]` | `dig_T3` (`t3`) | Signed 16-bit |
+| `0x88`, `0x89` | `calibration_bytes[0]`, `calibration_bytes[1]` | `dig_T1` (`dig_t1`) | Unsigned 16-bit |
+| `0x8a`, `0x8b` | `calibration_bytes[2]`, `calibration_bytes[3]` | `dig_T2` (`dig_t2`) | Signed 16-bit |
+| `0x8c`, `0x8d` | `calibration_bytes[4]`, `calibration_bytes[5]` | `dig_T3` (`dig_t3`) | Signed 16-bit |
 
-These types and pairings match [Bosch's `parse_temp_press_calib_data` function](https://github.com/boschsensortec/BME280_SensorAPI/blob/master/bme280.c). In our C++17 source, `uint8_t` holds a byte without treating values above 127 as negative. On this target its operands promote to 32-bit `int` before shifts: `cal[1] << 8` can safely represent up to 65280. OR combines the disjoint low and high parts. `uint16_t` then stores `t1` in the range 0–65535.
+These types and pairings match [Bosch's `parse_temp_press_calib_data` function](https://github.com/boschsensortec/BME280_SensorAPI/blob/master/bme280.c). In our C++17 source, `uint8_t` holds a byte without treating values above 127 as negative. On this target its operands promote to 32-bit `int` before shifts: `calibration_bytes[1] << 8` can safely represent up to 65280. OR combines the disjoint low and high parts. `uint16_t` then stores `dig_t1` in the range 0–65535.
 
-For the signed coefficients, first assemble the same unsigned numerical word `x`. The `signed16` lambda returns `x` for 0–32767, or **`x - 65536`** for 32768–65535. For example, bytes `18 fc` assemble to `0xfc18 = 64536`, which decodes to `-1000`. The conversion to `int32_t` occurs while the value still fits; subtraction produces the negative result. This avoids depending on an out-of-range unsigned-to-signed 16-bit cast. Keeping the decoded values in 32-bit signed variables also gives the arithmetic more room than their storage format.
+For the signed coefficients, first assemble the same unsigned numerical word `unsigned_value`. The `decode_signed16` lambda returns `unsigned_value` for 0–32767, or **`unsigned_value - 65536`** for 32768–65535. For example, bytes `18 fc` assemble to `0xfc18 = 64536`, which decodes to `-1000`. The conversion to `int32_t` occurs while the value still fits; subtraction produces the negative result. This avoids depending on an out-of-range unsigned-to-signed 16-bit cast. Keeping the decoded values in 32-bit signed variables also gives the arithmetic more room than their storage format.
 
-Rejecting `t1 == 0` or `65535` catches conspicuously bad calibration. It does **not** validate every coefficient: the program checks no `t2`/`t3` limits and performs no calibration CRC. A plausible-looking value is not an integrity proof.
+Rejecting `dig_t1 == 0` or `65535` catches conspicuously bad calibration. It does **not** validate every coefficient: the program checks no `dig_t2`/`dig_t3` limits and performs no calibration CRC. A plausible-looking value is not an integrity proof.
 
 ## 3. Assemble the raw temperature
 
@@ -38,9 +38,9 @@ The data read starts at `0xf7` and returns eight bytes. Temperature therefore oc
 
 | Position | Register | Contribution to the 20-bit temperature count |
 | --- | --- | --- |
-| `raw[3]` | `0xfa`, temperature MSB | Bits 19–12, shifted left 12 |
-| `raw[4]` | `0xfb`, temperature LSB | Bits 11–4, shifted left 4 |
-| `raw[5]` | `0xfc`, temperature XLSB | Upper nibble supplies bits 3–0, shifted right 4 |
+| `measurement_bytes[3]` | `0xfa`, temperature MSB | Bits 19–12, shifted left 12 |
+| `measurement_bytes[4]` | `0xfb`, temperature LSB | Bits 11–4, shifted left 4 |
+| `measurement_bytes[5]` | `0xfc`, temperature XLSB | Upper nibble supplies bits 3–0, shifted right 4 |
 
 The low nibble of `0xfc` is reserved and discarded. The sample is **unsigned 20-bit**, although the program stores it in `int32_t`; its maximum numerical value, 1048575, fits comfortably. These shifts operate on nonnegative values that fit the promoted types. A sample of `0x80000` is the skipped-temperature sentinel and must not be compensated into an apparent reading. Register layout and the skipped value are specified in [Bosch §5.4](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf).
 
@@ -66,7 +66,7 @@ v2 = d * d * T3
  T = (v1 + v2) / 5120.0
 ```
 
-For these inputs, `v1 = 128793.1787109375`, `d = 0.6090087890625`, and `v2 ≈ -370.891705155373`. Their sum is approximately `128422.287005782`; dividing by 5120 gives **25.08247793081682 °C**, printed as `25.08`.
+For these inputs, `linear_correction = 128793.1787109375`, `temperature_delta = 0.6090087890625`, and `quadratic_correction ≈ -370.891705155373`. Their sum is approximately `128422.287005782`; dividing by 5120 gives **25.08247793081682 °C**, printed as `25.08`.
 
 The `.0` divisors make these floating-point divisions; integer division would discard fractions before the correction is finished. The two terms provide the linear and quadratic parts of the compensation. They match the temperature equation in [Bosch's floating-point appendix, §8.1](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf) and the [SensorAPI double `compensate_temperature` function](https://github.com/boschsensortec/BME280_SensorAPI/blob/master/bme280.c). Bosch also retains an integer `t_fine` derived from this sum for the other channels; its floating temperature return uses the untruncated sum divided by 5120. Our temperature-only helper needs no stored `t_fine`. Unlike the API's full routine, it does not clamp the temperature to the sensor operating range.
 
@@ -92,7 +92,7 @@ The calculated output is `25.08247793081682175397872926`. Agreement checks this 
 
 Follow the actual control flow rather than assuming the calculation runs on every received byte:
 
-1. After `main`'s two-second startup wait, the helper waits another 10 ms, reads ID `0xd0` and requires `0x60`. It then reads and decodes calibration once, applying the limited `t1` sanity check.
+1. After `main`'s two-second startup wait, the helper waits another 10 ms, reads ID `0xd0` and requires `0x60`. It then reads and decodes calibration once, applying the limited `dig_t1` sanity check.
 2. Each iteration writes `ctrl_meas` (`0xf4`) with `0x21`: temperature oversampling ×1, pressure skipped, forced mode. Forced mode returns to sleep after conversion. The code makes no `ctrl_hum` write; humidity remains skipped at its reset value zero. It also makes no reset or `config` write. Use C.2's **fresh sensor power-up** baseline; restarting only the Pico CPU need not clear settings left in a still-powered sensor. [Bosch §3.3 and §5.4](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf)
 3. It sleeps 10 ms, then makes up to 100 status reads, requiring both `measuring` bit 3 and `im_update` bit 0 clear (`status & 0x09` is zero). Busy results are followed by 1 ms sleeps. This bounds **attempts**, not elapsed time to 100 ms: C.2's I²C adapter gives each underlying SDK call up to 100 ms, and bus time adds to sleeps.
 4. It reads the eight-byte burst, rejects the temperature sentinel, compensates and prints. A one-second sleep follows; that is not an exact one-second sampling period. On an error it prints one diagnostic and returns; `main` keeps USB alive without retrying.
@@ -115,7 +115,7 @@ Pressure and humidity require their own factory coefficients and dedicated compe
 | --- | --- |
 | Wrong-chip-ID diagnostic | Check C.2's identity, address and wiring procedure; this message also covers a failed ID transfer. Do not bypass the `0x60` check. |
 | Implausible temperature after modifying code | Compare byte indexes, little-endian coefficient assembly and signed `T2/T3` decoding with the included source. Check that fractions survived division. Restore the canonical example. |
-| `invalid calibration` or calibration-read failure | Follow C.2's connection checks with power removed. A successful `t1` check alone does not prove all six bytes correct. |
+| `invalid calibration` or calibration-read failure | Follow C.2's connection checks with power removed. A successful `dig_t1` check alone does not prove all six bytes correct. |
 | `temperature channel skipped` | The sentinel is a state/configuration clue, not a low temperature. Restore the exact firmware and fresh power-on baseline. |
 | Status/read/write failure or `measurement timeout` | Check C.2's bus diagnostics and power-on state; retain readiness checks. Reopening a terminal does not retry the helper. |
 | Plausible but warm or drifting result | Consider board heat, placement and thermal settling before changing the compensation constants. |

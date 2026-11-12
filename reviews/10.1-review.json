@@ -4,17 +4,17 @@
   "status": "accepted_source_review",
   "canonical_sha256": "4677a9f280c5f72207ad189a8f761025e10934ac1747064cc1f683e52430dd9d",
   "included_source_sha256": {
-    "examples/linux/capstone.cpp": "3d15054e1a69c0db4769a9cd7f2c2d9caf6836a2931c76a6b4de3590e7b98dc2",
-    "examples/linux/serial_port.hpp": "eb2a42df5baa75b6178f3d5b4cdc7aeddb0711e1cd0b5f43341698d5d3ce4e22",
-    "examples/common/protocol.hpp": "77c7529b2f7758a3e784c5752eaca01f377d67e6f672263c3cf6e5104bba8be7"
+    "examples/linux/capstone.cpp": "14acf7764f555eae2997b84eeaf9b82d73636b7c652847f128e720015248dafa",
+    "examples/linux/serial_port.hpp": "9af00b0838507484321c25ffaeb5f0da20423582e23a84ad0bc8014eab89455c",
+    "examples/common/protocol.hpp": "dcff438a3a1d7695e497130ca2c757f7979a165c041a6e19037bb12e52bad34a"
   },
   "asset_sha256": {
     "src/assets/10.1-capstone-circuit.svg": "fd8731eafe4250244c07e9e4624b28800500adccefed3cadede7b19d77c0377d"
   },
   "reviewed_dependency_sha256": {
-    "examples/pico/uart_device.cpp": "f352a466e6a3bd7c58b9305feab5f50b7a41d550c0a0cd32c9e7e78b00e9c977",
-    "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3",
-    "examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826"
+    "examples/pico/uart_device.cpp": "6a2cb3b6d412fbb17ae7c559f619078624207c7775304fccce47a4adee9d21fb",
+    "examples/pico/device_io.hpp": "0d593a82264c496d0ff28ff909842187a0e6198df76192fe0a9d134aa1e36df7",
+    "examples/kernel/mybutton.c": "519501c09961f2b2a1702e26aab6cf29a1f9b9e666a2027fc8a007f50b02a371"
   },
   "paths_read": [
     "src/10.1-use-a-linux-device-event-to-control-pico-hardware.md",
@@ -45,7 +45,8 @@
     "Read complete uniqueSVG XML then independently rendered full letterboxed1200px figure and visually checked all text, resistor paths/values, both LED polarities, both button pull-ups/oppositecontacts and every physicalpin/UARTdirection/commonGND/separate rails. No clipping or incorrect connection found.",
     "Parsed all4shell fences with sh -n, checked10local predecessor anchors and actual8.6 guarded module reload procedure. Exactmodule headers are separate from userspacebuild; powercycle/reload/permissions sequence coherent.",
     "Independently revisited primaryPiUART, kernelGPIO, poll/termios and pinnedSDKUART sources; reused previously reviewed physicalboard references/pinout consistency. No target run performed.",
-    "Checked top-level fullsource include fences, source download/zip progression and distinction between predictedLED observation and software acknowledgements. Root publication provides exactinclude/render/link/anonymous checks."
+    "Checked top-level fullsource include fences, source download/zip progression and distinction between predictedLED observation and software acknowledgements. Root publication provides exactinclude/render/link/anonymous checks.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [
     {
@@ -56,5 +57,6 @@
   "repairs": [
     "Added complete consolidated electrical schematic while retaining actual local components and separate power rails."
   ],
-  "hardware_status": "Root records firmware compilation, hostparser/11PTYtests and nativeArm64Linux/module compilation; this review checks source/commands/diagram. Physical capstoneGPIO/UART/LED/button behavior, timing and electrical levels not exercised."
+  "hardware_status": "Root records firmware compilation, hostparser/11PTYtests and nativeArm64Linux/module compilation; this review checks source/commands/diagram. Physical capstoneGPIO/UART/LED/button behavior, timing and electrical levels not exercised.",
+  "readability_review": "reviews/readability-review.json"
 }

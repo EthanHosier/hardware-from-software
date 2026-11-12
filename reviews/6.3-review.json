@@ -2,16 +2,16 @@
   "id": "6.3",
   "reviewer": "independent coordinator",
   "status": "accepted_source_review",
-  "canonical_sha256": "8417ec13b31d9de1e729daff07926421614d5ef4175d951e1d5a1e7ec95e79dc",
+  "canonical_sha256": "6724fd15b8de79b4676ff90a6a66d32e9ee581e87c915df12890b0f591f0b335",
   "included_source_sha256": {
-    "examples/linux/i2c_client.cpp": "72d67baf85980f64f4d90a0a9d3041d60dafd839d41c58b911ebd1ea9dfb1bb3"
+    "examples/linux/i2c_client.cpp": "f2c5b98d5519b84803fa0e0acaa9e132922bef7f1bd4b7d4853172980f95e24e"
   },
   "asset_sha256": {
     "src/assets/circuit-i2c.svg": "dbd430c0f5c5760127c4e9fd8b4662746dc67bf2158c5fc8e4e4391aa8e832ed"
   },
   "reviewed_dependency_sha256": {
-    "examples/pico/i2c_target.cpp": "96f30fdfe3d1892e14fe8344d665a3eb801f6b7f09b85dd8c05487dad37c30d4",
-    "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3"
+    "examples/pico/i2c_target.cpp": "9679ada7fb22e05bba3cc126c3c8b618bff2135fe832beb362c9d0e83c02e6b6",
+    "examples/pico/device_io.hpp": "0d593a82264c496d0ff28ff909842187a0e6198df76192fe0a9d134aa1e36df7"
   },
   "paths_read": [
     "src/6.3-write-a-linux-i-c-client.md",
@@ -39,9 +39,11 @@
     "Reviewed actual uint32LE assembly and signed64 subtract2^32 path, identity/version validation beforewrite, immediateerrno capture/system_error versussemantic runtime_error, closeonallhandledpaths.",
     "Independently parsed all3shellblocks with sh -n; exact buildflags and canonicalsourceinclude unindented/top-level. ADCcrosslinkheadingexists.",
     "Shared I2C SVG unchanged from complete independent6.1 rendering/source/wiring check; table and boardstates agree. I2C3clockstretch rationale already independently checkedagainstfrozenDTS/officialengineer and remains accurate.",
-    "Everyrunreadthenrequesttoggle explicitly documented; completionisnot LEDapplicationproof, no immediateverificationclaim. No capturedhardwareoutput invented. Root render/include/link/publicchecksprecedepublication."
+    "Everyrunreadthenrequesttoggle explicitly documented; completionisnot LEDapplicationproof, no immediateverificationclaim. No capturedhardwareoutput invented. Root render/include/link/publicchecksprecedepublication.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
-  "hardware_status": "Source/commands/ABI reviewed; current client compiled nativehostedArm64 perverification. PhysicalI2C/RPiread/run/ACK/LED/button/temperature notexercised."
+  "hardware_status": "Source/commands/ABI reviewed; current client compiled nativehostedArm64 perverification. PhysicalI2C/RPiread/run/ACK/LED/button/temperature notexercised.",
+  "readability_review": "reviews/readability-review.json"
 }

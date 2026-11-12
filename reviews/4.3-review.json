@@ -2,9 +2,9 @@
   "id": "4.3",
   "reviewer": "root (independent of fresh dedicated writer)",
   "status": "accepted_source_review",
-  "canonical_sha256": "038d8ff3da5461e448f0b1cb5cc4f667abc23e64a05e1a7adb59856cfaf5ef63",
+  "canonical_sha256": "eede4af128f0dc22dace8502766220fca70c924eb5bf5c462fe62286a02f619b",
   "included_source_sha256": {
-    "examples/pico/button_irq.cpp": "98d5d773a21da23cac0a6c4eb618907e20ed5d02eb8c5986fc7aa9b67554feff"
+    "examples/pico/button_irq.cpp": "25eb8f61378794c18458d9880f25b9b67367b81f3258582a3ea765686f6ebe1a"
   },
   "asset_sha256": {
     "src/assets/circuit-pico-button.svg": "26cb2c83cfcf4561df63d00af2f5f2235265d3eb9e3cee6878bdb41d5a080191"
@@ -32,7 +32,8 @@
     "Manually traced candidate/stable/since and flag interleavings, delayed-main and brief-release cases against source; limitations accurately bound promises.",
     "Circuit source and complete render independently inspected during4.1 review; exact same asset hash retained.",
     "Verified actual4.2 SWD heading anchor and top-level fullsource include; sourcehash matches compiled baseline.",
-    "Original writer repaired screen quit key into inlinecode, root reread repaired text. No runtime/hardware test claimed."
+    "Original writer repaired screen quit key into inlinecode, root reread repaired text. No runtime/hardware test claimed.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [
     {
@@ -44,5 +45,6 @@
     "Same-writer screen-key formatting correction"
   ],
   "hardware_status": "source-reviewed and prior target-compilation baseline; physical interrupts/debounce/LED/timing and optional delay experiment not exercised",
-  "reviewed_at": "2026-11-10T22:02:01.251535+00:00"
+  "reviewed_at": "2026-11-10T22:02:01.251535+00:00",
+  "readability_review": "reviews/readability-review.json"
 }

@@ -4,7 +4,7 @@
   "status": "accepted_source_review",
   "canonical_sha256": "9aedec41910583a8f15dbed362315f9f2c46761083ab26db8074dfa90392597d",
   "included_source_sha256": {
-    "examples/pico/heartbeat.cpp": "b3eab585fa76ed7eb6a6ccd966909b3e22de26bae44dfe12344b9edc166b7589"
+    "examples/pico/heartbeat.cpp": "020c4428f109e8426b40abfbfabac38921f6d2d0e24461bbf282b4db17b3914e"
   },
   "asset_sha256": {},
   "paths_read": [
@@ -30,10 +30,12 @@
     "Pinned SDK configuration confirms zero default initial connection-wait timeout and TinyUSB CDC transport; firmware emits v1 identity and increasing unsigned counter.",
     "Executed read-only Mac find-device command; inspected actual nonempty ELF/UF2 artifacts. No device matched, and no connected hardware was operated.",
     "Installed macOS screen manual confirms Ctrl+A Ctrl+backslash quit, distinct from detach.",
-    "Existing all-target compilation evidence reused because included firmware unchanged; source hash agrees."
+    "Existing all-target compilation evidence reused because included firmware unchanged; source hash agrees.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
   "hardware_status": "physical-runtime not exercised; serial output clearly illustrative",
-  "reviewed_at": "2026-11-10T21:29:06.721553+00:00"
+  "reviewed_at": "2026-11-10T21:29:06.721553+00:00",
+  "readability_review": "reviews/readability-review.json"
 }

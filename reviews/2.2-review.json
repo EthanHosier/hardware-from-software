@@ -6,7 +6,7 @@
   "included_source_sha256": {},
   "asset_sha256": {},
   "reviewed_dependency_sha256": {
-    "examples/pico/blink_registers.cpp": "fbd45b4d97c4fb73c23046fbcdbd8435a1fda858cf5607b8dd119a74248acd1d"
+    "examples/pico/blink_registers.cpp": "eab9c79710931628f3d37adcd09d1629f93618810c29b8caf7c840765df17f20"
   },
   "paths_read": [
     "src/2.2-read-the-rp2350-register-map.md",
@@ -29,10 +29,12 @@
     "Extracted complete relevant PDF pages using bundled pypdf; rendered and visually read GPIO16 CTRL table715 and padtable901 to confirm row associations. Colophon release8/build01October2026 and page references agree.",
     "Confirmed SIO generic-alias exception and usual narrow-write replication against complete PDF sections2.1.3\u20132.1.5.",
     "Executed exact read-only Python snippet from lesson; all printed constants match table.",
-    "Read-only lesson adds no wiring/physical operation and no compile change; prior target-compile evidence applies to unchanged source."
+    "Read-only lesson adds no wiring/physical operation and no compile change; prior target-compile evidence applies to unchanged source.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
   "hardware_status": "source-reviewed; no physical runtime exercised",
-  "reviewed_at": "2026-11-10T21:36:34.724569+00:00"
+  "reviewed_at": "2026-11-10T21:36:34.724569+00:00",
+  "readability_review": "reviews/readability-review.json"
 }

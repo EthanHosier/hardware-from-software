@@ -8,9 +8,9 @@
     "src/assets/circuit-i2c.svg": "dbd430c0f5c5760127c4e9fd8b4662746dc67bf2158c5fc8e4e4391aa8e832ed"
   },
   "reviewed_dependency_sha256": {
-    "examples/pico/i2c_target.cpp": "96f30fdfe3d1892e14fe8344d665a3eb801f6b7f09b85dd8c05487dad37c30d4",
-    "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3",
-    "examples/linux/i2c_client.cpp": "72d67baf85980f64f4d90a0a9d3041d60dafd839d41c58b911ebd1ea9dfb1bb3"
+    "examples/pico/i2c_target.cpp": "9679ada7fb22e05bba3cc126c3c8b618bff2135fe832beb362c9d0e83c02e6b6",
+    "examples/pico/device_io.hpp": "0d593a82264c496d0ff28ff909842187a0e6198df76192fe0a9d134aa1e36df7",
+    "examples/linux/i2c_client.cpp": "f2c5b98d5519b84803fa0e0acaa9e132922bef7f1bd4b7d4853172980f95e24e"
   },
   "paths_read": [
     "src/6.1-i-c-on-the-wires.md",
@@ -44,7 +44,8 @@
     "Independently parsed all7shellblocks with sh -n. Configbackup/preserveincludes/disableoldbus/modulesnoclobber/persistence/identity/conditionalgroup/reboot/rollback sequence coherent. No targetcommands executed.",
     "Checked GitHubAPI: originalcommentanchor404; retrieved exact6by9commentIDs, samewriter corrected to1038929049, finalsource rechecked.",
     "No program built/run thiselectricalpage; mandatoryinclude map empty. Source-derived protocol dependencies hashed separately. Root render/link/public checks precedepublication.",
-    "Follow-up independent full client reread after c947977: explicit errno capture/system_error improves diagnostics only, defaultI2C3/read16/decode/deferredLEDprotocol unchanged. Root confirms CI42986688767 nativeArm64/Pi-header jobs passed; dependency hash refreshed without prose changes."
+    "Follow-up independent full client reread after c947977: explicit errno capture/system_error improves diagnostics only, defaultI2C3/read16/decode/deferredLEDprotocol unchanged. Root confirms CI42986688767 nativeArm64/Pi-header jobs passed; dependency hash refreshed without prose changes.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [
     {
@@ -60,5 +61,6 @@
     "PrimaryI2C3 configuration and reversibleconflict-aware setup by samewriter afterrootdecision.",
     "Corrected primary engineercommentanchor by samewriter."
   ],
-  "hardware_status": "Source/config/schematic/shell reviewed; no physical wiring, voltage, bus/ACK/clockstretch transfer, SSHconfiguration or adapteraccess measured."
+  "hardware_status": "Source/config/schematic/shell reviewed; no physical wiring, voltage, bus/ACK/clockstretch transfer, SSHconfiguration or adapteraccess measured.",
+  "readability_review": "reviews/readability-review.json"
 }

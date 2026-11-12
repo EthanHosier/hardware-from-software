@@ -4,7 +4,7 @@
   "status": "accepted_source_review",
   "canonical_sha256": "98db65ba469cc472dafb5827f90cd9e646d8613df93a790753350cdd9f4d7302",
   "included_source_sha256": {
-    "examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826"
+    "examples/kernel/mybutton.c": "519501c09961f2b2a1702e26aab6cf29a1f9b9e666a2027fc8a007f50b02a371"
   },
   "asset_sha256": {},
   "paths_read": [
@@ -32,7 +32,8 @@
     "Checked versioned official kref/devres/IRQ/workqueue and frozen misc and driver-core sources. Confirmed callback-before-managed-release order and gpio-keys binding/source comparison.",
     "All 9 shell fences independently sh -n checked; all 3 embedded Python helpers ast.parse checked. Traced timers/finally close and expected offline/poll behavior; helpers not run on device.",
     "Matched driver hash to existing native Arm64 exact-header compilation evidence. Checked dmesg --since in pinned util-linux2.38.1 manual.",
-    "Reread SAME-writer evidence repair separating userspace compilation from module-header compilation. No direct SVG on page; canonical circuit linked8.1."
+    "Reread SAME-writer evidence repair separating userspace compilation from module-header compilation. No direct SVG on page; canonical circuit linked8.1.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [
     {
@@ -43,5 +44,6 @@
   "repairs": [
     "Corrected compilation evidence wording."
   ],
-  "hardware_status": "Source/API and helper syntax reviewed; existing native Linux client and Pi-header module compilation. No module load, GPIO, signals-on-device, unbind/rebind or physical runtime exercised."
+  "hardware_status": "Source/API and helper syntax reviewed; existing native Linux client and Pi-header module compilation. No module load, GPIO, signals-on-device, unbind/rebind or physical runtime exercised.",
+  "readability_review": "reviews/readability-review.json"
 }

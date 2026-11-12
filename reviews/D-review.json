@@ -8,17 +8,17 @@
     "src/assets/D-uart-taps.svg": "ac6af3bcd538f69915615145c25d537405a9dee37ad8e5a9cf4ac5e5e35ca550"
   },
   "reviewed_dependency_sha256": {
-    "examples/pico/uart_device.cpp": "f352a466e6a3bd7c58b9305feab5f50b7a41d550c0a0cd32c9e7e78b00e9c977",
-    "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3",
-    "examples/common/protocol.hpp": "77c7529b2f7758a3e784c5752eaca01f377d67e6f672263c3cf6e5104bba8be7",
-    "examples/linux/serial_client.cpp": "fd54040d11499427d4a53e621fcf08000b88c4724eb5ee2cac5dd9cbc62fb70c",
-    "examples/linux/serial_port.hpp": "eb2a42df5baa75b6178f3d5b4cdc7aeddb0711e1cd0b5f43341698d5d3ce4e22",
-    "examples/linux/i2c_client.cpp": "72d67baf85980f64f4d90a0a9d3041d60dafd839d41c58b911ebd1ea9dfb1bb3",
-    "examples/pico/i2c_target.cpp": "96f30fdfe3d1892e14fe8344d665a3eb801f6b7f09b85dd8c05487dad37c30d4",
-    "examples/pico/spi_loopback.cpp": "0d88ceaccc5e629e0743db7cf73d8a1f2cb0e65b0e73094810fc8e7cfdfcf97d",
-    "examples/pico/bme280_spi.cpp": "8cdbd28f258ffd599d8b1260fe94df187962c7a35b07aea946ffd40861a74e31",
-    "examples/pico/bme280_common.hpp": "08dabf4417c9147b49414e4a93d5fa5a8b8a824b4f0d0733d131b9db8ac3c781",
-    "examples/pico/CMakeLists.txt": "82d60c4334f09dd190517c58d9331d3e5fd78d2a11855a790f8aaaea636fecc6"
+    "examples/pico/uart_device.cpp": "6a2cb3b6d412fbb17ae7c559f619078624207c7775304fccce47a4adee9d21fb",
+    "examples/pico/device_io.hpp": "0d593a82264c496d0ff28ff909842187a0e6198df76192fe0a9d134aa1e36df7",
+    "examples/common/protocol.hpp": "dcff438a3a1d7695e497130ca2c757f7979a165c041a6e19037bb12e52bad34a",
+    "examples/linux/serial_client.cpp": "e8f8f3e802678542d47cc073b35b91c007ed9ae54d900936fe9c09adddf194d4",
+    "examples/linux/serial_port.hpp": "9af00b0838507484321c25ffaeb5f0da20423582e23a84ad0bc8014eab89455c",
+    "examples/linux/i2c_client.cpp": "f2c5b98d5519b84803fa0e0acaa9e132922bef7f1bd4b7d4853172980f95e24e",
+    "examples/pico/i2c_target.cpp": "9679ada7fb22e05bba3cc126c3c8b618bff2135fe832beb362c9d0e83c02e6b6",
+    "examples/pico/spi_loopback.cpp": "b34004bb1bd61d1a54898277b67f93397bca712a2441861aa900f73d4d1bf6a9",
+    "examples/pico/bme280_spi.cpp": "8111b1c15a2a8ce48a9e8f2c867a8b234f1f4113914ad5930c4270a390d36b49",
+    "examples/pico/bme280_common.hpp": "1c1aef4e307d4063b759abf50effec61c8f82774099aebecc8da0a11f7dc0253",
+    "examples/pico/CMakeLists.txt": "80d25c26d6596dd196df88b455bf0cf555dfc91db49806e1e87f93579d586a4f"
   },
   "paths_read": [
     "src/appendix-d.md",
@@ -67,9 +67,11 @@
     "Independently read official capture modes: edge trigger, bounded looping RAM, pretrigger trim/posttrigger duration; decoder setting labels checked against official Async Serial C++ implementation. Save/open SAL and per-analyzer TXT/CSV exact current instructions confirmed. Timing marker/Notes and SPI None-enable/I2C7bit address primary guides checked.",
     "Official Logic8 PDF electrical table independently confirms10MS/s digital sampling, USB2HighSpeed and channel-dependent maximum; sample spacing and8N1 arithmetic independently reproduced:8/7bytes,694.444/607.639us nominal wiretimes. No inference of measured RTT or analogue quality.",
     "Parsed all3 shell fences with zsh -n; local Markdown destinations exist; SVG XML valid. Viewed complete960x490 drawing through a temporary square-canvas render preserving viewBox; all three nets, tap junctions, directions, physical/BCM/GP labels and supply separation readable without clipping.",
-    "Crosschecked I2C actual16byte combined transaction and register2opposite-state write, loopback mode0/noCS and BME startup d0/00\u219260 against actual sources. All wiring agrees with prior primary pin reviews. No new program or hardware test introduced; root owns staged desktop/mobile render and publication."
+    "Crosschecked I2C actual16byte combined transaction and register2opposite-state write, loopback mode0/noCS and BME startup d0/00\u219260 against actual sources. All wiring agrees with prior primary pin reviews. No new program or hardware test introduced; root owns staged desktop/mobile render and publication.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
-  "hardware_status": "UNEXERCISED: no Logic2 installation/device recognition, board probing, capture/export, physical bus transaction or measured latency. Commands/source/UI documentation, arithmetic and SVG independently reviewed only."
+  "hardware_status": "UNEXERCISED: no Logic2 installation/device recognition, board probing, capture/export, physical bus transaction or measured latency. Commands/source/UI documentation, arithmetic and SVG independently reviewed only.",
+  "readability_review": "reviews/readability-review.json"
 }

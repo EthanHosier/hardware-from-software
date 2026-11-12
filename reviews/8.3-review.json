@@ -2,10 +2,10 @@
   "id": "8.3",
   "reviewer": "independent coordinator",
   "status": "accepted_source_review",
-  "canonical_sha256": "f03429bd1ede611ed8ba10ec4ab1f4bc6b9a9d86d450209076fe54900e0ef4df",
+  "canonical_sha256": "8b0e4f12d45df8842d1fea8d766964befce6cb73e2d9512ad19023b272d098b7",
   "included_source_sha256": {
     "examples/kernel/hardware-button-overlay.dts": "72fd129f2ebab3565a0d65d0fef67a0f29322ec2aa9dd1f72b9a9df3cc1632e9",
-    "examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826",
+    "examples/kernel/mybutton.c": "519501c09961f2b2a1702e26aab6cf29a1f9b9e666a2027fc8a007f50b02a371",
     "examples/kernel/Makefile": "4e205ebdc4eb9545724b32f7067b512881ba2ab2aea08b5f631e900d41b2acaf"
   },
   "asset_sha256": {
@@ -39,7 +39,8 @@
     "Parsed all8shell blocks with sh -n; checked variable lifetimes across reboot, explicit collision inspection, exact module/header prerequisites and of_node-based discovery. No target or privileged commands executed.",
     "Checked loaded-module versus successful-probe evidence and absence of fabricated probe banner or automatic local-file autoload. Full-source include fences are top-level and all local targets exist.",
     "Reused unchanged8.1 circuit SVG after comparing exact hash with independently accepted full render and wiring check; table agrees physical17/13/14 and11/9.",
-    "Reread SAME-writer repaired evidence paragraph and writer report; module compilation against headers is now distinct from dtc overlay compilation. Root publication performs staged exact include/render/link and anonymous checks."
+    "Reread SAME-writer repaired evidence paragraph and writer report; module compilation against headers is now distinct from dtc overlay compilation. Root publication performs staged exact include/render/link and anonymous checks.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [
     {
@@ -50,5 +51,6 @@
   "repairs": [
     "Separated module/header and dtc overlay compilation evidence."
   ],
-  "hardware_status": "Driver target-compiled against official6.12.96+rpt-rpi-v8 headers and overlay separately compiled in root CI. Source and circuit independently reviewed. Pi boot, module load/bind/unload, GPIO levels/LED/button and error paths not exercised."
+  "hardware_status": "Driver target-compiled against official6.12.96+rpt-rpi-v8 headers and overlay separately compiled in root CI. Source and circuit independently reviewed. Pi boot, module load/bind/unload, GPIO levels/LED/button and error paths not exercised.",
+  "readability_review": "reviews/readability-review.json"
 }

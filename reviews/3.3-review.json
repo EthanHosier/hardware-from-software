@@ -2,9 +2,9 @@
   "id": "3.3",
   "reviewer": "independent coordinator",
   "status": "accepted_source_review",
-  "canonical_sha256": "60f87239fc762725e7efd83ba347a92b938719b1ae3bbebfc00c1893c397fcd7",
+  "canonical_sha256": "009d8b65edbbf59f27031c669579ad1e7f18d5606cb11ffb77c8f4ef8ba56fdb",
   "included_source_sha256": {
-    "examples/pico/blink_registers.cpp": "fbd45b4d97c4fb73c23046fbcdbd8435a1fda858cf5607b8dd119a74248acd1d"
+    "examples/pico/blink_registers.cpp": "eab9c79710931628f3d37adcd09d1629f93618810c29b8caf7c840765df17f20"
   },
   "asset_sha256": {
     "src/assets/3.1-swd-connections.svg": "4b7a4dfc38f89e033f7d8b2098dfcce940175f9bde3b7caba9abcf34bd2439a6"
@@ -32,9 +32,11 @@
     "Compared exact register addresses/base offsets, access semantics, GPIO16 NULL0x1f, pad2 and mux5 with pinned SDK and official register tables.",
     "Checked all four fragment substitution points against canonical source, one local change at a time; no shared code modified.",
     "Browsed primary GDB and OpenOCD docs for instruction stepping, frames, remote load/reset. Installed cm0 configuration matches established route.",
-    "Full-file include is top-level unindented. Fragment examples explicitly local/source-reviewed only; no claim they were independently compiled or run. Root exact-render/link check precedes publication."
+    "Full-file include is top-level unindented. Fragment examples explicitly local/source-reviewed only; no claim they were independently compiled or run. Root exact-render/link check precedes publication.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
-  "hardware_status": "Source-reviewed canonical program has existing target-compilation evidence; local fault variants source-reviewed only. SWD, GPIO, register reads, physical LED and stack transcripts not exercised or measured."
+  "hardware_status": "Source-reviewed canonical program has existing target-compilation evidence; local fault variants source-reviewed only. SWD, GPIO, register reads, physical LED and stack transcripts not exercised or measured.",
+  "readability_review": "reviews/readability-review.json"
 }

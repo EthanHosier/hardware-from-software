@@ -2,9 +2,9 @@
   "id": "9.2",
   "reviewer": "independent root",
   "status": "accepted_source_review",
-  "canonical_sha256": "6ed5907cce833b71baa51df5063e568da2d23fbdf933a8f934e9cc8a035fd67e",
+  "canonical_sha256": "8aea152df00a4c3b7c46a50fa2a78732ab76577a308ac23052ba56b9893d7e3a",
   "included_source_sha256": {
-    "examples/linux/memory_lab.cpp": "40eb02398993a0617f2b3a596ca77b467685cb1e61881c81047e3f89a2569fee"
+    "examples/linux/memory_lab.cpp": "f911dc986b5aec5b57553a15076f356df867488d898208d966ff110ef18b4533"
   },
   "asset_sha256": {},
   "paths_read": [
@@ -30,9 +30,11 @@
     "Checked primary mmap/mprotect/getrusage/fork/waitpid/core manuals and versioned/current kernel MM concepts. Distinctions between mapping, backing, fault event and physical page are accurate.",
     "Both shell fences independently parsed with sh -n. Verified native user build and saved per-run status/error flow; no privileged or hardware commands.",
     "Matched included source SHA to existing native Linux/Arm64 compile and hosted Linux CI runtime evidence; no source mutation or new physical run.",
-    "Checked initial maps precedes mmap, no fixed4KiB assumption, count128not guaranteed, volatile is not permission/synchronization, core suppression not promised. No direct diagram asset on this page."
+    "Checked initial maps precedes mmap, no fixed4KiB assumption, count128not guaranteed, volatile is not permission/synchronization, core suppression not promised. No direct diagram asset on this page.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
-  "hardware_status": "Source and syntax reviewed; existing native Linux/Arm64 compilation and Linux host memory test. No Pi physical runtime or GPIO operation exercised."
+  "hardware_status": "Source and syntax reviewed; existing native Linux/Arm64 compilation and Linux host memory test. No Pi physical runtime or GPIO operation exercised.",
+  "readability_review": "reviews/readability-review.json"
 }

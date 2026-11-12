@@ -2,10 +2,10 @@
   "id": "4.2",
   "reviewer": "independent coordinator",
   "status": "accepted_source_review",
-  "canonical_sha256": "142d06b1ca96f7d5e2503456f69ea778e2890768dd5ce9172b22d4615f61bc1b",
+  "canonical_sha256": "10f5a165f57222287f27a5b408bfc6546655e541d670f2cad04a2edad8da4386",
   "included_source_sha256": {
-    "examples/pico/button_irq_sdk.cpp": "2bfe6523d1f89391b039eddf5f818dc6b786eb357ca36d01dfb856ea83f43165",
-    "examples/pico/button_irq.cpp": "98d5d773a21da23cac0a6c4eb618907e20ed5d02eb8c5986fc7aa9b67554feff"
+    "examples/pico/button_irq_sdk.cpp": "06d9836f1b597c87e409da46cfe4b0232f1610f2cd01b6c7eb904477f9262d19",
+    "examples/pico/button_irq.cpp": "25eb8f61378794c18458d9880f25b9b67367b81f3258582a3ea765686f6ebe1a"
   },
   "asset_sha256": {
     "src/assets/circuit-pico-button.svg": "26cb2c83cfcf4561df63d00af2f5f2235265d3eb9e3cee6878bdb41d5a080191"
@@ -34,7 +34,8 @@
     "Checked word2,shift4,fall0x40,rise0x80,both0xc0, raw0x238/enable0x250/status0x280 against pinned official headers.",
     "Rendered complete shared button SVG and traced pullup/input/switch/ground; physical pin table agrees with prior official Pico pinout review.",
     "Both include fences top-level unindented; exact build and established cm0 SWD command/serial route inspected. Existing compilation evidence applies; no redundant firmware build performed.",
-    "Reread repaired quit line and writer report: one literal backslash key now shown. Root exact rendered includes/link checks precede publication."
+    "Reread repaired quit line and writer report: one literal backslash key now shown. Root exact rendered includes/link checks precede publication.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [
     {
@@ -45,5 +46,6 @@
   "repairs": [
     "Corrected screen quit key notation by same writer."
   ],
-  "hardware_status": "Both canonical targets compiled per verification.json; source/register/config reviewed. Physical IRQ delivery, LED, bounce, USB observations and SWD loading not exercised."
+  "hardware_status": "Both canonical targets compiled per verification.json; source/register/config reviewed. Physical IRQ delivery, LED, bounce, USB observations and SWD loading not exercised.",
+  "readability_review": "reviews/readability-review.json"
 }

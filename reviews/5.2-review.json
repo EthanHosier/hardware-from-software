@@ -4,7 +4,7 @@
   "status": "accepted_source_review",
   "canonical_sha256": "d95651000629b0d99e4e97d548c06c6bb92004e518da773854a017ed038e7a19",
   "included_source_sha256": {
-    "examples/linux/hello.cpp": "0783b109723dac17e451051e0754e122b02c323970e626b0a6086eb11a045156"
+    "examples/linux/hello.cpp": "a97015c4e50f46a66fe2785e755e8d9e4e73f9efab32ec2c2ef9eac8d2215af1"
   },
   "asset_sha256": {},
   "paths_read": [
@@ -32,9 +32,11 @@
     "Verified archive root layout in actual build.py: examples plus scripts directly atroot, no repositorywrapper. Existing checkout preserved and commands labelledPi.",
     "Independently parsed all7shellblocks with sh -n; verified mktemp suffix behavior against Bookworm coreutilsmanual, and environmentrecord variable survives under documented same-shell requirement.",
     "Actual source uses hosted iostream/stdout; narrative correctly interprets loader and Exitstatus0 as expected output, not measured physicalPi result.",
-    "No diagrams required for terminal setup; no physical tests or package installation performed. Root exact-render/include/download/link checks precede publication."
+    "No diagrams required for terminal setup; no physical tests or package installation performed. Root exact-render/include/download/link checks precede publication.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
-  "hardware_status": "Source/commands reviewed and existing hosted nativeArm64 compilation evidence applies. PhysicalPiSSH/package installation/executable runtime/headerchecks/moduleloading not exercised."
+  "hardware_status": "Source/commands reviewed and existing hosted nativeArm64 compilation evidence applies. PhysicalPiSSH/package installation/executable runtime/headerchecks/moduleloading not exercised.",
+  "readability_review": "reviews/readability-review.json"
 }

@@ -33,12 +33,12 @@
     "src/assets/circuit-uart.svg": "128a4c30917db9187fe77ce7b1fa7ad80fb08c6a4ccc80a6086cdf7420e45f4b"
   },
   "reviewed_dependency_sha256": {
-    "examples/linux/gpio_events.cpp": "f7b0b37cfc082c0c3c5456bd237488a3aaecae597ea6d7715f9de57c6fb541d8",
+    "examples/linux/gpio_events.cpp": "9cae63a6f836a662a8ee8c4ccce538e639e59fa211fb9f200002f8c126248654",
     "examples/kernel/hardware-button-overlay.dts": "72fd129f2ebab3565a0d65d0fef67a0f29322ec2aa9dd1f72b9a9df3cc1632e9",
-    "examples/pico/spi_loopback.cpp": "0d88ceaccc5e629e0743db7cf73d8a1f2cb0e65b0e73094810fc8e7cfdfcf97d",
-    "examples/pico/uart_echo.cpp": "2618e59b8c32af73960b16a7797af6ccea5f701842fbe12307a1f4dcd0735f95",
-    "examples/pico/uart_device.cpp": "f352a466e6a3bd7c58b9305feab5f50b7a41d550c0a0cd32c9e7e78b00e9c977",
-    "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3"
+    "examples/pico/spi_loopback.cpp": "b34004bb1bd61d1a54898277b67f93397bca712a2441861aa900f73d4d1bf6a9",
+    "examples/pico/uart_echo.cpp": "bfa99e7eb414c29b170472bcd18bb90b64371419fd13a6a12db059efb2e89692",
+    "examples/pico/uart_device.cpp": "6a2cb3b6d412fbb17ae7c559f619078624207c7775304fccce47a4adee9d21fb",
+    "examples/pico/device_io.hpp": "0d593a82264c496d0ff28ff909842187a0e6198df76192fe0a9d134aa1e36df7"
   },
   "paths_read": [
     "src/appendix-a.md",
@@ -93,7 +93,8 @@
     "Checked local links and catalogued AppendixC1 forward reference; all26 assets hashed, including directly linked figures. No source includes or runnable new examples occur.",
     "Reread actual SPI/echo/Device polarity sources, including absent SPI CS and local circuit retained-but-not-necessarily-driven distinction. Source dependencies hashed to bind reference prose to reviewed versions.",
     "Rechecked recent independently reviewed I2C3 baseline and primary engineer correction, no adapter-number-only assumption; UART ownership/permissions and rollback remain consistent with accepted lessons.",
-    "SAME writer repaired last-reference ownership wording and eight-state report inventory; final prose/report reread. Root handles rendered-table/link/narrow-screen/public checks."
+    "SAME writer repaired last-reference ownership wording and eight-state report inventory; final prose/report reread. Root handles rendered-table/link/narrow-screen/public checks.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [
     {
@@ -109,5 +110,6 @@
     "Clarified line request lifetime across duplicated descriptors.",
     "Corrected report state-row inventory."
   ],
-  "hardware_status": "Reference and diagrams source-reviewed against official board documents; unchanged prior full render evidence reused by matching hashes plus new overview visual check. No physical wiring, voltage/current, continuity, timing or powered runtime measured."
+  "hardware_status": "Reference and diagrams source-reviewed against official board documents; unchanged prior full render evidence reused by matching hashes plus new overview visual check. No physical wiring, voltage/current, continuity, timing or powered runtime measured.",
+  "readability_review": "reviews/readability-review.json"
 }

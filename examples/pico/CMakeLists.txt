@@ -10,9 +10,31 @@ project(hardware_from_software C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 pico_sdk_init()
-foreach(name heartbeat blink_sdk blink_registers button_poll button_irq_sdk button_irq i2c_target spi_loopback uart_echo uart_device bme280_i2c bme280_spi)
+foreach(name
+    heartbeat
+    blink_sdk
+    blink_registers
+    button_poll
+    button_irq_sdk
+    button_irq
+    i2c_target
+    spi_loopback
+    uart_echo
+    uart_device
+    bme280_i2c
+    bme280_spi
+)
     add_executable(${name} ${name}.cpp)
-    target_link_libraries(${name} pico_stdlib hardware_gpio hardware_adc hardware_i2c pico_i2c_slave hardware_spi hardware_uart hardware_sync)
+    target_link_libraries(${name}
+        pico_stdlib
+        hardware_gpio
+        hardware_adc
+        hardware_i2c
+        pico_i2c_slave
+        hardware_spi
+        hardware_uart
+        hardware_sync
+    )
     target_compile_options(${name} PRIVATE -Wall -Wextra -Werror)
     pico_enable_stdio_usb(${name} 1)
     pico_enable_stdio_uart(${name} 0)

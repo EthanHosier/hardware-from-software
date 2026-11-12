@@ -2,14 +2,14 @@
   "id": "4.4",
   "reviewer": "independent coordinator",
   "status": "accepted_source_review",
-  "canonical_sha256": "e3dc1ff6f0f63050d1a6fe75c6c3e025f829319dd47c0e63d24944c1b9d39d87",
+  "canonical_sha256": "9ed54260191c6794861bfd638e989db4eb0e65bd3d14b1988447cd06660c96a0",
   "included_source_sha256": {
-    "examples/pico/button_irq.cpp": "98d5d773a21da23cac0a6c4eb618907e20ed5d02eb8c5986fc7aa9b67554feff"
+    "examples/pico/button_irq.cpp": "25eb8f61378794c18458d9880f25b9b67367b81f3258582a3ea765686f6ebe1a"
   },
   "asset_sha256": {
     "src/assets/circuit-pico-button.svg": "26cb2c83cfcf4561df63d00af2f5f2235265d3eb9e3cee6878bdb41d5a080191",
     "src/assets/3.1-swd-connections.svg": "4b7a4dfc38f89e033f7d8b2098dfcce940175f9bde3b7caba9abcf34bd2439a6",
-    "src/assets/4.4-exception-path.svg": "f541f94f476004f21f4d99831796be04cd8fb2dbb06a3bb0b0e71f9ec32be65e"
+    "src/assets/4.4-exception-path.svg": "6fc85669047cd453cdef8bd4aef6872b8b294e04f8315659cb46d21b4c937420"
   },
   "paths_read": [
     "src/4.4-inspect-exception-entry-and-return.md",
@@ -40,7 +40,8 @@
     "Rendered complete new exception SVG; all text/arrows legible and flow accurate. Shared button/SWD SVGs unchanged from independent complete render checks4.2/3.1.",
     "Checked WFI operation in officialM33 sections3.6/4.13.17 and maintained race qualification; no runnable sleep edit invented.",
     "Rechecked optional halted-input experiment now appears immediately afterstep7 beforehandler instructions execute; final section explains effects afterreturn without demanding entry state.",
-    "Full-file include top-level/unindented. Root exact include/render/link/publication checks remain integration gate; no physical runtime evidence invented."
+    "Full-file include top-level/unindented. Root exact include/render/link/publication checks remain integration gate; no physical runtime evidence invented.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [
     {
@@ -51,5 +52,6 @@
   "repairs": [
     "Moved entry-state experiment to actual entry-state position by same writer."
   ],
-  "hardware_status": "Existing canonical target-compilation evidence; actual ELF and host GDB expression/disassembly inspected. No connected target/SWD/IRQ/frame/register/LED/USB observations measured."
+  "hardware_status": "Existing canonical target-compilation evidence; actual ELF and host GDB expression/disassembly inspected. No connected target/SWD/IRQ/frame/register/LED/USB observations measured.",
+  "readability_review": "reviews/readability-review.json"
 }

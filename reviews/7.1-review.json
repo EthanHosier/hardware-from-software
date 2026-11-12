@@ -8,9 +8,9 @@
     "src/assets/circuit-uart.svg": "128a4c30917db9187fe77ce7b1fa7ad80fb08c6a4ccc80a6086cdf7420e45f4b"
   },
   "reviewed_dependency_sha256": {
-    "examples/pico/uart_echo.cpp": "2618e59b8c32af73960b16a7797af6ccea5f701842fbe12307a1f4dcd0735f95",
-    "examples/pico/uart_device.cpp": "f352a466e6a3bd7c58b9305feab5f50b7a41d550c0a0cd32c9e7e78b00e9c977",
-    "examples/common/protocol.hpp": "77c7529b2f7758a3e784c5752eaca01f377d67e6f672263c3cf6e5104bba8be7"
+    "examples/pico/uart_echo.cpp": "bfa99e7eb414c29b170472bcd18bb90b64371419fd13a6a12db059efb2e89692",
+    "examples/pico/uart_device.cpp": "6a2cb3b6d412fbb17ae7c559f619078624207c7775304fccce47a4adee9d21fb",
+    "examples/common/protocol.hpp": "dcff438a3a1d7695e497130ca2c757f7979a165c041a6e19037bb12e52bad34a"
   },
   "paths_read": [
     "src/7.1-make-a-uart-link-electrically-and-logically-correct.md",
@@ -35,7 +35,8 @@
     "Rendered complete shared UART SVG using a temporary square viewport retaining original viewBox. Traced both opposing TX-to-RX paths and ground; all labels visible and match table.",
     "Rechecked same-writer repaired row: observed one-way bytes do not establish a return path, and successful round-trip echo uses both directions.",
     "No executable include needed for this electrical-only lesson. Forward pages are canonical catalog links; root rendered/link/public checks precede publication.",
-    "Waited for root current shared-serial flow-control fix CI43079878334 success before acceptance/archive publication; no physical test inferred from that evidence."
+    "Waited for root current shared-serial flow-control fix CI43079878334 success before acceptance/archive publication; no physical test inferred from that evidence.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [
     {
@@ -46,5 +47,6 @@
   "repairs": [
     "Clarified one-way observation versus round-trip echo by the same writer."
   ],
-  "hardware_status": "Source, physical pin map, diagram and calculated frame timing reviewed. No powered UART, configuration, transfer, voltage or physical observation exercised."
+  "hardware_status": "Source, physical pin map, diagram and calculated frame timing reviewed. No powered UART, configuration, transfer, voltage or physical observation exercised.",
+  "readability_review": "reviews/readability-review.json"
 }

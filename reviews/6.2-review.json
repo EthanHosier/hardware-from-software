@@ -2,10 +2,10 @@
   "id": "6.2",
   "reviewer": "independent root",
   "status": "accepted_source_review",
-  "canonical_sha256": "124edc69181193a710fe2a342d279e508ecf604c59454c559c18811153e3ea88",
+  "canonical_sha256": "a7e547dc5483806c7fff39d6da1033704b9879ae8861a6c9ea8b080998134893",
   "included_source_sha256": {
-    "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3",
-    "examples/pico/i2c_target.cpp": "96f30fdfe3d1892e14fe8344d665a3eb801f6b7f09b85dd8c05487dad37c30d4"
+    "examples/pico/device_io.hpp": "0d593a82264c496d0ff28ff909842187a0e6198df76192fe0a9d134aa1e36df7",
+    "examples/pico/i2c_target.cpp": "9679ada7fb22e05bba3cc126c3c8b618bff2135fe832beb362c9d0e83c02e6b6"
   },
   "asset_sha256": {
     "src/assets/circuit-i2c.svg": "dbd430c0f5c5760127c4e9fd8b4662746dc67bf2158c5fc8e4e4391aa8e832ed",
@@ -13,7 +13,7 @@
     "src/assets/circuit-pico-led.svg": "eafabcb96c28ec2c507d2e6775168e8e55f50c193f588bda819d7410bcb29ac9"
   },
   "reviewed_dependency_sha256": {
-    "examples/pico/CMakeLists.txt": "82d60c4334f09dd190517c58d9331d3e5fd78d2a11855a790f8aaaea636fecc6"
+    "examples/pico/CMakeLists.txt": "80d25c26d6596dd196df88b455bf0cf555dfc91db49806e1e87f93579d586a4f"
   },
   "paths_read": [
     "src/6.2-turn-the-pico-into-a-register-based-peripheral.md",
@@ -43,9 +43,11 @@
     "Checked include hashes match existing recorded Pico compile evidence; no executable change or repeated unchanged compile.",
     "Read all three shared SVGs; browser whole published I2C diagram visually correct; LED/button retain previously reviewed wiring.",
     "Parsed all three shell fences with sh -n; checked buildscript target/options/artifacts and full unindented includes.",
-    "Power-off disconnect/program/reconnect state avoids attached unpowered bus endpoints; no USB greeting or measured bus success invented."
+    "Power-off disconnect/program/reconnect state avoids attached unpowered bus endpoints; no USB greeting or measured bus success invented.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
-  "hardware_status": "Source reviewed and exact firmware/dependency versions previously target-compiled; physical flash, timing, bus transfers, temperatures, debounce and LED not exercised."
+  "hardware_status": "Source reviewed and exact firmware/dependency versions previously target-compiled; physical flash, timing, bus transfers, temperatures, debounce and LED not exercised.",
+  "readability_review": "reviews/readability-review.json"
 }

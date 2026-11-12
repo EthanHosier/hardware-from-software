@@ -17,6 +17,15 @@ Pico non-wireless Pico 2, Arm Cortex-M33 single application core. External LED G
 Pi button BCM27 physical13 → switch → GND physical14; 4.7kΩ pull-up to Pi3V3 physical17. Pi LED BCM17 physical11 →1kΩ→LED→GND physical9. GPIO v2 line offsets discovered by label/name, not fixed gpiochip index. Do not join 3V3/5V/VSYS rails between separately USB-powered boards. Remove power on both boards before changing inter-board wiring. SPI loopback uses GP18 physical24 SCK, GP19 physical25 TX, GP20 physical26 RX (SPI0); MOSI-to-MISO jumper, CS GP21 physical27 if needed. No LED pin conflict.
 Optional Adafruit BME280 product2652: select 3.3V and verify header soldering, exact pin names with product docs. I2C uses GP4/GP5; SPI uses GP18/GP19/GP20 and GP21 CS. Root supplies temp-only compensation examples; explain pressure/humidity and Bosch calibration algorithm references without claiming implemented channels.
 
+## Code readability
+
+Keep examples readable in the rendered book: one statement per line, explicit
+control-flow braces, and descriptive names that explain purpose or units. Format
+C/C++ examples with clang-format 19.1.7 using the checked-in `.clang-format` files
+(the kernel examples use their own Linux style). Update lesson fragments,
+debugger commands, and diagram labels when identifiers change. Preserve behavior
+and rerun the existing relevant builds and tests before refreshing review hashes.
+
 ## Correctness focus
 RP2350 pad isolation/IO bank/SIO order, atomic SET/CLR and W1C; use exact installed SDK headers and datasheet. Volatile is not synchronization. Input pull-ups and silicon E9 revision awareness. ISR/main state critical sections; no sleeps/USB printing inside ISR. Exception-frame debugger caveats: basic vs extended frames, MSP/PSP, handler prologue. UART stream framing and bounded buffer, partial I/O, termios, deadlines and errors. I2C coherent multi-byte snapshot and repeated START. Linux kernel C, descriptors/DT, IRQ context, delayed work debounce, locked state, kref/open/unbind lifetime, wake blocked readers on removal. MMIO source walkthrough, not mapping over Linux-owned controller. `mmap`/mprotect page faults only in isolated child userspace. Tools/tests are evidence not proofs. Never say hardware-confirmed without actual measurement.
 

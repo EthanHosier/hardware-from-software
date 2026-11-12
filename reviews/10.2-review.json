@@ -6,13 +6,13 @@
   "included_source_sha256": {},
   "asset_sha256": {},
   "reviewed_dependency_sha256": {
-    "examples/linux/capstone.cpp": "3d15054e1a69c0db4769a9cd7f2c2d9caf6836a2931c76a6b4de3590e7b98dc2",
-    "examples/linux/serial_port.hpp": "eb2a42df5baa75b6178f3d5b4cdc7aeddb0711e1cd0b5f43341698d5d3ce4e22",
-    "examples/linux/serial_client.cpp": "fd54040d11499427d4a53e621fcf08000b88c4724eb5ee2cac5dd9cbc62fb70c",
-    "examples/common/protocol.hpp": "77c7529b2f7758a3e784c5752eaca01f377d67e6f672263c3cf6e5104bba8be7",
-    "examples/pico/uart_device.cpp": "f352a466e6a3bd7c58b9305feab5f50b7a41d550c0a0cd32c9e7e78b00e9c977",
-    "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3",
-    "examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826"
+    "examples/linux/capstone.cpp": "14acf7764f555eae2997b84eeaf9b82d73636b7c652847f128e720015248dafa",
+    "examples/linux/serial_port.hpp": "9af00b0838507484321c25ffaeb5f0da20423582e23a84ad0bc8014eab89455c",
+    "examples/linux/serial_client.cpp": "e8f8f3e802678542d47cc073b35b91c007ed9ae54d900936fe9c09adddf194d4",
+    "examples/common/protocol.hpp": "dcff438a3a1d7695e497130ca2c757f7979a165c041a6e19037bb12e52bad34a",
+    "examples/pico/uart_device.cpp": "6a2cb3b6d412fbb17ae7c559f619078624207c7775304fccce47a4adee9d21fb",
+    "examples/pico/device_io.hpp": "0d593a82264c496d0ff28ff909842187a0e6198df76192fe0a9d134aa1e36df7",
+    "examples/kernel/mybutton.c": "519501c09961f2b2a1702e26aab6cf29a1f9b9e666a2027fc8a007f50b02a371"
   },
   "paths_read": [
     "src/10.2-verify-troubleshoot-and-explain-the-system.md",
@@ -41,7 +41,8 @@
     "Browsed official Pi UART/Pico docs, termios, versioned kref and pinned SDK coprocessor source; matched request/reply framing and reset state to code.",
     "All5shellfences sh -n parsed and completePythonhelper ast.parse checked. Independently inspected PID/exe/twoFD/unbind guards; no privileged runtime performed.",
     "Executed exact extracted Pythonhelper on macOS PTY: fragmented two-reply success, wrongreply rejection,64byteoversize rejection,silent2seconddeadline. All4cases clear inherited IXON/IXOFF/IXANY and restore saved terminal attributes (mask transient macOS PENDIN). No device path substitution needed: helper accepts argv.",
-    "Reread SAMEwriter repairs and corrected writerreport. Exact included helper SHA and PTYcase evidence recorded below. No direct diagram asset on page; links reviewed10.1 completecircuit."
+    "Reread SAMEwriter repairs and corrected writerreport. Exact included helper SHA and PTYcase evidence recorded below. No direct diagram asset on page; links reviewed10.1 completecircuit.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "inline_helper_tests": {
     "status": "pass",
@@ -93,5 +94,6 @@
     "Complete bounded malformed-UART helper and precise host/physical evidence.",
     "Verified capstone process and both open device descriptors before unbind."
   ],
-  "hardware_status": "Source/API and syntax reviewed; new helper4PTYcases exercised host byte stream/settings only. Physical capstone, reset, wiring, UART response, GPIO and kernel unbind runtime not exercised."
+  "hardware_status": "Source/API and syntax reviewed; new helper4PTYcases exercised host byte stream/settings only. Physical capstone, reset, wiring, UART response, GPIO and kernel unbind runtime not exercised.",
+  "readability_review": "reviews/readability-review.json"
 }

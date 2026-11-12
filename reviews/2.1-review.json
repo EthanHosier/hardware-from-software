@@ -2,9 +2,9 @@
   "id": "2.1",
   "reviewer": "independent coordinator",
   "status": "accepted_source_review",
-  "canonical_sha256": "3371fbef4e908a2c50f3a67b104cf1f6fafaa2d6da58fc7b435a87e6861f8f6c",
+  "canonical_sha256": "48e3067f2acb1ec578be134a657ee5e4fc8efd4175450e70007395aec28637fa",
   "included_source_sha256": {
-    "examples/pico/blink_sdk.cpp": "3bf879fbe854269edc8c49df194c26753159c836c28e0a8476d215f4355485a9"
+    "examples/pico/blink_sdk.cpp": "661ec0d4a26c86b551541b39d43259f3fd99874a7f26c91d3961a7fc5b42bb07"
   },
   "asset_sha256": {
     "src/assets/circuit-pico-led.svg": "eafabcb96c28ec2c507d2e6775168e8e55f50c193f588bda819d7410bcb29ac9",
@@ -35,7 +35,8 @@
     "Read full two reused SVG sources and rendered both; traced GP16 physical21 through1k to LED anode and cathode return physical23; ground third from bottom and emptyGP17 physical22 correct.",
     "Inspected pinned SDK init/function and inline put/direction branches. Functional description correct without asserting MMIO instructions where coprocessor branch may be used.",
     "Compared GPIO/pin and BOOTSEL statements with official references already independently inspected.",
-    "Existing root target compile hash matches exact included source; no unchanged rebuild repeated."
+    "Existing root target compile hash matches exact included source; no unchanged rebuild repeated.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [
     {
@@ -46,5 +47,6 @@
   "repairs": [
     "Top-level full-file include fence repair."
   ],
-  "hardware_status": "source-reviewed; target compilation recorded; physical-runtime not exercised"
+  "hardware_status": "source-reviewed; target compilation recorded; physical-runtime not exercised",
+  "readability_review": "reviews/readability-review.json"
 }

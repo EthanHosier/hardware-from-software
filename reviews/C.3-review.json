@@ -2,16 +2,16 @@
   "id": "C.3",
   "reviewer": "independent coordinator",
   "status": "accepted_source_review",
-  "canonical_sha256": "f639142a53bacf18135ea48d87478f8d138b5924fe0d9be88d981c9b07f5ad07",
+  "canonical_sha256": "36c732d748fe19e7c6ac27f02793945d14cd163d068d56093810233612c084dd",
   "included_source_sha256": {
-    "examples/pico/bme280_common.hpp": "08dabf4417c9147b49414e4a93d5fa5a8b8a824b4f0d0733d131b9db8ac3c781"
+    "examples/pico/bme280_common.hpp": "1c1aef4e307d4063b759abf50effec61c8f82774099aebecc8da0a11f7dc0253"
   },
   "asset_sha256": {
     "src/assets/C.2-bme280-i2c.svg": "125f7900163c5e6d24c8ba1ba15443b0ccc95d1128c930d7a8fb83a604bfb813"
   },
   "reviewed_dependency_sha256": {
-    "examples/pico/bme280_i2c.cpp": "cf958229b065e3c47df8859d8c32c81f2762c21cd7d6801af9fe3733fb71bce5",
-    "examples/pico/bme280_spi.cpp": "8cdbd28f258ffd599d8b1260fe94df187962c7a35b07aea946ffd40861a74e31"
+    "examples/pico/bme280_i2c.cpp": "046d35699179087a5eacacd3c6cc77742f0fe3b6a585513b24ddc97d74fce02a",
+    "examples/pico/bme280_spi.cpp": "8111b1c15a2a8ce48a9e8f2c867a8b234f1f4113914ad5930c4270a390d36b49"
   },
   "paths_read": [
     "src/appendix-c-3.md",
@@ -34,7 +34,8 @@
     "Fetched current official SensorAPI source and checked actual double compensate_temperature, range clamp and calibration parser behavior. Found initial citation line anchors stale; SAME writer replaced them with source links naming exact functions, and repaired prose reread.",
     "Executed exact extracted Decimal calculator and parsed its shell fence with sh -n. Result25.08247793081682175397872926 matches stated synthetic bytes, intermediate terms and nativefloating25.08247793081682/printed25.08. No measurement or Boschtest-vector provenance invented.",
     "Traced limitedT1sanity, calibrationonce,0x21/temp\u00d71/pressure skip/reset humidity,100statusATTEMPTS versus walltime/per-callI2Ctimeout, one-shotfailures/no retry and1secsleep not exactperiod. No all-coefficientvalidation or accuracy claim.",
-    "Read full direct C2SVG XML and compared current hash to accepted C2 full browser render/pin check; unchanged four-wire state matches prose and optionalpowercycle cleanup. Direct localSVG hashed, top-level fullinclude verified. Root publication performs staged render/link/exactinclude/public checks."
+    "Read full direct C2SVG XML and compared current hash to accepted C2 full browser render/pin check; unchanged four-wire state matches prose and optionalpowercycle cleanup. Direct localSVG hashed, top-level fullinclude verified. Root publication performs staged render/link/exactinclude/public checks.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [
     {
@@ -45,5 +46,6 @@
   "repairs": [
     "Replaced stale source line anchors with function-named official source references."
   ],
-  "hardware_status": "Root target-compilation evidence covers sharedheader and both transports. Host synthetic arithmetic independently reproduced; no physical calibration bytes, sensor communication, temperature accuracy, thermal behavior or timing measured."
+  "hardware_status": "Root target-compilation evidence covers sharedheader and both transports. Host synthetic arithmetic independently reproduced; no physical calibration bytes, sensor communication, temperature accuracy, thermal behavior or timing measured.",
+  "readability_review": "reviews/readability-review.json"
 }

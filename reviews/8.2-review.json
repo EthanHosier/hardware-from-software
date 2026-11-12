@@ -4,7 +4,7 @@
   "status": "accepted_source_review",
   "canonical_sha256": "8685211c513385d85889b22eaf47817f375e6872f2c3b0ed62762d79d612951f",
   "included_source_sha256": {
-    "examples/kernel/hello.c": "1a51bf1108031b6014c6e8496aef2b2500900a958fa4b6559524741e671c328a",
+    "examples/kernel/hello.c": "5c442e948ef81c01fef17c980ca1c6014940b0c148efc2a10198570c7eb8677a",
     "examples/kernel/Makefile": "4e205ebdc4eb9545724b32f7067b512881ba2ab2aea08b5f631e900d41b2acaf"
   },
   "asset_sha256": {},
@@ -33,9 +33,11 @@
     "Independently browsed official kbuild, header, init/exit, licensing metadata, internal API and taint documentation. Verified dmesg follow-new in upstream util-linux 2.38.1 manual.",
     "Checked that shared Makefile builds both hello and mybutton while only hello is inserted. Source name, logger strings, no GPIO or device node and no Device Tree binding claims agree.",
     "Architecture/full-release/header equality and failed-build/stale-artifact conditions are explicit; runtime outputs are illustrative. No unnecessary unchanged compilation repeated.",
-    "All practical commands are labelled Pi SSH; no modules loaded in the authoring environment."
+    "All practical commands are labelled Pi SSH; no modules loaded in the authoring environment.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
-  "hardware_status": "Source and shell syntax reviewed; exact source previously native Arm64 compiled against official 6.12.96 Pi headers. Physical Pi insertion, logs, removal and hardware state not exercised."
+  "hardware_status": "Source and shell syntax reviewed; exact source previously native Arm64 compiled against official 6.12.96 Pi headers. Physical Pi insertion, logs, removal and hardware state not exercised.",
+  "readability_review": "reviews/readability-review.json"
 }

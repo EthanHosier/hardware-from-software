@@ -4,7 +4,7 @@
   "status": "accepted_source_review",
   "canonical_sha256": "45f8cb323866580a330a093c644c3b3c5de5b3e58f266c53b27395c938d24cab",
   "included_source_sha256": {
-    "examples/linux/memory_lab.cpp": "40eb02398993a0617f2b3a596ca77b467685cb1e61881c81047e3f89a2569fee"
+    "examples/linux/memory_lab.cpp": "f911dc986b5aec5b57553a15076f356df867488d898208d966ff110ef18b4533"
   },
   "asset_sha256": {},
   "paths_read": [
@@ -31,9 +31,11 @@
     "Traced exact source order: proc listing read/printed before newmmap; runtime page-size/128pages; touch then summary; child-onlymprotect fault; parent wait/unmap/exit. Page invents no newmapping in oldlisting or post-exit inspection.",
     "Parsed both shell blocks with sh -n. Subshell corelimit keeps interactive shell unchanged; code already root-host-tested, no redundant unchanged suite rerun.",
     "Checked invented map rows explicitly illustrative and arithmetic0x2000/128*4096=512KiB. ASLR described as typical variation without inference about physicalpages.",
-    "Checked retained8.6 bound/no-client hardware state and noGPIO operations; no privilegedphysicalmapping or policychange. Top-level full-source fence and local/catalogued links correct; noSVGreferences. Root publication exact include/render/link/public checks follow."
+    "Checked retained8.6 bound/no-client hardware state and noGPIO operations; no privilegedphysicalmapping or policychange. Top-level full-source fence and local/catalogued links correct; noSVGreferences. Root publication exact include/render/link/public checks follow.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
-  "hardware_status": "Canonical userspace program compiled including hostednativeArm64 and exercised on hostedLinux by root. Independent source/API/commands review only here; no physicalPi runtime or GPIO measurement claimed."
+  "hardware_status": "Canonical userspace program compiled including hostednativeArm64 and exercised on hostedLinux by root. Independent source/API/commands review only here; no physicalPi runtime or GPIO measurement claimed.",
+  "readability_review": "reviews/readability-review.json"
 }

@@ -2,17 +2,17 @@
   "id": "C.2",
   "reviewer": "independent root",
   "status": "accepted_source_review",
-  "canonical_sha256": "04b1d310a221d51478c81c2070f4aeec751a9ffcb2ee5fcdfca5d323fdb0ef09",
+  "canonical_sha256": "b7c25084054318fbced8a3e3c3fe93a308a50d2cd926c19116ca8910ae4fe719",
   "included_source_sha256": {
-    "examples/pico/bme280_i2c.cpp": "cf958229b065e3c47df8859d8c32c81f2762c21cd7d6801af9fe3733fb71bce5",
-    "examples/pico/bme280_common.hpp": "08dabf4417c9147b49414e4a93d5fa5a8b8a824b4f0d0733d131b9db8ac3c781"
+    "examples/pico/bme280_i2c.cpp": "046d35699179087a5eacacd3c6cc77742f0fe3b6a585513b24ddc97d74fce02a",
+    "examples/pico/bme280_common.hpp": "1c1aef4e307d4063b759abf50effec61c8f82774099aebecc8da0a11f7dc0253"
   },
   "asset_sha256": {
     "src/assets/C.2-bme280-i2c.svg": "125f7900163c5e6d24c8ba1ba15443b0ccc95d1128c930d7a8fb83a604bfb813",
     "src/assets/C.1-bme280-orientation.svg": "66f2ff08994c0d92c153d8b0e706494c08a575d753e9879c570e6f4e682cce19"
   },
   "reviewed_dependency_sha256": {
-    "examples/pico/CMakeLists.txt": "82d60c4334f09dd190517c58d9331d3e5fd78d2a11855a790f8aaaea636fecc6",
+    "examples/pico/CMakeLists.txt": "80d25c26d6596dd196df88b455bf0cf555dfc91db49806e1e87f93579d586a4f",
     "scripts/setup_deps.py": "036970ac104491b3bda3475652faba6898169c91cd4798d5db3a003b0cbabd93",
     "scripts/build_examples.py": "4a574be40a0ae3149876ba20171df9a77cb01d194bf3fd550cc6451d27f18b26"
   },
@@ -43,9 +43,11 @@
     "Independently downloaded and parsed primary AdafruitQTEagle XML nets: sensorCSB R5 andSDO/ADR R4 connect to3.3V; buspullupnet paths present. Checked Adafruit pinouts/sharedPCB documentation.",
     "All3shellfences sh -n parsed. SVGXML parsed and full localbrowser rendered independently: all4wires/pins/rails/unusedcontacts,labels andbottomnotes visible with no clipping/overlap.",
     "Verified complete top-level includes, optional soldering dependency, noPi/software/rail connection, no bogusrawID transcript, no promised pressure/humidity measurement, one-shoterrors/no retry and USBbaud distinction.",
-    "Publication gate caught omitted hash for direct C.1 orientation-SVG link. Reread entire final C.2 prose (3Vo label and invalid-calibration troubleshooting clarified), complete linkedC.1SVGsource and accepted independent full-render/CAD review; reused unchanged C.1 visual evidence after hash/label validation and froze both linkedassets."
+    "Publication gate caught omitted hash for direct C.1 orientation-SVG link. Reread entire final C.2 prose (3Vo label and invalid-calibration troubleshooting clarified), complete linkedC.1SVGsource and accepted independent full-render/CAD review; reused unchanged C.1 visual evidence after hash/label validation and froze both linkedassets.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
-  "hardware_status": "Source/API, shell syntax and full diagram reviewed; existing Pico2 targetcompilation evidence. No sensor attached, flashing, electrical levels, I2Ctransactions, temperature reading or physical timing exercised."
+  "hardware_status": "Source/API, shell syntax and full diagram reviewed; existing Pico2 targetcompilation evidence. No sensor attached, flashing, electrical levels, I2Ctransactions, temperature reading or physical timing exercised.",
+  "readability_review": "reviews/readability-review.json"
 }

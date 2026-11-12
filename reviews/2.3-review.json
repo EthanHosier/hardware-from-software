@@ -2,9 +2,9 @@
   "id": "2.3",
   "reviewer": "independent coordinator",
   "status": "accepted_source_review",
-  "canonical_sha256": "dbbc040de168d4f0527e039c8b11bb4fbc500dac0b113c33846a35ece6ef2b44",
+  "canonical_sha256": "69513d5ff1810c778a48cb1f806dee30f1f34f21a09296c153a9435334ab09e2",
   "included_source_sha256": {
-    "examples/pico/blink_registers.cpp": "fbd45b4d97c4fb73c23046fbcdbd8435a1fda858cf5607b8dd119a74248acd1d"
+    "examples/pico/blink_registers.cpp": "eab9c79710931628f3d37adcd09d1629f93618810c29b8caf7c840765df17f20"
   },
   "asset_sha256": {
     "src/assets/circuit-pico-led.svg": "eafabcb96c28ec2c507d2e6775168e8e55f50c193f588bda819d7410bcb29ac9",
@@ -37,9 +37,11 @@
     "Read official PDF extraction sections2.1.3/2.1.5 and GP16 tables715/901; SIO dedicated aliases, five-store order, FUNCSEL5, pad0x2 and mask0x10000 agree.",
     "Browsed GCC volatile rules independently and checked ordinary RAM ordering/publication limits.",
     "Previously independently rendered and fully read both identical SVGs for2.1; hashes unchanged. Rechecked GP16/21 and GND/23 wiring here.",
-    "Top-level include avoids mdBook list expansion defect. Root exact render/link checks precede deployment."
+    "Top-level include avoids mdBook list expansion defect. Root exact render/link checks precede deployment.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
-  "hardware_status": "source-reviewed; exact baseline target compilation recorded; physical-runtime not exercised"
+  "hardware_status": "source-reviewed; exact baseline target compilation recorded; physical-runtime not exercised",
+  "readability_review": "reviews/readability-review.json"
 }

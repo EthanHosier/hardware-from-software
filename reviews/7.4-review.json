@@ -2,19 +2,19 @@
   "id": "7.4",
   "reviewer": "independent root",
   "status": "accepted_source_review",
-  "canonical_sha256": "01404af36e632ca8b4dc85c4f62309f77a92affc679572a37aaddebc80472794",
+  "canonical_sha256": "4ef970d5c92b2e820445dd6e5f2c6be1e4aee9efb0f88a84e3c1665f21ee5dbd",
   "included_source_sha256": {
-    "examples/common/protocol.hpp": "77c7529b2f7758a3e784c5752eaca01f377d67e6f672263c3cf6e5104bba8be7",
-    "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3",
-    "examples/pico/uart_device.cpp": "f352a466e6a3bd7c58b9305feab5f50b7a41d550c0a0cd32c9e7e78b00e9c977"
+    "examples/common/protocol.hpp": "dcff438a3a1d7695e497130ca2c757f7979a165c041a6e19037bb12e52bad34a",
+    "examples/pico/device_io.hpp": "0d593a82264c496d0ff28ff909842187a0e6198df76192fe0a9d134aa1e36df7",
+    "examples/pico/uart_device.cpp": "6a2cb3b6d412fbb17ae7c559f619078624207c7775304fccce47a4adee9d21fb"
   },
   "asset_sha256": {
     "src/assets/circuit-uart.svg": "128a4c30917db9187fe77ce7b1fa7ad80fb08c6a4ccc80a6086cdf7420e45f4b"
   },
   "reviewed_dependency_sha256": {
-    "examples/linux/serial_client.cpp": "fd54040d11499427d4a53e621fcf08000b88c4724eb5ee2cac5dd9cbc62fb70c",
-    "examples/linux/serial_port.hpp": "eb2a42df5baa75b6178f3d5b4cdc7aeddb0711e1cd0b5f43341698d5d3ce4e22",
-    "examples/pico/CMakeLists.txt": "82d60c4334f09dd190517c58d9331d3e5fd78d2a11855a790f8aaaea636fecc6"
+    "examples/linux/serial_client.cpp": "e8f8f3e802678542d47cc073b35b91c007ed9ae54d900936fe9c09adddf194d4",
+    "examples/linux/serial_port.hpp": "9af00b0838507484321c25ffaeb5f0da20423582e23a84ad0bc8014eab89455c",
+    "examples/pico/CMakeLists.txt": "80d25c26d6596dd196df88b455bf0cf555dfc91db49806e1e87f93579d586a4f"
   },
   "paths_read": [
     "src/7.4-trace-a-command-end-to-end.md",
@@ -43,7 +43,8 @@
     "Read primary strace descriptor/filter documentation; all shell fences pass sh -n. No syscall transcript or latency invented.",
     "Visually inspected full public UART SVG: exact crossedpins/directions andground match canonical wiring.",
     "Rechecked SAME-writer repair: explicit halted reset/load/reset/mainbreak then outputbreak/continue, controlled2s timeout and reset/flush cleanup; Bluetooth explicitly disabled.",
-    "Source hashes agree with existing Pico and current nativeArm64 CI/11PTY evidence; no physical or live SWD test claimed."
+    "Source hashes agree with existing Pico and current nativeArm64 CI/11PTY evidence; no physical or live SWD test claimed.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [
     "Bluetooth moved-off wording could imply rerouting rather than disabling.",
@@ -53,5 +54,6 @@
     "Original writer explicitly states Bluetooth is disabled.",
     "Original writer added full GDB halted reset/load/reset/mainbreak/deletion/outputbreak/continue sequence; root rechecked each target state."
   ],
-  "hardware_status": "Actual local ELF inspected and source reviewed; existing compile/software evidence applies. Physical LED/UART, liveSWD, strace onPi and wire timing not exercised."
+  "hardware_status": "Actual local ELF inspected and source reviewed; existing compile/software evidence applies. Physical LED/UART, liveSWD, strace onPi and wire timing not exercised.",
+  "readability_review": "reviews/readability-review.json"
 }

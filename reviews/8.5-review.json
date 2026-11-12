@@ -4,9 +4,9 @@
   "status": "accepted_source_review",
   "canonical_sha256": "fafcfd0b7431f5d36374f639a675e416e603988ca090c416abbfb011944684fb",
   "included_source_sha256": {
-    "examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826",
+    "examples/kernel/mybutton.c": "519501c09961f2b2a1702e26aab6cf29a1f9b9e666a2027fc8a007f50b02a371",
     "examples/kernel/99-mybutton.rules": "27e33c9aa4b38bee386203add3ce82748397f31315ce95529766caaa2b902f84",
-    "examples/linux/button_client.cpp": "6fb622fc3381b364ecc6bfc4fd0d8fbe3b1398dbb7a1ca47b3e6828270df6953"
+    "examples/linux/button_client.cpp": "a8721778047a19e1776879ded20d699620beb23192cbaa685decae2183986c85"
   },
   "asset_sha256": {},
   "paths_read": [
@@ -36,7 +36,8 @@
     "Parsed all5shellblocks with sh -n and both exact embedded Python helpers with ast.parse. Traced alarm exception/finally-close and poll/error/shortbuffer/retry control flow. No physical-device helper executed.",
     "Checked client actual O_NONBLOCK plus poll behavior, successful-read count1..1000, no parsing, fresh30second timeout after retries and signal/default cleanup. Kernel record fits client buffer.",
     "Checked top-level include fences, local progression links and Pi-only retained circuit text. No direct local SVG occurs on this page; schematic is linked through8.1. Root publication performs exact rendered include/link and anonymous checks.",
-    "Reread SAME-writer repairs: one active reader per open; mutex held across wait and O_NONBLOCK event-wait-only promise; distinct userspace/module compile evidence; shortbuffer experiment is conditional evidence rather than proof against new events."
+    "Reread SAME-writer repairs: one active reader per open; mutex held across wait and O_NONBLOCK event-wait-only promise; distinct userspace/module compile evidence; shortbuffer experiment is conditional evidence rather than proof against new events.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [
     {
@@ -57,5 +58,6 @@
     "Separated client and module compilation evidence.",
     "Qualified shortbuffer observation against subsequent press/bounce."
   ],
-  "hardware_status": "Root records native Arm64 client compilation and module compilation against official6.12.96+rpt-rpi-v8 headers. This review parsed helpers and checked source/API/commands; physical misc-device reads, udev changes, GPIO, module runtime and timing unexercised."
+  "hardware_status": "Root records native Arm64 client compilation and module compilation against official6.12.96+rpt-rpi-v8 headers. This review parsed helpers and checked source/API/commands; physical misc-device reads, udev changes, GPIO, module runtime and timing unexercised.",
+  "readability_review": "reviews/readability-review.json"
 }

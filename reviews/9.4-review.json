@@ -2,15 +2,15 @@
   "id": "9.4",
   "reviewer": "independent root",
   "status": "accepted_source_review",
-  "canonical_sha256": "5ce665a979caaa3a45e3b29cd9d659efd7d782d4a97610283c8f61a13f4f30d9",
+  "canonical_sha256": "0e7058064c06cef7181e8e802f8c52eb6716922668e73c6601a9332512f91624",
   "included_source_sha256": {
-    "examples/kernel/mmio_fragment.c": "eaefa54f3dad35d5bfd31a6bacd778bbca31856a08a1ba1dfa23c4383bfddfb4"
+    "examples/kernel/mmio_fragment.c": "6664bd5c9d79d8dba7716e943f355f949765990e02e2a680e8e3542696955cb4"
   },
   "asset_sha256": {},
   "reviewed_dependency_sha256": {
-    "examples/pico/blink_registers.cpp": "fbd45b4d97c4fb73c23046fbcdbd8435a1fda858cf5607b8dd119a74248acd1d",
-    "examples/pico/button_irq.cpp": "98d5d773a21da23cac0a6c4eb618907e20ed5d02eb8c5986fc7aa9b67554feff",
-    "examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826",
+    "examples/pico/blink_registers.cpp": "eab9c79710931628f3d37adcd09d1629f93618810c29b8caf7c840765df17f20",
+    "examples/pico/button_irq.cpp": "25eb8f61378794c18458d9880f25b9b67367b81f3258582a3ea765686f6ebe1a",
+    "examples/kernel/mybutton.c": "519501c09961f2b2a1702e26aab6cf29a1f9b9e666a2027fc8a007f50b02a371",
     "examples/kernel/Makefile": "4e205ebdc4eb9545724b32f7067b512881ba2ab2aea08b5f631e900d41b2acaf"
   },
   "paths_read": [
@@ -43,9 +43,11 @@
     "Independently browsed versioned Linux device I/O, precise barrier guarantees, atomic_t, Sparse, io_ordering, devres, GCC volatile rules and frozen platform/libdevres implementations. Traced resource0 lookup and EINVAL/EBUSY/ENOMEM branches.",
     "Checked installed pinned SDK alias helper and io_rw_32 typedef, GPIO17 INTR2 edge bit6/7 WC fields, adjacent RO level fields, and already reviewed datasheet SIO/atomic-access definitions.",
     "Only shell fence sh -n parsed; commands are source inspection, not hardware operations. No new compile/runtime claim for fragment.",
-    "Reviewed top-level full include, local chapter links and absence of direct SVG. Source hash matches recorded inventory; fragment compilation remains unclaimed."
+    "Reviewed top-level full include, local chapter links and absence of direct SVG. Source hash matches recorded inventory; fragment compilation remains unclaimed.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
-  "hardware_status": "Source/API and command syntax reviewed. Fragment not target-compiled or executed. Existing compiled project modules do not validate this contextual fragment. No physical hardware operation."
+  "hardware_status": "Source/API and command syntax reviewed. Fragment not target-compiled or executed. Existing compiled project modules do not validate this contextual fragment. No physical hardware operation.",
+  "readability_review": "reviews/readability-review.json"
 }

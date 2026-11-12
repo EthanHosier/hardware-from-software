@@ -4,13 +4,13 @@
   "status": "accepted_source_review",
   "canonical_sha256": "4569516d5d5a70659969926c035467f1140942aaaaf39aedf24cdce7394bf58c",
   "included_source_sha256": {
-    "examples/pico/spi_loopback.cpp": "0d88ceaccc5e629e0743db7cf73d8a1f2cb0e65b0e73094810fc8e7cfdfcf97d"
+    "examples/pico/spi_loopback.cpp": "b34004bb1bd61d1a54898277b67f93397bca712a2441861aa900f73d4d1bf6a9"
   },
   "asset_sha256": {
     "src/assets/6.4-spi-loopback.svg": "ac170589e4e4899900daf225e2d727f076520348601efd32485ccadbb651ba9b"
   },
   "reviewed_dependency_sha256": {
-    "examples/pico/CMakeLists.txt": "82d60c4334f09dd190517c58d9331d3e5fd78d2a11855a790f8aaaea636fecc6"
+    "examples/pico/CMakeLists.txt": "80d25c26d6596dd196df88b455bf0cf555dfc91db49806e1e87f93579d586a4f"
   },
   "paths_read": [
     "src/6.4-compare-spi-with-a-loopback-experiment.md",
@@ -34,9 +34,11 @@
     "Reviewed physical pin map, source and SVG labels; visually inspected whole SVG in browser at localhost, no overlaps or clipping.",
     "All three shell blocks pass sh -n; full include unindented, CMake links and build outputs match.",
     "Exact source hash remains within existing recorded Pico2 compilation evidence; no unchanged build repeated.",
-    "After publication, read rendered browser paragraph: screen quit shortcut displays one literal backslash correctly."
+    "After publication, read rendered browser paragraph: screen quit shortcut displays one literal backslash correctly.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
-  "hardware_status": "Source reviewed and exact source previously Pico2-target compiled. Physical loopback, removal negative control, USB terminal, timing and external devices not exercised."
+  "hardware_status": "Source reviewed and exact source previously Pico2-target compiled. Physical loopback, removal negative control, USB terminal, timing and external devices not exercised.",
+  "readability_review": "reviews/readability-review.json"
 }

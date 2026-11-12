@@ -2,9 +2,9 @@
   "id": "3.2",
   "reviewer": "root (independent of dedicated fresh writer)",
   "status": "accepted_source_review",
-  "canonical_sha256": "2045dae98df9c27a9b57060a8f8d95e0f6e895bfe4d12d828fed3766aea3f2dc",
+  "canonical_sha256": "5e4fcec7c5f0158a2ec2648da919e6026e9bbd66a617473b644a553c06efdb5b",
   "included_source_sha256": {
-    "examples/pico/blink_registers.cpp": "fbd45b4d97c4fb73c23046fbcdbd8435a1fda858cf5607b8dd119a74248acd1d"
+    "examples/pico/blink_registers.cpp": "eab9c79710931628f3d37adcd09d1629f93618810c29b8caf7c840765df17f20"
   },
   "asset_sha256": {
     "src/assets/3.1-swd-connections.svg": "4b7a4dfc38f89e033f7d8b2098dfcce940175f9bde3b7caba9abcf34bd2439a6"
@@ -35,10 +35,12 @@
     "Official GDB/OpenOCD docs confirm remote connection support, monitor reset/load, hardware breakpoints, next versus stepi and x/wx four-byte word.",
     "SIO latch and SET/CLR meanings independently checked in officialPDF/SDK during2.2review; avoid reads of write-only commands.",
     "Read complete reused SVG source and visually inspected its actual anonymous public browser render; both USB paths, Dsignals, unusedU and GP16/resistor/LED/GND route agree.",
-    "Full source include top-level; expected remote observations explicitly unmeasured. No remote target or board operation attempted."
+    "Full source include top-level; expected remote observations explicitly unmeasured. No remote target or board operation attempted.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [],
   "repairs": [],
   "hardware_status": "host ELF/GDB inspection exercised; firmware target compilation recorded; physical SWD/load/step/LED runtime not exercised",
-  "reviewed_at": "2026-11-10T21:51:42.894435+00:00"
+  "reviewed_at": "2026-11-10T21:51:42.894435+00:00",
+  "readability_review": "reviews/readability-review.json"
 }

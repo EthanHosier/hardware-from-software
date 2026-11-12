@@ -2,9 +2,9 @@
   "id": "2.4",
   "reviewer": "root (independent of fresh dedicated page writer)",
   "status": "accepted_source_review",
-  "canonical_sha256": "533c28772a35881fb70430f645b93ec4f80389d50d6ce7776f4de7b741ff4077",
+  "canonical_sha256": "abe18125d606c654a25fd675e63248a8499cb9aa8fe22cf89c3ea64a489ef438",
   "included_source_sha256": {
-    "examples/pico/blink_registers.cpp": "fbd45b4d97c4fb73c23046fbcdbd8435a1fda858cf5607b8dd119a74248acd1d"
+    "examples/pico/blink_registers.cpp": "eab9c79710931628f3d37adcd09d1629f93618810c29b8caf7c840765df17f20"
   },
   "asset_sha256": {},
   "paths_read": [
@@ -33,7 +33,8 @@
     "Official GNU objdump and GCC14.2 docs support flags; official Arm guide sections3.3.8/3.4.7/3.14.3 support width/MOV/STR explanation.",
     "RP2350 datasheet address-map and SIO sections independently read during2.2 review agree with effective destinations and SET/CLR semantics.",
     "Same writer corrected decimal/hex wording; reread repaired sentence and report/hash.",
-    "No unchanged compilation repeated; actual linked artifact inspection is the new evidence."
+    "No unchanged compilation repeated; actual linked artifact inspection is the new evidence.",
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
   ],
   "findings": [
     {
@@ -48,5 +49,6 @@
     "elf_sha256": "27d56adfa217703f653a48544efac7304df2d2a127d2efd63dc1b7c438cce335"
   },
   "hardware_status": "target-compiled artifact inspected; physical execution/debug/timing not exercised",
-  "reviewed_at": "2026-11-10T21:47:16.754451+00:00"
+  "reviewed_at": "2026-11-10T21:47:16.754451+00:00",
+  "readability_review": "reviews/readability-review.json"
 }
