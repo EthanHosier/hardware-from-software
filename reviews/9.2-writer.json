@@ -1,0 +1,56 @@
+{
+  "id": "9.2",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "src/9.1-observe-your-linux-process-s-mappings.md",
+    "src/8.6-make-failure-and-teardown-behaviour-explicit.md",
+    "verification.json",
+    ".github/workflows/examples.yml",
+    "reviews/9.1-writer.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md"
+  ],
+  "sources": [
+    "https://man7.org/linux/man-pages/man2/mmap.2.html",
+    "https://man7.org/linux/man-pages/man2/mprotect.2.html",
+    "https://man7.org/linux/man-pages/man2/getrusage.2.html",
+    "https://man7.org/linux/man-pages/man2/fork.2.html",
+    "https://man7.org/linux/man-pages/man2/waitpid.2.html",
+    "https://man7.org/linux/man-pages/man5/core.5.html",
+    "https://docs.kernel.org/admin-guide/mm/concepts.html",
+    "https://man7.org/linux/man-pages/man3/sysconf.3.html",
+    "https://gcc.gnu.org/onlinedocs/gcc/Volatiles.html"
+  ],
+  "scope_audit": {
+    "demand_paging": "Complete canonical source include; 128 runtime-sized pages and one byte write per page; zero-initialized anonymous/private mapping does not promise preallocated physical pages; reads/zero-page versus writes explained.",
+    "counter_scope": "RUSAGE_SELF before/after touch excludes initial listing/mmap and later child; incidental interval faults count, baseline subtracts earlier faults; event count not physical-page count; huge page/accounting/policy/noise variation prevents fixed 128 expectation.",
+    "protection_fault": "Parent already touched region before fork; separate child address space/COW; page-aligned mapping and integral-page range; PROT_NONE denies child access without changing parent permissions; volatile does not bypass MMU.",
+    "child_lifecycle": "Attempted unchecked core-limit call and pipe-collector limitation; mprotect failure child exit 2, unexpected write success exit 3; EINTR retry; WIFSIGNALED guards WTERMSIG SIGSEGV check; expected parent return 0, munmap and reap.",
+    "practical": "Native Pi ordinary-user build/reuse; three bounded saved runs with separate stderr/status and stop on nonzero; no privileged command or OOM stress; symptom troubleshooting; explicit no fault experiment in kernel module; next 9.3.",
+    "progression": "Retains 8.6/9.1 driver bound/rule installed/no clients, Pi-only circuit unchanged, Pico unplugged/local circuit retained, inter-board bus/debug absent; memory lab also compatible with full hardware cleanup."
+  },
+  "code_files_read": [
+    "examples/linux/memory_lab.cpp"
+  ],
+  "checks_performed": [
+    "Browsed primary Linux man-pages/kernel and GCC manuals.",
+    "Read entire canonical source and traced output/sample/fork ordering.",
+    "bash -n passed both shell fences.",
+    "Verified top-level unindented complete-file source include resolves.",
+    "Verified local links against catalog canonical paths.",
+    "Read root verification.json and CI workflow; coordinator confirmed host Linux memory run passed. No new Linux/Pi runtime claimed."
+  ],
+  "hardware_status": {
+    "source_reviewed": true,
+    "compiled": "Prior root evidence: Linux applications including hosted native Arm64 compilation. Memory program is userspace, not built against Pico SDK or kernel-module headers.",
+    "host_tested": "Root/coordinator reports Linux memory run passed; CI workflow includes memory_lab execution. Writer did not execute on this macOS workstation.",
+    "physical_runtime": "Not exercised; no physical Pi measurement or GPIO action claimed."
+  },
+  "concerns": [
+    "Independent review and rendered-page verification remain root/coordinator responsibilities.",
+    "Canonical child setrlimit and munmap return values are unchecked; prose does not claim guaranteed core suppression or fully diagnosed error paths."
+  ],
+  "status": "ready for independent review"
+}

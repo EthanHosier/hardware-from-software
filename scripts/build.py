@@ -61,7 +61,9 @@ def main():
         (STAGE/'src'/source.name).write_text(text)
     for name in ['index.md','verification.md']:
         text=(ROOT/'src'/name).read_text()
-        if name=='index.md':text+='\n## Reading progress\n\n'+f'**{len(published)} of {len(catalog)} planned lessons are published.** Each page appears after independent review. [See the complete roadmap](roadmap.md) for upcoming lessons.\n'
+        if name=='index.md':
+            progress=(f'**All {len(catalog)} lessons and appendices are published and independently reviewed.** [Browse the complete contents](roadmap.md).\n' if len(published)==len(catalog) else f'**{len(published)} of {len(catalog)} planned lessons are published.** Each page appears after independent review. [See the complete roadmap](roadmap.md) for upcoming lessons.\n')
+            text+='\n## Reading progress\n\n'+progress
         (STAGE/'src'/name).write_text(text)
     lines=['# Summary','','[Start here](index.md)','','[Roadmap and reading progress](roadmap.md)','','[Verification and limitations](verification.md)','','[Download the examples](downloads.md)','']
     current=None
@@ -69,13 +71,16 @@ def main():
         if entry['chapter']!=current:current=entry['chapter'];lines+=['',f'# {current}','']
         lines.append(f"- [{entry['id']} — {entry['title']}]({Path(entry['path']).name})")
     (STAGE/'src/SUMMARY.md').write_text('\n'.join(lines)+'\n')
-    roadmap=['# Roadmap and reading progress','','This book is being published one independently reviewed page at a time. Upcoming entries are the agreed scope, not completed lessons.','']
+    roadmap=['# Roadmap and reading progress','',
+             'All lessons and appendices below are published and independently reviewed.' if len(published)==len(catalog) else 'This book is being published one independently reviewed page at a time. Upcoming entries are the agreed scope, not completed lessons.','']
     for entry in catalog:
         roadmap += [f'<a id="lesson-{entry["id"].lower().replace(".","-")}"></a>',f'## {entry["id"]} — {entry["title"]}','']
         roadmap += [f'[Read this lesson]({Path(entry["path"]).name}).' if entry['id'] in ids else 'Not yet published.', '',entry['scope'],'']
     (STAGE/'src/roadmap.md').write_text('\n'.join(roadmap)+'\n')
     files=sorted(x for x in (STAGE/'examples').rglob('*') if x.is_file() and (x.suffix in ['.cpp','.hpp','.c','.dts','.rules'] or x.name in ['Makefile','CMakeLists.txt']))
-    download='# Download the examples\n\n[Download every example and build script](downloads/hardware-examples.zip). Extract it and work from its root directory. Shared headers are included.\n\nThe full example set is available ahead of some lessons. These programs have compilation/software checks, but physical runtime has not been exercised; use the published lesson and verification matrix before operating hardware.\n\n'
+    download='# Download the examples\n\n[Download every example and build script](downloads/hardware-examples.zip). Extract it and work from its root directory. Shared headers are included.\n\n'
+    if len(published)!=len(catalog):download+='The full example set is available ahead of some lessons. '
+    download+='These programs have compilation/software checks, but physical runtime has not been exercised; use the relevant lesson and verification matrix before operating hardware.\n\n'
     download+='\n'.join(f'- [{x.relative_to(STAGE)}](downloads/{x.relative_to(STAGE).as_posix()})' for x in files)+'\n'
     (STAGE/'src/downloads.md').write_text(download)
     subprocess.run(['mdbook','build',str(STAGE)],cwd=ROOT,check=True)

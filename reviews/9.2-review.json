@@ -1,0 +1,38 @@
+{
+  "id": "9.2",
+  "reviewer": "independent root",
+  "status": "accepted_source_review",
+  "canonical_sha256": "6ed5907cce833b71baa51df5063e568da2d23fbdf933a8f934e9cc8a035fd67e",
+  "included_source_sha256": {
+    "examples/linux/memory_lab.cpp": "40eb02398993a0617f2b3a596ca77b467685cb1e61881c81047e3f89a2569fee"
+  },
+  "asset_sha256": {},
+  "paths_read": [
+    "src/9.2-observe-demand-paging-and-protection-faults.md",
+    "reviews/9.2-writer.json",
+    "examples/linux/memory_lab.cpp",
+    "src/9.1-observe-your-linux-process-s-mappings.md",
+    "verification.json",
+    ".github/workflows/examples.yml"
+  ],
+  "sources_checked": [
+    "https://man7.org/linux/man-pages/man2/mmap.2.html",
+    "https://man7.org/linux/man-pages/man2/mprotect.2.html",
+    "https://man7.org/linux/man-pages/man2/getrusage.2.html",
+    "https://man7.org/linux/man-pages/man2/fork.2.html",
+    "https://man7.org/linux/man-pages/man2/waitpid.2.html",
+    "https://man7.org/linux/man-pages/man5/core.5.html",
+    "https://docs.kernel.org/admin-guide/mm/concepts.html"
+  ],
+  "scope_coverage": "Full source; mapping before backing; runtime-sized128page writes; before/after RUSAGE_SELF accounting and noisy counts; minor versus invalid-access faults; child-only PROT_NONE and checked SIGSEGV status; unchecked core-limit and pipe collector qualification; native Linux build, bounded allocation/run saving, troubleshooting and unchanged circuit state.",
+  "checks_performed": [
+    "Read entire page and actual included source; independently traced sampling-before-fork, page loop, child mprotect failure/should-not-return exits, waitpid EINTR and status checks.",
+    "Checked primary mmap/mprotect/getrusage/fork/waitpid/core manuals and versioned/current kernel MM concepts. Distinctions between mapping, backing, fault event and physical page are accurate.",
+    "Both shell fences independently parsed with sh -n. Verified native user build and saved per-run status/error flow; no privileged or hardware commands.",
+    "Matched included source SHA to existing native Linux/Arm64 compile and hosted Linux CI runtime evidence; no source mutation or new physical run.",
+    "Checked initial maps precedes mmap, no fixed4KiB assumption, count128not guaranteed, volatile is not permission/synchronization, core suppression not promised. No direct diagram asset on this page."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source and syntax reviewed; existing native Linux/Arm64 compilation and Linux host memory test. No Pi physical runtime or GPIO operation exercised."
+}
