@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12T07:48:50.900089+00:00",
+  "updated": "2026-11-12T07:52:32.581724+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -194,14 +194,14 @@
     },
     "8.6": {
       "path": "src/8.6-make-failure-and-teardown-behaviour-explicit.md",
-      "writer": "active",
-      "reviewer": "pending",
+      "writer": "complete",
+      "reviewer": "root_review_pending",
       "writer_agent": "/root/book_coordinator/page_8_6"
     },
     "9.1": {
       "path": "src/9.1-observe-your-linux-process-s-mappings.md",
-      "writer": "active",
-      "reviewer": "pending",
+      "writer": "complete",
+      "reviewer": "reviewing_waiting_publication_order",
       "writer_agent": "/root/book_coordinator/page_9_1"
     },
     "9.2": {

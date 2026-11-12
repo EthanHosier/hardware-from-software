@@ -1,0 +1,47 @@
+{
+  "id": "8.6",
+  "reviewer": "independent root",
+  "status": "accepted_source_review",
+  "canonical_sha256": "98db65ba469cc472dafb5827f90cd9e646d8613df93a790753350cdd9f4d7302",
+  "included_source_sha256": {
+    "examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826"
+  },
+  "asset_sha256": {},
+  "paths_read": [
+    "src/8.6-make-failure-and-teardown-behaviour-explicit.md",
+    "reviews/8.6-writer.json",
+    "examples/kernel/mybutton.c",
+    "examples/linux/button_client.cpp",
+    "examples/kernel/hardware-button-overlay.dts",
+    "verification.json"
+  ],
+  "sources_checked": [
+    "https://www.kernel.org/doc/html/v6.12/core-api/kref.html",
+    "https://www.kernel.org/doc/html/v6.12/driver-api/driver-model/devres.html",
+    "https://www.kernel.org/doc/html/v6.12/core-api/genericirq.html",
+    "https://www.kernel.org/doc/html/v6.12/core-api/workqueue.html",
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/char/misc.c",
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/Documentation/devicetree/bindings/input/gpio-keys.yaml",
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/input/keyboard/gpio_keys.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/base/dd.c",
+    "https://raw.githubusercontent.com/util-linux/util-linux/v2.38.1/sys-utils/dmesg.1.adoc"
+  ],
+  "scope_coverage": "Independent readers and shared-open mutex; held/bounce sampling limits; bounded signal interruption; complete driver include and kref/devres teardown order; exact of_node-discovered guarded unbind/rebind with open descriptor; offline read/poll and race qualifications; three guarded normal module cycles; standard gpio-keys comparison; cleanup and bound next state.",
+  "checks_performed": [
+    "Read every word and actual full source, independently traced open/read/poll/remove/error-unwind and reference ownership.",
+    "Checked versioned official kref/devres/IRQ/workqueue and frozen misc and driver-core sources. Confirmed callback-before-managed-release order and gpio-keys binding/source comparison.",
+    "All 9 shell fences independently sh -n checked; all 3 embedded Python helpers ast.parse checked. Traced timers/finally close and expected offline/poll behavior; helpers not run on device.",
+    "Matched driver hash to existing native Arm64 exact-header compilation evidence. Checked dmesg --since in pinned util-linux2.38.1 manual.",
+    "Reread SAME-writer evidence repair separating userspace compilation from module-header compilation. No direct SVG on page; canonical circuit linked8.1."
+  ],
+  "findings": [
+    {
+      "issue": "Opening evidence incorrectly grouped client and module compilation against kernel headers.",
+      "resolution": "Same writer separated native Linux client build and exact-header kernel-module build, retaining physical-runtime qualification."
+    }
+  ],
+  "repairs": [
+    "Corrected compilation evidence wording."
+  ],
+  "hardware_status": "Source/API and helper syntax reviewed; existing native Linux client and Pi-header module compilation. No module load, GPIO, signals-on-device, unbind/rebind or physical runtime exercised."
+}

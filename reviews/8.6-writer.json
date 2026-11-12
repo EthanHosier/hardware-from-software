@@ -1,0 +1,55 @@
+{
+  "id": "8.6",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "verification.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/8.1-establish-a-userspace-gpio-baseline.md",
+    "src/8.2-build-and-load-the-smallest-external-module.md",
+    "src/8.3-describe-the-device-and-bind-the-driver.md",
+    "src/8.4-convert-gpio-events-into-driver-state.md",
+    "src/8.5-expose-dev-mybutton-to-a-c-client.md"
+  ],
+  "sources": [
+    "https://www.kernel.org/doc/html/v6.12/core-api/kref.html",
+    "https://www.kernel.org/doc/html/v6.12/driver-api/driver-model/devres.html",
+    "https://www.kernel.org/doc/html/v6.12/core-api/genericirq.html",
+    "https://www.kernel.org/doc/html/v6.12/core-api/workqueue.html",
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/char/misc.c",
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/Documentation/devicetree/bindings/input/gpio-keys.yaml",
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/input/keyboard/gpio_keys.c"
+  ],
+  "scope_audit": {
+    "independent_readers": "Two distinct opens; each receives the controlled single accepted press; shared-open/dup mutex and seen semantics explained.",
+    "held_and_bounce": "Three-second held interval, bounded 20-second tap experiment; single delayed sample and missed/extra sampled transitions explicitly qualified.",
+    "signals": "Three-second SIGALRM interrupts blocking read through a raising Python handler; Python restart semantics and same-open reuse explained.",
+    "offline_and_lifetime": "Full source include; online lock, wake, misc deregister, IRQ drain, synchronous delayed-work cancellation, LED-low, base kref drop, subsequent devres release explained in order.",
+    "open_fd_unbind": "of_node-discovered and module-verified sysfs unbind in second SSH shell; 30-second alarm bounds first-shell blocking read; ENODEV, zero-length 0, bounded poll ERR|HUP checks; finally closes.",
+    "rebind_and_module_cycles": "Same verified device rebound, new-object/old-offline semantics, held-at-probe state explained; three guarded remove/insert cycles; no forced module operations.",
+    "standard_alternative": "Frozen gpio-keys binding and source linked; input subsystem recommended when behaviour fits; no competing owner requested.",
+    "next_state": "Driver bound, rule installed, no clients, Pi-only wiring retained, Pico unplugged; optional full cleanup via 8.3."
+  },
+  "code_files_read": [
+    "examples/kernel/mybutton.c",
+    "examples/kernel/hardware-button-overlay.dts",
+    "examples/linux/button_client.cpp"
+  ],
+  "checks_performed": [
+    "Read actual driver, overlay, client and prerequisite pages; source-traced all teardown branches.",
+    "Browsed official versioned kref/devres/IRQ/workqueue and frozen Raspberry Pi misc/gpio-keys sources.",
+    "All 9 shell fences checked with sh -n; all 3 embedded Python helpers checked with ast.parse.",
+    "Verified all local Markdown target paths exist and full-source include is top-level/unindented.",
+    "No Pi runtime commands were executed; no kernel module was loaded.",
+    "Repaired independent-review evidence wording: native Linux client compilation is distinguished from kernel-module compilation against Pi kernel headers."
+  ],
+  "hardware_status": "Physical runtime not exercised. Hosted Arm64 CI compiled the C++ client as a native Linux application and the kernel module against official 6.12.96+rpt-rpi-v8 kernel headers. The module was not loaded; neither artifact was exercised on a Pi.",
+  "concerns": [
+    "Independent reviewer must review every command and prose claim before acceptance.",
+    "READY precedes actual read; scheduling can make unbind win before the read sleeps, explicitly qualified.",
+    "Bounded bench tests exercise schedules and do not prove race freedom."
+  ],
+  "status": "ready_for_independent_review"
+}
