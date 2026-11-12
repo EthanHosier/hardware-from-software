@@ -2,7 +2,7 @@ name: Verify examples
 on:
   workflow_dispatch:
   push:
-    paths: ['examples/**', 'scripts/test_serial.py', '.github/workflows/examples.yml']
+    paths: ['examples/**', 'scripts/test_serial.py', 'scripts/build_pi_kernel.py', 'kernel-baseline.json', '.github/workflows/examples.yml']
 permissions:
   contents: read
 jobs:
@@ -13,37 +13,40 @@ jobs:
       - run: python3 scripts/build_examples.py --host --linux
       - run: python3 scripts/test_serial.py
       - run: .build/memory_lab
-  pi-kernel-build:
+  arm64-userspace:
     runs-on: ubuntu-24.04-arm
+    container: debian:bookworm
     steps:
       - uses: actions/checkout@v4
-      - name: Install native build tools
-        run: sudo apt-get update && sudo apt-get install -y build-essential device-tree-compiler libelf-dev
-      - name: Fetch pinned official Pi kernel headers
-        shell: bash
+      - run: apt-get update && apt-get install -y build-essential python3
+      - run: python3 scripts/build_examples.py --host --linux
+      - run: python3 scripts/test_serial.py
+      - run: .build/memory_lab
+  pi-kernel-build:
+    runs-on: ubuntu-24.04
+    container: debian:bookworm
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned-distribution cross-build tools
+        run: apt-get update && apt-get install -y build-essential gcc-aarch64-linux-gnu git bc bison flex libssl-dev libelf-dev dwarves python3 device-tree-compiler kmod xz-utils ca-certificates
+      - name: Build complete course kernel, modules and Device Trees
+        run: python3 scripts/build_pi_kernel.py --cross-compile=aarch64-linux-gnu- --jobs 4
+      - name: Stage complete matching module installation
         run: |
-          set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/pi-headers"
-          base=https://archive.raspberrypi.com/debian/pool/main/l/linux
-          for package in \
-            linux-headers-6.12.96+rpt-common-rpi_6.12.96-1+rpt1_all.deb \
-            linux-headers-6.12.96+rpt-rpi-v8_6.12.96-1+rpt1_arm64.deb \
-            linux-kbuild-6.12.96+rpt_6.12.96-1+rpt1_arm64.deb; do
-            curl -fLsS --retry 3 "$base/$package" -o "/tmp/$package"
-            sha256sum "/tmp/$package"
-            dpkg-deb -x "/tmp/$package" "$RUNNER_TEMP/pi-headers"
-          done
-          sed -i "s|/usr/src/|$RUNNER_TEMP/pi-headers/usr/src/|g" "$RUNNER_TEMP/pi-headers/usr/src/linux-headers-6.12.96+rpt-rpi-v8/Makefile"
-      - name: Build native Arm64 applications and Pi kernel modules
-        run: |
-          python3 scripts/build_examples.py --linux
-          make -C "$RUNNER_TEMP/pi-headers/usr/src/linux-headers-6.12.96+rpt-rpi-v8" M="$PWD/examples/kernel" CC=gcc W=1 modules
-          dtc -@ -I dts -O dtb -o /tmp/hardware-button.dtbo examples/kernel/hardware-button-overlay.dts
-          file examples/kernel/hello.ko examples/kernel/mybutton.ko .build/serial_client
+          make -C .build/pi-kernel/source O="$PWD/.build/pi-kernel/output" ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- LOCALVERSION= INSTALL_MOD_PATH="$PWD/.build/pi-kernel/staged" modules_install
+          du -sh .build/pi-kernel/output .build/pi-kernel/staged
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: pi-build-evidence
+          name: pi-single-kernel-evidence
           path: |
+            .build/pi-kernel/build-report.json
+            .build/pi-kernel/config-diff.json
+            .build/pi-kernel/output/.config
+            .build/pi-kernel/output/Module.symvers
+            .build/pi-kernel/output/arch/arm64/boot/Image
+            .build/pi-kernel/output/arch/arm64/boot/dts/broadcom/bcm2711-rpi-4-b.dtb
+            .build/pi-kernel/hardware-button.dtbo
             examples/kernel/*.ko
-            /tmp/hardware-button.dtbo
-          retention-days: 7
+          retention-days: 30

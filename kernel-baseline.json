@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "source_url": "https://github.com/raspberrypi/linux.git",
+  "source_commit": "ae161617d7a4552fa91d03626b8d9f3696d17481",
+  "source_version": "6.12.96",
+  "config_package_url": "https://archive.raspberrypi.com/debian/pool/main/l/linux/linux-headers-6.12.96+rpt-rpi-v8_6.12.96-1+rpt1_arm64.deb",
+  "config_package_sha256": "f094600b5be0689644d98e7cfa9a876c05bdbc0d8a3e7118660059ef6f3c9d1d",
+  "config_package_path": "usr/src/linux-headers-6.12.96+rpt-rpi-v8/.config",
+  "localversion": "-hfs1-v8",
+  "release": "6.12.96-hfs1-v8",
+  "config_delta": {"CONFIG_XDP_SOCKETS": "y", "CONFIG_LOCALVERSION": "\"-hfs1-v8\""},
+  "build_directory": ".build/pi-kernel",
+  "boot_subdirectory": "hfs-kernel",
+  "physical_boot_status": "not exercised"
+}
