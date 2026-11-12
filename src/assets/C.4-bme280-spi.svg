@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="660" viewBox="0 0 1000 660" role="img" aria-labelledby="title desc">
+<title id="title">C.4: Pico 2 to Adafruit BME280 product 2652, four-wire SPI</title>
+<desc id="desc">Electrical connection map, not physical placement. Pico 3V3 OUT physical 36 supplies sensor VIN. Physical 8 GND connects sensor GND. GP18 physical 24 drives SCK, GP20 physical 26 receives SDO, GP19 physical 25 drives SDI, and GP21 physical 27 drives active-low CS. Sensor 3Vo is unused and QT sockets empty. Pi and Debug Probe are detached. Remove I2C and loopback wires unpowered.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8 Z" fill="#126c83"/></marker></defs>
+<rect width="1000" height="660" fill="#fff"/>
+<g font-family="system-ui, sans-serif" fill="#172a41">
+<text x="35" y="38" font-size="25" font-weight="700">Pico 2 → BME280: four-wire SPI + power and ground</text>
+<text x="35" y="66" font-size="17">Electrical map only: terminal rows are not physical header positions.</text>
+<rect x="35" y="95" width="330" height="420" rx="12" fill="#eaf4ef" stroke="#327454" stroke-width="2"/>
+<rect x="655" y="95" width="310" height="420" rx="12" fill="#edf2fa" stroke="#345a89" stroke-width="2"/>
+<text x="55" y="125" font-size="22" font-weight="700">Pico 2 — controller</text>
+<text x="675" y="125" font-size="21" font-weight="700">Adafruit 2652 — sensor</text>
+<text x="55" y="151" font-size="16">Mac USB → Pico power + diagnostics</text>
+<text x="675" y="151" font-size="16">Header names; sensor directions</text>
+<g font-size="18">
+<text x="55" y="192">3V3(OUT), physical 36</text><text x="675" y="192">VIN — power input</text>
+<text x="675" y="237">3Vo — output, unused</text>
+<text x="55" y="282">GND, physical 8</text><text x="675" y="282">GND — common reference</text>
+<text x="55" y="327">GP18 / SCK, physical 24</text><text x="675" y="327">SCK — clock input</text>
+<text x="55" y="372">GP20 / RX, physical 26</text><text x="675" y="372">SDO — data output</text>
+<text x="55" y="417">GP19 / TX, physical 25</text><text x="675" y="417">SDI — data input</text>
+<text x="55" y="462">GP21 / GPIO, physical 27</text><text x="675" y="462">CS — active-low input</text>
+</g>
+<g fill="none" stroke="#126c83" stroke-width="3">
+<path d="M365 186 H650" marker-end="url(#arrow)"/>
+<path d="M365 276 H655" stroke="#3c4652"/>
+<path d="M365 321 H650" marker-end="url(#arrow)"/>
+<path d="M370 366 H655" marker-start="url(#arrow)"/>
+<path d="M365 411 H650" marker-end="url(#arrow)"/>
+<path d="M365 456 H650" marker-end="url(#arrow)"/>
+<path d="M655 231 H622 M612 222 L629 240 M629 222 L612 240" stroke="#6d7786" stroke-width="2"/>
+</g>
+<g font-size="15" text-anchor="middle" fill="#126c83">
+<text x="510" y="176">3.3 V supply</text><text x="510" y="266" fill="#3c4652">power return</text>
+<text x="510" y="311">clock →</text><text x="510" y="356">← MISO</text><text x="510" y="401">MOSI →</text><text x="510" y="446">select →</text>
+</g>
+<text x="675" y="495" font-size="17">Both QT sockets empty; ADDR open</text>
+<text x="35" y="551" font-size="18" font-weight="700">Before wiring: unplug Pico USB; sensor unpowered. Pi off and separate.</text>
+<text x="35" y="581" font-size="17">Remove GP4/GP5 I²C wires and GP19–GP20 loopback. No Pi or probe wires.</text>
+<text x="35" y="609" font-size="17">Local GP16 LED / GP17 button may remain per Appendix A; this image does not drive them.</text>
+<text x="35" y="637" font-size="16">Actual header, C.1 top view: VIN · 3Vo · GND · SCK · SDO · SDI · CS (left → right).</text>
+</g></svg>

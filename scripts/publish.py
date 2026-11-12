@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """Publish only reviewed pages; call immediately after each page acceptance."""
-import datetime, fcntl, hashlib, json, subprocess, time, urllib.request
+import argparse, datetime, fcntl, hashlib, json, subprocess, time, urllib.request
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--complete',action='store_true',help='Require every catalog page and run complete book checks')
+    args=parser.parse_args()
     lock=(ROOT/'.authoring/publish.lock').open('w')
     fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-    subprocess.run(['python3','scripts/build.py','--partial'],cwd=ROOT,check=True)
-    subprocess.run(['python3','scripts/check_book.py','--partial'],cwd=ROOT,check=True)
+    scope=[] if args.complete else ['--partial']
+    subprocess.run(['python3','scripts/build.py',*scope],cwd=ROOT,check=True)
+    subprocess.run(['python3','scripts/check_book.py',*scope],cwd=ROOT,check=True)
     expected=json.loads((ROOT/'book/publication.json').read_text())
     command=['vercel','deploy','--prebuilt','--prod','--yes','--no-wait']
     result=subprocess.run(command,cwd=ROOT,capture_output=True,text=True,timeout=120)
