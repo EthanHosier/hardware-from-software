@@ -1,0 +1,61 @@
+{
+  "id": "8.5",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "fafcfd0b7431f5d36374f639a675e416e603988ca090c416abbfb011944684fb",
+  "included_source_sha256": {
+    "examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826",
+    "examples/kernel/99-mybutton.rules": "27e33c9aa4b38bee386203add3ce82748397f31315ce95529766caaa2b902f84",
+    "examples/linux/button_client.cpp": "6fb622fc3381b364ecc6bfc4fd0d8fbe3b1398dbb7a1ca47b3e6828270df6953"
+  },
+  "asset_sha256": {},
+  "paths_read": [
+    "src/8.5-expose-dev-mybutton-to-a-c-client.md",
+    "reviews/8.5-writer.json",
+    "examples/kernel/mybutton.c",
+    "examples/kernel/99-mybutton.rules",
+    "examples/linux/button_client.cpp",
+    "src/8.3-describe-the-device-and-bind-the-driver.md",
+    "src/8.4-convert-gpio-events-into-driver-state.md",
+    "verification.json"
+  ],
+  "sources_checked": [
+    "https://www.kernel.org/doc/html/v6.12/driver-api/misc_devices.html",
+    "https://www.kernel.org/doc/html/v6.12/kernel-hacking/hacking.html#copy-to-user-copy-from-user-get-user-put-user",
+    "https://www.kernel.org/doc/html/v6.12/filesystems/vfs.html#struct-file-operations",
+    "https://man7.org/linux/man-pages/man2/read.2.html",
+    "https://man7.org/linux/man-pages/man2/poll.2.html",
+    "https://raw.githubusercontent.com/systemd/systemd/v252/man/udev.xml",
+    "https://raw.githubusercontent.com/systemd/systemd/v252/man/udevadm.xml"
+  ],
+  "scope_coverage": "Complete kernel/rule/client includes; exact latest-state ABI and per-open baseline; shared-open mutex limitation; zero/short/fault/nonblock/offline/readiness semantics and races; scoped udev group policy/relogin; native client build/run and unparsed-byte behavior; bounded blocking/nonblocking/shortbuffer Python exercises; troubleshooting/cleanup and next bound-state.",
+  "checks_performed": [
+    "Read every word and all three complete included sources. Independently traced open/read/poll/release paths, sequence snapshot/seen advancement, user-copy failure and offline races.",
+    "Checked official6.12 misc private_data/minor registration, VFS callbacks/user-copy sleeping rules and read/poll manuals. Existing root compilation hashes agree with the three source files.",
+    "Checked systemd v252 official udev and udevadm manual sources for matching GROUP/MODE, reload not affecting existing nodes by itself and scoped trigger/settle. HTML endpoints timed out for reviewer; primary repository manuals used.",
+    "Parsed all5shellblocks with sh -n and both exact embedded Python helpers with ast.parse. Traced alarm exception/finally-close and poll/error/shortbuffer/retry control flow. No physical-device helper executed.",
+    "Checked client actual O_NONBLOCK plus poll behavior, successful-read count1..1000, no parsing, fresh30second timeout after retries and signal/default cleanup. Kernel record fits client buffer.",
+    "Checked top-level include fences, local progression links and Pi-only retained circuit text. No direct local SVG occurs on this page; schematic is linked through8.1. Root publication performs exact rendered include/link and anonymous checks.",
+    "Reread SAME-writer repairs: one active reader per open; mutex held across wait and O_NONBLOCK event-wait-only promise; distinct userspace/module compile evidence; shortbuffer experiment is conditional evidence rather than proof against new events."
+  ],
+  "findings": [
+    {
+      "issue": "Shared-open mutex is held across event waiting, so unconditional nonblocking-read wording omitted a possible mutex wait.",
+      "resolution": "Same writer explicitly documented one active reader per open and shared/dup mutex behavior; EAGAIN table conditioned on acquired mutex."
+    },
+    {
+      "issue": "Evidence paragraph described userspace client and kernel module as compiled against Pi kernel headers.",
+      "resolution": "Same writer separated native userspace toolchain from exact-header module build."
+    },
+    {
+      "issue": "Shortbuffer helper claimed proof despite possible new events after failed read.",
+      "resolution": "Same writer states single-event condition and distinguishes source-established unchanged seen from readiness evidence."
+    }
+  ],
+  "repairs": [
+    "Qualified shared-open/O_NONBLOCK mutex limitation.",
+    "Separated client and module compilation evidence.",
+    "Qualified shortbuffer observation against subsequent press/bounce."
+  ],
+  "hardware_status": "Root records native Arm64 client compilation and module compilation against official6.12.96+rpt-rpi-v8 headers. This review parsed helpers and checked source/API/commands; physical misc-device reads, udev changes, GPIO, module runtime and timing unexercised."
+}

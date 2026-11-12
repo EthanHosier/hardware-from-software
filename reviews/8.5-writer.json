@@ -1,0 +1,64 @@
+{
+  "id": "8.5",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/8.1-establish-a-userspace-gpio-baseline.md",
+    "src/8.2-build-and-load-the-smallest-external-module.md",
+    "src/8.3-describe-the-device-and-bind-the-driver.md",
+    "src/8.4-convert-gpio-events-into-driver-state.md",
+    "verification.json",
+    "scripts/build_examples.py"
+  ],
+  "sources": [
+    "https://www.kernel.org/doc/html/v6.12/driver-api/misc_devices.html",
+    "https://www.kernel.org/doc/html/v6.12/filesystems/vfs.html",
+    "https://www.kernel.org/doc/html/v6.12/kernel-hacking/hacking.html#copy-to-user-copy-from-user-get-user-put-user",
+    "https://man7.org/linux/man-pages/man2/read.2.html",
+    "https://man7.org/linux/man-pages/man2/poll.2.html",
+    "https://www.freedesktop.org/software/systemd/man/latest/udevadm.html",
+    "https://github.com/systemd/systemd/blob/v252/man/udev.xml"
+  ],
+  "scope_audit": {
+    "miscdevice": "Complete actual kernel include; dynamic minor, initial misc private_data, reader replacement and current-sequence open baseline explained.",
+    "abi": "Exact decimal sequence + space + LED0/1 + newline, no NUL. Accepted-press counter per device lifetime, practically monotonic u64 with explicit wrap/reset. Independent opens versus shared file descriptions; mutex serialization; coalesced latest state rather than queue. Software LED state can lead GPIO write.",
+    "read_poll_errors": "Zero-sized read immediate zero including offline; nonzero offline ENODEV at state check with in-flight race qualified. EAGAIN with no new sequence; EINVAL only after available record and no seen update; EFAULT no consumption with partial user-memory modification qualified. Signal interruption/restart; poll ready and ERR/HUP; no consumption/reservation by poll. Explicitly qualifies that O_NONBLOCK can still wait for the per-open reader mutex held across another active read/event wait; exercises use one active read caller per open.",
+    "client": "Complete actual client include, Pi native build, 1..1000 successful-read count, O_NONBLOCK plus sleeping poll, fresh 30s timeout per call and EINTR retry, error paths, prints bytes without ABI validation.",
+    "permissions": "Actual complete rule include, existing real gpio group prerequisite and deliberate policy, conditional membership/relogin, scoped sysfs trigger after reload, no world-write, existing rule collision check.",
+    "practical": "Future-press instructions, held-button release, illustrative non-initial counters, foreground cleanup, bounded Python stdlib blocking read and nonblocking EAGAIN/shortbuffer same-open retry, no fabricated binary. Same-open short-buffer retry described as demonstrating expected contract under single-event condition, not proving no consumption in the presence of a fresh press/bounce.",
+    "progression": "Read current 8.4; same bound 8.3 module/circuit retained; Pico unplugged and bus/debug wires absent; no userspace GPIO requests while kernel owns lines; manual load/binding after reboot, persistent overlay/no autoload; idle clients for 8.6."
+  },
+  "code_files_read": [
+    "examples/kernel/mybutton.c",
+    "examples/kernel/99-mybutton.rules",
+    "examples/linux/button_client.cpp",
+    "scripts/build_examples.py"
+  ],
+  "checks_performed": [
+    "Compared every ABI row and explanatory mechanism with actual mybutton.c.",
+    "Compared all client behavior claims with actual button_client.cpp; no parser or physical-press count claimed.",
+    "clang++ C++20 -Wall -Wextra -Wpedantic -Werror -fsyntax-only examples/linux/button_client.cpp passed on macOS.",
+    "Extracted all 5 shell fences and checked bash -n without executing Pi operations; passed.",
+    "Extracted both Python helpers and parsed with ast.parse; passed. Helpers are physical-device exercises and were not run against /dev/mybutton.",
+    "Checked 3 whole-source includes exist and stay in top-level unindented fences.",
+    "Checked local links exist or match catalogued forward lessons.",
+    "Browsed official Linux 6.12 misc/VFS/uaccess documentation, Linux man-pages read/poll, official udevadm and systemd v252 udev source documentation.",
+    "Independent-review repairs: separated userspace-client native compilation from Pi-header kernel compilation; qualified shared-open O_NONBLOCK mutex waiting; weakened short-buffer readiness evidence to account for fresh events."
+  ],
+  "hardware_status": {
+    "source_reviewed": true,
+    "client_syntax_checked_on_host": true,
+    "prior_target_compile": "verification.json records hosted native Arm64 application and exact official 6.12.96+rpt-rpi-v8 module-header compilation; no Pi kernel loading.",
+    "physical_runtime": "UNEXERCISED; no connection to physical Pi or /dev/mybutton. No udev, GPIO, module-loading, poll/read or removal runtime claim."
+  },
+  "concerns": [
+    "Independent reviewer must inspect full includes, rendered fences and command progression before acceptance.",
+    "Python helpers have syntax verification only; successful physical button/poll/read outcomes are predicted.",
+    "Copy-fault runtime and concurrent-open/removal exercises belong to the documented ABI/later 8.6 scope; this page does not claim they were run.",
+    "Current freedesktop udev HTML endpoint timed out; rule keys were verified via official systemd v252 man/udev.xml, while udevadm HTML loaded successfully."
+  ],
+  "status": "repaired; ready for independent recheck"
+}
