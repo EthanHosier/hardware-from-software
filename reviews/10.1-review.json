@@ -1,0 +1,60 @@
+{
+  "id": "10.1",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "4677a9f280c5f72207ad189a8f761025e10934ac1747064cc1f683e52430dd9d",
+  "included_source_sha256": {
+    "examples/linux/capstone.cpp": "3d15054e1a69c0db4769a9cd7f2c2d9caf6836a2931c76a6b4de3590e7b98dc2",
+    "examples/linux/serial_port.hpp": "eb2a42df5baa75b6178f3d5b4cdc7aeddb0711e1cd0b5f43341698d5d3ce4e22",
+    "examples/common/protocol.hpp": "77c7529b2f7758a3e784c5752eaca01f377d67e6f672263c3cf6e5104bba8be7"
+  },
+  "asset_sha256": {
+    "src/assets/10.1-capstone-circuit.svg": "fd8731eafe4250244c07e9e4624b28800500adccefed3cadede7b19d77c0377d"
+  },
+  "reviewed_dependency_sha256": {
+    "examples/pico/uart_device.cpp": "f352a466e6a3bd7c58b9305feab5f50b7a41d550c0a0cd32c9e7e78b00e9c977",
+    "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3",
+    "examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826"
+  },
+  "paths_read": [
+    "src/10.1-use-a-linux-device-event-to-control-pico-hardware.md",
+    "reviews/10.1-writer.json",
+    "src/assets/10.1-capstone-circuit.svg",
+    "src/assets/circuit-capstone.svg",
+    "examples/linux/capstone.cpp",
+    "examples/linux/serial_port.hpp",
+    "examples/common/protocol.hpp",
+    "examples/pico/uart_device.cpp",
+    "examples/pico/device_io.hpp",
+    "examples/kernel/mybutton.c",
+    "src/8.6-make-failure-and-teardown-behaviour-explicit.md",
+    "verification.json"
+  ],
+  "sources_checked": [
+    "https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-uarts",
+    "https://www.kernel.org/doc/html/v6.12/driver-api/gpio/consumer.html",
+    "https://man7.org/linux/man-pages/man2/poll.2.html",
+    "https://man7.org/linux/man-pages/man3/termios.3.html",
+    "https://github.com/raspberrypi/pico-sdk/blob/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_uart/include/hardware/uart.h"
+  ],
+  "scope_coverage": "Complete integrated wiring of both boards/localLED+buttons and crossedUART; detached firmware programming/both-off wiring/boot module reload and permissions; exactcapstone+Serial+protocol sources; lateststate forwarding/coalescing/independentIDs/noinitialsync; bounded run/validreply/physicalobservation separation; full event path, errors, cleanup and next state.",
+  "checks_performed": [
+    "Read every word and all three included sources, actual unchanged firmware/Device/kernel dependency files. All six current code hashes agree with root verification evidence.",
+    "Traced exact bridge record check (no numeric sequence parse), successful-read count,1..1000arguments, independent requestIDs and exactreply comparison; poll/error/catch/RAII behavior matches prose.",
+    "Traced Serial raw1152008N1/flowclear/partialIO/absolute2sec transaction deadline and no restoration/exclusive lock; Line/parser grammar and firmware LED/COUNT behavior agree.",
+    "Read complete uniqueSVG XML then independently rendered full letterboxed1200px figure and visually checked all text, resistor paths/values, both LED polarities, both button pull-ups/oppositecontacts and every physicalpin/UARTdirection/commonGND/separate rails. No clipping or incorrect connection found.",
+    "Parsed all4shell fences with sh -n, checked10local predecessor anchors and actual8.6 guarded module reload procedure. Exactmodule headers are separate from userspacebuild; powercycle/reload/permissions sequence coherent.",
+    "Independently revisited primaryPiUART, kernelGPIO, poll/termios and pinnedSDKUART sources; reused previously reviewed physicalboard references/pinout consistency. No target run performed.",
+    "Checked top-level fullsource include fences, source download/zip progression and distinction between predictedLED observation and software acknowledgements. Root publication provides exactinclude/render/link/anonymous checks."
+  ],
+  "findings": [
+    {
+      "issue": "Existing shared capstone overview diagram omitted complete local LED/button circuits required by catalog.",
+      "resolution": "Dedicated10.1writer created unique full consolidated schematic; complete XML and full rendered diagram independently checked before acceptance."
+    }
+  ],
+  "repairs": [
+    "Added complete consolidated electrical schematic while retaining actual local components and separate power rails."
+  ],
+  "hardware_status": "Root records firmware compilation, hostparser/11PTYtests and nativeArm64Linux/module compilation; this review checks source/commands/diagram. Physical capstoneGPIO/UART/LED/button behavior, timing and electrical levels not exercised."
+}

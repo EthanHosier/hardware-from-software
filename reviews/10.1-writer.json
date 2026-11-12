@@ -1,0 +1,65 @@
+{
+  "id": "10.1",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "verification.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/7.1-make-a-uart-link-electrically-and-logically-correct.md",
+    "src/7.2-configure-the-pi-uart-and-test-an-echo.md",
+    "src/7.3-build-a-robust-c-serial-client.md",
+    "src/7.4-trace-a-command-end-to-end.md",
+    "src/8.5-expose-dev-mybutton-to-a-c-client.md",
+    "src/8.6-make-failure-and-teardown-behaviour-explicit.md",
+    "src/9.4-explain-ordering-access-semantics-and-ownership.md",
+    "src/assets/circuit-capstone.svg",
+    "src/assets/10.1-capstone-circuit.svg",
+    "src/10.1-use-a-linux-device-event-to-control-pico-hardware.md"
+  ],
+  "sources": [
+    "https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-uarts",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#gpio",
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf",
+    "https://www.kernel.org/doc/html/v6.12/driver-api/gpio/consumer.html",
+    "https://man7.org/linux/man-pages/man2/poll.2.html",
+    "https://man7.org/linux/man-pages/man2/read.2.html",
+    "https://man7.org/linux/man-pages/man3/termios.3.html",
+    "https://github.com/raspberrypi/pico-sdk/blob/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_uart/include/hardware/uart.h"
+  ],
+  "scope_audit": {
+    "chain": "Complete Pi contact closure/electrical low -> IRQ/thread/deferred debounce -> locked sequence/state/Pi LED/wakeup -> nonblocking descriptor with sleeping poll/read -> identified UART LED request -> Pico output -> checked reply.",
+    "wiring": "Unique full consolidated electrical schematic and table include both local LEDs/resistors/polarity, both retained buttons/pull-ups, exact physical and GPIO pin names, crossed UART, common ground and separate rails.",
+    "progression": "Pi-only driver-bound entry; Pico-alone optional flash with no inter-board wires; both power off then three-wire installation; both powered and manual module/binding/UART/permission rechecks. Exact predecessor links cover rebuild/rebind prerequisites.",
+    "code": "Whole-file top-level includes capstone.cpp, serial_port.hpp, protocol.hpp; complete firmware/helper and prior source explanation linked, source archive linked. Native Pi C++ build provided; no Mac kernel compilation instructed.",
+    "semantics": "State forwarded unchanged; sequence prefix trusted rather than numeric-parsed; independent UART IDs 1..count; required CLI count 1..1000; count is successful forwards; snapshot coalescing, future events only/no initial sync, absolute two-second UART versus fresh thirty-second button poll, no reconnect/retry/replay, exclusive by convention, no termios restoration, software acknowledgements not electrical confirmation.",
+    "observation_cleanup": "Illustrative slow-press two-LED trace, errors and symptoms, descriptor/process cleanup, explicit retained starting state for 10.2 and both-off prerequisite for all wiring changes."
+  },
+  "code_files_read": [
+    "examples/linux/capstone.cpp",
+    "examples/linux/serial_port.hpp",
+    "examples/common/protocol.hpp",
+    "examples/pico/uart_device.cpp",
+    "examples/pico/device_io.hpp",
+    "examples/kernel/mybutton.c",
+    "scripts/setup_deps.py (relevant initial implementation)",
+    "scripts/build_examples.py"
+  ],
+  "checks_performed": [
+    "Read complete shared SVG XML and rendered/viewed full shared diagram; confirmed it is only a block diagram and requested correction. Coordinator authorised unique full schematic instead.",
+    "Read complete unique SVG XML; parsed with ElementTree; Chrome headless full 1200x970 rendering viewed. Repaired overlong caption then rerendered/viewed final.",
+    "Checked all full-source include files exist and includes are top-level unindented.",
+    "Checked non-download relative-link files exist and relevant prerequisite heading anchors match.",
+    "Inspected actual download dependency source files; publication/archive existence and rendered mdBook checks remain coordinator/root acceptance work.",
+    "Mac clang++ C++20 -Wall -Wextra -Wpedantic -Werror capstone compile passed to /tmp artifact. Four invalid CLI cases (missing arguments, 0, 1001, 1x) returned 2 without opening devices.",
+    "Read recorded Pico, Linux/Arm64, host protocol/PTTY and exact Pi-header compile evidence in verification.json; no redundant rebuild of all projects."
+  ],
+  "hardware_status": "Not exercised. No attached boards, electrical verification, live IRQ/module experiment, physical UART reply or LED observation. All terminal/physical predictions labelled illustrative or expected.",
+  "concerns": [
+    "Physical capstone remains unexercised.",
+    "Independent full-page/source/diagram review and mdBook/publication checks required before acceptance.",
+    "Shared circuit-capstone.svg remains incomplete as consolidated schematic; this page uses its own complete 10.1-capstone-circuit.svg instead."
+  ],
+  "status": "ready_for_independent_review"
+}

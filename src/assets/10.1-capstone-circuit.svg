@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="970" viewBox="0 0 1200 970" role="img" aria-labelledby="title desc">
+<title id="title">Complete capstone electrical connections</title>
+<desc id="desc">Pi BCM17 pin 11 drives a 1 kiloohm resistor and LED to ground pin 9. Pi BCM27 pin 13 has a switch to ground pin 14 and 4.7 kiloohm pull-up to Pi 3V3 pin 17. Pico GP16 pin 21 drives a 1 kiloohm resistor and LED to ground pin 23. Pico GP17 pin 22 retains a switch to ground pin 23 and 4.7 kiloohm pull-up to Pico 3V3 OUT pin 36. Pi TX BCM14 pin 8 connects to Pico RX GP1 pin 2, Pico TX GP0 pin 1 connects to Pi RX BCM15 pin 10, and Pi ground pin 6 joins Pico ground pin 8. No power rails are joined. Boards use separate USB supplies.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#266a9a"/></marker></defs>
+<style>text{font-family:system-ui,sans-serif;fill:#17263b;font-size:18px}.heading{font-size:25px;font-weight:700}.small{font-size:16px}.wire{fill:none;stroke:#334e68;stroke-width:3}.signal{fill:none;stroke:#266a9a;stroke-width:3}.panel{fill:#fff;stroke:#9badbf;stroke-width:2}.component{fill:white;stroke:#334e68;stroke-width:3}</style>
+<rect width="1200" height="970" fill="#f5f8fc"/>
+<text x="30" y="38" class="heading">Pi button → Linux driver → C++ → UART → Pico LED</text>
+<text x="30" y="69">Electrical schematic • physical header numbers in parentheses • not a breadboard layout</text>
+<rect x="25" y="95" width="560" height="510" rx="12" class="panel"/>
+<rect x="615" y="95" width="560" height="510" rx="12" class="panel"/>
+<text x="45" y="130" class="heading">Raspberry Pi 4 — local circuit</text>
+<text x="635" y="130" class="heading">Pico 2 — retained local circuit</text>
+<text x="45" y="163">Own USB-C supply</text><text x="635" y="163">USB from Mac: power / programming</text>
+<!-- Pi LED: series path -->
+<text x="45" y="205">BCM17 (11)</text><path d="M175 200 H205" class="wire"/>
+<rect x="205" y="187" width="70" height="26" class="component"/><text x="216" y="178" class="small">1 kΩ</text>
+<path d="M275 200 H320" class="wire"/><path d="M320 183 L347 200 L320 217 Z M349 180 V220" class="component"/>
+<path d="M349 200 H410" class="wire"/><text x="419" y="205">GND (9)</text>
+<path d="M335 176 L352 157 M345 181 L365 162" class="signal" marker-end="url(#arrow)"/>
+<text x="292" y="247" class="small">LED: anode left, cathode bar right</text>
+<!-- Pico LED -->
+<text x="635" y="205">GP16 (21)</text><path d="M755 200 H795" class="wire"/>
+<rect x="795" y="187" width="70" height="26" class="component"/><text x="806" y="178" class="small">1 kΩ</text>
+<path d="M865 200 H910" class="wire"/><path d="M910 183 L937 200 L910 217 Z M939 180 V220" class="component"/>
+<path d="M939 200 H990" class="wire"/><text x="998" y="205">GND (23)</text>
+<path d="M925 176 L942 157 M935 181 L955 162" class="signal" marker-end="url(#arrow)"/>
+<text x="882" y="247" class="small">LED: anode left, cathode bar right</text>
+<!-- Pi button pullup and switch -->
+<text x="45" y="290">Pi 3V3 (17)</text><path d="M200 285 H255 V315" class="wire"/>
+<rect x="242" y="315" width="26" height="65" class="component"/><text x="284" y="354">4.7 kΩ</text>
+<path d="M255 380 V420 H305 M255 420 H180" class="wire"/>
+<circle cx="255" cy="420" r="5" fill="#334e68"/><text x="45" y="425">BCM27 (13)</text>
+<circle cx="310" cy="420" r="5" fill="#334e68"/><circle cx="365" cy="420" r="5" fill="#334e68"/>
+<path d="M310 420 L354 392 M370 420 H410" class="wire"/><text x="419" y="425">GND (14)</text>
+<text x="280" y="467">Pi pushbutton</text><text x="45" y="505" class="small">Released: pull-up HIGH. Pressed: LOW.</text>
+<text x="45" y="535" class="small">Driver accepts press and toggles Pi LED.</text>
+<!-- Pico button -->
+<text x="635" y="290">Pico 3V3(OUT) (36)</text><path d="M850 285 H885 V315" class="wire"/>
+<rect x="872" y="315" width="26" height="65" class="component"/><text x="914" y="354">4.7 kΩ</text>
+<path d="M885 380 V420 H935 M885 420 H755" class="wire"/>
+<circle cx="885" cy="420" r="5" fill="#334e68"/><text x="635" y="425">GP17 (22)</text>
+<circle cx="940" cy="420" r="5" fill="#334e68"/><circle cx="995" cy="420" r="5" fill="#334e68"/>
+<path d="M940 420 L984 392 M1000 420 H1045" class="wire"/><text x="1050" y="425">GND (23)</text>
+<text x="903" y="467">Pico pushbutton</text><text x="635" y="505" class="small">Retained for COUNT; no local LED toggle.</text>
+<text x="635" y="535" class="small">Pico LED changes only through LED commands.</text>
+<text x="45" y="567" class="small">Switch symbols: use opposite contact pairs.</text>
+<text x="45" y="591" class="small">Retain breadboard-gap mounting for both buttons.</text>
+<!-- UART independent lanes -->
+<rect x="25" y="625" width="1150" height="250" rx="12" class="panel"/>
+<text x="45" y="660" class="heading">Only three inter-board wires • 3.3 V UART • 115200 / 8N1 / no flow control</text>
+<text x="45" y="711">Pi TX BCM14 (8)</text><path d="M300 705 H840" class="signal" marker-end="url(#arrow)"/>
+<text x="490" y="696" class="small">Request bytes</text><text x="865" y="711">Pico RX GP1 (2)</text>
+<text x="45" y="771">Pi RX BCM15 (10)</text><path d="M300 765 H840" class="signal" marker-start="url(#arrow)"/>
+<text x="490" y="756" class="small">Reply bytes</text><text x="865" y="771">Pico TX GP0 (1)</text>
+<text x="45" y="831">Pi GND (6)</text><path d="M300 825 H840" class="wire"/><text x="470" y="816" class="small">Common signal reference</text><text x="865" y="831">Pico GND (8)</text>
+<text x="30" y="913">Power rails stay separate: no Pi↔Pico 3V3, 5V, VBUS or VSYS wire. Grounds on each board are common.</text>
+<text x="30" y="947">Stop clients, shut down Pi, unplug both supplies before changing any wiring. Debug Probe stays disconnected.</text>
+</svg>
