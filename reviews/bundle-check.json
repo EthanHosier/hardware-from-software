@@ -1,13 +1,13 @@
 {
   "status": "pass",
-  "checked_at": "2026-11-11T18:44:42.015526+00:00",
-  "archive_sha256": "731f5101179d8e64b0174914e85e8a64f4c3944cd97e906ae0997747f3201ec7",
+  "checked_at": "2026-11-12T21:41:43.070549+00:00",
+  "published_catalog_pages": 48,
+  "archive_sha256": "ff634b1622434bb09ff56ffdabc3ce43a6e3be2c6d518c0587927df0488bc48e",
   "checks": [
-    "Extracted current generated bundle into isolated ignored directory",
-    "Complete common/protocol and Linux serial shared-header paths present",
-    "Only setup/build/test scripts bundled; website publishing scripts excluded",
-    "Extracted build_examples.py --host compiles all4portable apps warning-clean and runs parser normal+ASan/UBSan successfully",
-    "Extracted test_serial.py passes all11PTYcases including clearing inherited IXON/IXOFF/IXANY"
+    "Extracted exact published48-page example archive into isolated ignored directory",
+    "Shared headers and all three intended setup/build/test scripts present; website publisher excluded",
+    "Extracted host build passed all4portable applications and normal/ASan+UBSan protocol tests",
+    "Extracted serial tests passed all11PTYcases, including inheritedsoftwareflowflag clearing"
   ],
   "physical_runtime": "not exercised"
 }
