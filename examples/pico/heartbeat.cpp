@@ -1,10 +1,11 @@
 #include <cstdio>
 #include "pico/stdlib.h"
+
 int main() {
     stdio_init_all();
-    unsigned count = 0;
+    unsigned heartbeat_count = 0;
     while (true) {
-        std::printf("hardware-from-software heartbeat v1: %u\n", count++);
+        std::printf("hardware-from-software heartbeat v1: %u\n", heartbeat_count++);
         sleep_ms(1000);
     }
 }
