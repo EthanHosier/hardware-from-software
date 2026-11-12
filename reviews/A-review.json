@@ -1,0 +1,113 @@
+{
+  "id": "A",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "c0e801ea90a1d3b7dbb381e05ad44016960ce5cb1e8d92f8c9c8af7c0b32b345",
+  "included_source_sha256": {},
+  "asset_sha256": {
+    "src/assets/0.1-build-chain.svg": "9c620811bfeafb2d3c5b977aa935daa84eda522bcd4b53f24a0525ab8f030027",
+    "src/assets/0.2-pico2-headers.svg": "5dbe208de46bed767027908fd8988b52e8d0856afa084ff40fcf7966132ee6fe",
+    "src/assets/0.2-pico2-physical.svg": "e41224d14e894af8418713a25f1aedf907be9f54261acba5421918568f44ee6b",
+    "src/assets/0.2-rp2350-concept.svg": "cc270db9ac98dd636fdb0c836aff3f29bec635af5a379a5d32a261e8137c86c7",
+    "src/assets/0.3-pi4-concept.svg": "a7cc7db7cca25858c827fd8f4a0b556fcf2283682e5bc8d6136eb58f11827ce0",
+    "src/assets/0.3-pi4-top.svg": "e0706ba370ef9a43249be5ef3b6b080fec13bf928a9d2a1b7d20ef18f4622a52",
+    "src/assets/0.3-pi4-underside.svg": "b592d1aa3553b4992c39a083644d236ace8e5dc3361b780c93d2d1c7c36c3caf",
+    "src/assets/0.4-cable-ends.svg": "5d97a64c8dbf44eb2dfe7dbeebee545514c9a180ce41600ae1f2de86f8fb4ff1",
+    "src/assets/0.4-cable-paths.svg": "10cf3bde2edc303b3376049f259117af322d2456800116f1a516da113b00676c",
+    "src/assets/0.4-probe-physical.svg": "436bf0b170c6a6144b6e8d75557f6d73d0e330a934b328f7e2ac1f0f1509ec7d",
+    "src/assets/0.5-breadboard.svg": "8e3706f63871b7d1915ac36ff5df87d5c8abff7dfc90a7936172b0325bee0636",
+    "src/assets/0.5-parts.svg": "db973485dd38e7f4fbfb6d1d146e1b18fd8c32b11e4e88c6a3f2677ac4b82330",
+    "src/assets/0.5-switch.svg": "f58bed8af03a0b5ca99eac63088c12778f11e6bd249376c24f53a3cb66c00500",
+    "src/assets/0.6-bench-paths.svg": "e374751150bd43708e03fc4be31c01281a1996737128ccc2f943dc8c1f1fbafc",
+    "src/assets/0.6-led-placement.svg": "0b5e2d246717e8cfd455f525a920af52a58691a7b24c35ef17c99369139338d1",
+    "src/assets/0.6-led-schematic.svg": "168e12c979a616204d09bcb718ffbd5150283d210900137c8e59ed8f5b0e4ba9",
+    "src/assets/10.1-capstone-circuit.svg": "fd8731eafe4250244c07e9e4624b28800500adccefed3cadede7b19d77c0377d",
+    "src/assets/3.1-swd-connections.svg": "4b7a4dfc38f89e033f7d8b2098dfcce940175f9bde3b7caba9abcf34bd2439a6",
+    "src/assets/5.3-pi-header-identity.svg": "6e089b0063838ad8d34079b6d60bf92d9d6f535a182965370905f618058c39f5",
+    "src/assets/6.4-spi-loopback.svg": "ac170589e4e4899900daf225e2d727f076520348601efd32485ccadbb651ba9b",
+    "src/assets/8.1-pi-userspace-circuit.svg": "6b2b551bfb03ce76feff02c28ab231d3d88d29bf98298ad1bab1330ccd0fe182",
+    "src/assets/circuit-capstone.svg": "385c21e4bfe64c46b0f1cf4152197c48666362d1c4b7a37e5422c5b633e72b13",
+    "src/assets/circuit-i2c.svg": "dbd430c0f5c5760127c4e9fd8b4662746dc67bf2158c5fc8e4e4391aa8e832ed",
+    "src/assets/circuit-pico-button.svg": "26cb2c83cfcf4561df63d00af2f5f2235265d3eb9e3cee6878bdb41d5a080191",
+    "src/assets/circuit-pico-led.svg": "eafabcb96c28ec2c507d2e6775168e8e55f50c193f588bda819d7410bcb29ac9",
+    "src/assets/circuit-uart.svg": "128a4c30917db9187fe77ce7b1fa7ad80fb08c6a4ccc80a6086cdf7420e45f4b"
+  },
+  "reviewed_dependency_sha256": {
+    "examples/linux/gpio_events.cpp": "f7b0b37cfc082c0c3c5456bd237488a3aaecae597ea6d7715f9de57c6fb541d8",
+    "examples/kernel/hardware-button-overlay.dts": "72fd129f2ebab3565a0d65d0fef67a0f29322ec2aa9dd1f72b9a9df3cc1632e9",
+    "examples/pico/spi_loopback.cpp": "0d88ceaccc5e629e0743db7cf73d8a1f2cb0e65b0e73094810fc8e7cfdfcf97d",
+    "examples/pico/uart_echo.cpp": "2618e59b8c32af73960b16a7797af6ccea5f701842fbe12307a1f4dcd0735f95",
+    "examples/pico/uart_device.cpp": "f352a466e6a3bd7c58b9305feab5f50b7a41d550c0a0cd32c9e7e78b00e9c977",
+    "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3"
+  },
+  "paths_read": [
+    "src/appendix-a.md",
+    "reviews/A-writer.json",
+    "src/assets/0.1-build-chain.svg",
+    "src/assets/0.2-pico2-headers.svg",
+    "src/assets/0.2-pico2-physical.svg",
+    "src/assets/0.2-rp2350-concept.svg",
+    "src/assets/0.3-pi4-concept.svg",
+    "src/assets/0.3-pi4-top.svg",
+    "src/assets/0.3-pi4-underside.svg",
+    "src/assets/0.4-cable-ends.svg",
+    "src/assets/0.4-cable-paths.svg",
+    "src/assets/0.4-probe-physical.svg",
+    "src/assets/0.5-breadboard.svg",
+    "src/assets/0.5-parts.svg",
+    "src/assets/0.5-switch.svg",
+    "src/assets/0.6-bench-paths.svg",
+    "src/assets/0.6-led-placement.svg",
+    "src/assets/0.6-led-schematic.svg",
+    "src/assets/10.1-capstone-circuit.svg",
+    "src/assets/3.1-swd-connections.svg",
+    "src/assets/5.3-pi-header-identity.svg",
+    "src/assets/6.4-spi-loopback.svg",
+    "src/assets/8.1-pi-userspace-circuit.svg",
+    "src/assets/circuit-capstone.svg",
+    "src/assets/circuit-i2c.svg",
+    "src/assets/circuit-pico-button.svg",
+    "src/assets/circuit-pico-led.svg",
+    "src/assets/circuit-uart.svg",
+    "examples/linux/gpio_events.cpp",
+    "examples/kernel/hardware-button-overlay.dts",
+    "examples/pico/spi_loopback.cpp",
+    "examples/pico/uart_echo.cpp",
+    "examples/pico/uart_device.cpp",
+    "examples/pico/device_io.hpp"
+  ],
+  "sources_checked": [
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf",
+    "https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-reduced-schematics.pdf",
+    "https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html",
+    "https://www.kernel.org/doc/html/v6.12/userspace-api/gpio/chardev.html",
+    "https://github.com/raspberrypi/linux/issues/4884#issuecomment-1038929049",
+    "https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-uarts"
+  ],
+  "scope_coverage": "Complete physical/BCM/GP/chip-offset identity, both board orientation/power/ground/control contacts; all four local circuits; I2C3/UART/SPI/SWD wiring and ownership; eight operating states and isolated programming transitions; complete capstone circuit and Chapter0 diagram index; distinct figure/wire/probe/resistor colour meanings; optional sensor boundary and rollback.",
+  "checks_performed": [
+    "Independently read all prose and final ownership clarification. Crosschecked every pin, resistor, active-low/API distinction and state transition against official board pinouts/schematic/probe wiring and actual firmware/GPIO/DT source.",
+    "Browsed current official Pico2/ Pi4 schematic/probe documents and visually rechecked official Pico header pinout. Confirmed all PicoGND/control/power positions and SWCLK/GND/SWDIO order; Probe D1SCorange,D2GNDblack,D3SDyellow agree.",
+    "Parsed all26 actual localSVG XML documents, read all current titles/descriptions/text labels against diagram-index claims and checked current SHA256.25 match existing independent accepted full diagram reviews, so their unchanged geometry/render evidence is reused.",
+    "Independently read entire previously unaccepted shared circuit-capstone.svg source and viewed complete letterboxed render. Its intentionally incomplete overview is accurately distinguished from unique complete10.1 circuit, whose full render was independently checked at10.1 acceptance and hash remains identical.",
+    "Checked local links and catalogued AppendixC1 forward reference; all26 assets hashed, including directly linked figures. No source includes or runnable new examples occur.",
+    "Reread actual SPI/echo/Device polarity sources, including absent SPI CS and local circuit retained-but-not-necessarily-driven distinction. Source dependencies hashed to bind reference prose to reviewed versions.",
+    "Rechecked recent independently reviewed I2C3 baseline and primary engineer correction, no adapter-number-only assumption; UART ownership/permissions and rollback remain consistent with accepted lessons.",
+    "SAME writer repaired last-reference ownership wording and eight-state report inventory; final prose/report reread. Root handles rendered-table/link/narrow-screen/public checks."
+  ],
+  "findings": [
+    {
+      "issue": "Generic line-ownership sentence did not distinguish duplicated descriptors sharing a request.",
+      "resolution": "Same writer now states last descriptor/reference closes and explicitly notes shared duplicates."
+    },
+    {
+      "issue": "Writer report counted nine state rows while table contains eight.",
+      "resolution": "Same writer corrected report inventory; page table unchanged."
+    }
+  ],
+  "repairs": [
+    "Clarified line request lifetime across duplicated descriptors.",
+    "Corrected report state-row inventory."
+  ],
+  "hardware_status": "Reference and diagrams source-reviewed against official board documents; unchanged prior full render evidence reused by matching hashes plus new overview visual check. No physical wiring, voltage/current, continuity, timing or powered runtime measured."
+}
