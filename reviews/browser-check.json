@@ -25,5 +25,11 @@
     "register_table_scroll_width": 612,
     "result": "Readable prose and per-table horizontal scrolling; no document overflow; source-derived values agree with reviewed content",
     "viewport_restored": true
+  },
+  "memory_chapters_9_1_9_2": {
+    "checked_at": "2026-11-12T08:03:03.547995+00:00",
+    "desktop": "Public9.1 actual full prose/source loaded; heading, sidebar and body screenshot visually readable.",
+    "mobile": "Public9.2 at390x844 fresh navigation: documentWidth390, viewport390, no page horizontal overflow; title/body/code readable and sidebar collapsed.",
+    "viewport_restored": true
   }
 }

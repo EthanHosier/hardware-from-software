@@ -1,0 +1,44 @@
+{
+  "id": "9.3",
+  "reviewer": "independent coordinator",
+  "status": "accepted_source_review",
+  "canonical_sha256": "f647c51cad26d6f4bcd0afecbe65c1bde7cc5c98a0faa4cfa71211713c40e074",
+  "included_source_sha256": {},
+  "asset_sha256": {},
+  "reviewed_dependency_sha256": {
+    "examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826"
+  },
+  "paths_read": [
+    "src/9.3-trace-a-real-kernel-mmio-mapping.md",
+    "reviews/9.3-writer.json",
+    "examples/kernel/mybutton.c",
+    "examples/kernel/mmio_fragment.c",
+    "verification.json",
+    ".deps/inspect-linux-headers-6.12.96+rpt-rpi-v8/usr/share/doc/linux-headers-6.12.96+rpt-rpi-v8/changelog.Debian.gz"
+  ],
+  "sources_checked": [
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/pinctrl/bcm/pinctrl-bcm2835.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/gpio/gpiolib.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/of/address.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/lib/devres.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm/boot/dts/broadcom/bcm283x.dtsi",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm/boot/dts/broadcom/bcm2711.dtsi",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm/boot/dts/broadcom/bcm2711-rpi.dtsi",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi",
+    "https://www.kernel.org/doc/html/v6.12/driver-api/device-io.html",
+    "https://www.kernel.org/doc/html/v6.12/devicetree/kernel-api.html"
+  ],
+  "scope_coverage": "Exact header-package commit provenance and reader differing-kernel qualification; live controller label/of_node/platform resource discovery; actual big-endian parent cell widths and bounded ranges translation; CPU physical versus kernel virtual/user virtual addresses; actual of_address_to_resource/devm_ioremap_resource path and resource ownership; concrete GPIO17 SET/CLR and GPIO27 sample/polarity dispatch; no controller detach/remap or runtime measurement.",
+  "checks_performed": [
+    "Read complete final prose, embedded decoder and all source fragments. Reread actual mybutton calls and independently fetched frozen controller/get-set/mapping logic and Device Tree sources.",
+    "Directly extracted official header changelog: package1:6.12.96-1+rpt1 first entry records ae161617d7a4552fa91d03626b8d9f3696d17481; page provenance and comparison-only route match.",
+    "Checked frozen actual probe of_address_to_resource then devm_ioremap_resource, memory-type validation/request region/map flags/managed cleanup, and exact controller callback tables/helper offsets/masks. GPIO17 mask0x20000 and GPIO27 raw-bit then active-low inversion agree.",
+    "Checked frozen DT root2addresscells, soc1address/1sizecells and7e000000\u2192fe000000 range; inheritedGPIOreg7e200000 length0xb4. Decoder derives live length rather than guessing and calculates inclusive resource end unlike maps.",
+    "Parsed all shell fences with sh -n and compiled exact embedded Python. Independently ran decoder algorithm with only absolute-path/inventory substitutions against disposable synthetic sysfs/DT: gpiochip7 and1/2/1 big-endian cells produced fe200000..fe2000b3; malformed cells, boundary-crossing span and duplicate controller labels all rejected. Temporary fixture cleaned automatically.",
+    "Checked official Linux6.12 I/O mapping/API contracts, __iomem/KVA attributes and readl/writel scope. Page clearly labels third-party snippets fragments and download frozen official revision; no local full-file includes orSVGs.",
+    "Checked read-only command state/progression, no ownership changes and deliberate rejection of unsupported bus shapes; redaction/permission failures remain recorded limitations. Owning controller suppress_bind_attrs accurately documented. Root publication handles rendered layout/local links/anonymous verification."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Independent source/provenance/API review and synthetic inspection-helper tests only. Root compiled mybutton against recorded Pi headers; this does not test controller runtime. No physicalPi sysfs/resource dump, MMIO values or electrical operation observed."
+}
