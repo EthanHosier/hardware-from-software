@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12T21:57:17.405688+00:00",
+  "updated": "2026-11-12T21:58:06.059910+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -279,7 +279,7 @@
     "E": {
       "path": "src/appendix-e.md",
       "writer": "complete",
-      "reviewer": "root_review_in_progress",
+      "reviewer": "accepted_source_review",
       "writer_agent": "/root/book_coordinator/page_e"
     },
     "F": {
