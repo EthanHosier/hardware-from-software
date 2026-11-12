@@ -1,0 +1,97 @@
+{
+  "id": "10.2",
+  "reviewer": "independent root",
+  "status": "accepted_source_review",
+  "canonical_sha256": "d06a6bfdbaaa72246269cf924e54223648f5b17b1bdf6766dba24ab44981e1d1",
+  "included_source_sha256": {},
+  "asset_sha256": {},
+  "reviewed_dependency_sha256": {
+    "examples/linux/capstone.cpp": "3d15054e1a69c0db4769a9cd7f2c2d9caf6836a2931c76a6b4de3590e7b98dc2",
+    "examples/linux/serial_port.hpp": "eb2a42df5baa75b6178f3d5b4cdc7aeddb0711e1cd0b5f43341698d5d3ce4e22",
+    "examples/linux/serial_client.cpp": "fd54040d11499427d4a53e621fcf08000b88c4724eb5ee2cac5dd9cbc62fb70c",
+    "examples/common/protocol.hpp": "77c7529b2f7758a3e784c5752eaca01f377d67e6f672263c3cf6e5104bba8be7",
+    "examples/pico/uart_device.cpp": "f352a466e6a3bd7c58b9305feab5f50b7a41d550c0a0cd32c9e7e78b00e9c977",
+    "examples/pico/device_io.hpp": "3bfd4ede1cf46af343f76ad17ca5f3cd9770c103da02145fa3957e7438bbb5d3",
+    "examples/kernel/mybutton.c": "d5faf2fcce6d33435717d7746095060c0a3412acb959df0238cd9964d56a9826"
+  },
+  "paths_read": [
+    "src/10.2-verify-troubleshoot-and-explain-the-system.md",
+    "reviews/10.2-writer.json",
+    "examples/linux/capstone.cpp",
+    "examples/linux/serial_port.hpp",
+    "examples/linux/serial_client.cpp",
+    "examples/common/protocol.hpp",
+    "examples/pico/uart_device.cpp",
+    "examples/pico/device_io.hpp",
+    "examples/kernel/mybutton.c",
+    "src/10.1-use-a-linux-device-event-to-control-pico-hardware.md",
+    "verification.json",
+    "scripts/build_examples.py"
+  ],
+  "sources_checked": [
+    "https://www.kernel.org/doc/html/v6.12/core-api/kref.html",
+    "https://github.com/raspberrypi/pico-sdk/blob/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_gpio/include/hardware/gpio_coproc.h",
+    "https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-uarts",
+    "https://man7.org/linux/man-pages/man3/termios.3.html",
+    "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html#pico-2-family"
+  ],
+  "scope_coverage": "Full starting circuit and one-owner state; repeated forwards/clientrestart/no replay/coalescing; SIGINT cleanup; both-off standalone Pico powercycle explicitly also rebootingPi; missingrequestwire deadline and manual recovery; raw malformed request and subsequent validPING; exactPID/executable/bothFD guards before driverunbind; offline/newlifetime; layertraceactualcoprocessor; troubleshooting/cleanup.",
+  "checks_performed": [
+    "Read all prose and actual seven core sources; traced clients deadlines, malformed validation, firmware error/no mutation, driveroffline and descriptor cleanup; IDs and kernel sequence correctly separated.",
+    "Browsed official Pi UART/Pico docs, termios, versioned kref and pinned SDK coprocessor source; matched request/reply framing and reset state to code.",
+    "All5shellfences sh -n parsed and completePythonhelper ast.parse checked. Independently inspected PID/exe/twoFD/unbind guards; no privileged runtime performed.",
+    "Executed exact extracted Pythonhelper on macOS PTY: fragmented two-reply success, wrongreply rejection,64byteoversize rejection,silent2seconddeadline. All4cases clear inherited IXON/IXOFF/IXANY and restore saved terminal attributes (mask transient macOS PENDIN). No device path substitution needed: helper accepts argv.",
+    "Reread SAMEwriter repairs and corrected writerreport. Exact included helper SHA and PTYcase evidence recorded below. No direct diagram asset on page; links reviewed10.1 completecircuit."
+  ],
+  "inline_helper_tests": {
+    "status": "pass",
+    "helper_sha256": "264ff4cb830081c93c30f25994d60535088f67b0f985943aca422c537fc2d3b5",
+    "environment": "macOS pseudo-terminal with exact extracted helper; no hardware",
+    "cases": [
+      {
+        "case": "fragmented_success",
+        "status": "pass",
+        "elapsed_seconds": 0.105,
+        "returncode": 0,
+        "attributes_restored": true
+      },
+      {
+        "case": "wrong_reply",
+        "status": "pass",
+        "elapsed_seconds": 0.097,
+        "returncode": 1,
+        "attributes_restored": true
+      },
+      {
+        "case": "oversized_reply",
+        "status": "pass",
+        "elapsed_seconds": 0.101,
+        "returncode": 1,
+        "attributes_restored": true
+      },
+      {
+        "case": "silent_deadline",
+        "status": "pass",
+        "elapsed_seconds": 2.081,
+        "returncode": 1,
+        "attributes_restored": true
+      }
+    ],
+    "limitation": "Models byte stream and terminal settings only; no physical UART or firmware runtime."
+  },
+  "findings": [
+    {
+      "issue": "Initial malformed exercise validated only local CLI and host tests, leaving no physical malformed-frame procedure.",
+      "resolution": "Samewriter added complete bounded raw helper, exact firmware error and freshPING recovery; root syntax/PTY tested."
+    },
+    {
+      "issue": "Launching capstone did not establish that device opens happened before unbind.",
+      "resolution": "Samewriter added exact PID/executable/bothdeviceFD checks and scheduling/openrace qualification."
+    }
+  ],
+  "repairs": [
+    "Complete bounded malformed-UART helper and precise host/physical evidence.",
+    "Verified capstone process and both open device descriptors before unbind."
+  ],
+  "hardware_status": "Source/API and syntax reviewed; new helper4PTYcases exercised host byte stream/settings only. Physical capstone, reset, wiring, UART response, GPIO and kernel unbind runtime not exercised."
+}

@@ -1,0 +1,61 @@
+{
+  "id": "10.2",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "EXAMPLES.md",
+    "catalog.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "verification.json",
+    "src/7.1-make-a-uart-link-electrically-and-logically-correct.md",
+    "src/7.2-configure-the-pi-uart-and-test-an-echo.md",
+    "src/7.3-build-a-robust-c-serial-client.md",
+    "src/7.4-trace-a-command-end-to-end.md",
+    "src/8.5-expose-dev-mybutton-to-a-c-client.md",
+    "src/8.6-make-failure-and-teardown-behaviour-explicit.md",
+    "src/10.1-use-a-linux-device-event-to-control-pico-hardware.md"
+  ],
+  "sources": [
+    "https://www.kernel.org/doc/html/v6.12/core-api/kref.html",
+    "https://github.com/raspberrypi/pico-sdk/blob/079c6f39023649b154152db30f1d781e884879bc/src/rp2_common/hardware_gpio/include/hardware/gpio_coproc.h",
+    "https://www.raspberrypi.com/documentation/computers/configuration.html#configuring-uarts",
+    "https://man7.org/linux/man-pages/man3/termios.3.html",
+    "https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf"
+  ],
+  "scope_audit": {
+    "restart_client": "Future-press semantics, no initial snapshot/replay/reconnect, UART IDs distinct from kernel sequence, coalescing and successful-forward count.",
+    "reset_pico": "Both-off detach, standalone Pico restart, both-off restore, manual module loading after Pi reboot. Explicit limitation: also resets Pi; no claim to isolated-reset automatic recovery.",
+    "link_failure": "Both-off request-wire removal; new press reaches local driver but UART transaction should expire; both-off reconnect and repeat.",
+    "malformed": "Complete bounded raw Python termios helper transmits b\"1 LED 2\\n\", expects exact b\"0 ERR malformed\\n\", then fresh ID-2 PING; explicit owner/deadline/partial I/O/restore/close semantics. Physical execution remains unexercised.",
+    "offline": "Verified lesson identity plus live exact capstone PID/executable and both device FD links before unbind; describes inspection/scheduling/open race and generic diagnostic, guarded rebind and fresh process.",
+    "cleanup": "Ctrl-C closes descriptors, no state reset; final usable bound state or linked module/overlay/rule/UART rollback with boards separated.",
+    "trace": "SSH through IRQ/debounce/poll/read/UART/parser to actual SDK GPIO coprocessor output, acknowledgement not physical feedback.",
+    "next_paths": "Debugger, MMIO ownership, optional analyser and future directions."
+  },
+  "code_files_read": [
+    "examples/linux/capstone.cpp",
+    "examples/linux/serial_port.hpp",
+    "examples/linux/serial_client.cpp",
+    "examples/common/protocol.hpp",
+    "examples/common/protocol_test.cpp",
+    "examples/pico/uart_device.cpp",
+    "examples/pico/device_io.hpp",
+    "examples/kernel/mybutton.c",
+    "scripts/build_examples.py",
+    "scripts/test_serial.py"
+  ],
+  "checks_performed": [
+    "Read complete actual implementation and prerequisite pages; checked supplied commands/diagnostics against source.",
+    "Browsed official primary/versioned sources listed above.",
+    "Local Markdown-link existence scan: only expected unpublished appendix-d.md and appendix-f.md targets pending.",
+    "Balanced five top-level shell fences plus one complete inline Python helper fence; no shared source/example files changed.",
+    "Coordinated 10.1 exact final wiring/runtime state and linked its consolidated schematic section.",
+    "Same-page independent-review repair: Python inline helper syntax compiled; added exact PID and both FD guards before unbind. Root independent PTY validation requested."
+  ],
+  "hardware_status": "Physical integration, reset/link/offline/signal scenarios not exercised. Compilation and host-test evidence attributed to root verification.json, not newly run by writer.",
+  "concerns": [
+    "appendix-d.md and appendix-f.md not yet present at writer completion; publication forward-reference handling required.",
+    "New raw diagnostic intended for Pi; physical UART malformed/recovery experiment not executed. Root independently PTY-tests helper before acceptance."
+  ],
+  "status": "repaired; ready for independent re-review"
+}

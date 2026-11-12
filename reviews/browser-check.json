@@ -31,5 +31,10 @@
     "desktop": "Public9.1 actual full prose/source loaded; heading, sidebar and body screenshot visually readable.",
     "mobile": "Public9.2 at390x844 fresh navigation: documentWidth390, viewport390, no page horizontal overflow; title/body/code readable and sidebar collapsed.",
     "viewport_restored": true
+  },
+  "capstone_10_1": {
+    "checked_at": "2026-11-12T18:50:29.190447+00:00",
+    "url": "https://hardware-from-software.vercel.app/assets/10.1-capstone-circuit.svg",
+    "result": "Root inspected full public1200x970SVG: both LED polarities/resistors, button contact/pullup circuits, TX/RX directions, allphysicalpinlabels/grounds, separatepower note and allbottomtext visible; no clipping or overlap."
   }
 }
