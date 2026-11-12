@@ -1,0 +1,55 @@
+{
+  "id": "kernel-lessons",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "NETWORKING_PLAN.md",
+    "catalog.json",
+    "src/5.1-prepare-raspberry-pi-os-and-ssh.md",
+    "src/5.2-verify-the-linux-development-environment.md",
+    "src/8.2-build-and-load-the-smallest-external-module.md",
+    "src/8.3-describe-the-device-and-bind-the-driver.md",
+    "src/appendix-b.md",
+    "scripts/build_pi_kernel.py",
+    "kernel-baseline.json",
+    "examples/linux/hello.cpp",
+    "examples/kernel/hello.c",
+    "examples/kernel/mybutton.c",
+    "examples/kernel/Makefile",
+    "examples/kernel/hardware-button-overlay.dts",
+    "scripts/install_pi_kernel.py"
+  ],
+  "sources": [
+    "https://www.raspberrypi.com/documentation/computers/linux_kernel.html",
+    "https://www.raspberrypi.com/documentation/computers/config_txt.html",
+    "https://docs.kernel.org/6.12/kbuild/modules.html"
+  ],
+  "scope_audit": [
+    "5.1 uses packaged image for bootstrap;5.2 selects one common AF_XDP-enabled kernel before Linux applications",
+    "5.2 native full build/install, Module.symvers and postboot release+AF_XDP socket check; retained stock offline recovery",
+    "8.2 removes incompatible distribution-header repair route;compiles using completed native customkernelbuildtree",
+    "8.3 customoverlayinstalledprivatehfs-kernel/overlays;benchcircuitanddrivermechanismretained",
+    "appendixBfullmatchingbuild/install/recoveryroute and currentverificationreference"
+  ],
+  "code_files_read": [
+    "examples/linux/hello.cpp",
+    "examples/kernel/hello.c",
+    "examples/kernel/mybutton.c",
+    "examples/kernel/Makefile",
+    "examples/kernel/hardware-button-overlay.dts",
+    "scripts/build_pi_kernel.py",
+    "scripts/install_pi_kernel.py"
+  ],
+  "checks_performed": [
+    "63 shellblocks across ownedpages parsed successfully with sh -n",
+    "git diff --check passed",
+    "reviewed all changed prose and preserved full existing sourceincludes",
+    "Inspected final native build/installer implementation; explicit image/DTB/overlay paths, global cmdline retained, exact backup path, native output/module link and limited root layout aligned",
+    "Repeated shell syntax and diff whitespace checks after final edits"
+  ],
+  "hardware_status": "No Pi physical boot, SSH, module loading, GPIO, bus, or AF_XDP execution performed. Procedures and expected observations only.",
+  "concerns": [
+    "Root must independently review changed pages and completed kernel/CI evidence; physical Pi runtime remains unexercised."
+  ],
+  "status": "ready for independent review"
+}

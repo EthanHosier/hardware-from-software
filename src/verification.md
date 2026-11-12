@@ -6,7 +6,9 @@ This guide separates documentation review and software checks from experiments o
 
 Pico examples target the non-wireless **Pico 2**, Arm Cortex-M33, with one application core. The pinned build uses Pico SDK **2.3.1**, Arm GNU Toolchain **14.2.Rel1**, CMake **3.31.6**, and Ninja **1.11.1.4**. Debug tools come from Raspberry Pi's **v2.3.1-0** tool bundle. This pins a reproducible environment rather than claiming every tool is the latest release.
 
-Linux programs require C++20 and Linux interfaces. The kernel example uses the Linux **6.12** platform-driver API and the GPIO descriptor interface. Your installed kernel and its matching headers determine what you can load; a module built for another kernel is not a portable binary.
+The Pi route uses one AF_XDP-enabled **`6.12.96-hfs1-v8`** kernel from initial Linux setup in [5.2](5.2-verify-the-linux-development-environment.md). Enabling AF_XDP makes its socket interface available; packet redirection still requires an explicitly attached program. The original boot files are retained for recovery, not as a second course kernel.
+
+Linux programs require C++20 and Linux interfaces. The kernel example uses the Linux **6.12** platform-driver API and the GPIO descriptor interface. The completed course-kernel build, including its generated configuration and symbol versions, supplies the module build tree. Distribution header packages do not match this custom release; a module built for another kernel is not a portable binary.
 
 ## What the checks establish
 

@@ -217,3 +217,17 @@ No claim is made that the example programs or physical experiments are already i
 The plan-only phase ended when the user explicitly requested: “ok pls start and continue until the end”. Authoring, fresh page agents, independent reviews, GitHub creation and public Vercel deployment are now authorised.
 
 Implementation decision: the primary macOS route uses the actually verified checkout-local pinned tool installer, rather than requiring an editor extension. VS Code and the official Pico extension remain optional; their managed paths must not be mixed with the book’s pinned tool paths.
+
+
+## Single kernel baseline revision
+
+The user authorised a single AF_XDP-enabled kernel from initial Linux setup,
+including verification that the existing examples remain compatible. Lesson 5.1
+uses the distribution image only to bootstrap SSH. Lesson 5.2 establishes
+`6.12.96-hfs1-v8` from official Raspberry Pi source
+`ae161617d7a4552fa91d03626b8d9f3696d17481`, enabling
+`CONFIG_XDP_SOCKETS=y`. All subsequent Linux lessons use that kernel. The full
+completed build tree supplies the generated module headers and Module.symvers;
+APT headers for another release are not a substitute. Original boot files are
+recovery material only. Networking chapters remain separately proposed in
+NETWORKING_PLAN.md; their authoring is not implied by this baseline migration.

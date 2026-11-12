@@ -30,3 +30,10 @@ No credentials, real network identifiers, binaries, downloaded dependency trees 
 All **53 pages (44 main lessons and nine appendices)** are independently reviewed and published. The [public contents](https://hardware-from-software.vercel.app/roadmap.html) link to every page. Each page had a dedicated fresh-context writer and a separate reviewer; accepted pages were deployed individually. `reviews/authoring-status.json` and `releases.json` record that process.
 
 For a complete checked publication, use `python3 scripts/publish.py --complete`. Physical hardware runtime remains unexercised; the verification matrix distinguishes it from software tests and target compilation.
+
+
+Linux lessons share one AF_XDP-enabled Pi 4 kernel, `6.12.96-hfs1-v8`, established
+in lesson 5.2 and reused for the earlier GPIO/module labs and future networking.
+See `kernel-baseline.json` and `KERNEL_BASELINE.md` for source, configuration,
+full-build and recovery details. Original boot files are retained as recovery
+material. Physical Pi boot and peripheral runtime are separate reader checks.

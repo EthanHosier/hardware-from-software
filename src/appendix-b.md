@@ -276,7 +276,7 @@ Keep the relative shared headers in `examples/common/` and `examples/linux/`; co
 
 ## 6. Pi modules and Device Tree build
 
-Use this route on the **Pi**, against its exact running kernel. Modules execute in kernel context; native userspace builds above are a different operation. The recorded baseline is Bookworm/64-bit with official `6.12.96+rpt-rpi-v8` headers. Your full release may differ. Matching packages and an exact release check are required by [Raspberry Pi's header guidance](https://www.raspberrypi.com/documentation/computers/linux_kernel.html#kernel-headers) and [Linux kbuild](https://www.kernel.org/doc/html/latest/kbuild/modules.html).
+Use this route on the **Pi**, against the common **`6.12.96-hfs1-v8`** kernel built and selected in [5.2](5.2-verify-the-linux-development-environment.md#build-the-common-kernel). Its AF_XDP support is already enabled; no kernel change is required for later networking. Modules execute in kernel context; native userspace builds above are a different operation. Keep the complete native source/output under `.build/pi-kernel/` so that the installed release's `build` link stays valid. [Linux kbuild](https://docs.kernel.org/6.12/kbuild/modules.html) requires a matching configured build, including symbol-version data when used.
 
 **Pi — project root; inspect each result before building:**
 
@@ -285,27 +285,23 @@ cd ~/hardware-from-software
 uname -m
 uname -r
 cat /proc/version
-sudo apt install build-essential kmod file device-tree-compiler "linux-headers-$(uname -r)"
+sudo apt install build-essential kmod file device-tree-compiler
 readlink -f "/lib/modules/$(uname -r)/build"
 running_release=$(uname -r)
-header_release=$(make -s -C "/lib/modules/$running_release/build" kernelrelease)
-printf 'Running: %s\nHeaders: %s\n' "$running_release" "$header_release"
+header_release=$(make -s -C "/lib/modules/$running_release/build" LOCALVERSION= kernelrelease)
+printf 'Running: %s\nBuild tree: %s\n' "$running_release" "$header_release"
+test "$running_release" = 6.12.96-hfs1-v8
 test "$running_release" = "$header_release"
+test -s "/lib/modules/$running_release/build/Module.symvers"
+grep '^CONFIG_XDP_SOCKETS=y$' "/lib/modules/$running_release/build/.config"
 ```
 
-Continue only after an exact successful match and an appropriate native compiler. If the headers are unavailable, on the standard 64-bit Pi 4 route install the official matching pair, review APT's changes, reboot, reconnect SSH, then repeat all checks. **Pi — project root:**
-
-```sh
-sudo apt install linux-image-rpi-v8 linux-headers-rpi-v8
-sudo reboot
-```
-
-Do not point `build` at unrelated headers or mix distribution releases. Installing a kernel does not change the running kernel until reboot. If the match remains unresolved, defer module work; native applications can still build.
+Continue only after every check succeeds and the native compiler is appropriate. Distribution `linux-headers-rpi-v8` packages do not target this custom release. Do not point `build` at unrelated headers or install a stock kernel/header pair as a substitute. If the retained source/output trees were moved, restore their original paths and repeat the checks. If they were deleted or the installation is partial, stop and inspect the [5.2 installation/recovery record](5.2-verify-the-linux-development-environment.md#install-the-common-kernel). The installer deliberately refuses conflicting or partial installations; running it again is not an automatic repair. Preserve the recorded boot/config artifacts and diagnose the exact refusal before changing anything. If the stock recovery kernel is currently running, restore the common kernel selection and repeat the post-boot checks before continuing modules. Never force-load a mismatch.
 
 After a match, **Pi — project root:**
 
 ```sh
-make -C "/lib/modules/$(uname -r)/build" M="$PWD/examples/kernel" W=1 modules
+make -C "/lib/modules/$(uname -r)/build" LOCALVERSION= M="$PWD/examples/kernel" W=1 modules
 mkdir -p .build
 dtc -@ -I dts -O dtb -o .build/hardware-button.dtbo \
   examples/kernel/hardware-button-overlay.dts
@@ -322,10 +318,10 @@ The complete shared `examples/kernel/Makefile` is:
 
 It builds **both modules**. Building neither loads a module nor enables an overlay. The `.ko` is a kernel-loader input, not an application or Pico image. `dtc -@` emits overlay reference information; this DTS needs no C-preprocessor step. Module vermagic begins with the complete matching release; never force-load a mismatch. See [8.2](8.2-build-and-load-the-smallest-external-module.md) for controlled hello insertion/removal, and [8.3](8.3-describe-the-device-and-bind-the-driver.md) for overlay installation, binding verification and GPIO ownership. Do not load `mybutton` merely to test compilation.
 
-For stale artifacts after fixing headers, optional **Pi — project root**, with the lesson's modules unloaded and generated files disposable:
+For stale artifacts after restoring the matching build tree, optional **Pi — project root**, with the lesson's modules unloaded and generated files disposable:
 
 ```sh
-make -C "/lib/modules/$(uname -r)/build" M="$PWD/examples/kernel" clean
+make -C "/lib/modules/$(uname -r)/build" LOCALVERSION= M="$PWD/examples/kernel" clean
 ```
 
 This removes generated artifacts for both modules, retaining sources. Rebuild and inspect again. Read the new kernel log for `Invalid module format`, unknown symbols or signature refusal; these have different causes. Do not force insertion/removal or disable signature checks.
@@ -369,11 +365,13 @@ A timeout points first to boot, power or network reachability. Refusal at a conf
 
 Without SSH, use a local console if available. Otherwise stop the Pi and remove its supply before moving the microSD card to the Mac. If a hung machine cannot shut down cleanly, removing power is a last resort and may lose pending writes. On the **Mac**, inspect `diskutil list` and Finder to identify the actual mounted FAT boot partition. Open **that volume's `config.txt`** in a plain-text editor and remove only the added overlay directive. The Pi path `/boot/firmware/config.txt` is not a Mac pathname. Do not format the card, alter unrelated root arguments, or assume an old full-file backup includes later changes. Eject the card through Finder, return it to the unpowered Pi, then boot and repeat the environment/ownership checks. The [official boot configuration documentation](https://www.raspberrypi.com/documentation/computers/config_txt.html) explains the files and conditional sections.
 
+**Common-kernel boot recovery:** 5.2 retains the packaged boot files and records a pre-install configuration backup. Remove only the book-kernel selection block and restore any stock `auto_initramfs` lines that the installer commented to return temporarily to those stock files, preserving other configuration. If offline, edit the actual mounted FAT boot volume on the Mac as described above, then eject before returning it to the Pi. This is emergency recovery; restore and verify `6.12.96-hfs1-v8` before resuming the book. The common kernel's private boot artifacts, including the custom button overlay, live under `/boot/firmware/hfs-kernel/`; do not delete the stock recovery files.
+
 For UART rollback, [7.2's recorded configuration and service backup](7.2-configure-the-pi-uart-and-test-an-echo.md#diagnose-and-leave-the-next-state) is essential: restore only changes made for that route, including the prior `hciuart`/getty states. A blanket Bluetooth restart while the PL011 is still assigned to the header would not restore a consistent setup.
 
 ## Evidence and final state
 
-The [verification record](verification.md) distinguishes source review, compilation and execution. All twelve Pico targets compiled; portable parser normal/sanitized tests and eleven serial PTY cases passed. Hosted native Arm64 CI compiled all seven Linux applications, both modules against official `6.12.96+rpt-rpi-v8` headers, and the DT overlay. The modules were **not loaded into the runner kernel**. Physical flashing, SWD, GPIO/bus transfers and Pi driver runtime remain unexercised. Commands here describe procedures for the reader, not a fabricated hardware transcript.
+The [verification record](verification.md) distinguishes source review, compilation and execution. All twelve Pico targets compiled; portable parser normal/sanitized tests and eleven serial PTY cases passed. The common kernel is `6.12.96-hfs1-v8`; consult the current verification record for its kernel/module build and Linux application evidence. Earlier official-header compilation is historical evidence, not a substitute for rebuilding against this configuration. The modules were **not loaded into the runner kernel**. Physical flashing, SWD, GPIO/bus transfers and Pi driver runtime remain unexercised. Commands here describe procedures for the reader, not a fabricated hardware transcript.
 
 Leave no abandoned serial reader, GDB session or OpenOCD server. Close clients before the appropriate module cleanup. For wiring changes or storage removal, shut down the Pi, wait for shutdown, and remove both boards' supplies. Keep sources, environment notes and recovery artifacts; choose the next lesson's wiring only after returning to this unpowered state.
 

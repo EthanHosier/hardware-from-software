@@ -91,7 +91,7 @@ def main():
         target=dest/x.relative_to(STAGE);target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(x,target)
     with zipfile.ZipFile(dest/'hardware-examples.zip','w',zipfile.ZIP_DEFLATED) as z:
         for x in files:z.write(x,x.relative_to(STAGE).as_posix())
-        for name in ['scripts/setup_deps.py','scripts/build_examples.py','scripts/test_serial.py','EXAMPLES.md']:
+        for name in ['scripts/setup_deps.py','scripts/build_examples.py','scripts/test_serial.py','scripts/build_pi_kernel.py','scripts/install_pi_kernel.py','kernel-baseline.json','KERNEL_BASELINE.md','EXAMPLES.md']:
             z.write(ROOT/name,name)
         z.writestr('README.md', '# Hardware from Software: example bundle\n\n'
             'Read the guide at https://hardware-from-software.vercel.app. '

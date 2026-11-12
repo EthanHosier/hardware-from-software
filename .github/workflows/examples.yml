@@ -2,7 +2,7 @@ name: Verify examples
 on:
   workflow_dispatch:
   push:
-    paths: ['examples/**', 'scripts/test_serial.py', 'scripts/build_pi_kernel.py', 'kernel-baseline.json', '.github/workflows/examples.yml']
+    paths: ['examples/**', 'scripts/test_serial.py', 'scripts/build_pi_kernel.py', 'scripts/install_pi_kernel.py', 'scripts/test_pi_kernel_install.py', 'kernel-baseline.json', '.github/workflows/examples.yml']
 permissions:
   contents: read
 jobs:
@@ -13,6 +13,7 @@ jobs:
       - run: python3 scripts/build_examples.py --host --linux
       - run: python3 scripts/test_serial.py
       - run: .build/memory_lab
+      - run: python3 scripts/test_pi_kernel_install.py
   arm64-userspace:
     runs-on: ubuntu-24.04-arm
     container: debian:bookworm
@@ -40,6 +41,7 @@ jobs:
         if: always()
         with:
           name: pi-single-kernel-evidence
+          include-hidden-files: true
           path: |
             .build/pi-kernel/build-report.json
             .build/pi-kernel/config-diff.json

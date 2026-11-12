@@ -1,0 +1,36 @@
+{
+  "id": "kernel-installer-tests",
+  "status": "15 fixture integration tests passed",
+  "test_command": "python3 scripts/test_pi_kernel_install.py",
+  "python": "3.9.6",
+  "host": "Darwin arm64",
+  "paths_read": [
+    "scripts/install_pi_kernel.py",
+    "scripts/build_pi_kernel.py",
+    "kernel-baseline.json"
+  ],
+  "paths_written": [
+    "scripts/test_pi_kernel_install.py",
+    "reviews/kernel-installer-tests.json"
+  ],
+  "test_file_sha256": "156b97e8c0c54b28bde73139a22d39868788287d5e07e4b30737a3f6c2ece9fc",
+  "scope": [
+    "All filesystem mutations confined to TemporaryDirectory mapped boot/modules/proc fixtures",
+    "Actual verify_build hashes/config/release validation runs, plus actual filesystem copies, symlinks, backup and config replacement",
+    "No subprocesses, network, real root privileges, live boot files or system modules touched",
+    "Success preserves all stock boot bytes and exact CRLF backup; correct custom image,DTB,overlay and module links; unchanged idempotent rerun",
+    "Foreign config, partial destination/backup/staging/modules, nonPi, wrong rootlayout/platform/privilege/unmountedboot and insufficientspace refuse without changingbootselection",
+    "Changed config,Module.symvers,Image,DTB,kernelrelease,compiledmodule andoverlay all refused",
+    "Foreign/crossbuildmetadata,changedsourcecommit anddirtysource refused",
+    "make staging failure, missingstagedmodules anddepmodfailure preservebootselection; incomplete copiedmodules cause safe retryrefusal",
+    "Original backup byte-for-byte rollback check; managedprefix beforedtoverlay,automaticinitramfscommenting,globalcmdlinepath retained",
+    "Idempotent rerun refuses installed image/DTB/overlay corruption and missing installed modules/dependency index; compressed module filename presence accepted by current guard"
+  ],
+  "additional_checks": [
+    "python3 -m py_compile scripts/test_pi_kernel_install.py passed",
+    "git diff --check passed"
+  ],
+  "limitations": [
+    "Fixtures do not validate firmware behaviour, kernelboot, actualmodules_install/depmod execution or physicalPi hardware. CI and reader bench verification remain separate."
+  ]
+}

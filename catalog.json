@@ -180,7 +180,7 @@
     "title": "Verify the Linux development environment",
     "chapter": "5. Bring up the Pi 4 headlessly",
     "path": "src/5.2-verify-the-linux-development-environment.md",
-    "scope": "Record board model, OS release, architecture, running kernel, compiler, and boot configuration layout. Install only required development packages and compile/run a tiny C++ program natively.",
+    "scope": "Identify the64-bit Pi environment; build/install the one pinned AF_XDP-enabled6.12.96-hfs1-v8 kernel before Linux labs, retaining recovery files; verify release/config/socket support, run nativehello and retain exact completed module buildtree.",
     "acceptance": "A machine/version record and a working native C++ build."
   },
   {
@@ -268,7 +268,7 @@
     "title": "Build and load the smallest external module",
     "chapter": "8. Write a Linux driver for a physical button",
     "path": "src/8.2-build-and-load-the-smallest-external-module.md",
-    "scope": "Install headers matching the running kernel, use kbuild, and build a minimal C module with load/unload logging. Explain module metadata, kernel/user address spaces, and recovery if the module or headers mismatch.",
+    "scope": "Install headers matching the running kernel, use kbuild, and build a minimal C module with load/unload logging. Explain module metadata, kernel/user address spaces, and recovery if the module or headers mismatch. Reuse the completed6.12.96-hfs1-v8 course-kernel output and Module.symvers from5.2; no distribution-header substitution.",
     "acceptance": "Module loads, logs, and unloads cleanly on the recorded kernel."
   },
   {

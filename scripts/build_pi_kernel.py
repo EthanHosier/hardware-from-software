@@ -25,7 +25,10 @@ def run(arguments, **kwargs):
 
 def digest(path):
     with path.open('rb') as stream:
-        return hashlib.file_digest(stream, 'sha256').hexdigest()
+        checksum = hashlib.sha256()
+        for chunk in iter(lambda: stream.read(1024 * 1024), b''):
+            checksum.update(chunk)
+        return checksum.hexdigest()
 
 
 def settings(path):
@@ -89,12 +92,21 @@ def main():
     differences = {key: {'before': original.get(key, 'absent'), 'after': configured.get(key, 'absent')}
                    for key in sorted(original.keys() | configured.keys()) if original.get(key) != configured.get(key)}
     (build / 'config-diff.json').write_text(json.dumps(differences, indent=2) + '\n')
-    # Compiler capability symbols are recalculated by Kconfig. Human review sees every
-    # difference in config-diff.json; preserve the course's actual functional features.
+    # Compiler version text may change without changing features. Reject other
+    # configuration drift rather than silently accepting a different kernel.
+    allowed_differences = set(BASELINE['config_delta']) | {
+        'CONFIG_CC_VERSION_TEXT', 'CONFIG_GCC_VERSION', 'CONFIG_AS_VERSION',
+        'CONFIG_LD_VERSION', 'CONFIG_PAHOLE_VERSION', 'CONFIG_XDP_SOCKETS_DIAG'}
+    unexpected = set(differences) - allowed_differences
+    if unexpected:
+        raise SystemExit(f'Unexpected Kconfig changes; inspect config-diff.json: {sorted(unexpected)}')
+    if configured.get('CONFIG_XDP_SOCKETS_DIAG', 'n') != 'n':
+        raise SystemExit('Unexpected additional XDP diagnostic feature enabled.')
     required = {'CONFIG_XDP_SOCKETS': 'y', 'CONFIG_LOCALVERSION': '"-hfs1-v8"',
                 'CONFIG_MODVERSIONS': 'y', 'CONFIG_BCMGENET': 'y', 'CONFIG_BPF_SYSCALL': 'y',
                 'CONFIG_GPIO_CDEV': 'y', 'CONFIG_NET_NS': 'y', 'CONFIG_VETH': 'm',
-                'CONFIG_EXT4_FS': 'y', 'CONFIG_MMC_BLOCK': 'y', 'CONFIG_DEVTMPFS': 'y'}
+                'CONFIG_EXT4_FS': 'y', 'CONFIG_MMC_BLOCK': 'y', 'CONFIG_DEVTMPFS': 'y',
+                'CONFIG_MMC_SDHCI_IPROC': 'y', 'CONFIG_MMC_SDHCI_BRCMSTB': 'y'}
     for option, value in required.items():
         if configured.get(option) != value:
             raise SystemExit(f'Required {option}={value} missing.')
@@ -117,11 +129,15 @@ def main():
               'release': release, 'cross_compile': args.cross_compile, 'build_machine': platform.machine(),
               'config_sha256': digest(output / '.config'), 'image_sha256': digest(image),
               'dtb_sha256': digest(dtb), 'module_symvers_sha256': digest(output / 'Module.symvers'),
+              'installed_output_sha256': {str(path.relative_to(output)): digest(path)
+                    for path in sorted([*output.rglob('*.ko'), * (output / 'arch/arm64/boot/dts').rglob('*.dtbo')])},
               'external_modules': {name: digest(ROOT / f'examples/kernel/{name}.ko') for name in ('hello', 'mybutton')},
               'compiler': subprocess.check_output([args.cross_compile + 'gcc', '--version'], text=True).splitlines()[0],
               'physical_runtime': 'not exercised'}
     (build / 'build-report.json').write_text(json.dumps(report, indent=2) + '\n')
-    print(json.dumps(report, indent=2))
+    print(json.dumps({key: value for key, value in report.items()
+                      if key != 'installed_output_sha256'}, indent=2))
+    print(f'Bound {len(report["installed_output_sha256"])} module/overlay files in build-report.json')
 
 
 if __name__ == '__main__':

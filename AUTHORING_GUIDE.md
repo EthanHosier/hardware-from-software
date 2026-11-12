@@ -26,6 +26,17 @@ C/C++ examples with clang-format 19.1.7 using the checked-in `.clang-format` fil
 debugger commands, and diagram labels when identifiers change. Preserve behavior
 and rerun the existing relevant builds and tests before refreshing review hashes.
 
+## Single Linux kernel baseline
+
+Lesson 5.2 establishes `6.12.96-hfs1-v8` from `kernel-baseline.json`, with
+AF_XDP enabled. Every later Linux lesson uses this same kernel; there is no
+mid-course networking kernel switch. Retain original boot files for recovery.
+Build external modules against the completed native kernel output and its
+Module.symvers, never an unrelated APT headers package. Kernel installation uses
+private boot image/DTB/overlay paths; custom button overlays go under
+`/boot/firmware/hfs-kernel/overlays/`. Check build scripts and KERNEL_BASELINE.md
+before writing commands. Enabling the feature does not attach packet programs.
+
 ## Correctness focus
 RP2350 pad isolation/IO bank/SIO order, atomic SET/CLR and W1C; use exact installed SDK headers and datasheet. Volatile is not synchronization. Input pull-ups and silicon E9 revision awareness. ISR/main state critical sections; no sleeps/USB printing inside ISR. Exception-frame debugger caveats: basic vs extended frames, MSP/PSP, handler prologue. UART stream framing and bounded buffer, partial I/O, termios, deadlines and errors. I2C coherent multi-byte snapshot and repeated START. Linux kernel C, descriptors/DT, IRQ context, delayed work debounce, locked state, kref/open/unbind lifetime, wake blocked readers on removal. MMIO source walkthrough, not mapping over Linux-owned controller. `mmap`/mprotect page faults only in isolated child userspace. Tools/tests are evidence not proofs. Never say hardware-confirmed without actual measurement.
 
