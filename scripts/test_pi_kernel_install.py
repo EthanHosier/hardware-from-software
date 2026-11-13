@@ -66,10 +66,10 @@ class KernelInstallTests(unittest.TestCase):
             'build_machine': 'aarch64',
         }
         for name, key in (
-            ('.config', 'config_sha256'),
-            ('Module.symvers', 'module_symvers_sha256'),
-            ('arch/arm64/boot/Image', 'image_sha256'),
-            ('arch/arm64/boot/dts/broadcom/bcm2711-rpi-4-b.dtb', 'dtb_sha256'),
+                ('.config', 'config_sha256'),
+                ('Module.symvers', 'module_symvers_sha256'),
+                ('arch/arm64/boot/Image', 'image_sha256'),
+                ('arch/arm64/boot/dts/broadcom/bcm2711-rpi-4-b.dtb', 'dtb_sha256'),
         ):
             self.report[key] = hashlib.sha256(self.files[name]).hexdigest()
         self.report['installed_output_sha256'] = {

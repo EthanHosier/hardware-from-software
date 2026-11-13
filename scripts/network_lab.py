@@ -61,13 +61,15 @@ def show(state):
                       'host': ip_json('address', 'show', 'dev', HOST),
                       'peer': ip_json('address', 'show', 'dev', PEER, namespace=True),
                       'host_checksum_features': run(['ethtool', '-k', HOST], capture=True),
-                      'peer_checksum_features': run(['ip', 'netns', 'exec', NAMESPACE, 'ethtool', '-k', PEER], capture=True),
+                      'peer_checksum_features': run(['ip', 'netns', 'exec', NAMESPACE, 'ethtool', '-k', PEER],
+                                                    capture=True),
                       'note': 'Software link only; not evidence of physical Ethernet DMA/PHY behavior.'}))
 
 
 def setup():
     if STATE.exists() or NAMESPACE in names() or HOST in links() or PEER in links():
-        raise RuntimeError('A lab ownership record, namespace or interface already exists; inspect it rather than replacing it.')
+        raise RuntimeError(
+            'A lab ownership record, namespace or interface already exists; inspect it rather than replacing it.')
     for interface in ip_json('address', 'show'):
         for address in interface.get('addr_info', []):
             if address.get('family') == 'inet':

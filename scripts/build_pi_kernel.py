@@ -122,7 +122,8 @@ def main():
     image = output / 'arch/arm64/boot/Image'
     dtb = output / 'arch/arm64/boot/dts/broadcom/bcm2711-rpi-4-b.dtb'
     for module in ('hello', 'mybutton'):
-        vermagic = subprocess.check_output(['modinfo', '-F', 'vermagic', ROOT / f'examples/kernel/{module}.ko'], text=True)
+        vermagic = subprocess.check_output(['modinfo', '-F', 'vermagic', ROOT / f'examples/kernel/{module}.ko'],
+                                           text=True)
         if vermagic.split()[0] != release:
             raise SystemExit(f'{module} has mismatched vermagic.')
     report = {'status': 'full kernel and both external modules compiled', 'source_commit': actual_commit,
@@ -130,7 +131,8 @@ def main():
               'config_sha256': digest(output / '.config'), 'image_sha256': digest(image),
               'dtb_sha256': digest(dtb), 'module_symvers_sha256': digest(output / 'Module.symvers'),
               'installed_output_sha256': {str(path.relative_to(output)): digest(path)
-                    for path in sorted([*output.rglob('*.ko'), * (output / 'arch/arm64/boot/dts').rglob('*.dtbo')])},
+                                          for path in sorted(
+                      [*output.rglob('*.ko'), *(output / 'arch/arm64/boot/dts').rglob('*.dtbo')])},
               'external_modules': {name: digest(ROOT / f'examples/kernel/{name}.ko') for name in ('hello', 'mybutton')},
               'compiler': subprocess.check_output([args.cross_compile + 'gcc', '--version'], text=True).splitlines()[0],
               'physical_runtime': 'not exercised'}

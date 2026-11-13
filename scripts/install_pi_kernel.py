@@ -26,7 +26,8 @@ def selected_config(original):
     forbidden = re.compile(r'^\s*(?:include\s+|(?:kernel|device_tree|overlay_prefix|os_prefix|initramfs)\s*(?:=|\s+))')
     for line in original.splitlines():
         if not line.lstrip().startswith('#') and forbidden.match(line):
-            raise ValueError('Custom boot selection/include/initramfs found; this installer supports the standard image only.')
+            raise ValueError(
+                'Custom boot selection/include/initramfs found; this installer supports the standard image only.')
     # Put overlay_prefix before any dtoverlay line, so every overlay comes from
     # this kernel's matching directory. Suppress stock automatic-initramfs lines:
     # this direct ext4 SD-root baseline has MMC/ext4 built into the kernel.
@@ -37,11 +38,11 @@ def selected_config(original):
         else:
             lines.append(line)
     block = (BEGIN + '[pi4]\n'
-             'kernel=hfs-kernel/kernel8.img\n'
-             'device_tree=hfs-kernel/bcm2711-rpi-4-b.dtb\n'
-             'overlay_prefix=hfs-kernel/overlays/\n'
-             'auto_initramfs=0\n'
-             '[all]\n' + END + '\n')
+                     'kernel=hfs-kernel/kernel8.img\n'
+                     'device_tree=hfs-kernel/bcm2711-rpi-4-b.dtb\n'
+                     'overlay_prefix=hfs-kernel/overlays/\n'
+                     'auto_initramfs=0\n'
+                     '[all]\n' + END + '\n')
     return block + ''.join(lines)
 
 
@@ -53,7 +54,8 @@ def verify_build(build):
         raise ValueError('Build report does not match the course baseline.')
     if report['cross_compile'] or report['build_machine'] not in ('aarch64', 'arm64'):
         raise ValueError('Install only a full native Pi build; cross-build host tools are incompatible with the Pi.')
-    if subprocess.check_output(['git', '-c', f'safe.directory={source}', '-C', source, 'rev-parse', 'HEAD'], text=True).strip() != BASELINE['source_commit']:
+    if subprocess.check_output(['git', '-c', f'safe.directory={source}', '-C', source, 'rev-parse', 'HEAD'],
+                               text=True).strip() != BASELINE['source_commit']:
         raise ValueError('Native source tree changed since compilation.')
     if subprocess.check_output(['git', '-c', f'safe.directory={source}', '-C', source,
                                 'status', '--porcelain'], text=True).strip():
@@ -108,7 +110,8 @@ def main():
     root_source = subprocess.check_output(['findmnt', '-n', '-o', 'SOURCE', '/'], text=True).strip()
     root_type = subprocess.check_output(['findmnt', '-n', '-o', 'FSTYPE', '/'], text=True).strip()
     if root_type != 'ext4' or Path(root_source).resolve() != Path('/dev/mmcblk0p2'):
-        raise SystemExit('Requires the standard direct ext4 /dev/mmcblk0p2 root; encrypted/USB/other layouts need separate validation.')
+        raise SystemExit(
+            'Requires the standard direct ext4 /dev/mmcblk0p2 root; encrypted/USB/other layouts need separate validation.')
     build = ROOT / BASELINE['build_directory']
     try:
         source, output, report = verify_build(build)
@@ -128,7 +131,8 @@ def main():
                 return
             raise ValueError('Existing course installation differs; refusing to replace it.')
         if backup.exists() or destination.exists() or modules.exists():
-            raise ValueError('A backup/destination/modules directory already exists; inspect the prior partial installation before proceeding.')
+            raise ValueError(
+                'A backup/destination/modules directory already exists; inspect the prior partial installation before proceeding.')
         original = config_path.read_bytes().decode()
         updated = selected_config(original)
         image = output / 'arch/arm64/boot/Image'
