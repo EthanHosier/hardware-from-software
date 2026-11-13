@@ -15,3 +15,4 @@ examples/kernel/Module.symvers
 examples/kernel/modules.order
 examples/kernel/.tmp_versions/
 .vercel
+.idea
