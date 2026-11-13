@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="690" viewBox="0 0 1080 690" role="img" aria-labelledby="title desc">
+<title id="title">Checked Ethernet, IPv4, UDP and ARP boundaries</title>
+<desc id="desc">Offsets are bytes from destination MAC. Ethernet header is bytes zero through thirteen. IPv4 total length bounds the IP region; IHL locates UDP and UDP length bounds payload. Trailing Ethernet padding is excluded. A second row gives Ethernet IPv4 ARP field offsets.</desc>
+<rect width="1080" height="690" fill="#f8fafc"/>
+<g font-family="system-ui,sans-serif" fill="#172b45">
+<text x="30" y="38" font-size="25" font-weight="700">Read a field only after its containing region fits</text>
+<text x="30" y="70" font-size="17">Example: untagged IPv4, no options, eight-byte HFS message. All offsets in bytes.</text>
+<g font-size="17" text-anchor="middle">
+<rect x="30" y="105" width="160" height="70" fill="#dbeafe" stroke="#25588a"/>
+<text x="110" y="133">Destination MAC</text><text x="110" y="157">0–5</text>
+<rect x="190" y="105" width="160" height="70" fill="#dbeafe" stroke="#25588a"/>
+<text x="270" y="133">Source MAC</text><text x="270" y="157">6–11</text>
+<rect x="350" y="105" width="140" height="70" fill="#dbeafe" stroke="#25588a"/>
+<text x="420" y="133">EtherType</text><text x="420" y="157">12–13</text>
+<rect x="490" y="105" width="200" height="70" fill="#dcfce7" stroke="#226447"/>
+<text x="590" y="133">IPv4 header</text><text x="590" y="157">14–33 (IHL=5)</text>
+<rect x="690" y="105" width="160" height="70" fill="#fef3c7" stroke="#805b1d"/>
+<text x="770" y="133">UDP header</text><text x="770" y="157">34–41</text>
+<rect x="850" y="105" width="200" height="70" fill="#ede9fe" stroke="#6950a1"/>
+<text x="950" y="133">HFS payload</text><text x="950" y="157">42–49</text>
+</g>
+<g font-size="18">
+<path d="M490 190v14h560v-14" fill="none" stroke="#226447" stroke-width="3"/>
+<text x="505" y="232">IP total length = 36; must fit within captured_length − 14</text>
+<path d="M690 247v14h360v-14" fill="none" stroke="#805b1d" stroke-width="3"/>
+<text x="505" y="290">UDP length = 16 = IP total length − IHL × 4</text>
+<text x="30" y="330">IPv4: byte 14 version/IHL; 16–17 total length; 20–21 flags/fragment offset;</text>
+<text x="30" y="356">23 protocol (17 = UDP); 26–29 source IP; 30–33 destination IP.</text>
+<text x="30" y="389">UDP: 34–35 source port; 36–37 destination port; 38–39 length; 40–41 checksum.</text>
+<text x="30" y="422" font-weight="600">Options shift UDP to 14 + IHL × 4. Never hardcode offset 34 in the decoder.</text>
+<text x="30" y="455">Bytes after 14 + IP total length are outside IP (for example, Ethernet padding).</text>
+<path d="M30 477h1020" stroke="#a7b3c4"/>
+<text x="30" y="511" font-size="22" font-weight="700">Separate ARP branch — EtherType 0x0806, at least 42 captured bytes</text>
+<text x="30" y="544">14–15 hardware type 1; 16–17 protocol 0x0800; 18 MAC size 6; 19 IP size 4;</text>
+<text x="30" y="574">20–21 opcode 1 request / 2 reply; 22–27 sender MAC; 28–31 sender IPv4;</text>
+<text x="30" y="604">32–37 target MAC; 38–41 target IPv4. No IPv4 header or UDP header here.</text>
+<text x="30" y="651" font-size="17">Capture starts at destination MAC: normally no preamble/start delimiter or FCS. Veth is software only.</text>
+</g></g></svg>

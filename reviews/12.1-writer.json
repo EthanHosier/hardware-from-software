@@ -1,0 +1,58 @@
+{
+  "id": "12.1",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "NETWORKING_PLAN.md",
+    "catalog.json (12.1 and adjacent canonical paths)",
+    "EXAMPLES.md",
+    "KERNEL_BASELINE.md",
+    "NETWORKING_EXAMPLES.md",
+    "kernel-baseline.json",
+    "src/11.1-identify-network-hardware.md",
+    "src/5.2-verify-the-linux-development-environment.md",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md"
+  ],
+  "sources": [
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmgenet.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmmii.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmgenet.h",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm/boot/dts/broadcom/bcm2711.dtsi",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts",
+    "https://docs.kernel.org/6.12/core-api/dma-api-howto.html"
+  ],
+  "scope_audit": {
+    "identity": "Discover bcmgenet, sysfs platform/driver/of_node paths, resources and PHY identity.",
+    "provenance": "5.2 report source/release/image/DTB/config/symbol evidence; no APT equivalence.",
+    "probe": "compatible, RAM net_device allocation, mapped resource, registration; open-stage PHY attachment distinguished.",
+    "address_spaces": "resource vs kernel virtual MMIO vs RAM payload DMA; descriptor slots are actual GENET MMIO, not coherent RAM.",
+    "state": "Read-only live inspection; source downloads only local files. No register writes, unbind, interface cycling or wiring changes.",
+    "progression": "11.3 canonical backward link; 12.2 canonical forward link."
+  },
+  "code_files_read": [
+    ".authoring/network-research/bcmgenet.c (targeted full ranges for probe, accessors, descriptors, open/start and drvinfo)",
+    "scripts/build_pi_kernel.py (source/release checks and report schema)",
+    "pinned remote bcmmii.c and bcmgenet.h",
+    "pinned remote BCM2711 DT and board DTS"
+  ],
+  "checks_performed": [
+    "877 prose words / 1035 including commands",
+    "All 8 shell blocks pass bash -n (syntax only, not Pi execution)",
+    "SVG XML parsed successfully",
+    "Relative existing links checked; pending canonical 12.2 forward file noted",
+    "Probe, open-stage PHY attach/start, mapped descriptor pointers and ethtool driver identification cross-checked in frozen source",
+    "No runnable new code or includes; no compile required"
+  ],
+  "hardware_status": {
+    "source_reviewed": true,
+    "compiled": "not applicable: source-reading lesson",
+    "host_tested": "shell syntax and SVG/link structure only",
+    "target_compiled": "not claimed; root full-build work independent",
+    "physical_runtime": "not exercised; no live Pi observations or fabricated logs"
+  },
+  "concerns": [
+    "No missing relative links",
+    "Independent substantive review and rendered SVG/page QA pending root."
+  ],
+  "status": "ready for independent review"
+}

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1040" viewBox="0 0 960 1040" role="img" aria-labelledby="title desc">
+<title id="title">GENET RX: device writes RAM, NAPI transfers a completed skb to Linux</title>
+<desc id="desc">Conceptual ownership diagram. The driver maps RAM with DMA_FROM_DEVICE and writes the DMA address into a controller MMIO descriptor. GENET writes receive status and frame bytes into RAM and advances its producer index. Its queue interrupt schedules NAPI with the RX interrupt masked. The poll callback prepares a replacement buffer, unmaps the completed old buffer, installs the replacement address, validates the old receive status, removes metadata, hands the skb to GRO, and advances the consumer index. Linux then performs IP and UDP processing and queues a datagram to a socket; recvfrom copies payload to userspace. Interrupt and poll counts do not equal packet counts.</desc>
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#334155"/></marker>
+<style>
+text{font-family:system-ui,-apple-system,sans-serif;fill:#142b45} .heading{font-size:25px;font-weight:700}.label{font-size:20px;font-weight:650}.body{font-size:18px}.small{font-size:16px}.box{stroke:#334155;stroke-width:2;rx:12}.line{stroke:#334155;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+</style>
+</defs>
+<rect width="960" height="1040" fill="#f8fafc"/>
+<text x="30" y="42" class="heading">Receive ownership on the pinned Pi 4 GENET driver</text>
+<text x="30" y="71" class="body">Conceptual path • controller MMIO and packet RAM are separate</text>
+
+<rect x="30" y="95" width="435" height="132" class="box" fill="#dbeafe"/>
+<text x="48" y="125" class="label">1. Driver prepares packet RAM</text>
+<text x="48" y="154" class="body">Allocate skb + storage; dma_map_single</text>
+<text x="48" y="182" class="body">DMA_FROM_DEVICE → device may write</text>
+<text x="48" y="209" class="small">Software rx_cbs bookkeeping also lives in RAM</text>
+<rect x="500" y="95" width="430" height="132" class="box" fill="#fef3c7"/>
+<text x="518" y="125" class="label">2. Controller MMIO</text>
+<text x="518" y="154" class="body">RX descriptor: DMA address of storage</text>
+<text x="518" y="182" class="body">Ring producer / consumer indexes</text>
+<text x="518" y="209" class="small">priv-&gt;base + rdma_offset; MMIO accessors</text>
+<path d="M465 160 L498 160" class="line"/>
+
+<path d="M715 227 L715 257" class="line"/>
+<rect x="30" y="260" width="900" height="102" class="box" fill="#dcfce7"/>
+<text x="48" y="291" class="label">3. PHY → MAC → RX DMA writes the mapped packet RAM</text>
+<text x="48" y="321" class="body">RAM layout: [64-byte receive status] [2 alignment bytes] [Ethernet frame]</text>
+<text x="48" y="347" class="small">Hardware advances producer index; driver uses that progress to find completed slots</text>
+
+<path d="M480 362 L480 392" class="line"/>
+<rect x="30" y="395" width="900" height="102" class="box" fill="#fef3c7"/>
+<text x="48" y="426" class="label">4. Queue interrupt: bcmgenet_isr1 (hard IRQ context)</text>
+<text x="48" y="456" class="body">Acknowledge status → napi_schedule_prep → mask RX ring interrupt</text>
+<text x="48" y="482" class="body">→ __napi_schedule_irqoff; packet processing runs later</text>
+
+<path d="M480 497 L480 527" class="line"/>
+<rect x="30" y="530" width="900" height="230" class="box" fill="#dbeafe"/>
+<text x="48" y="561" class="label">5. bcmgenet_rx_poll → bcmgenet_desc_rx (normally softirq)</text>
+<text x="48" y="591" class="body">For each completed slot, up to budget:</text>
+<text x="65" y="621" class="body">a. Allocate + map replacement; unmap old storage; install new DMA address</text>
+<text x="65" y="651" class="body">b. Read old RAM status; validate; remove receive metadata / optional FCS</text>
+<text x="65" y="681" class="body">c. eth_type_trans → napi_gro_receive transfers old skb to Linux</text>
+<text x="65" y="711" class="body">d. Advance consumer index: serviced slot can be reused</text>
+<text x="48" y="744" class="small">Refill fails: keep old mapped storage, count a drop, advance consumer; no skb delivery</text>
+
+<path d="M480 760 L480 790" class="line"/>
+<rect x="30" y="793" width="900" height="108" class="box" fill="#ede9fe"/>
+<text x="48" y="824" class="label">6. Stack and process own the next stages</text>
+<text x="48" y="854" class="body">GRO / receive core → IPv4 local delivery → UDP → socket queue / wakeup</text>
+<text x="48" y="883" class="body">Process recvfrom(): copy payload into userspace; no DMA-buffer ownership</text>
+
+<rect x="30" y="926" width="900" height="88" class="box" fill="#fff"/>
+<text x="48" y="954" class="body">Poll used less than budget: complete NAPI and re-enable the RX interrupt.</text>
+<text x="48" y="980" class="body">Poll used full budget: remain scheduled; another poll can run without a new IRQ.</text>
+<text x="48" y="1005" class="small">Counters describe stages and intervals; an IRQ, a poll and a delivered datagram are different events.</text>
+</svg>

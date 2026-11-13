@@ -2,7 +2,7 @@
   "id": "8.5",
   "reviewer": "independent coordinator",
   "status": "accepted_source_review",
-  "canonical_sha256": "fafcfd0b7431f5d36374f639a675e416e603988ca090c416abbfb011944684fb",
+  "canonical_sha256": "e52304ea6e003dfbe77723c59f233b9ff1692980465ad24f2e7220d55370c5e3",
   "included_source_sha256": {
     "examples/kernel/mybutton.c": "519501c09961f2b2a1702e26aab6cf29a1f9b9e666a2027fc8a007f50b02a371",
     "examples/kernel/99-mybutton.rules": "27e33c9aa4b38bee386203add3ce82748397f31315ce95529766caaa2b902f84",
@@ -37,7 +37,8 @@
     "Checked client actual O_NONBLOCK plus poll behavior, successful-read count1..1000, no parsing, fresh30second timeout after retries and signal/default cleanup. Kernel record fits client buffer.",
     "Checked top-level include fences, local progression links and Pi-only retained circuit text. No direct local SVG occurs on this page; schematic is linked through8.1. Root publication performs exact rendered include/link and anonymous checks.",
     "Reread SAME-writer repairs: one active reader per open; mutex held across wait and O_NONBLOCK event-wait-only promise; distinct userspace/module compile evidence; shortbuffer experiment is conditional evidence rather than proof against new events.",
-    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests.",
+    "Single-kernel migration substantively audited by separate kernel_audit reviewer: reviews/kernel-baseline-review.json accepted after full kernel CI43330786612; setup/build/recovery commands and unchanged existing programs reviewed. No physical run claimed."
   ],
   "findings": [
     {
@@ -59,5 +60,6 @@
     "Qualified shortbuffer observation against subsequent press/bounce."
   ],
   "hardware_status": "Root records native Arm64 client compilation and module compilation against official6.12.96+rpt-rpi-v8 headers. This review parsed helpers and checked source/API/commands; physical misc-device reads, udev changes, GPIO, module runtime and timing unexercised.",
-  "readability_review": "reviews/readability-review.json"
+  "readability_review": "reviews/readability-review.json",
+  "single_kernel_review": "reviews/kernel-baseline-review.json"
 }

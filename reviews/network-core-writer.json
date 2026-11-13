@@ -1,0 +1,20 @@
+{
+  "id": "network-core",
+  "status": "implemented_pending_independent_review_and_linux_runtime",
+  "paths_read": ["AUTHORING_GUIDE.md", "NETWORKING_PLAN.md", "NETWORKING_EXAMPLES.md", "scripts/build_network.py", "scripts/test_network.py", "examples/network/lab_xdp.bpf.c"],
+  "owned_files": ["examples/network/wire.hpp", "examples/network/wire_test.cpp", "examples/network/udp_endpoint.cpp", "examples/network/udp_sender.py", "examples/network/packet_rx.cpp", "examples/network/packet_ring.cpp", "scripts/network_lab.py"],
+  "source_references": ["https://docs.kernel.org/6.12/networking/packet_mmap.html", "https://man7.org/linux/man-pages/man7/packet.7.html", "https://raw.githubusercontent.com/torvalds/linux/v6.12/include/uapi/linux/if_packet.h"],
+  "scope_audit": {
+    "message": "Exactly HFS + version byte 1 + big-endian uint32 sequence, eight bytes, UDP destination port 40420.",
+    "decoder": "Byte-based bounded Ethernet/ARP/IPv4/UDP decoding; VLAN/IPv6/fragments unsupported; options structurally decoded but responder rejects them; no FCS assumption; capture decoder does not mistake checksum offload artifacts for structural corruption.",
+    "responder": "Strict IPv4 header checksum and nonzero UDP checksum validation before mutation; addresses/ports swapped, fresh TTL64, full IPv4/UDP checksums emitted; no TCP/IP stack claim.",
+    "packet_socket": "Interface-bound AF_PACKET with outgoing suppression, truncation handling, VLAN auxiliary metadata checks and kernel drop statistics.",
+    "packet_ring": "TPACKET_V3 two 1MiB blocks, 50ms retirement, acquire block ownership, bounded metadata/offset traversal, VLAN metadata exclusion, release ownership before reuse, absolute poll deadline, cleanup and drop/freeze statistics.",
+    "namespace": "Fixed hfs-lab/hfs-host/hfs-peer single-queue topology, 198.18.0.0/30 address+route collision checks; namespace inode, interface alias+index ownership; namespace processes must stop before cleanup. Explicit TX-checksum-offload-off only on the disposable owned veth pair; no physical interface/default route/bridge/NAT changes.",
+    "cli": "NETWORKING_EXAMPLES.md matches sources. Readers count lab requests, not replies. UDP sender distinguishes ICMP unreachable and rejects it as successful expected-drop evidence."
+  },
+  "checks_performed": ["clang-format 19.1.7 on all owned C++", "python3 -m py_compile scripts/network_lab.py examples/network/udp_sender.py", "python3 scripts/build_network.py --portable-only: native clang++ C++20 warning-clean normal and ASan/UBSan fixtures passed", "independent checksum reference fixtures reject corrupt IPv4/UDP inputs, verify reply checksums, and cover zero optional UDP input checksum", "20000 deterministic malformed inputs exercised with normal and sanitized binaries"],
+  "hardware_status": "No physical hardware, network namespace, raw socket, mmap ring or Linux runtime was exercised on this Mac. Root CI owns Linux compile and privileged namespace/BPF/AF_XDP integration checks.",
+  "concerns": ["Linux APIs and full integration await the fresh Linux CI run; do not convert source review or portable tests into physical Pi/GENET evidence.", "Namespace setup explicitly requires ethtool, iproute2 and root; unsupported privileges must fail rather than count as passed."],
+  "source_contract": {"udp_endpoint": "BIND_IPV4 PORT COUNT [TIMEOUT_SECONDS]", "udp_sender.py": "ADDRESS [--port 40420] [--count N] [--timeout SECONDS] [--interval SECONDS] [--expect-timeout] [--malformed]", "packet_rx": "INTERFACE COUNT [TIMEOUT_SECONDS]", "packet_ring": "INTERFACE COUNT [TIMEOUT_SECONDS]", "network_lab.py": "setup|show|cleanup"}
+}

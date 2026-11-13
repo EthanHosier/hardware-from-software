@@ -1,0 +1,41 @@
+{
+  "id": "11.3",
+  "reviewer": "root, separate from dedicated fresh-context writer",
+  "status": "accepted_source_review",
+  "reviewed_at": "2026-11-13T00:08:41.411696+00:00",
+  "canonical_sha256": "efb4d313aeb63b4303fa0f0b8d436c2912e9f1f0a89b190fa10a75337b97a234",
+  "included_source_sha256": {
+    "examples/network/wire.hpp": "af9a7fe7864a87d715bf28dcac0638a133adbee592016cac0faba1a217b5c92e",
+    "examples/network/packet_rx.cpp": "cc4636e589f7f9910f2288237bd1190a648a44f92326947c72ab239e60a506b0"
+  },
+  "asset_sha256": {
+    "src/assets/11.3-frame-boundaries.svg": "dfd2c69e1753c45ba9e2bfa201e79735dd55cc2d4b45af9a8d68ecf66d412009"
+  },
+  "paths_read": [
+    "src/11.3-decode-ethernet-frame.md",
+    "reviews/11.3-writer.json",
+    "examples/network/wire.hpp",
+    "examples/network/packet_rx.cpp",
+    "src/assets/11.3-frame-boundaries.svg",
+    "src/assets/11.3-frame-boundaries.svg",
+    "NETWORKING_EXAMPLES.md"
+  ],
+  "scope_coverage": "Checked Ethernet/ARP/IPv4/UDP lengths and big endian decoding; unsupported VLAN/IPv6/fragments; complete decoder/raw receiver, packet metadata, capture correlation, padding/FCS/offload caveats and cleanup.",
+  "sources_checked": [
+    "https://man7.org/linux/man-pages/man7/packet.7.html",
+    "https://www.rfc-editor.org/rfc/rfc791.html",
+    "https://www.rfc-editor.org/rfc/rfc768.html",
+    "https://www.rfc-editor.org/rfc/rfc826.html",
+    "https://wiki.wireshark.org/Ethernet",
+    "https://www.kernel.org/doc/html/v6.12/networking/checksum-offloads.html"
+  ],
+  "checks_performed": [
+    "Root read every word, included source, commands and complete SVG; substantive source/API/progression review completed before hash freeze.",
+    "Root independently browsed packet(7), RFC791/768 and pinned board sources; decoder bounds checked against every read. Full SVG visually inspected: offsets/nested lengths/ARP fields legible. Actual parser fixtures normal/sanitized and namespace raw capture cases pass.",
+    "All shell fences syntax checked with sh -n. Full rendered source equality, local links, SVG XML and downloadable files are enforced by publish.py before deployment.",
+    "Network code compiled natively on Arm64 Bookworm; Linux7.0Azure namespace integration CI43334222277 passes all12cases. Physical Pi/GENET operations are qualified source/reader exercises."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source-reviewed; software compiled and hosted Linux namespace tested. Physical Pi boot, GENET DMA/PHY and hardware runtime not exercised."
+}

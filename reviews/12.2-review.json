@@ -1,0 +1,38 @@
+{
+  "id": "12.2",
+  "reviewer": "root, separate from dedicated fresh-context writer",
+  "status": "accepted_source_review",
+  "reviewed_at": "2026-11-13T00:09:33.005893+00:00",
+  "canonical_sha256": "91f7154058a01aebf1d3e29c1afc26abe57f93ed822f76868b0a84e2cdc10d8b",
+  "included_source_sha256": {
+    "examples/network/udp_endpoint.cpp": "842eefc950f1865849c111005bb5e63991a810b4d4503990b20103d3dbb820c7",
+    "examples/network/udp_sender.py": "7bacc905d4eb5e4ea1442abf1368bbf2c7a6e9e81f107cdc4effd293b0ece770"
+  },
+  "asset_sha256": {
+    "src/assets/12.2-genet-tx-ownership.svg": "1bf51b1e5e5a669143b0fd309b9d1d3598ffe6b597b1205735c15fdc285292c4"
+  },
+  "paths_read": [
+    "src/12.2-trace-network-transmit-dma.md",
+    "reviews/12.2-writer.json",
+    "examples/network/udp_endpoint.cpp",
+    "examples/network/udp_sender.py",
+    "src/assets/12.2-genet-tx-ownership.svg",
+    "NETWORKING_EXAMPLES.md"
+  ],
+  "scope_coverage": "Transmit skb head/fragments, address spaces, streaming DMA mapping/error unwind, actual GENET MMIO descriptors and producer publication, completion/unmapping/queue wake, finite virtual and physical counter observations.",
+  "sources_checked": [
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmgenet.c",
+    "https://docs.kernel.org/6.12/core-api/dma-api-howto.html",
+    "https://docs.kernel.org/networking/skbuff.html",
+    "https://docs.kernel.org/6.12/driver-api/device-io.html"
+  ],
+  "checks_performed": [
+    "Root read every word, included source, commands and complete SVG; substantive source/API/progression review completed before hash freeze.",
+    "Root inspected pinned xmit/add_tsb/reclaim/free source in full and actual relaxed-MMIO publication; no invented dma_wmb or coherentRAMdescriptor sequence. Diagram visually inspected with all lifetime/failure labels legible. Corrected wire.hpp download link before freeze; normal endpoint/sender CI passes. Physical counters and DMA timings explicitly unmeasured.",
+    "All shell fences syntax checked with sh -n. Full rendered source equality, local links, SVG XML and downloadable files are enforced by publish.py before deployment.",
+    "Network code compiled natively on Arm64 Bookworm; Linux7.0Azure namespace integration CI43334222277 passes all12cases. Physical Pi/GENET operations are qualified source/reader exercises."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source-reviewed; software compiled and hosted Linux namespace tested. Physical Pi boot, GENET DMA/PHY and hardware runtime not exercised."
+}

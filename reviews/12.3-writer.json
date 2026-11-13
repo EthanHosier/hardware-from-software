@@ -1,0 +1,101 @@
+{
+  "id": "12.3",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "NETWORKING_PLAN.md",
+    "NETWORKING_EXAMPLES.md",
+    "EXAMPLES.md",
+    "KERNEL_BASELINE.md",
+    "kernel-baseline.json",
+    "catalog.json (12.3 entry)",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/12.1-trace-network-driver-probe.md",
+    "src/12.2-trace-network-transmit-dma.md",
+    ".authoring/network-research/bcmgenet.c"
+  ],
+  "sources": [
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmgenet.c",
+    "https://docs.kernel.org/6.12/networking/napi.html",
+    "https://docs.kernel.org/6.12/core-api/dma-api-howto.html",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/net/core/dev.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/net/ipv4/udp.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/include/trace/events/napi.h"
+  ],
+  "scope_audit": {
+    "owned_paths": [
+      "src/12.3-trace-network-receive-napi.md",
+      "src/assets/12.3-genet-rx-ownership.svg",
+      "reviews/12.3-writer.json"
+    ],
+    "coverage": [
+      "Same 6.12.96-hfs1-v8 baseline and pinned source; no second kernel",
+      "MMIO RX descriptors/indexes versus RAM software CBs, DMA bytes and receive status",
+      "Initial allocation, DMA_FROM_DEVICE mapping, producer completion, replacement allocation/map before old unmap, descriptor update and consumer advance",
+      "Allocation/mapping failure preserves old buffer, drops and advances slot for reuse; receive validation, metadata removal and checksum/FCS handling",
+      "Queue isr1 scheduling and isr0 distinction; per-ring IRQ masking and budgeted NAPI; full-budget repoll versus complete/unmask",
+      "GRO, IPv4, UDP, socket queue, readiness and userspace copy; kernel poll versus application poll",
+      "Finite physical UDP exchange, before/after interface+driver+identified IRQ+NET_RX records, per-stage limits and sequence accounting",
+      "Explicit software-only substitute and unavailable hardware metrics",
+      "Optional discovered NAPI perf recording, no network/global-ftrace configuration changes",
+      "Symptoms and cleanup; no invented results"
+    ],
+    "code_includes": [
+      "../examples/network/udp_endpoint.cpp",
+      "../examples/network/udp_sender.py"
+    ],
+    "hashes": {
+      "src/12.3-trace-network-receive-napi.md": "e7cd6d08a45ac29a045870ab7ea9f7cbda0430392ef137f7adfb287bda2bcbb1",
+      "src/assets/12.3-genet-rx-ownership.svg": "b63a41ba453a5f498ef742300868bea0b37c6c40e1e743cd4ea7f14592dc5277"
+    },
+    "prose_words_excluding_fences": 1978
+  },
+  "code_files_read": [
+    ".authoring/network-research/bcmgenet.c",
+    "examples/network/udp_endpoint.cpp",
+    "examples/network/udp_sender.py",
+    "examples/network/wire.hpp",
+    "scripts/network_lab.py",
+    "scripts/build_network.py"
+  ],
+  "checks_performed": [
+    {
+      "check": "Read local pinned GENET RX refill/free/desc/poll/initialization/isr/registration paths; browsed official pinned source and Linux NAPI/DMA documentation",
+      "status": "source-reviewed"
+    },
+    {
+      "check": "Reviewed official UDP receive/copy and NAPI tracepoint fields",
+      "status": "source-reviewed"
+    },
+    {
+      "check": "Exact line ranges and CLI arguments matched current local sources",
+      "status": "passed writer static check"
+    },
+    {
+      "check": "SVG XML parse, balanced Markdown fences, full include targets, canonical local links",
+      "status": "passed writer static check"
+    },
+    {
+      "check": "Rendered page and SVG, downloadable include artifacts",
+      "status": "pending independent root review"
+    },
+    {
+      "check": "Native Linux build/runtime and optional perf recording",
+      "status": "not run by writer; root shared validation required"
+    }
+  ],
+  "source_claims": {
+    "descriptor_storage": "rx_bds derives from base+rdma_offset, cb->bd_addr in MMIO; rx_cbs kcalloc bookkeeping; status_64 is read from old skb data after unmap.",
+    "refill_failure": "Allocation/map error returns before free_rx_cb; old buffer remains mapped and next label advances consumer; stats dropped advances.",
+    "napi_completion": "Pinned callback calls napi_complete_done and rx_ring_int_enable only when work_done<budget, and returns work_done. No invented conditional return-value check.",
+    "irq_names": "Both request_irq calls use dev->name; page does not infer queue count or RX IRQ identity from matching name alone."
+  },
+  "hardware_status": "Physical Pi boot, PHY, Ethernet, GENET RX DMA/IRQ, GPIO and target perf tracing not exercised. No physical measurements or exact counter/latency outputs invented. Namespace route explicitly cannot validate GENET.",
+  "concerns": [
+    "Independent reviewer must inspect every rendered paragraph, command, source claim and diagram; render/download checks pending.",
+    "Optional perf availability and tracefs access are runtime-dependent and deliberately skippable without kernel changes.",
+    "Shared includes may change under root ownership; recheck report and final include hashes after shared edits.",
+    "No shared code, catalog/config, other pages, Git or deployment modified."
+  ],
+  "status": "writer complete; pending independent review and root build/render/runtime verification"
+}

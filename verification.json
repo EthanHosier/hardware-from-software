@@ -1,6 +1,6 @@
 {
-  "status": "complete: 53 pages independently reviewed; software checks passed; physical runtime unexercised",
-  "recorded_at": "2026-11-12T23:07:52.718155+00:00",
+  "status": "in progress: single-kernel migration checked; networking extension under independent review",
+  "recorded_at": "2026-11-13T00:06:04.451987+00:00",
   "baseline": {
     "pico_sdk": "2.3.1",
     "pico_sdk_commit": "079c6f39023649b154152db30f1d781e884879bc",
@@ -9,7 +9,8 @@
     "ninja": "1.11.1.4",
     "board": "pico2",
     "platform": "rp2350-arm-s",
-    "kernel_headers": "6.12.96+rpt-rpi-v8"
+    "kernel_release": "6.12.96-hfs1-v8",
+    "kernel_source_commit": "ae161617d7a4552fa91d03626b8d9f3696d17481"
   },
   "checks": {
     "pico_targets": 12,
@@ -30,12 +31,17 @@
     "linux_memory_host_runtime": "Passed hosted Ubuntu Linux: canonical memory_lab mappings/page-touch loop and child-only PROT_NONE write; parent reported expected SIGSEGV and exited0. Not a physical Pi run.",
     "inline_uart_diagnostics": "Exact 7.2 echo and10.2 raw diagnostics each passed four macOSPTYcases including deadlines and restored settings; physical UART unexercised.",
     "code_readability": "All C/C++ examples formatted with clang-format19.1.7; opaque locals replaced with descriptive names. Independent token/control-flow review and updated lesson/debugger references; existing software tests rerun. CMake whitespace-only reflow additionally configured and all12Pico targets rebuilt locally.",
-    "linux_arm64_native_compile": "passed all seven applications and both kernel modules against official6.12.96+rpt-rpi-v8 headers in CI43325840344"
+    "linux_arm64_native_compile": "All seven applications compiled natively on hosted Arm64 DebianBookworm; both modules cross-compiled against exact completed course-kernel build",
+    "single_kernel_ci_url": "https://github.com/EthanHosier/hardware-from-software/actions/runs/43330786612",
+    "single_kernel_ci_commit": "0e4391a31aeebb43208c47a59b3b491e5d033bc6",
+    "single_kernel_ci_result": "success: full Image/modules/dtbs, external hello/mybutton modules, DT overlay, complete modules_install staging; host and native Arm64 applications/tests pass",
+    "single_kernel_installer": "15 temporary-fixture tests passed; no Pi installed or booted",
+    "pico_single_kernel_regression": "All12 firmware targets rebuilt; host parser normal/sanitized and all11 serialPTY cases passed"
   },
   "physical_runtime": "not exercised; no verified connection to boards",
   "limitations": [
     "Compilation and code review do not establish GPIO wiring, electrical behaviour, SWD attachment, bus timings, physical sensor operation, or kernel module runtime/teardown.",
-    "Arm64 CI runs on a hosted Linux machine, not on a Raspberry Pi. Kernel modules are compiled against official Pi headers, never loaded into the runner kernel."
+    "Hosted Linux CI is not a Raspberry Pi. Modules compiled against the completed course-kernel output were never loaded; boot and physical GPIO/bus/network runtime remain unexercised."
   ],
   "example_sha256": {
     "examples/pico/bme280_i2c.cpp": "046d35699179087a5eacacd3c6cc77742f0fe3b6a585513b24ddc97d74fce02a",
@@ -75,5 +81,220 @@
     "main_lessons": 44,
     "appendix_pages": 9,
     "independent_review": "All 53 canonical pages accepted_source_review; included source and asset hashes enforced at build."
+  },
+  "single_kernel_build": {
+    "status": "full kernel and both external modules compiled",
+    "source_commit": "ae161617d7a4552fa91d03626b8d9f3696d17481",
+    "release": "6.12.96-hfs1-v8",
+    "cross_compile": "aarch64-linux-gnu-",
+    "build_machine": "x86_64",
+    "config_sha256": "b2649d8df035c91765e072e9a9e9bb9806251e675c6ca19067927230c043ad3e",
+    "image_sha256": "cf7a9bbaeaf4a969d32d4c090e7a67224d7c470f4bb9aa5469c61fd9d36296b2",
+    "dtb_sha256": "667c29bf3c5b3babb665fb008cd986abb9d0b3e3cb309c8f6025d751a4ef2fb1",
+    "module_symvers_sha256": "9f0904be5d38b4d9c215f3aa526123f2efe4e70f3481ccf1eecc9eedcdc7c07f",
+    "external_modules": {
+      "hello": "747b1882b76e32f1a1ebe04542f294d4c37ed43d5db019d5ffa4ab48af4e9335",
+      "mybutton": "047d327da03b5d3842b9e07a2f5bdf7b9c5e12530da0ffe81bc3038a66ba0d89"
+    },
+    "compiler": "aarch64-linux-gnu-gcc (Debian 12.2.0-14) 12.2.0",
+    "physical_runtime": "not exercised",
+    "installed_output_artifacts": 2274,
+    "config_diff": {
+      "CONFIG_CC_VERSION_TEXT": {
+        "before": "\"aarch64-linux-gnu-gcc-12 (Debian 12.2.0-14+deb12u1) 12.2.0\"",
+        "after": "\"aarch64-linux-gnu-gcc (Debian 12.2.0-14) 12.2.0\""
+      },
+      "CONFIG_LOCALVERSION": {
+        "before": "\"-v8\"",
+        "after": "\"-hfs1-v8\""
+      },
+      "CONFIG_XDP_SOCKETS": {
+        "before": "n",
+        "after": "y"
+      },
+      "CONFIG_XDP_SOCKETS_DIAG": {
+        "before": "absent",
+        "after": "n"
+      }
+    }
+  },
+  "networking": {
+    "ci_url": "https://github.com/EthanHosier/hardware-from-software/actions/runs/43334222277",
+    "ci_commit": "e7b9112",
+    "build": {
+      "status": "built; portable fixtures passed; privileged runtime is separate",
+      "host_kernel": "7.0.0-1017-azure",
+      "architecture": "x86_64",
+      "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "clang": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+      "libxdp": "1.4.2",
+      "libbpf": "1.3.0",
+      "sources": {
+        "examples/network/lab_xdp.bpf.c": "2e8748686a1a567a4354269a45ac2e4cbf8e118f51e57becd97b6e707b922bc7",
+        "examples/network/packet_ring.cpp": "0688e83feaa5daf4902c27f1766d65ea0937a75ce44c3cf3973403bc5d1328ba",
+        "examples/network/packet_rx.cpp": "cc4636e589f7f9910f2288237bd1190a648a44f92326947c72ab239e60a506b0",
+        "examples/network/udp_endpoint.cpp": "842eefc950f1865849c111005bb5e63991a810b4d4503990b20103d3dbb820c7",
+        "examples/network/udp_sender.py": "7bacc905d4eb5e4ea1442abf1368bbf2c7a6e9e81f107cdc4effd293b0ece770",
+        "examples/network/wire.hpp": "af9a7fe7864a87d715bf28dcac0638a133adbee592016cac0faba1a217b5c92e",
+        "examples/network/wire_test.cpp": "c5779c02a903e033b9d99e2eda938d2a5016e7ad5e6966595efc8553a8ca563b",
+        "examples/network/xdp_control.cpp": "0f4cb19b1d89609ce57ef411f7972b608ad1b7a2706239c4b5bd258e80c8e09f",
+        "examples/network/xsk_common.hpp": "f88b840e0e2728e9c4c95e55c84d7f236ab0875044558a5435962fb88a09991c",
+        "examples/network/xsk_receiver.cpp": "090176e3f27eaec9a2ff60d2c11d7567a0cde21a4710d52b29836a0f44767c2f",
+        "examples/network/xsk_responder.cpp": "c844a47b10d094f8cb00e388fe0c9dab30572baaf7c160f51eec6e280e34ce12"
+      },
+      "physical_runtime": "not exercised"
+    },
+    "runtime": {
+      "status": "all privileged namespace cases passed",
+      "kernel": "7.0.0-1017-azure",
+      "architecture": "x86_64",
+      "cases": [
+        {
+          "case": "kernel BPF verifier and classifier fixtures",
+          "status": "passed",
+          "details": "Pass/drop/unsupported/truncated/missing-XSK cases"
+        },
+        {
+          "case": "ordinary UDP replies",
+          "status": "passed",
+          "details": {
+            "event": "summary",
+            "sent": 3,
+            "received": 3,
+            "timeouts": 0,
+            "unexpected": 0,
+            "unreachable": 0,
+            "sequences": [
+              1,
+              2,
+              3
+            ],
+            "rtt_min_ms": 0.03745600000115701,
+            "rtt_median_ms": 0.04332500000003847,
+            "rtt_max_ms": 0.1172560000028966
+          }
+        },
+        {
+          "case": "malformed message rejected without terminating endpoint",
+          "status": "passed",
+          "details": {
+            "event": "summary",
+            "sent": 1,
+            "received": 1,
+            "timeouts": 0,
+            "unexpected": 0,
+            "unreachable": 0,
+            "sequences": [
+              1
+            ],
+            "rtt_min_ms": 0.09020800000314466,
+            "rtt_median_ms": 0.09020800000314466,
+            "rtt_max_ms": 0.09020800000314466
+          }
+        },
+        {
+          "case": "packet_rx captures numbered requests",
+          "status": "passed",
+          "details": "{\"event\":\"frame\",\"captured_bytes\":50,\"reason\":\"unfragmented IPv4 UDP\",\"destination_mac\":\"82:26:9f:af:c8:b0\",\"source_mac\":\"26:b9:c5:c6:47:11\",\"ether_type\":2048,\"source_ipv4\":\"198.18.0.1\",\"destination_ipv4\":\"198.18.0.2\",\"ipv4_header_bytes\":20,\"ipv4_total_bytes\":36,\"source_port\":46558,\"destination_port\":40420,\"payload_bytes\":8,\"sequence\":1}\n{\"event\":\"frame\",\"captured_bytes\":50,\"reason\":\"unfragmented IPv4 UDP\",\"destination_mac\":\"82:26:9f:af:c8:b0\",\"source_mac\":\"26:b9:c5:c6:47:11\",\"ether_type\":2048,\"source_ipv4\":\"198.18.0.1\",\"destination_ipv4\":\"198.18.0.2\",\"ipv4_header_bytes\":20,\"ipv4_total_bytes\":36,\"source_port\":46558,\"destination_port\":40420,\"payload_bytes\":8,\"sequence\":2}\n{\"event\":\"frame\",\"captured_bytes\":50,\"reason\":\"unfragmented IPv4 UDP\",\"destination_mac\":\"82:26:9f:af:c8:b0\",\"source_mac\":\"26:b9:c5:c6:47:11\",\"ether_type\":2048,\"source_ipv4\":\"198.18.0.1\",\"destination_ipv4\":\"198.18.0.2\",\"ipv4_header_bytes\":20,\"ipv4_total_bytes\":36,\"source_port\":46558,\"destination_port\":40420,\"payload_bytes\":8,\"sequence\":3}\n{\"event\":\"summary\",\"matched\":3,\"packets\":3,\"truncated\":0,\"kernel_drops\":0}\n"
+        },
+        {
+          "case": "packet_ring captures numbered requests",
+          "status": "passed",
+          "details": "{\"event\":\"frame\",\"captured_bytes\":50,\"reason\":\"unfragmented IPv4 UDP\",\"destination_mac\":\"82:26:9f:af:c8:b0\",\"source_mac\":\"26:b9:c5:c6:47:11\",\"ether_type\":2048,\"source_ipv4\":\"198.18.0.1\",\"destination_ipv4\":\"198.18.0.2\",\"ipv4_header_bytes\":20,\"ipv4_total_bytes\":36,\"source_port\":59599,\"destination_port\":40420,\"payload_bytes\":8,\"sequence\":1}\n{\"event\":\"frame\",\"captured_bytes\":50,\"reason\":\"unfragmented IPv4 UDP\",\"destination_mac\":\"82:26:9f:af:c8:b0\",\"source_mac\":\"26:b9:c5:c6:47:11\",\"ether_type\":2048,\"source_ipv4\":\"198.18.0.1\",\"destination_ipv4\":\"198.18.0.2\",\"ipv4_header_bytes\":20,\"ipv4_total_bytes\":36,\"source_port\":59599,\"destination_port\":40420,\"payload_bytes\":8,\"sequence\":2}\n{\"event\":\"frame\",\"captured_bytes\":50,\"reason\":\"unfragmented IPv4 UDP\",\"destination_mac\":\"82:26:9f:af:c8:b0\",\"source_mac\":\"26:b9:c5:c6:47:11\",\"ether_type\":2048,\"source_ipv4\":\"198.18.0.1\",\"destination_ipv4\":\"198.18.0.2\",\"ipv4_header_bytes\":20,\"ipv4_total_bytes\":36,\"source_port\":59599,\"destination_port\":40420,\"payload_bytes\":8,\"sequence\":3}\n{\"event\":\"summary\",\"matched\":3,\"packets\":5,\"blocks\":2,\"kernel_drops\":0,\"queue_freezes\":0}\n"
+        },
+        {
+          "case": "XDP pass and collision refusal",
+          "status": "passed",
+          "details": {
+            "sender": {
+              "event": "summary",
+              "sent": 3,
+              "received": 3,
+              "timeouts": 0,
+              "unexpected": 0,
+              "unreachable": 0,
+              "sequences": [
+                1,
+                2,
+                3
+              ],
+              "rtt_min_ms": 0.03734699999569102,
+              "rtt_median_ms": 0.041493000004777514,
+              "rtt_max_ms": 0.08714199999815264
+            },
+            "controller": "selected_flow pass=3 drop=0 redirect=0\n"
+          }
+        },
+        {
+          "case": "XDP redirect missing-XSK fallback",
+          "status": "passed",
+          "details": {
+            "sender": {
+              "event": "summary",
+              "sent": 3,
+              "received": 3,
+              "timeouts": 0,
+              "unexpected": 0,
+              "unreachable": 0,
+              "sequences": [
+                1,
+                2,
+                3
+              ],
+              "rtt_min_ms": 0.033760999997412,
+              "rtt_median_ms": 0.03966100000241113,
+              "rtt_max_ms": 0.08434899999798517
+            },
+            "controller": "selected_flow pass=3 drop=0 redirect=0\n"
+          }
+        },
+        {
+          "case": "selective XDP drop and ordinary path restored",
+          "status": "passed",
+          "details": "selected_flow pass=0 drop=2 redirect=0\n"
+        },
+        {
+          "case": "AF_XDP copy receive bypasses ordinary UDP socket",
+          "status": "passed",
+          "details": "seq=1\nseq=2\nseq=3\nxsk rx_dropped=0 rx_invalid_descs=0 tx_invalid_descs=0\nselected_flow pass=0 drop=0 redirect=3\nreceived=3 transmitted=0 pending=0\n"
+        },
+        {
+          "case": "AF_XDP reply checksums and small-pool TX completion",
+          "status": "passed",
+          "details": {
+            "sender": {
+              "event": "summary",
+              "sent": 3,
+              "received": 3,
+              "timeouts": 0,
+              "unexpected": 0,
+              "unreachable": 0,
+              "sequences": [
+                1,
+                2,
+                3
+              ],
+              "rtt_min_ms": 0.04771199999709097,
+              "rtt_median_ms": 0.0524789999971631,
+              "rtt_max_ms": 0.10802199999915274
+            },
+            "responder": "seq=1\nseq=2\nseq=3\nxsk rx_dropped=0 rx_invalid_descs=0 tx_invalid_descs=0\nselected_flow pass=0 drop=0 redirect=5\nreceived=3 transmitted=3 pending=0\n"
+          }
+        },
+        {
+          "case": "bounded FILL starvation and recovery",
+          "status": "passed",
+          "details": "seq=1\nseq=2\nseq=3\nseq=4\nseq=5\nseq=6\nseq=7\nseq=8\nseq=65\nseq=66\nseq=67\nseq=68\nseq=69\nseq=70\nseq=71\nseq=72\nxsk rx_dropped=56 rx_invalid_descs=0 tx_invalid_descs=0\nselected_flow pass=0 drop=0 redirect=72\nreceived=16 transmitted=0 pending=0\n"
+        },
+        {
+          "case": "timeout cleanup and subsequent reattach",
+          "status": "passed",
+          "details": "xsk rx_dropped=0 rx_invalid_descs=0 tx_invalid_descs=0\nselected_flow pass=0 drop=0 redirect=0\nreceived=0 transmitted=0 pending=0\nReceive deadline expired before COUNT packets\n"
+        }
+      ],
+      "environment": "Linux helper-owned veth/network namespace; generic XDP and AF_XDP copy mode",
+      "physical_runtime": "not exercised"
+    },
+    "arm64_build": "Native DebianBookworm GCC12, clang14, libxdp1.3.1/libbpf1.1.2 build passed; hosted kernel runtime is separately identified below."
   }
 }

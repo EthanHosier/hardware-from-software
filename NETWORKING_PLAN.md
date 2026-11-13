@@ -1,6 +1,6 @@
-# Networking extension: proposed Chapters 11–13
+# Networking extension: Chapters 11–13
 
-Status: networking lessons remain a proposal awaiting approval. The user separately authorised migrating all existing lessons to one AF_XDP-enabled kernel baseline. That baseline is established in Chapter 5 and reused here; networking authoring has not started.
+Status: the user authorised the single-kernel migration and completion of all networking lessons. Implementation and independent review are in progress. The baseline is established in Chapter 5 and reused here.
 
 ## Goal and shape
 

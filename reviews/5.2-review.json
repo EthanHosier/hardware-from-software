@@ -2,7 +2,7 @@
   "id": "5.2",
   "reviewer": "independent coordinator",
   "status": "accepted_source_review",
-  "canonical_sha256": "d95651000629b0d99e4e97d548c06c6bb92004e518da773854a017ed038e7a19",
+  "canonical_sha256": "86f4b9ff7ef86f895386e08f2648480f7e45fb1f4c03dbbbc7e0b19019d57ced",
   "included_source_sha256": {
     "examples/linux/hello.cpp": "a97015c4e50f46a66fe2785e755e8d9e4e73f9efab32ec2c2ef9eac8d2215af1"
   },
@@ -33,10 +33,12 @@
     "Independently parsed all7shellblocks with sh -n; verified mktemp suffix behavior against Bookworm coreutilsmanual, and environmentrecord variable survives under documented same-shell requirement.",
     "Actual source uses hosted iostream/stdout; narrative correctly interprets loader and Exitstatus0 as expected output, not measured physicalPi result.",
     "No diagrams required for terminal setup; no physical tests or package installation performed. Root exact-render/include/download/link checks precede publication.",
-    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests.",
+    "Single-kernel migration substantively audited by separate kernel_audit reviewer: reviews/kernel-baseline-review.json accepted after full kernel CI43330786612; setup/build/recovery commands and unchanged existing programs reviewed. No physical run claimed."
   ],
   "findings": [],
   "repairs": [],
   "hardware_status": "Source/commands reviewed and existing hosted nativeArm64 compilation evidence applies. PhysicalPiSSH/package installation/executable runtime/headerchecks/moduleloading not exercised.",
-  "readability_review": "reviews/readability-review.json"
+  "readability_review": "reviews/readability-review.json",
+  "single_kernel_review": "reviews/kernel-baseline-review.json"
 }

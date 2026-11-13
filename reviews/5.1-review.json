@@ -2,7 +2,7 @@
   "id": "5.1",
   "reviewer": "root (independent of fresh dedicated writer)",
   "status": "accepted_source_review",
-  "canonical_sha256": "3b7e4439b9d8abc1be01ae83ded5a36fd2fab5d648e5323304c97480c070989c",
+  "canonical_sha256": "806dba42f8a9e4355f28e15d9725ab30fb25f9a64ed8c00cd1db2907134a5d7b",
   "included_source_sha256": {},
   "asset_sha256": {},
   "paths_read": [
@@ -28,7 +28,8 @@
     "All10 shell code blocks independently parse with zsh -n; no Pi/SSH/imaging/update/power commands executed.",
     "Isolated temporary keygen test reproduced missing-parent failure. Original writer added mkdir/chmod; rechecked text and temporary fresh-directory generation succeeds with privatekey0600. Temporary test files removed.",
     "Official HALT table confirms0long10short; status bits/update sequence sourcechecked.",
-    "No program source or new wiring diagram required; existing board reference remains linked."
+    "No program source or new wiring diagram required; existing board reference remains linked.",
+    "Single-kernel migration substantively audited by separate kernel_audit reviewer: reviews/kernel-baseline-review.json accepted after full kernel CI43330786612; setup/build/recovery commands and unchanged existing programs reviewed. No physical run claimed."
   ],
   "findings": [
     {
@@ -40,5 +41,6 @@
     "Same-writer SSHdirectory prerequisite correction"
   ],
   "hardware_status": "Shell syntax and isolated host key-file workflow tested; physical Pi/card/network/SSH/update/shutdown not exercised",
-  "reviewed_at": "2026-11-11T08:11:55.691429+00:00"
+  "reviewed_at": "2026-11-11T08:11:55.691429+00:00",
+  "single_kernel_review": "reviews/kernel-baseline-review.json"
 }

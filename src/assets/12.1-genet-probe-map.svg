@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="660" viewBox="0 0 960 660" role="img" aria-labelledby="title desc">
+<title id="title">GENET probe, mapped resources and PHY</title>
+<desc id="desc">Device Tree selects the platform driver. Probe creates RAM software objects and maps controller resources. Descriptor slots are MMIO, while packet payloads are in RAM reached by DMA. MDIO manages the external PHY; RGMII transports packet data.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto-start-reverse"><path d="M0 0L8 4L0 8" fill="none" stroke="#34495e" stroke-width="1.5"/></marker></defs>
+<rect width="960" height="660" rx="12" fill="#f8fafc"/>
+<g font-family="system-ui,sans-serif" fill="#172b4d">
+<text x="30" y="36" font-size="23" font-weight="700">Pi 4 GENET: identity → probe → existing driver ownership</text>
+<g stroke="#49627d" stroke-width="2" fill="#e8effa">
+<rect x="30" y="60" width="270" height="100" rx="8"/>
+<rect x="350" y="60" width="250" height="100" rx="8"/>
+<rect x="650" y="60" width="280" height="100" rx="8"/>
+<rect x="30" y="230" width="390" height="150" rx="8" fill="#e6f4ec"/>
+<rect x="500" y="230" width="430" height="150" rx="8" fill="#fff0d6"/>
+<rect x="30" y="460" width="390" height="145" rx="8" fill="#e6f4ec"/>
+<rect x="500" y="455" width="210" height="100" rx="8" fill="#fff0d6"/>
+<rect x="770" y="455" width="160" height="100" rx="8" fill="#fff0d6"/>
+</g>
+<g font-size="18">
+<text x="45" y="87" font-weight="700">Device Tree</text><text x="45" y="114">compatible / reg / IRQs</text><text x="45" y="140">phy-handle / phy-mode</text>
+<text x="367" y="88" font-weight="700">bcmgenet_probe</text><text x="367" y="116">match → allocate → map</text><text x="367" y="142">MDIO init → register</text>
+<text x="668" y="88" font-weight="700">net_device (RAM)</text><text x="668" y="116">registered Linux interface</text><text x="668" y="142">open → PHY connection/start</text>
+<text x="48" y="258" font-weight="700">Kernel software (RAM)</text><text x="48" y="288">priv / TX and RX control blocks</text><text x="48" y="318">priv-&gt;base: virtual MMIO pointer</text><text x="48" y="348">readl_relaxed / writel_relaxed</text>
+<text x="518" y="258" font-weight="700">GENET controller MMIO resource</text><text x="518" y="288">MAC + DMA control registers</text><text x="518" y="318">Descriptor slots: addr + length/status</text><text x="518" y="348">dmadesc_set / register read helpers</text>
+<text x="48" y="490" font-weight="700">Packet payload buffers (RAM)</text><text x="48" y="520">CPU accesses kernel virtual pointers</text><text x="48" y="550">DMA API supplies device DMA addresses</text><text x="48" y="580">Separate from MMIO descriptor pointers</text>
+<text x="520" y="483" font-weight="700">External PHY</text><text x="520" y="511">link negotiation</text><text x="520" y="537">cable signalling</text>
+<text x="790" y="487" font-weight="700">Magnetics</text><text x="790" y="515">RJ45 / cable</text><text x="790" y="541">LAN partner</text>
+</g>
+<g fill="none" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)">
+<path d="M300 110H348"/><path d="M600 110H648"/><path d="M390 160V199H225V228"/><path d="M420 300H498"/><path d="M650 380V453"/><path d="M710 505H768"/>
+<path d="M500 358L420 489" marker-start="url(#arrow)"/>
+</g>
+<text x="431" y="287" font-size="15">MMIO</text><text x="669" y="407" font-size="16">MDIO: management</text><text x="669" y="431" font-size="16">RGMII: packet data</text><text x="402" y="430" font-size="16">DMA payload</text>
+<text x="30" y="637" font-size="17">Conceptual map • resource address ≠ virtual MMIO mapping ≠ payload DMA address</text>
+</g></svg>

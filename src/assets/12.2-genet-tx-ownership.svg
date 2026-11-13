@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="720" viewBox="0 0 900 720" role="img" aria-labelledby="title desc">
+<title id="title">GENET transmit: source call path and buffer ownership</title>
+<desc id="desc">Kernel packet bytes reside in RAM. DMA mapping produces device addresses. The driver writes GENET descriptors and producer index through MMIO. After hardware consumer-index progress, the driver unmaps RAM and releases the skb. Failed mapping unwinds without producer publication.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#344458"/></marker></defs>
+<rect width="900" height="720" rx="12" fill="#f7f9fc"/>
+<g font-family="system-ui,sans-serif" fill="#172b43">
+<text x="30" y="35" font-size="22" font-weight="700">GENET TX — frozen Pi 4 driver, 6.12.96-hfs1-v8</text>
+<text x="30" y="62" font-size="15">Conceptual lifetime; not a measured timing trace. Downward arrows show progress.</text>
+<rect x="30" y="86" width="405" height="48" rx="6" fill="#dae8fc" stroke="#8aaccb"/>
+<text x="46" y="116" font-size="17" font-weight="600">Source call path</text>
+<rect x="455" y="86" width="415" height="48" rx="6" fill="#d9eee4" stroke="#8bb99e"/>
+<text x="471" y="116" font-size="17" font-weight="600">Who may use packet RAM?</text>
+<g fill="#fff" stroke="#9aabbd">
+<rect x="30" y="150" width="405" height="68" rx="6"/><rect x="455" y="150" width="415" height="68" rx="6"/>
+<rect x="30" y="246" width="405" height="78" rx="6"/><rect x="455" y="246" width="415" height="78" rx="6"/>
+<rect x="30" y="352" width="405" height="92" rx="6"/><rect x="455" y="352" width="415" height="92" rx="6"/>
+<rect x="30" y="472" width="405" height="72" rx="6"/><rect x="455" y="472" width="415" height="72" rx="6"/>
+<rect x="30" y="572" width="405" height="82" rx="6"/><rect x="455" y="572" width="415" height="82" rx="6"/>
+</g>
+<g font-size="16">
+<text x="46" y="177">ndo_start_xmit → bcmgenet_xmit</text><text x="46" y="201">→ bcmgenet_add_tsb</text>
+<text x="471" y="177">CPU prepares skb head / page fragments.</text><text x="471" y="201">User buffer is a separate socket lifetime.</text>
+<text x="46" y="273">dma_map_single / skb_frag_dma_map</text><text x="46" y="298">DMA_TO_DEVICE; check mapping errors</text>
+<text x="471" y="273">Mapped RAM retained for device reads.</text><text x="471" y="298">Do not modify or free in-flight storage.</text>
+<text x="46" y="379">dmadesc_set → MMIO address + status</text><text x="46" y="403" font-size="14">bcmgenet_tdma_ring_writel → TDMA_PROD_INDEX</text><text x="46" y="427">via bcmgenet_writel / writel_relaxed</text>
+<text x="471" y="379">Producer publication exposes new work.</text><text x="471" y="403">Descriptors: GENET MMIO region</text><text x="471" y="427">Payload: RAM at mapped DMA addresses</text>
+<text x="46" y="500">bcmgenet_tx_poll</text><text x="46" y="524">→ __bcmgenet_tx_reclaim</text>
+<text x="471" y="500">TDMA_CONS_INDEX shows HW progress.</text><text x="471" y="524">Completion is not peer receipt.</text>
+<text x="46" y="599">bcmgenet_free_tx_cb → dma_unmap_*</text><text x="46" y="624">last control block → dev_consume_skb_any</text>
+<text x="471" y="599">Mapping released; skb reclaimed.</text><text x="471" y="624">Descriptor capacity becomes available.</text>
+</g>
+<g stroke="#344458" stroke-width="2" marker-end="url(#arrow)">
+<path d="M232 218V240"/><path d="M232 324V346"/><path d="M232 444V466"/><path d="M232 544V566"/>
+<path d="M662 218V240"/><path d="M662 324V346"/><path d="M662 444V466"/><path d="M662 544V566"/>
+</g>
+<text x="30" y="686" font-size="15">Mapping failure → unmap successful mappings + free skb; no producer publication for that packet.</text>
+<text x="30" y="708" font-size="13">Software control blocks (tx_cbs) live in RAM; they are not the MMIO hardware descriptors.</text>
+</g></svg>

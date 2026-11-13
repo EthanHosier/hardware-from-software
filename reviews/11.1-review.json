@@ -1,0 +1,39 @@
+{
+  "id": "11.1",
+  "reviewer": "root, separate from fresh-context writer",
+  "status": "accepted_source_review",
+  "reviewed_at": "2026-11-13T00:07:02.143579+00:00",
+  "canonical_sha256": "cf6ac623c76a1d9c6d7bcef03434fc170cd90ffd7f822841c11c7d17f76eb3da",
+  "included_source_sha256": {},
+  "asset_sha256": {
+    "src/assets/0.3-pi4-top.svg": "e0706ba370ef9a43249be5ef3b6b080fec13bf928a9d2a1b7d20ef18f4622a52",
+    "src/assets/11.1-network-path.svg": "4146b7d08cdab3cd27af52234f83f922f599a57d7b794221700e50e23cf7dea1"
+  },
+  "reviewed_dependency_sha256": {
+    "scripts/network_lab.py": "894dbc5a8b195e7a0f81056ea5da9e4db737efcee2f58437051b61363f9a401d"
+  },
+  "paths_read": [
+    "src/11.1-identify-network-hardware.md",
+    "reviews/11.1-writer.json",
+    "scripts/network_lab.py",
+    "src/assets/11.1-network-path.svg",
+    "src/assets/0.3-pi4-top.svg",
+    "KERNEL_BASELINE.md"
+  ],
+  "scope_coverage": "Physical board labels and conceptual CPU/RAM/MAC/RGMII/MDIO/PHY/magnetics distinctions; discovered GENET/link/address/route; verified WiFi management; namespace topology, checksum offload scope, finite reachability checks, ownership refusal and cleanup.",
+  "sources_checked": [
+    "https://magazine.raspberrypi.com/articles/raspberry-pi-4-in-detail",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts",
+    "https://www.kernel.org/doc/html/v6.12/networking/phy.html",
+    "https://www.ti.com/lit/ug/tidues1a/tidues1a.pdf"
+  ],
+  "checks_performed": [
+    "Read every word, helper implementation, both SVGs and all commands. Helper checks ownership identity and collisions before destructive cleanup; no physical NIC mutation.",
+    "Reviewed actual namespace runtime evidence from CI43333268173: topology creation, repeated UDP, ARP/ICMP, cleanup passed; later AF_XDP repeat-bind failure is unrelated and remains open.",
+    "Viewed rendered lesson and full conceptual SVG in browser: legible labels, correct links and no clipped geometry. Static final include/link/download checks required by publish.py.",
+    "Course kernel full build and exact feature delta independently accepted in kernel-baseline-review.json."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source reviewed; Linux hosted namespace setup/runtime checked. Pi hardware identity, wired ingress, WiFi route and physical operation not exercised."
+}

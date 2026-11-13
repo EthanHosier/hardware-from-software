@@ -1,0 +1,83 @@
+{
+  "id": "12.2",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "NETWORKING_PLAN.md",
+    "KERNEL_BASELINE.md",
+    "NETWORKING_EXAMPLES.md",
+    "EXAMPLES.md",
+    "catalog.json (12.1\u201312.3 entries)",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    ".authoring/network-research/bcmgenet.c"
+  ],
+  "sources": [
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmgenet.c",
+    "https://docs.kernel.org/6.12/core-api/dma-api-howto.html",
+    "https://docs.kernel.org/networking/skbuff.html",
+    "https://docs.kernel.org/6.12/driver-api/device-io.html"
+  ],
+  "scope_audit": {
+    "owned_paths": [
+      "src/12.2-trace-network-transmit-dma.md",
+      "src/assets/12.2-genet-tx-ownership.svg",
+      "reviews/12.2-writer.json"
+    ],
+    "prose_words_excluding_fences": 1050,
+    "result": "Read-only pinned-source TX walkthrough; skb head/fragments; DMA direction/mapping errors; MMIO descriptors versus software CBs and payload RAM; producer batching; completion/unmap/reclamation; address spaces; visibility, ownership and volatile/sleep limits; namespace finite exchange and optional physical counter procedure; offload and evidence limitations; cleanup.",
+    "code_includes": [
+      "../examples/network/udp_endpoint.cpp",
+      "../examples/network/udp_sender.py"
+    ],
+    "hashes": {
+      "src/12.2-trace-network-transmit-dma.md": "971180b6f4a2c6fdcb3516c27ad1c5ec7df5c622d44c736fa8a70af2103f086b",
+      "src/assets/12.2-genet-tx-ownership.svg": "1bf51b1e5e5a669143b0fd309b9d1d3598ffe6b597b1205735c15fdc285292c4"
+    }
+  },
+  "code_files_read": [
+    "examples/network/udp_endpoint.cpp",
+    "examples/network/udp_sender.py",
+    "examples/network/wire.hpp",
+    "scripts/network_lab.py",
+    "scripts/build_network.py"
+  ],
+  "checks_performed": [
+    {
+      "check": "Pinned-source map/unmap paths, TX publication, descriptor address initialization, accessor chain, reclaim and callback reviewed locally; official pinned source browsed",
+      "status": "passed source review"
+    },
+    {
+      "check": "Actual three-line source fragment equality, full include targets, balanced fences and SVG XML parse",
+      "status": "passed writer static checks"
+    },
+    {
+      "check": "Canonical previous/next catalog paths",
+      "status": "passed; 12.3 sibling pending authoring at initial check"
+    },
+    {
+      "check": "Shown endpoint/sender/helper CLIs checked against existing sources",
+      "status": "passed source inspection"
+    },
+    {
+      "check": "Linux native build and bounded namespace endpoint/sender runtime",
+      "status": "pending root CI; authoring host is macOS, no Linux namespace or GENET runtime claimed"
+    },
+    {
+      "check": "Rendered SVG and page/download verification",
+      "status": "pending root independent review"
+    }
+  ],
+  "source_claims": {
+    "descriptor_storage": "tx_bds derives from mapped priv->base + tdma_offset; cb->bd_addr points into that region; dmadesc_set uses MMIO accessors. tx_cbs is separately kcalloc software bookkeeping.",
+    "publication": "bcmgenet_tdma_ring_writel -> bcmgenet_writel -> writel_relaxed on Arm64; source has no explicit dma_wmb in bcmgenet_xmit; page does not invent one or claim volatile is sufficient.",
+    "errors": "BUSY retains skb; add_tsb allocation failure consumes; DMA map failure unmaps successful mappings and frees without producer publication.",
+    "reclaim": "TDMA_CONS_INDEX progress drives per-CB unmap; last_cb returns skb for consume; completion is not peer receipt."
+  },
+  "hardware_status": "Physical Pi boot, Ethernet, PHY, GENET DMA and GPIO runtime not exercised. Namespace experiment is a reader procedure and explicitly not GENET evidence. No measured output or timing invented.",
+  "concerns": [
+    "Root must run native Linux build and bounded namespace integration, then independently inspect rendered lesson, SVG and downloads.",
+    "Shared example files may change before integration; refresh include hashes/review after final shared source edits.",
+    "No Git, publication, shared examples, configuration or other lesson files modified."
+  ],
+  "status": "writer complete; pending root independent review and Linux/build/render checks"
+}

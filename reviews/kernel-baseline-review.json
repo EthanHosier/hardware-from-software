@@ -1,0 +1,134 @@
+{
+  "status": "accepted_source_review",
+  "reviewed_at": "2026-11-13T00:06:24.670371+00:00",
+  "reviewer": "independent kernel_audit agent",
+  "scope": "Single AF_XDP-enabled kernel from initial Linux setup and compatibility of existing programs; new networking lesson implementation is reviewed separately.",
+  "source_review": {
+    "files": [
+      "kernel-baseline.json",
+      "scripts/build_pi_kernel.py",
+      "scripts/install_pi_kernel.py",
+      "scripts/test_pi_kernel_install.py",
+      ".github/workflows/examples.yml",
+      "KERNEL_BASELINE.md",
+      "AUTHORING_GUIDE.md",
+      "PLAN.md",
+      "NETWORKING_PLAN.md",
+      "EXAMPLES.md",
+      "README.md",
+      "catalog.json",
+      "scripts/build.py",
+      "src/5.1-prepare-raspberry-pi-os-and-ssh.md",
+      "src/5.2-verify-the-linux-development-environment.md",
+      "src/8.2-build-and-load-the-smallest-external-module.md",
+      "src/8.3-describe-the-device-and-bind-the-driver.md",
+      "src/8.4-convert-gpio-events-into-driver-state.md",
+      "src/8.5-expose-dev-mybutton-to-a-c-client.md",
+      "src/8.6-make-failure-and-teardown-behaviour-explicit.md",
+      "src/9.3-trace-a-real-kernel-mmio-mapping.md",
+      "src/appendix-b.md",
+      "src/appendix-e.md",
+      "src/verification.md"
+    ],
+    "existing_programs_read": [
+      "hello.cpp",
+      "gpio_events.cpp",
+      "i2c_client.cpp",
+      "memory_lab.cpp",
+      "button_client.cpp",
+      "capstone.cpp",
+      "serial_client.cpp",
+      "kernel/hello.c",
+      "kernel/mybutton.c",
+      "kernel/hardware-button-overlay.dts"
+    ],
+    "compatibility": "No changes to existing example sources justified. XDP_SOCKETS makes an AF_XDP socket family available; it neither attaches an XDP program nor changes normal packet delivery. Existing GPIOv2, I2C_RDWR, serial termios/poll, memory syscalls and module APIs remain the same at the exact source revision. Pico builds are independent of Linux."
+  },
+  "repairs_reviewed": [
+    "Replace nonexistent custom-release APT headers and package-provenance queries with completed native source/output tree and source/config record.",
+    "Use full kernel Image/modules/dtbs build and Module.symvers; do not substitute modules_prepare or install x86 host tools on Pi.",
+    "Bind module and overlay artifacts to build report; reject dirty source and mismatched config/release.",
+    "Select private image, DTB and overlays before any original dtoverlay directives; leave cmdline and stock recovery files intact.",
+    "Preserve exact byte backup; disable stock auto_initramfs for narrowly checked direct ext4 microSD root.",
+    "Include hidden .config in CI evidence and archive all native build/install contract files.",
+    "Require explicit empty LOCALVERSION for every reader kbuild query/build/clean, preventing appended + and subsequent module ABI drift.",
+    "Verify installed Image/DTB/overlays, module presence/dependency index and both symlinks before claiming no-op; refuse corrupt installations.",
+    "Recovery docs no longer promise rerunning the refusing installer automatically repairs partial/moved build trees."
+  ],
+  "checks_performed": [
+    {
+      "command": "python3 scripts/test_pi_kernel_install.py",
+      "result": "15 tests passed on reviewer Mac using temporary fixtures; no root access/hardware writes.",
+      "scope": "Real file copy, symlink, configuration transform, backup restoration, idempotent path, artifacts mismatch and failure refusal; platform/process results mocked."
+    },
+    {
+      "command": "Pinned scripts/setlocalversion executed in temporary untagged Git source and generated auto.conf",
+      "result": "With CONFIG_LOCALVERSION_AUTO disabled, unset LOCALVERSION emitted 6.12.96-hfs1-v8+; explicitly empty LOCALVERSION emitted exact 6.12.96-hfs1-v8. Assertions passed.",
+      "scope": "Exact official source behavior, not full kernel compilation."
+    },
+    {
+      "command": "Global source search for reader make kernelrelease/module/clean commands",
+      "result": "All in 5.2,8.2,8.3,8.6,9.3,Appendix B, EXAMPLES.md and KERNEL_BASELINE.md pass explicit LOCALVERSION=."
+    },
+    {
+      "command": "Latest workflow source review",
+      "result": "Kernel build and staging commands unchanged. Added change detection gates expensive kernel job; workflow_dispatch always runs kernel build. Linux-host and native Arm64 userspace jobs retain existing checks. Installer fixtures rerun independently: all15 passed."
+    }
+  ],
+  "pending": [],
+  "sources_checked": [
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/net/xdp/Kconfig",
+    "https://docs.kernel.org/6.12/kbuild/modules.html",
+    "https://www.raspberrypi.com/documentation/computers/linux_kernel.html",
+    "https://www.raspberrypi.com/documentation/computers/config_txt.html",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/scripts/setlocalversion"
+  ],
+  "physical_runtime": "Not exercised: no Pi imaging, boot, SSH, module loading, GPIO, inter-board bus or Ethernet hardware validation.",
+  "kernel_build_evidence": {
+    "ci_url": "https://github.com/EthanHosier/hardware-from-software/actions/runs/43330786612",
+    "ci_commit": "0e4391a31aeebb43208c47a59b3b491e5d033bc6",
+    "ci_conclusion": "success; linux-host, arm64-userspace and pi-kernel-build jobs all succeeded",
+    "source_commit": "ae161617d7a4552fa91d03626b8d9f3696d17481",
+    "release": "6.12.96-hfs1-v8",
+    "build_platform": "Debian Bookworm x86_64 with GCC 12.2 AArch64 cross compiler; full Image/modules/dtbs and staged modules_install",
+    "config_diff": {
+      "CONFIG_CC_VERSION_TEXT": {
+        "before": "\"aarch64-linux-gnu-gcc-12 (Debian 12.2.0-14+deb12u1) 12.2.0\"",
+        "after": "\"aarch64-linux-gnu-gcc (Debian 12.2.0-14) 12.2.0\""
+      },
+      "CONFIG_LOCALVERSION": {
+        "before": "\"-v8\"",
+        "after": "\"-hfs1-v8\""
+      },
+      "CONFIG_XDP_SOCKETS": {
+        "before": "n",
+        "after": "y"
+      },
+      "CONFIG_XDP_SOCKETS_DIAG": {
+        "before": "absent",
+        "after": "n"
+      }
+    },
+    "config_review": "Independently compared every config setting against the original extracted official package. Exactly four differences: AF_XDP enabled, intentional unique release, compiler version text, previously absent XDP diagnostics symbol explicitly disabled. No other feature changed.",
+    "artifact_hash_checks": "Downloaded Image (27,709,952 bytes), Pi4 DTB (56,369 bytes), .config, Module.symvers (1,249,915 bytes) and both external modules exactly match build-report SHA256 values. Report inventories 2,274 in-tree module/overlay artifacts; those inventory members were not all uploaded and were validated during build/install script execution.",
+    "image_sha256": "cf7a9bbaeaf4a969d32d4c090e7a67224d7c470f4bb9aa5469c61fd9d36296b2",
+    "config_sha256": "b2649d8df035c91765e072e9a9e9bb9806251e675c6ca19067927230c043ad3e",
+    "module_symvers_sha256": "9f0904be5d38b4d9c215f3aa526123f2efe4e70f3481ccf1eecc9eedcdc7c07f",
+    "external_modules": {
+      "hello": "747b1882b76e32f1a1ebe04542f294d4c37ed43d5db019d5ffa4ab48af4e9335",
+      "mybutton": "047d327da03b5d3842b9e07a2f5bdf7b9c5e12530da0ffe81bc3038a66ba0d89"
+    },
+    "external_module_vermagic": "Both are ELF64 AArch64 and record 6.12.96-hfs1-v8 SMP preempt mod_unload modversions aarch64; independently read from binary metadata.",
+    "tested_source_match": "Current scripts/build_pi_kernel.py and kernel-baseline.json are byte-identical to successful CI commit."
+  },
+  "findings": [],
+  "publication_responsibility": "Root completes final metadata, old-page accepted hashes and publication/build/link/archive checks; this source and build review does not itself certify deployment.",
+  "reviewed_kernel_contract_sha256": {
+    "kernel-baseline.json": "d08e7a3b72534485d11455b3d417e1d8efd80ff5acbf8a0e446c298faca08cb9",
+    "scripts/build_pi_kernel.py": "0e65825f1a2afc0a622fa5e85cf4ca6b5e5323ac0fd510299d1037fb3eef5fd3",
+    "scripts/install_pi_kernel.py": "ad79387d77238f6bb85c4935fdc8fc75d211cb6aa338c8f2791340f074cff184",
+    "scripts/test_pi_kernel_install.py": "156b97e8c0c54b28bde73139a22d39868788287d5e07e4b30737a3f6c2ece9fc",
+    "KERNEL_BASELINE.md": "cda696b3605314a850e887748b540362dc2ad5e8680ac5cf0fdf42a37684edc0",
+    ".github/workflows/examples.yml": "8b443844fa7a33a412349310520fbbdee1db39a5d1593a6ca0d2b6ceb7a2764b"
+  }
+}

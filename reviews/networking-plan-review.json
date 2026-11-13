@@ -1,0 +1,81 @@
+{
+  "id": "networking-plan",
+  "reviewer": "independent agent /root/network_plan_review",
+  "review_date": "2026-11-12",
+  "status": "accepted_plan_review",
+  "approval_state": "awaiting_user_authorisation_to_implement",
+  "plan_path": "NETWORKING_PLAN.md",
+  "canonical_sha256": "b24e495c8089258f4a6f9a167aa45651d243a1c96e28727d6845b932fa9d6b26",
+  "scope": "Three proposed chapters, 12 lessons; planning and research only. No page/code/catalog/deployment/kernel installation performed.",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "NETWORKING_PLAN.md",
+    ".deps/inspect-linux-headers-6.12.96+rpt-rpi-v8/usr/src/linux-headers-6.12.96+rpt-rpi-v8/.config",
+    ".deps/inspect-linux-headers-6.12.96+rpt-rpi-v8/usr/src/linux-headers-6.12.96+rpt-rpi-v8/include/config/auto.conf"
+  ],
+  "sources_checked": [
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmgenet.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmgenet.h",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm64/configs/bcm2711_defconfig",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/net/xdp/Kconfig",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/net/core/dev.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/veth.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/init/Kconfig",
+    "https://docs.kernel.org/6.12/networking/af_xdp.html",
+    "https://docs.kernel.org/6.12/networking/packet_mmap.html",
+    "https://docs.kernel.org/6.12/networking/napi.html",
+    "https://raw.githubusercontent.com/xdp-project/xdp-tools/main/lib/libxdp/README.org",
+    "https://raw.githubusercontent.com/xdp-project/xdp-tools/main/headers/xdp/xsk.h",
+    "https://doc.dpdk.org/guides/linux_gsg/linux_drivers.html",
+    "https://www.raspberrypi.com/documentation/computers/config_txt.html"
+  ],
+  "independent_findings": [
+    {
+      "finding": "Frozen GENET lacks native XDP and AF_XDP zero-copy driver hooks.",
+      "evidence": "No xdp/xsk symbols in bcmgenet.c/.h; net_device_ops has neither ndo_bpf nor ndo_xsk_wakeup.",
+      "resolution": "Main route explicitly generic/SKB XDP plus AF_XDP copy; native and zero-copy only conceptual comparison."
+    },
+    {
+      "finding": "Actual packaged baseline disables CONFIG_XDP_SOCKETS. Namespace/veth cannot repair this.",
+      "evidence": {
+        "config_path": ".deps/inspect-linux-headers-6.12.96+rpt-rpi-v8/usr/src/linux-headers-6.12.96+rpt-rpi-v8/.config",
+        "sha256": "bd7b3e58b0f94b0fbeb78aeb0ccb522fa18970c41d7a7ef807036c62f171f9ba",
+        "line": "# CONFIG_XDP_SOCKETS is not set"
+      },
+      "resolution": "Dedicated 13.3 builds uniquely named enabled kernel with side-by-side boot/module/DTB/overlay profile, reader rollback, and explicit enabled Linux alternative."
+    },
+    {
+      "finding": "Standard kernel install recipes can overwrite shared DTBs/overlays, breaking clean stock rollback.",
+      "resolution": "Final plan explicitly preserves stock kernel/modules/DTB/overlays and all selections, and requires firmware-supported separate paths validated during implementation."
+    },
+    {
+      "finding": "11.1 initially required application packet before 11.2 introduced endpoint.",
+      "resolution": "11.1 now uses bounded existing connectivity tools; numbered application begins 11.2."
+    },
+    {
+      "finding": "AF_XDP sockets must match actual receive device and queue.",
+      "resolution": "13.4 explicitly discovers queues and maps matching sockets; namespace uses simple specified topology."
+    },
+    {
+      "finding": "Capture rings, AF_XDP copy and userspace PMDs have different stack/copy/kernel involvement.",
+      "resolution": "Plan teaches three axes, separate passive capture comparison and matched responder comparison, and qualifies DPDK bifurcated/kernel-backed PMDs."
+    }
+  ],
+  "scope_coverage": {
+    "hardware_and_diagrams": "Physical MAC/PHY/connector/Wi-Fi labels separate from conceptual CPU/RAM/DMA layout.",
+    "progression": "Normal UDP and checked frame decoder precede real GENET source tracing, mapped capture, selective generic XDP, kernel feature enablement, AF_XDP RX/TX ownership and comparison.",
+    "hardware_feasibility": "Existing Mac and Pi4 plus cable/reachable LAN port suffice; no W5500, extra board or Mac Ethernet adapter assumed. Software-only namespace path has explicit limits.",
+    "management_and_cleanup": "Namespace-first active experiments, discovered interfaces/routes, separate Wi-Fi SSH management for physical repeat, owned attachment identity, stock-profile return and offline boot rollback.",
+    "verification": "Fixtures and sanitizers, Linux/BPF builds, privileged verifier/namespace runtime, enabled-kernel artifact checks, failure/recovery, per-page independent reviews, rendered/public checks.",
+    "honesty": "No physical runtime, Pi boot, zero-copy, throughput or privileged runtime pass inferred from source inspection or compilation."
+  },
+  "remaining_implementation_gates": [
+    "Pin actual compatible Linux/libxdp/libbpf/clang versions and validate exact build commands.",
+    "Validate separate firmware kernel/DTB/overlay selections and rollback before publishing install instructions.",
+    "Execute privileged namespace/BPF/AF_XDP integration on an explicitly enabled Linux kernel; capability skips are not passes.",
+    "Compile enabled Pi kernel and verify output/config/release artifacts; actual Pi boot and physical networking remain reader-exercised until observed."
+  ],
+  "unresolved_plan_findings": [],
+  "hardware_status": "No physical hardware runtime performed; no current Pi kernel configuration remotely inspected."
+}

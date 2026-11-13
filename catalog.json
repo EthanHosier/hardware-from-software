@@ -352,6 +352,102 @@
     "acceptance": "A reproducible demonstration and a clear explanation of the complete hardware/software path."
   },
   {
+    "id": "11.1",
+    "title": "Identify the network hardware and establish a recoverable lab",
+    "chapter": "11. Recognise the hardware and follow packet bytes",
+    "path": "src/11.1-identify-network-hardware.md",
+    "scope": "Label MAC/PHY/RJ45/MDIO; discoverPi4GENETinterface; separateWiFimanagementandwiredtest; safeprivatevethnamespace setup/cleanup andboundedconnectivity checks.",
+    "acceptance": "Complete independently reviewed lesson with actual full examples, primary sources, reproducible bounded commands, honest software/physical evidence and cleanup."
+  },
+  {
+    "id": "11.2",
+    "title": "Send a numbered UDP message through the normal stack",
+    "chapter": "11. Recognise the hardware and follow packet bytes",
+    "path": "src/11.2-send-numbered-udp.md",
+    "scope": "CompletefiniteUDPendpoint+portableMacsender,version/magic/sequencevalidation,deadlines,ARPandstackdiagram,filteredcapturesandboundedfailurecases.",
+    "acceptance": "Complete independently reviewed lesson with actual full examples, primary sources, reproducible bounded commands, honest software/physical evidence and cleanup."
+  },
+  {
+    "id": "11.3",
+    "title": "Decode an Ethernet frame without trusting its layout",
+    "chapter": "11. Recognise the hardware and follow packet bytes",
+    "path": "src/11.3-decode-ethernet-frame.md",
+    "scope": "CompleteboundedAF_PACKETreceiverwithsharedcheckedARP/IPv4/UDPdecoder,endiannessandbounds,unsupportedVLAN/IPv6/fragments,offload/FCS/preamblelimits,fixturetests.",
+    "acceptance": "Complete independently reviewed lesson with actual full examples, primary sources, reproducible bounded commands, honest software/physical evidence and cleanup."
+  },
+  {
+    "id": "12.1",
+    "title": "Connect Device Tree, driver probe, MMIO and the PHY",
+    "chapter": "12. Follow the Ethernet driver into the chip",
+    "path": "src/12.1-trace-network-driver-probe.md",
+    "scope": "TraceactualGENETsource/resourcesandPHY/MDIO; distinguishexportedregisterresources,softwarebuffersandMMIOdescriptors;readonlyidentity/sourcecheckswithmatchedversion.",
+    "acceptance": "Complete independently reviewed lesson with actual full examples, primary sources, reproducible bounded commands, honest software/physical evidence and cleanup."
+  },
+  {
+    "id": "12.2",
+    "title": "Follow a transmit buffer through DMA and completion",
+    "chapter": "12. Follow the Ethernet driver into the chip",
+    "path": "src/12.2-trace-network-transmit-dma.md",
+    "scope": "Tracebcmgenet_xmit/skb/DMAmap/descriptors/producer/completion/unmap,errorlifetimes,addressspacesandownership;boundedUDPobservation,offloadsandlimits.",
+    "acceptance": "Complete independently reviewed lesson with actual full examples, primary sources, reproducible bounded commands, honest software/physical evidence and cleanup."
+  },
+  {
+    "id": "12.3",
+    "title": "Follow receive DMA, interrupts and NAPI into a socket",
+    "chapter": "12. Follow the Ethernet driver into the chip",
+    "path": "src/12.3-trace-network-receive-napi.md",
+    "scope": "TraceGENETRXbufferrefill/unmap/IRQ/NAPIbudget/GRO/stackhandoff;read-onlycounterandIRQbefore/afterexperiment,correlationlimitsandoptionalavailabletracepoints.",
+    "acceptance": "Complete independently reviewed lesson with actual full examples, primary sources, reproducible bounded commands, honest software/physical evidence and cleanup."
+  },
+  {
+    "id": "13.1",
+    "title": "Receive through a shared packet ring",
+    "chapter": "13. Move packet processing toward userspace",
+    "path": "src/13.1-receive-packet-ring.md",
+    "scope": "CompleteboundedTPACKET_V3RXreader,block/frameboundsandownership/acquire-release,poll/deadline/dropstats;shareddecoder;notNIChardwareDMAorzerocopy.",
+    "acceptance": "Complete independently reviewed lesson with actual full examples, primary sources, reproducible bounded commands, honest software/physical evidence and cleanup."
+  },
+  {
+    "id": "13.2",
+    "title": "Run a selective generic XDP program",
+    "chapter": "13. Move packet processing toward userspace",
+    "path": "src/13.2-selective-generic-xdp.md",
+    "scope": "CompleteBPFprogram+ownedloader,verifier/pass/count/dropselectedmarkedUDPonly,SKBexplicit,preexistingattachmentrefusalandownedcleanup,namespacefirstandphysicalmanagementguard.",
+    "acceptance": "Complete independently reviewed lesson with actual full examples, primary sources, reproducible bounded commands, honest software/physical evidence and cleanup."
+  },
+  {
+    "id": "13.3",
+    "title": "Verify AF_XDP availability and understand its memory model",
+    "chapter": "13. Move packet processing toward userspace",
+    "path": "src/13.3-verify-af-xdp-memory.md",
+    "scope": "Reuse5.2singlekernelrelease/configandminimalsocketchecks;UMEM/FILL/RX/TX/COMPLETIONdiagram;generic/nativeversuscopy/zerocopy;libxdp/libbpftoolchainprep,nosecondkernel.",
+    "acceptance": "Complete independently reviewed lesson with actual full examples, primary sources, reproducible bounded commands, honest software/physical evidence and cleanup."
+  },
+  {
+    "id": "13.4",
+    "title": "Redirect a lab flow into AF_XDP receive buffers",
+    "chapter": "13. Move packet processing toward userspace",
+    "path": "src/13.4-af-xdp-receive.md",
+    "scope": "Completegeneric/copyAF_XDPreceiverwithboundedUMEM/FILL/RX,checkedoneRXqueue0topology,selectivemapredirectreadyfallbackPASS,counters/sequenceaccountingandcleanup.",
+    "acceptance": "Complete independently reviewed lesson with actual full examples, primary sources, reproducible bounded commands, honest software/physical evidence and cleanup."
+  },
+  {
+    "id": "13.5",
+    "title": "Transmit replies and reclaim buffers correctly",
+    "chapter": "13. Move packet processing toward userspace",
+    "path": "src/13.5-af-xdp-transmit-completion.md",
+    "scope": "CompleteboundedAF_XDPresponderwithTX/COMPLETIONownership,repliesforvalidlabUDPonly,MAC/IP/portswapandchecksums,noin-flightreuse,ringavailability/deadline/drain/cleanup.",
+    "acceptance": "Complete independently reviewed lesson with actual full examples, primary sources, reproducible bounded commands, honest software/physical evidence and cleanup."
+  },
+  {
+    "id": "13.6",
+    "title": "Compare paths and explain full kernel bypass",
+    "chapter": "13. Move packet processing toward userspace",
+    "path": "src/13.6-compare-network-paths.md",
+    "scope": "FairfiniteUDPversusAF_XDPechoandseparatecapturecomparison,CPU/loss/RTTmode/pathmatrix,pollingtradeoffs,DPDKdirectPMDversusAF_XDPPMDconcepts,normalcoursekernelcleanup,nohardwarezerocopypromise.",
+    "acceptance": "Complete independently reviewed lesson with actual full examples, primary sources, reproducible bounded commands, honest software/physical evidence and cleanup."
+  },
+  {
     "id": "A",
     "title": "Pinouts and circuits",
     "chapter": "Appendices",

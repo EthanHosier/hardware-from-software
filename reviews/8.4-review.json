@@ -2,7 +2,7 @@
   "id": "8.4",
   "reviewer": "independent root",
   "status": "accepted_source_review",
-  "canonical_sha256": "6a04292f353270ae4fdec222d886ae88c014cb87206a13589694891394c78d05",
+  "canonical_sha256": "1a08e8e2e7b117faf5de1dba8ace1b4c03b62b0a522d745dd1d63fd2f8dfabaf",
   "included_source_sha256": {
     "examples/kernel/mybutton.c": "519501c09961f2b2a1702e26aab6cf29a1f9b9e666a2027fc8a007f50b02a371"
   },
@@ -33,10 +33,12 @@
     "Visually inspected whole retained Pi circuit SVG in public browser: pull-up, switch groups, LED polarity, resistors and physical/BCM labels all match.",
     "All three shell blocks pass sh -n; existing driver discovery and future ABI links are canonical. IRQ statistics are correctly distinct from accepted sequence.",
     "No unchanged build repeated and no physical or kernel runtime performed.",
-    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests.",
+    "Single-kernel migration substantively audited by separate kernel_audit reviewer: reviews/kernel-baseline-review.json accepted after full kernel CI43330786612; setup/build/recovery commands and unchanged existing programs reviewed. No physical run claimed."
   ],
   "findings": [],
   "repairs": [],
   "hardware_status": "Source and command syntax reviewed; exact source previously compiled against official Pi headers. Physical GPIO, IRQ, debounce, LED and teardown not exercised.",
-  "readability_review": "reviews/readability-review.json"
+  "readability_review": "reviews/readability-review.json",
+  "single_kernel_review": "reviews/kernel-baseline-review.json"
 }

@@ -1,0 +1,76 @@
+{
+  "id": "11.2",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "NETWORKING_PLAN.md",
+    "catalog.json (11.2 entry)",
+    "EXAMPLES.md",
+    "KERNEL_BASELINE.md",
+    "src/11.1-identify-network-hardware.md",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "scripts/network_lab.py",
+    "scripts/build_network.py"
+  ],
+  "sources": [
+    "https://www.rfc-editor.org/rfc/rfc768",
+    "https://www.rfc-editor.org/rfc/rfc826",
+    "https://man7.org/linux/man-pages/man7/udp.7.html",
+    "https://raw.githubusercontent.com/the-tcpdump-group/tcpdump/master/tcpdump.1.in"
+  ],
+  "scope_audit": {
+    "result": "Complete finite UDP endpoint and portable sender, protocol validation, deadlines, neighbour/ARP and normal-stack diagram, filtered captures, malformed rejection and timeout, physical variant, troubleshooting, cleanup.",
+    "owned_paths": [
+      "src/11.2-send-numbered-udp.md",
+      "src/assets/11.2-udp-stack-and-bytes.svg",
+      "reviews/11.2-writer.json"
+    ],
+    "prose_words_excluding_fences": 1114,
+    "code_includes": "Whole endpoint and sender in top-level unindented cpp/python fences; shared wire.hpp linked for download and introduced before its frame-decoder lesson."
+  },
+  "code_files_read": [
+    "examples/network/udp_endpoint.cpp",
+    "examples/network/udp_sender.py",
+    "examples/network/wire.hpp",
+    "scripts/network_lab.py",
+    "scripts/build_network.py"
+  ],
+  "checks_performed": [
+    {
+      "check": "CLI and argument inspection against all shown endpoint/sender/helper invocations",
+      "status": "passed source review"
+    },
+    {
+      "check": "SVG XML parse and full-file include target existence",
+      "status": "passed"
+    },
+    {
+      "check": "Python sender --help",
+      "status": "passed"
+    },
+    {
+      "check": "Portable sender against bounded Python loopback peer: five matching byte replies; sequence IDs 1\u20135",
+      "status": "passed on authoring Mac; does not test C++ endpoint or Linux stack path"
+    },
+    {
+      "check": "Portable sender malformed-version mode against bounded silent Python loopback peer; one expected timeout and success exit",
+      "status": "passed on authoring Mac; endpoint rejection remains Linux integration requirement"
+    },
+    {
+      "check": "Full build_network.py and Linux namespace/C++ endpoint integration",
+      "status": "pending root verification; wire_test.cpp was initially absent and appeared during writing; writer did not run Linux build"
+    },
+    {
+      "check": "mdBook rendered page/downloads and visual browser review",
+      "status": "pending root independent review"
+    }
+  ],
+  "hardware_status": "Physical Pi boot, PHY/DMA and physical Ethernet runtime not exercised. Page transcripts and payload observations explicitly illustrative expectations.",
+  "concerns": [
+    "Root must run full networking build and namespace integration, including valid count and malformed endpoint rejection/nonzero finite deadline.",
+    "Root must verify rendered SVG legibility and download packaging of wire.hpp, endpoint and sender.",
+    "Shared sources may still change during integration; re-read includes and recompute review hashes after final source formatting/checksum work.",
+    "No Git, deployment, catalog, shared example or other lesson edits performed."
+  ],
+  "status": "writer complete; pending independent review and root Linux/build/render verification"
+}

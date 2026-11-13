@@ -2,7 +2,7 @@
   "id": "9.3",
   "reviewer": "independent coordinator",
   "status": "accepted_source_review",
-  "canonical_sha256": "50935987512682cba9f5695d8599ab5dd9623d1c8f2a7bc12f73e7ed5881b9c6",
+  "canonical_sha256": "ac2798f9751bba5b58ef9443c85e285d0650dc584efa26963cfe15e3a335a5ed",
   "included_source_sha256": {},
   "asset_sha256": {},
   "reviewed_dependency_sha256": {
@@ -37,10 +37,12 @@
     "Parsed all shell fences with sh -n and compiled exact embedded Python. Independently ran decoder algorithm with only absolute-path/inventory substitutions against disposable synthetic sysfs/DT: gpiochip7 and1/2/1 big-endian cells produced fe200000..fe2000b3; malformed cells, boundary-crossing span and duplicate controller labels all rejected. Temporary fixture cleaned automatically.",
     "Checked official Linux6.12 I/O mapping/API contracts, __iomem/KVA attributes and readl/writel scope. Page clearly labels third-party snippets fragments and download frozen official revision; no local full-file includes orSVGs.",
     "Checked read-only command state/progression, no ownership changes and deliberate rejection of unsupported bus shapes; redaction/permission failures remain recorded limitations. Owning controller suppress_bind_attrs accurately documented. Root publication handles rendered layout/local links/anonymous verification.",
-    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests.",
+    "Single-kernel migration substantively audited by separate kernel_audit reviewer: reviews/kernel-baseline-review.json accepted after full kernel CI43330786612; setup/build/recovery commands and unchanged existing programs reviewed. No physical run claimed."
   ],
   "findings": [],
   "repairs": [],
   "hardware_status": "Independent source/provenance/API review and synthetic inspection-helper tests only. Root compiled mybutton against recorded Pi headers; this does not test controller runtime. No physicalPi sysfs/resource dump, MMIO values or electrical operation observed.",
-  "readability_review": "reviews/readability-review.json"
+  "readability_review": "reviews/readability-review.json",
+  "single_kernel_review": "reviews/kernel-baseline-review.json"
 }

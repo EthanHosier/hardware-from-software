@@ -1,0 +1,36 @@
+{
+  "id": "12.1",
+  "reviewer": "root, separate from dedicated fresh-context writer",
+  "status": "accepted_source_review",
+  "reviewed_at": "2026-11-13T00:09:08.846060+00:00",
+  "canonical_sha256": "1e92494fcf974f5e6447abdcd51ae124bbee5ecc880bca3b874c926bfd5e1517",
+  "included_source_sha256": {},
+  "asset_sha256": {
+    "src/assets/12.1-genet-probe-map.svg": "cd6852cecfc4c599981d130e738f395265bead845c5816970e0bc28c1da7130e"
+  },
+  "paths_read": [
+    "src/12.1-trace-network-driver-probe.md",
+    "reviews/12.1-writer.json",
+    "src/assets/12.1-genet-probe-map.svg",
+    "src/assets/12.1-genet-probe-map.svg",
+    "NETWORKING_EXAMPLES.md"
+  ],
+  "scope_coverage": "Actual DeviceTree/platform binding, probe/open PHY lifecycle, resources/virtual MMIO/DMA addresses, descriptor MMIO vs payloadRAM and safe source/provenance inspection.",
+  "sources_checked": [
+    "https://github.com/raspberrypi/linux/blob/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmgenet.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmmii.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmgenet.h",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm/boot/dts/broadcom/bcm2711.dtsi",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts",
+    "https://docs.kernel.org/6.12/core-api/dma-api-howto.html"
+  ],
+  "checks_performed": [
+    "Root read every word, included source, commands and complete SVG; substantive source/API/progression review completed before hash freeze.",
+    "Read pinned GENET probe/initialisation, bcmmii and DT source landmarks; probe MDIO registration distinguished from open-stage PHY connect/start. Complete diagram visually inspected in browser. Exact kernel source/config/build artifacts independently audited; all observation commands remain reader checks.",
+    "All shell fences syntax checked with sh -n. Full rendered source equality, local links, SVG XML and downloadable files are enforced by publish.py before deployment.",
+    "Network code compiled natively on Arm64 Bookworm; Linux7.0Azure namespace integration CI43334222277 passes all12cases. Physical Pi/GENET operations are qualified source/reader exercises."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source-reviewed; software compiled and hosted Linux namespace tested. Physical Pi boot, GENET DMA/PHY and hardware runtime not exercised."
+}

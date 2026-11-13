@@ -1,0 +1,46 @@
+{
+  "id": "11.1",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "NETWORKING_PLAN.md",
+    "catalog.json (11.1 and canonical 11.2 entry)",
+    "EXAMPLES.md",
+    "KERNEL_BASELINE.md",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/0.3-a-labelled-tour-of-your-raspberry-pi-4.md",
+    "src/assets/0.3-pi4-top.svg"
+  ],
+  "sources": [
+    "https://magazine.raspberrypi.com/articles/raspberry-pi-4-in-detail",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts",
+    "https://www.kernel.org/doc/html/v6.12/networking/phy.html",
+    "https://www.ti.com/lit/ug/tidues1a/tidues1a.pdf"
+  ],
+  "scope_audit": {
+    "physical_hardware": "Reuses source-checked 0.3 physical SVG with networking label table. Distinguishes SoC MAC from visible PHY and RJ45, separate USB and Wi-Fi. Magnetics function cites TI general reference; exact jack internals not claimed.",
+    "conceptual_diagram": "New 11.1-network-path.svg labels CPU/RAM/MAC/RGMII/MDIO+MDC/PHY/magnetics/RJ45/cable and Wi-Fi plus private veth topology. Explicitly not physical placement.",
+    "discovery": "Actual driver scan, discovered WIRED variable, route/address/carrier/link speed/duplex/bus identity, exact baseline check.",
+    "management": "Separate Wi-Fi SSH session with route check; Ethernet-only access keeps software active-test route. IP reply not proof of wired ingress; 11.2 capture required.",
+    "bounded_lab": "Actual helper source inspected. setup/show/cleanup, finite bidirectional ping, explicit TX-checksum-offload change confined to newly owned veth endpoints, default/physical route preservation and owned cleanup. show after cleanup deliberately errors with No ownership record, explained in prose.",
+    "progression": "No kernel build, no application UDP until 11.2. Pico off/disconnected and Pi GPIO unchanged."
+  },
+  "code_files_read": [
+    "scripts/network_lab.py (complete source, setup/show/cleanup, observed 2026-11-12)"
+  ],
+  "checks_performed": [
+    "Browsed all four focused primary references near relevant hardware claims.",
+    "Seven shell command fences pass sh -n; commands were not executed.",
+    "New SVG parses as XML.",
+    "Canonical local chapter/asset links checked; 11.2 and generated helper download pending root.",
+    "No Git/build/catalog/deployment/shared-code edits.",
+    "Read complete actual network_lab.py; command names, addresses, ownership checks, offload reporting/changes and cleanup refusal match source."
+  ],
+  "hardware_status": "Physical Pi, Ethernet/Wi-Fi reachability, namespaces and helper runtime not exercised by writer.",
+  "concerns": [
+    "Root must publish downloads/scripts/network_lab.py and integrate canonical 11.2 page.",
+    "Independent root review and render verification still required.",
+    "Writer did not execute Linux namespace, PHY, or physical Pi checks; source review is not runtime evidence."
+  ],
+  "status": "writer_complete_pending_independent_review"
+}

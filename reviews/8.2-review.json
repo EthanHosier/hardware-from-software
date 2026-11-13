@@ -2,7 +2,7 @@
   "id": "8.2",
   "reviewer": "independent root",
   "status": "accepted_source_review",
-  "canonical_sha256": "8685211c513385d85889b22eaf47817f375e6872f2c3b0ed62762d79d612951f",
+  "canonical_sha256": "37f6fdef4b7bd08c061a82fed2802cb42523183fac94b662ccd9c54aad985fa1",
   "included_source_sha256": {
     "examples/kernel/hello.c": "5c442e948ef81c01fef17c980ca1c6014940b0c148efc2a10198570c7eb8677a",
     "examples/kernel/Makefile": "4e205ebdc4eb9545724b32f7067b512881ba2ab2aea08b5f631e900d41b2acaf"
@@ -34,10 +34,12 @@
     "Checked that shared Makefile builds both hello and mybutton while only hello is inserted. Source name, logger strings, no GPIO or device node and no Device Tree binding claims agree.",
     "Architecture/full-release/header equality and failed-build/stale-artifact conditions are explicit; runtime outputs are illustrative. No unnecessary unchanged compilation repeated.",
     "All practical commands are labelled Pi SSH; no modules loaded in the authoring environment.",
-    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests.",
+    "Single-kernel migration substantively audited by separate kernel_audit reviewer: reviews/kernel-baseline-review.json accepted after full kernel CI43330786612; setup/build/recovery commands and unchanged existing programs reviewed. No physical run claimed."
   ],
   "findings": [],
   "repairs": [],
   "hardware_status": "Source and shell syntax reviewed; exact source previously native Arm64 compiled against official 6.12.96 Pi headers. Physical Pi insertion, logs, removal and hardware state not exercised.",
-  "readability_review": "reviews/readability-review.json"
+  "readability_review": "reviews/readability-review.json",
+  "single_kernel_review": "reviews/kernel-baseline-review.json"
 }

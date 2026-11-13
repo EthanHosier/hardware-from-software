@@ -1,0 +1,38 @@
+{
+  "id": "11.2",
+  "reviewer": "root, separate from dedicated fresh-context writer",
+  "status": "accepted_source_review",
+  "reviewed_at": "2026-11-13T00:07:47.387176+00:00",
+  "canonical_sha256": "0d09ffea947cbabb740acb4ad82e34f4d9ee51b7f83b3c0a812e4564695ac2bd",
+  "included_source_sha256": {
+    "examples/network/udp_endpoint.cpp": "842eefc950f1865849c111005bb5e63991a810b4d4503990b20103d3dbb820c7",
+    "examples/network/udp_sender.py": "7bacc905d4eb5e4ea1442abf1368bbf2c7a6e9e81f107cdc4effd293b0ece770"
+  },
+  "asset_sha256": {
+    "src/assets/11.2-udp-stack-and-bytes.svg": "15644e26dbed2fdc481ad6a7f2827a512787fa19133a8c5ec4c2b3a50bff731e"
+  },
+  "paths_read": [
+    "src/11.2-send-numbered-udp.md",
+    "reviews/11.2-writer.json",
+    "examples/network/udp_endpoint.cpp",
+    "examples/network/udp_sender.py",
+    "src/assets/11.2-udp-stack-and-bytes.svg",
+    "src/assets/11.2-udp-stack-and-bytes.svg"
+  ],
+  "scope_coverage": "UDP socket/datagram semantics, TCP comparison, byte layout/bigendian protocol and ARP/route; entire bounded endpoint/sender; exact namespace and physical variant/capture; malformed rejection/ICMP distinction, timing limits and cleanup.",
+  "sources_checked": [
+    "https://www.rfc-editor.org/rfc/rfc768",
+    "https://www.rfc-editor.org/rfc/rfc826",
+    "https://man7.org/linux/man-pages/man7/udp.7.html",
+    "https://raw.githubusercontent.com/the-tcpdump-group/tcpdump/master/tcpdump.1.in"
+  ],
+  "checks_performed": [
+    "Read all prose, entire endpoint/sender/wire dependencies and SVG. Numeric bounds, MSG_TRUNC, absolute deadlines, reply-byte matching and expected-timeout unreachable rejection agree with implementation.",
+    "CI43334222277 ordinary UDP and malformed rejection cases pass; native Arm64 Bookworm and Linux builds warning-clean; decoder/checksum fixtures normal and ASan/UBSan pass.",
+    "Browsed RFC768/791 and packet socket manual; writer independently checked UDP/tcpdump/ARP references. Viewed full stack/payload SVG in browser: all byte offsets, arrows and labels legible.",
+    "Final build checks enforce rendered full-source equality, links, SVG XML and packaged downloads before deployment."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source reviewed; hosted Linux software integration and native Arm64 compilation passed CI43334222277. Physical Pi and Ethernet hardware runtime unexercised."
+}

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 650" role="img" aria-labelledby="title desc">
+<title id="title">Pi 4 Ethernet components and laboratory paths</title>
+<desc id="desc">Conceptual diagram, not board placement. CPU cores and GENET MAC are inside BCM2711; RAM and the BCM54213PE PHY are separate packages. RGMII carries packet data and MDIO with MDC manages the PHY. Cable signals cross magnetics at the RJ45 assembly. Wi-Fi SSH and wired test traffic share a LAN; a separate namespace veth link is entirely software.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#245b78"/></marker></defs>
+<style>text{font-family:system-ui,sans-serif;fill:#173647;font-size:17px}.title{font-size:24px;font-weight:700}.bold{font-weight:650}.small{font-size:15px}.box{fill:#eef5f8;stroke:#245b78;stroke-width:2}.line{fill:none;stroke:#245b78;stroke-width:2;marker-start:url(#arrow);marker-end:url(#arrow)}</style>
+<rect width="960" height="650" fill="#fff"/>
+<text x="24" y="34" class="title">Conceptual paths — not physical board positions</text>
+<rect x="24" y="57" width="448" height="214" rx="12" fill="#e2f0e6" stroke="#39754b" stroke-width="2"/>
+<text x="42" y="84" class="bold">BCM2711 SoC package (board label 1)</text>
+<rect x="42" y="105" width="180" height="61" rx="6" class="box"/><text x="64" y="131">CPU cores</text><text x="64" y="153" class="small">Linux + application</text>
+<rect x="270" y="186" width="180" height="62" rx="6" class="box"/><text x="285" y="212">GENET Ethernet MAC</text><text x="285" y="234" class="small">frame controller</text>
+<path d="M222 136H360V183" class="line"/><text x="252" y="123" class="small">on-chip interconnect</text>
+<rect x="534" y="70" width="240" height="70" rx="6" class="box"/><text x="553" y="98">LPDDR4 RAM (label 2)</text><text x="553" y="122" class="small">kernel and packet buffers</text>
+<path d="M472 106H530" class="line"/>
+<rect x="635" y="185" width="298" height="90" rx="6" class="box"/><text x="653" y="212" class="bold">BCM54213PE PHY (label 4)</text><text x="653" y="236">digital data ↔ cable signalling</text><text x="653" y="259" class="small">link negotiation with switch PHY</text>
+<path d="M452 212H631" class="line"/><text x="486" y="198">RGMII data</text>
+<path d="M452 249H525V267H631" class="line" stroke-dasharray="6 4"/><text x="478" y="291" class="small">MDIO + MDC: management</text>
+<rect x="635" y="321" width="298" height="72" rx="6" class="box"/><text x="655" y="348">Magnetics / RJ45 assembly</text><text x="655" y="373" class="small">jack: board label 5; isolation inside</text><path d="M784 279V317" class="line"/>
+<rect x="635" y="446" width="298" height="64" rx="6" class="box"/><text x="654" y="474">LAN switch / router</text><text x="654" y="496" class="small">reachable wired LAN port</text><path d="M784 397V442" class="line"/><text x="800" y="424" class="small">Ethernet cable</text>
+<rect x="24" y="332" width="250" height="63" rx="6" class="box"/><text x="40" y="360">Mac on Wi-Fi</text><text x="40" y="383" class="small">SSH → Pi Wi-Fi IP</text>
+<rect x="24" y="446" width="336" height="64" rx="6" class="box"/><text x="40" y="473">Pi Wi-Fi radio / antenna (label 10)</text><text x="40" y="496" class="small">separate management path</text>
+<path d="M278 362H400V465H631" class="line"/><text x="300" y="350" class="small">access point / LAN</text><path d="M364 491H631" class="line" stroke-dasharray="6 4"/>
+<rect x="24" y="544" width="909" height="83" rx="9" fill="#fff8e5" stroke="#997337" stroke-width="2"/>
+<text x="42" y="571" class="bold">Software lab, entirely inside the Pi</text><text x="42" y="600">host: hfs-host 198.18.0.1/30</text><path d="M370 596H526" class="line"/><text x="410" y="585" class="small">veth</text><text x="548" y="600">hfs-lab: hfs-peer 198.18.0.2/30</text>
+</svg>

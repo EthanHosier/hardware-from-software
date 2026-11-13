@@ -1,0 +1,58 @@
+{
+  "id": "11.3",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "NETWORKING_PLAN.md",
+    "NETWORKING_EXAMPLES.md",
+    "KERNEL_BASELINE.md",
+    "catalog.json (11.3)",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/11.2-send-numbered-udp.md"
+  ],
+  "sources": [
+    "https://man7.org/linux/man-pages/man7/packet.7.html",
+    "https://www.rfc-editor.org/rfc/rfc791.html",
+    "https://www.rfc-editor.org/rfc/rfc768.html",
+    "https://www.rfc-editor.org/rfc/rfc826.html",
+    "https://wiki.wireshark.org/Ethernet",
+    "https://www.kernel.org/doc/html/v6.12/networking/checksum-offloads.html"
+  ],
+  "scope_audit": {
+    "files_owned": [
+      "src/11.3-decode-ethernet-frame.md",
+      "src/assets/11.3-frame-boundaries.svg",
+      "reviews/11.3-writer.json"
+    ],
+    "parser": "Full wire.hpp include with checked Ethernet/ARP/IPv4/UDP bounds, caller preconditions for byte helpers, explicit endianness/alignment explanation, IHL/options/total and strict UDP-length policy. Decoder checksum limitation stated.",
+    "receiver": "Full packet_rx.cpp include; deadline/count, incoming interface binding, metadata VLAN refusal, truncation and drop reporting explained. Separate endpoint required for replies.",
+    "observation": "Pi A reader, Pi B ordinary endpoint, Pi D bounded foreground tcpdump, Pi C finite sender. Ready sequencing explicit. MAC/IP/port/sequence/header lengths correlated without invented MAC values.",
+    "capture_boundary": "Preamble/start delimiter/FCS typically absent, padding excluded via IP total, veth software frame versus physical frame distinguished. Setup offload changes explicit and restricted to new veths; physical checksum-offload caveat sourced.",
+    "progression": "Same course kernel; Pico off and disconnected; Pi GPIO unchanged. Namespace cleaned to ordinary networking, own foreground processes only."
+  },
+  "code_files_read": [
+    "examples/network/wire.hpp",
+    "examples/network/wire_test.cpp",
+    "examples/network/packet_rx.cpp",
+    "examples/network/udp_endpoint.cpp",
+    "examples/network/udp_sender.py",
+    "scripts/network_lab.py",
+    "scripts/build_network.py"
+  ],
+  "checks_performed": [
+    "All 6 shell fences passed sh -n (not execution).",
+    "Both full-source include paths exist.",
+    "Canonical local chapter and SVG paths exist.",
+    "SVG parses as XML; diagram offsets cross-checked against actual parser.",
+    "Browsed all six primary/project references.",
+    "Reader commands, expected fields and count semantics compared with actual sources.",
+    "No shared source, Git, build, catalog or deployment modifications."
+  ],
+  "hardware_status": "Physical Pi, Ethernet, namespace runtime, BPF and portable fixture execution not performed by writer. Root CI and independent review pending.",
+  "concerns": [
+    "Root must ensure downloads/examples/network/wire_test.cpp is packaged.",
+    "Independent full-source review, rendered SVG/page verification and actual portable/Linux test evidence remain root responsibilities.",
+    "NETWORKING_PLAN.md still says proposal; explicit parent authorization governs this assigned new page."
+  ],
+  "status": "writer_complete_pending_independent_review"
+}

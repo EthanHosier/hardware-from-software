@@ -2,7 +2,7 @@
   "id": "E",
   "reviewer": "independent root",
   "status": "accepted_source_review",
-  "canonical_sha256": "55fc229b8fcd02af27a604ef1afd518fe8283cb16de1437d74499beac743dea6",
+  "canonical_sha256": "4dbb9ed2ab63b6aa6465f8b1202ce84e1cac646389abb8d13a5aa095e4ef1ad2",
   "included_source_sha256": {},
   "asset_sha256": {},
   "reviewed_dependency_sha256": {
@@ -68,7 +68,8 @@
     "Checked7.2 and10.2 fourcasehelperPTYreports, existing11case serialsuite, hostedLinuxmemory execution,12firmwaretargets,7nativeLinuxapps,2Piheadermodules,DTcompile andsource-onlyMMIOfragment scopes. No hardware or universalruntimeclaim promoted from compilation.",
     "Revisited primary M33issue05/\u00a73.3.7 and dependencylicensenotices; referencefacts reuse sourcechecks from associated accepted lessons and current same-session Bosch/SDK/Linux/Pi reviews. WriterHTTP36destinationaudit is separately attributed, not a substitute for substantive accuracy review.",
     "Verified all localdestinations exist or are known generated verification/roadmap outputs; no runnablecodefences or directSVGassets. Checked copiedmachine-readable verificationlink against builder. Exact renderedanchors/publication are rootpublisherchecks.",
-    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests."
+    "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests.",
+    "Single-kernel migration substantively audited by separate kernel_audit reviewer: reviews/kernel-baseline-review.json accepted after full kernel CI43330786612; setup/build/recovery commands and unchanged existing programs reviewed. No physical run claimed."
   ],
   "findings": [
     {
@@ -80,5 +81,6 @@
     "Qualified debounce mechanisms in glossary."
   ],
   "hardware_status": "Reference/source review and evidenceaudit only. Matrix accurately labels all physicalruntime unexercised; softwarechecks do not establish benchoperation.",
-  "readability_review": "reviews/readability-review.json"
+  "readability_review": "reviews/readability-review.json",
+  "single_kernel_review": "reviews/kernel-baseline-review.json"
 }

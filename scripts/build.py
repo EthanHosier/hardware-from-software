@@ -77,7 +77,7 @@ def main():
         roadmap += [f'<a id="lesson-{entry["id"].lower().replace(".","-")}"></a>',f'## {entry["id"]} — {entry["title"]}','']
         roadmap += [f'[Read this lesson]({Path(entry["path"]).name}).' if entry['id'] in ids else 'Not yet published.', '',entry['scope'],'']
     (STAGE/'src/roadmap.md').write_text('\n'.join(roadmap)+'\n')
-    files=sorted(x for x in (STAGE/'examples').rglob('*') if x.is_file() and (x.suffix in ['.cpp','.hpp','.c','.dts','.rules'] or x.name in ['Makefile','CMakeLists.txt']))
+    files=sorted(x for x in (STAGE/'examples').rglob('*') if x.is_file() and (x.suffix in ['.cpp','.hpp','.c','.dts','.rules','.py'] or x.name in ['Makefile','CMakeLists.txt']))
     download='# Download the examples\n\n[Download every example and build script](downloads/hardware-examples.zip). Extract it and work from its root directory. Shared headers are included.\n\n'
     if len(published)!=len(catalog):download+='The full example set is available ahead of some lessons. '
     download+='These programs have compilation/software checks, but physical runtime has not been exercised; use the relevant lesson and verification matrix before operating hardware.\n\n'
@@ -91,8 +91,17 @@ def main():
         target=dest/x.relative_to(STAGE);target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(x,target)
     with zipfile.ZipFile(dest/'hardware-examples.zip','w',zipfile.ZIP_DEFLATED) as z:
         for x in files:z.write(x,x.relative_to(STAGE).as_posix())
-        for name in ['scripts/setup_deps.py','scripts/build_examples.py','scripts/test_serial.py','scripts/build_pi_kernel.py','scripts/install_pi_kernel.py','kernel-baseline.json','KERNEL_BASELINE.md','EXAMPLES.md']:
+        support_files = ['scripts/setup_deps.py','scripts/build_examples.py','scripts/test_serial.py',
+                         'scripts/build_pi_kernel.py','scripts/install_pi_kernel.py','scripts/test_pi_kernel_install.py',
+                         'kernel-baseline.json','KERNEL_BASELINE.md','EXAMPLES.md']
+        support_files += [name for name in ['scripts/build_network.py','scripts/test_network.py',
+                                            'scripts/network_lab.py','NETWORKING_EXAMPLES.md']
+                          if (ROOT/name).is_file()]
+        for name in support_files:
             z.write(ROOT/name,name)
+            support_target = dest/name
+            support_target.parent.mkdir(parents=True,exist_ok=True)
+            shutil.copy2(ROOT/name,support_target)
         z.writestr('README.md', '# Hardware from Software: example bundle\n\n'
             'Read the guide at https://hardware-from-software.vercel.app. '
             'Extract this archive into its own directory and run commands from that root.\n\n'

@@ -1,0 +1,64 @@
+{
+  "id": "network-xdp",
+  "status": "implemented; Linux compile/verifier/runtime awaiting CI",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "NETWORKING_PLAN.md",
+    "examples/network/wire.hpp",
+    "examples/network/udp_endpoint.cpp",
+    "examples/network/packet_rx.cpp",
+    "examples/network/packet_ring.cpp",
+    "scripts/network_lab.py",
+    "examples/network/lab_xdp.bpf.c",
+    "examples/network/xdp_control.cpp",
+    "examples/network/xsk_common.hpp",
+    "examples/network/xsk_receiver.cpp",
+    "examples/network/xsk_responder.cpp",
+    "scripts/build_network.py",
+    "scripts/test_network.py",
+    "NETWORKING_EXAMPLES.md"
+  ],
+  "sources": [
+    "https://docs.kernel.org/6.12/networking/af_xdp.html",
+    "https://github.com/xdp-project/xdp-tools/blob/v1.3.1/headers/xdp/xsk.h",
+    "https://github.com/libbpf/libbpf/blob/v1.1.2/src/netlink.c",
+    "https://github.com/torvalds/linux/blob/v6.12/net/xdp/xsk.c"
+  ],
+  "scope_audit": [
+    "SelectiveHFS1/40420 IPv4UDPpass/drop/redirect;unsupportedfragments/options/VLAN/IPv6/truncatedpass",
+    "ExplicitgenericSKBXDP,copyAF_XDP withactualXDP_OPTIONSquery and singleRXqueueinspection",
+    "Managedlibxdpringhelpers, boundedpoolownershipchecks,TXcompletionbeforereuse,finiteabsoluteenddeadline",
+    "Ownedprogramidentitydetach+atomicexpectedoldFDguard,foreignprogramreplacementrefused",
+    "Root-onlyprivatevethintegrationwithoutskiporphysicaldevicechanges"
+  ],
+  "code_files_read": [
+    "examples/network/lab_xdp.bpf.c",
+    "examples/network/xdp_control.cpp",
+    "examples/network/xsk_common.hpp",
+    "examples/network/xsk_receiver.cpp",
+    "examples/network/xsk_responder.cpp",
+    "scripts/build_network.py",
+    "scripts/test_network.py",
+    "NETWORKING_EXAMPLES.md"
+  ],
+  "checks_performed": [
+    "clang-format19.1.7 onownedC/C++sources",
+    "python3 -m py_compile scripts/build_network.py scripts/test_network.py passed",
+    "git diff --check passed",
+    "python3 scripts/build_network.py --portable-only passed normal and ASan/UBSan wirefixtures+20000malformed inputs"
+  ],
+  "source_sha256": {
+    "examples/network/lab_xdp.bpf.c": "2e8748686a1a567a4354269a45ac2e4cbf8e118f51e57becd97b6e707b922bc7",
+    "examples/network/xdp_control.cpp": "0f4cb19b1d89609ce57ef411f7972b608ad1b7a2706239c4b5bd258e80c8e09f",
+    "examples/network/xsk_common.hpp": "8fed55122867fdf331933cb5647254b5971eee151fdad4249d8ec42074afbd78",
+    "examples/network/xsk_receiver.cpp": "090176e3f27eaec9a2ff60d2c11d7567a0cde21a4710d52b29836a0f44767c2f",
+    "examples/network/xsk_responder.cpp": "c844a47b10d094f8cb00e388fe0c9dab30572baaf7c160f51eec6e280e34ce12",
+    "scripts/build_network.py": "c5e356cebc337ede8d37a65464e636a5c01a6495a97b5c2f1b4f6bc6886b4dc7",
+    "scripts/test_network.py": "99fd38fb2df29ff2dcd24b06a81c91a21e01b880cbb685e3a181a907e74ca255",
+    "NETWORKING_EXAMPLES.md": "89bfbab0ee4c820df1431dda2461ccf1c810be57e026efd657d30489d1c6092a"
+  },
+  "hardware_status": "No physicalPi/GENET/PHY/DMA/runtime exercised. Macportablefixturesonly sofar.",
+  "concerns": [
+    "FullLinuxcompiler,BPFverifier,namespaceintegration pending rootCI; no runtime pass claimed until actual test report."
+  ]
+}
