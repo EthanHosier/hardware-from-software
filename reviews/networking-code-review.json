@@ -1,0 +1,28 @@
+{
+  "status": "accepted_source_review",
+  "reviewer": "root, separate from code writers",
+  "checked_at": "2026-11-13T07:40:13.256681+00:00",
+  "scope": "All11networksourcefiles, nativebuild script, privileged integration script, ownednamespace helper and final example contracts",
+  "source_sha256": {
+    "examples/network/lab_xdp.bpf.c": "2e8748686a1a567a4354269a45ac2e4cbf8e118f51e57becd97b6e707b922bc7",
+    "examples/network/packet_ring.cpp": "0688e83feaa5daf4902c27f1766d65ea0937a75ce44c3cf3973403bc5d1328ba",
+    "examples/network/packet_rx.cpp": "cc4636e589f7f9910f2288237bd1190a648a44f92326947c72ab239e60a506b0",
+    "examples/network/udp_endpoint.cpp": "842eefc950f1865849c111005bb5e63991a810b4d4503990b20103d3dbb820c7",
+    "examples/network/udp_sender.py": "7bacc905d4eb5e4ea1442abf1368bbf2c7a6e9e81f107cdc4effd293b0ece770",
+    "examples/network/wire.hpp": "af9a7fe7864a87d715bf28dcac0638a133adbee592016cac0faba1a217b5c92e",
+    "examples/network/wire_test.cpp": "c5779c02a903e033b9d99e2eda938d2a5016e7ad5e6966595efc8553a8ca563b",
+    "examples/network/xdp_control.cpp": "0f4cb19b1d89609ce57ef411f7972b608ad1b7a2706239c4b5bd258e80c8e09f",
+    "examples/network/xsk_common.hpp": "f88b840e0e2728e9c4c95e55c84d7f236ab0875044558a5435962fb88a09991c",
+    "examples/network/xsk_receiver.cpp": "090176e3f27eaec9a2ff60d2c11d7567a0cde21a4710d52b29836a0f44767c2f",
+    "examples/network/xsk_responder.cpp": "c844a47b10d094f8cb00e388fe0c9dab30572baaf7c160f51eec6e280e34ce12"
+  },
+  "checks": [
+    "Read all implementation including decoder bounds/checksum fixtures, finiteUDP/sender, rawpacketmetadata, V3blockbounds/ownership, BPFclassifier andownedloader, XSKqueueguard/mode/UMEMstates/wakeups/completions/teardown",
+    "CI43334222277 all12privilegednamespacecases pass onLinux7.0Azurex86_64; nativeArm64Bookworm warning-clean builds and normal/sanitized fixtures pass",
+    "SequentialAF_XDPbindfailure investigated againstlibxdp1.3.1andLinuxpoolrelease source; boundedEBUSY-onlydestroy/recreate retry verified bysuccessfulfinalsuite",
+    "No newchanges to existingPico/Linux/kernel programs needed; originalsoftwarebuild/tests rerun; exactcustomkernelImage/modules/dtbs/externals compiled inCI43330786612",
+    "Freshdownloadarchive executablemembers match testedsource; originalhost/PTY, networkfixtures and15installerfixtures pass"
+  ],
+  "unresolved_findings": [],
+  "physical_runtime": "Pi boot, actual GENET/PHY/DMA and peripheral/module runtime not exercised"
+}

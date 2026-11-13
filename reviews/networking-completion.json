@@ -1,0 +1,28 @@
+{
+  "status": "complete",
+  "completed_at": "2026-11-13T07:41:40.520848+00:00",
+  "public_site": "https://hardware-from-software.vercel.app",
+  "public_repository": "https://github.com/EthanHosier/hardware-from-software",
+  "catalog_pages": 65,
+  "new_networking_lessons": 12,
+  "main_lessons": 56,
+  "appendices": 9,
+  "deployment": "dpl_8MKgEoyAi68QshRNXJdw6EuP26xe",
+  "source_reviews": "All65accepted; canonical, include, asset and revieweddependency hashes enforced by build",
+  "independent_networking_audit": "networking-final-audit.json: all12pagesread, oneTXroutequalification finding repaired, no unresolved findings",
+  "kernel_verification": "Full6.12.96-hfs1-v8 Image/modules/dtbs and externalmodules compile; complete configdiff independently reviewed;15installerfixtures passed. CI43330786612",
+  "network_verification": "NativeArm64Bookwormbuild and12hostedLinuxnamespace/verifier/packet/XDP/AF_XDPcases pass. CI43334222277",
+  "book_checks": {
+    "catalog_pages": 65,
+    "rendered_html": 72,
+    "local_link_checks": 2935,
+    "exact_includes_checked": 73,
+    "errors": []
+  },
+  "public_resources_checked": 176,
+  "example_archive_members": 56,
+  "archive_verification": "networking-bundle-check.json; fresh extracted host/protocol/serial/networkfixture/installerchecks pass; finalexecutablemembers unchanged",
+  "browser_verification": "browser-check.json;12SVGs, desktop/mobile, expandableformattedcode, searchnavigation and completecontents checked",
+  "physical_runtime": "Not exercised: Pi boot, peripheral/module operations and physicalEthernet/GENET/PHY/DMA remain reader bench checks",
+  "unresolved_findings": []
+}

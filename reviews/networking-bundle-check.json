@@ -59,12 +59,14 @@
     "scripts/test_pi_kernel_install.py": "156b97e8c0c54b28bde73139a22d39868788287d5e07e4b30737a3f6c2ece9fc",
     "kernel-baseline.json": "d08e7a3b72534485d11455b3d417e1d8efd80ff5acbf8a0e446c298faca08cb9",
     "KERNEL_BASELINE.md": "cda696b3605314a850e887748b540362dc2ad5e8680ac5cf0fdf42a37684edc0",
-    "EXAMPLES.md": "78508cf56260ff4f7e408dde39212a4a6b086998ba9ec6b11f4a7fab3e9d53b6",
+    "EXAMPLES.md": "9d89a57b46409478f7295efe587347c15990655817e0564e9d5a969c108f28c2",
     "scripts/build_network.py": "c5e356cebc337ede8d37a65464e636a5c01a6495a97b5c2f1b4f6bc6886b4dc7",
     "scripts/test_network.py": "99fd38fb2df29ff2dcd24b06a81c91a21e01b880cbb685e3a181a907e74ca255",
     "scripts/network_lab.py": "894dbc5a8b195e7a0f81056ea5da9e4db737efcee2f58437051b61363f9a401d",
     "NETWORKING_EXAMPLES.md": "89bfbab0ee4c820df1431dda2461ccf1c810be57e026efd657d30489d1c6092a",
     "README.md": "d40db4cad0ee415bfb4ed8a2d6df73b4b5c22a5b4323d7c6951f7bb2177a5c31"
   },
-  "physical_runtime": "not exercised"
+  "physical_runtime": "not exercised",
+  "final_archive_sha256": "3f07ddef17b91b8b41a3f765886d7705c07aeed849ff00c2ce2c2d26497fc108",
+  "final_member_comparison": "All source and test/build-script members match the successfully extracted/tested archive. EXAMPLES.md documentation updated afterward; no executable member changed."
 }

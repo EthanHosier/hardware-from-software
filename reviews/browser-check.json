@@ -37,7 +37,7 @@
     "url": "https://hardware-from-software.vercel.app/assets/10.1-capstone-circuit.svg",
     "result": "Root inspected full public1200x970SVG: both LED polarities/resistors, button contact/pullup circuits, TX/RX directions, allphysicalpinlabels/grounds, separatepower note and allbottomtext visible; no clipping or overlap."
   },
-  "published_catalog_pages": 53,
+  "published_catalog_pages": 65,
   "final_complete_book": {
     "desktop": "Public homepage1280px visually inspected, no overflow and complete53-page readingprogress text verified inDOM.",
     "search": "DMA query returns5results includingfinalAppendixF; clickedsectionresult and verified actualFURL andDMAheading.",
@@ -53,5 +53,16 @@
       "Updated4.4exceptionSVG visually inspected:edge_pendinglabels fit and remain legible."
     ],
     "public_url": "https://hardware-from-software.vercel.app/2.3-replace-gpio-calls-with-register-accesses.html#build-and-run-the-replacement"
+  },
+  "networking_extension": {
+    "checked_at": "2026-11-13T07:40:55.943707+00:00",
+    "status": "pass",
+    "published_catalog_pages": 65,
+    "diagrams": "Root visually inspected all12 newSVGs atfullsize, including tallRXdiagram bottom and fullwidthcomparison. Labeltext, offsets, ownership arrows andconceptualhardware qualifications legible.",
+    "desktop": "Public13.5 at1280px: heading/sidebar/prose readable, scrollWidth1280; fullsharedheader expanded viaUI, braces/indentation/syntaxhighlighting preserved withwhite-spacepre. Threecollapsiblecomplete dependencyfiles render.",
+    "mobile": "Public13.6 fresh390x844: scrollWidth390, no document overflow, diagram350px and loaded; two tables350px with574/429px internal scroll. Sidebar collapsed.",
+    "search": "UMEMquery returns17results; clickedactual13.3Referencesresult andverifiedurl/heading.",
+    "home": "Public homepage complete65lesson status verified.",
+    "viewport_restored": true
   }
 }

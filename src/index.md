@@ -4,7 +4,7 @@ This book is a laboratory guide to the boundary between code and physical hardwa
 
 You will use a **Raspberry Pi Pico 2**, a **Raspberry Pi 4**, a **Raspberry Pi Debug Probe**, and the useful parts of an electronics kit. The main exercises need LEDs, resistors, buttons, a breadboard and jumper wires. A separate sensor and a logic analyser are optional.
 
-Start with the labelled hardware tours in Chapter 0. Then work in order: build firmware, change an LED through hardware registers, inspect the store in GDB, handle a button interrupt, communicate over I²C/SPI and UART, write a Linux driver, and examine virtual memory. The final exercise follows a button event through Linux to an LED controlled by another processor.
+Start with the labelled hardware tours in Chapter 0. Then work in order: build firmware, change an LED through hardware registers, inspect the store in GDB, handle a button interrupt, communicate over I²C/SPI and UART, write a Linux driver, and examine virtual memory. The integrated project follows a button event through Linux to an LED controlled by another processor. Chapters 11–13 then identify the Pi's Ethernet hardware, trace packet buffers through its driver and DMA, and build up from ordinary UDP to packet rings, XDP and AF_XDP. The final comparison explains which layers remain involved in each form of kernel bypass.
 
 Each practical lesson gives its wiring, commands, source files, expected observation, and troubleshooting. **Mac** means your development computer; **Pi** means a shell on the Raspberry Pi 4; **GDB** means the debugger prompt. The Pico runs the flashed firmware, not your shell commands.
 

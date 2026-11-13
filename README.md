@@ -27,7 +27,7 @@ No credentials, real network identifiers, binaries, downloaded dependency trees 
 
 ## Completed book
 
-All **65 pages (56 main lessons and nine appendices)** are independently reviewed and published. The [public contents](https://hardware-from-software.vercel.app/roadmap.html) link to every page. Each page had a dedicated fresh-context writer and a separate reviewer; accepted pages were deployed individually. `reviews/authoring-status.json` and `releases.json` record that process.
+All **65 pages (56 main lessons and nine appendices)** are independently reviewed and published. The [public contents](https://hardware-from-software.vercel.app/roadmap.html) link to every page. Each page had a dedicated fresh-context writer and a separate reviewer; accepted pages were published progressively after review. `reviews/authoring-status.json` and `releases.json` record that process.
 
 For a complete checked publication, use `python3 scripts/publish.py --complete`. Physical hardware runtime remains unexercised; the verification matrix distinguishes it from software tests and target compilation.
 
