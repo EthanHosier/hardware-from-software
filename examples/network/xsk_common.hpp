@@ -23,6 +23,7 @@
 #include <span>
 #include <stdexcept>
 #include <string>
+#include <thread>
 #include <vector>
 
 namespace hfs::net {
@@ -207,18 +208,60 @@ class XskBuffers {
             umem_config.fill_size = frame_count;
             umem_config.comp_size = frame_count;
             umem_config.frame_size = chunk_size;
-            require(xsk_umem__create(&umem_, memory_, memory_size_, &fill, &completion,
-                                     &umem_config) == 0,
-                    "Cannot register UMEM");
+            auto register_umem = [&] {
+                const int result = xsk_umem__create(&umem_, memory_, memory_size_,
+                                                    &fill, &completion, &umem_config);
+                require(result == 0,
+                        "Cannot register UMEM: " + std::string(std::strerror(-result)) +
+                            " (error=" + std::to_string(-result) + ")");
+            };
+            register_umem();
             xsk_socket_config socket_config{};
             socket_config.rx_size = frame_count;
             socket_config.tx_size = frame_count;
             socket_config.libxdp_flags = XSK_LIBXDP_FLAGS__INHIBIT_PROG_LOAD;
             socket_config.xdp_flags = XDP_FLAGS_SKB_MODE;
             socket_config.bind_flags = XDP_COPY | XDP_USE_NEED_WAKEUP;
-            require(xsk_socket__create(&socket_, interface.c_str(), 0, umem_, &receive,
-                                       &transmit, &socket_config) == 0,
-                    "Cannot bind AF_XDP socket in explicit copy mode");
+            const auto bind_deadline = SteadyClock::now() + std::chrono::seconds(2);
+            bool reported_busy = false;
+            for (;;) {
+                const int result =
+                    xsk_socket__create(&socket_, interface.c_str(), 0, umem_, &receive,
+                                       &transmit, &socket_config);
+                if (result == 0) {
+                    break;
+                }
+                const std::string explanation =
+                    "Cannot bind AF_XDP socket on " + interface +
+                    " queue=0 mode=copy: " + std::strerror(-result) +
+                    " (error=" + std::to_string(-result) + ")";
+                if (result != -EBUSY || SteadyClock::now() >= bind_deadline ||
+                    stop_requested) {
+                    throw std::runtime_error(explanation);
+                }
+                if (!reported_busy) {
+                    std::cerr << explanation
+                              << "; retrying for at most 2 seconds while a prior pool "
+                                 "may finish release\n";
+                    reported_busy = true;
+                }
+                // Linux can defer clearing a closed socket's device/queue pool.
+                // libxdp 1.3.1 unwinds failed create's RX/TX mappings and context,
+                // but retains the original UMEM socket and FILL/COMPLETION maps.
+                // Delete that failed attempt completely; never reuse its ring
+                // pointers. No buffers have been published to FILL at this point.
+                const int delete_result = xsk_umem__delete(umem_);
+                require(delete_result == 0,
+                        "Failed to clean an unsuccessful AF_XDP bind: " +
+                            std::string(std::strerror(-delete_result)));
+                umem_ = nullptr;
+                fill = {};
+                completion = {};
+                receive = {};
+                transmit = {};
+                std::this_thread::sleep_for(std::chrono::milliseconds(20));
+                register_umem();
+            }
             xdp_options options{};
             socklen_t options_size = sizeof(options);
             require(getsockopt(fd(), SOL_XDP, XDP_OPTIONS, &options, &options_size) ==

@@ -2,10 +2,35 @@ name: Verify examples
 on:
   workflow_dispatch:
   push:
-    paths: ['examples/**', 'scripts/test_serial.py', 'scripts/build_pi_kernel.py', 'scripts/install_pi_kernel.py', 'scripts/test_pi_kernel_install.py', 'kernel-baseline.json', '.github/workflows/examples.yml']
+    paths: ['examples/pico/**', 'examples/common/**', 'examples/linux/**', 'examples/kernel/**', 'scripts/test_serial.py', 'scripts/build_pi_kernel.py', 'scripts/install_pi_kernel.py', 'scripts/test_pi_kernel_install.py', 'kernel-baseline.json', '.github/workflows/examples.yml']
 permissions:
   contents: read
 jobs:
+  changes:
+    runs-on: ubuntu-24.04
+    outputs:
+      kernel: ${{ steps.scope.outputs.kernel }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: scope
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          python3 - <<'PYTHON'
+          import os, subprocess
+          before = os.environ['BEFORE']
+          manual = os.environ['EVENT'] == 'workflow_dispatch'
+          files = [] if manual else subprocess.check_output(
+              ['git', 'diff', '--name-only', before, os.environ['AFTER']], text=True).splitlines()
+          kernel = manual or any(name in ['kernel-baseline.json', 'scripts/build_pi_kernel.py']
+                                 or name.startswith('examples/kernel/') for name in files)
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('kernel=' + str(kernel).lower() + '\n')
+          PYTHON
   linux-host:
     runs-on: ubuntu-24.04
     steps:
@@ -24,6 +49,8 @@ jobs:
       - run: python3 scripts/test_serial.py
       - run: .build/memory_lab
   pi-kernel-build:
+    needs: changes
+    if: needs.changes.outputs.kernel == 'true'
     runs-on: ubuntu-24.04
     container: debian:bookworm
     timeout-minutes: 180
