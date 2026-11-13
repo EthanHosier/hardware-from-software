@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="700" viewBox="0 0 960 700" role="img" aria-labelledby="title desc">
+<title id="title">Generic XDP placement and the private namespace test</title>
+<desc id="desc">The actual software test sends from hfs-host to hfs-peer in hfs-lab. Its generic XDP hook sees an existing SKB and either passes to the UDP endpoint or drops selected requests. A separate conceptual native path places XDP inside a supporting driver before SKB creation; the course GENET driver does not supply that hook.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#334155" stroke-width="1.5"/></marker></defs>
+<rect width="960" height="700" rx="12" fill="#f8fafc"/>
+<g font-family="system-ui,sans-serif" fill="#14263d">
+<text x="32" y="38" font-size="24" font-weight="700">One classifier, two different hook locations</text>
+<text x="32" y="68" font-size="16">Placement diagram • arrows show receive processing, not hardware timing</text>
+<rect x="24" y="90" width="912" height="354" rx="10" fill="#eef6ff" stroke="#668bb6"/>
+<text x="44" y="121" font-size="20" font-weight="700">Actual exercise: software veth link, explicit generic/SKB mode</text>
+<rect x="44" y="147" width="225" height="83" rx="7" fill="white" stroke="#668bb6"/>
+<text x="58" y="172" font-size="17" font-weight="600">Host namespace</text>
+<text x="58" y="197" font-size="16">sender → hfs-host</text>
+<text x="58" y="218" font-size="15">198.18.0.1/30</text>
+<rect x="328" y="147" width="578" height="83" rx="7" fill="white" stroke="#668bb6"/>
+<text x="344" y="172" font-size="17" font-weight="600">hfs-lab namespace</text>
+<text x="344" y="197" font-size="16">hfs-peer • 198.18.0.2/30 • receive SKB exists</text>
+<text x="344" y="218" font-size="15">Software link; no PHY, physical NIC or DMA claim</text>
+<path d="M269 189H326" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M558 231V262" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="359" y="266" width="400" height="66" rx="7" fill="#dceef5" stroke="#28728d" stroke-width="2"/>
+<text x="377" y="291" font-size="18" font-weight="700">Generic XDP: lab_xdp</text>
+<text x="377" y="316" font-size="16">bounds + marker → mode map → action</text>
+<path d="M359 298H177V356" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M559 332V356" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="64" y="335" font-size="15">DROP selected request</text>
+<text x="574" y="351" font-size="15">PASS</text>
+<rect x="58" y="362" width="238" height="54" rx="7" fill="#fff0e6" stroke="#a75f37"/>
+<text x="75" y="385" font-size="17" font-weight="600">Discard in kernel</text>
+<text x="75" y="406" font-size="15">ordinary socket sees nothing</text>
+<rect x="359" y="362" width="547" height="54" rx="7" fill="white" stroke="#668bb6"/>
+<text x="377" y="385" font-size="17" font-weight="600">Linux protocols → ordinary UDP endpoint</text>
+<text x="377" y="406" font-size="15">ARP / ICMP / other traffic also continue to Linux</text>
+<rect x="24" y="467" width="912" height="205" rx="10" fill="#f0f0f5" stroke="#89839e" stroke-dasharray="6 4"/>
+<text x="44" y="499" font-size="20" font-weight="700">Conceptual comparison: native XDP on a supporting driver</text>
+<rect x="44" y="524" width="184" height="70" rx="7" fill="white" stroke="#89839e"/>
+<text x="60" y="552" font-size="17">Driver RX buffer</text>
+<text x="60" y="577" font-size="15">before ordinary SKB</text>
+<rect x="278" y="524" width="197" height="70" rx="7" fill="white" stroke="#89839e"/>
+<text x="294" y="552" font-size="17" font-weight="600">Native XDP hook</text>
+<text x="294" y="577" font-size="15">PASS continues →</text>
+<rect x="525" y="524" width="165" height="70" rx="7" fill="white" stroke="#89839e"/>
+<text x="542" y="552" font-size="17">Create SKB</text>
+<text x="542" y="577" font-size="15">normal receive</text>
+<rect x="740" y="524" width="166" height="70" rx="7" fill="white" stroke="#89839e"/>
+<text x="754" y="552" font-size="17">Linux protocols</text>
+<text x="754" y="577" font-size="15">then socket</text>
+<g stroke="#334155" stroke-width="2" marker-end="url(#arrow)"><path d="M228 559H276"/><path d="M475 559H523"/><path d="M690 559H738"/></g>
+<text x="44" y="628" font-size="16">Not the attached mode here. The pinned GENET driver lacks the native XDP setup hook.</text>
+<text x="44" y="653" font-size="16">Generic/native placement and AF_XDP copy/zero-copy are separate choices.</text>
+</g></svg>

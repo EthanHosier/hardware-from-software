@@ -1,0 +1,58 @@
+{
+  "id": "13.4",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "NETWORKING_PLAN.md",
+    "NETWORKING_EXAMPLES.md",
+    "catalog.json",
+    "src/13.1-receive-packet-ring.md",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md"
+  ],
+  "sources": [
+    "https://docs.kernel.org/6.12/networking/af_xdp.html",
+    "https://github.com/xdp-project/xdp-tools/blob/v1.3.1/headers/xdp/xsk.h",
+    "https://raw.githubusercontent.com/xdp-project/xdp-tools/v1.3.1/headers/xdp/xsk.h",
+    "https://github.com/torvalds/linux/blob/v6.12/net/xdp/xsk.c",
+    "https://raw.githubusercontent.com/torvalds/linux/v6.12/net/xdp/xsk.c",
+    "https://raw.githubusercontent.com/xdp-project/xdp-tools/v1.3.1/lib/libxdp/xsk.c"
+  ],
+  "scope_audit": {
+    "result": "Complete receive-only generic/copy AF_XDP lesson with ready socket publication, checked single rx-0 topology and ordinary UDP delivery comparison.",
+    "ownership": "Bounded UMEM, FILL/RX descriptor versus chunk lifetime, libxdp acquire/release, need-wakeup/poll, internal owner checks; TX deferred to 13.5.",
+    "experiments": "Finite foreground terminals; three redirected requests and subsequent ordinary request; integration-test-identical 8 chunks/500 ms starvation, 1..64 burst, 0.8 second delay, 65..96 paced recovery; actual gaps/drop counters qualified.",
+    "baseline": "Same 6.12.96-hfs1-v8 Pi baseline; no kernel switch and no physical attachment.",
+    "cleanup": "PASS, owned detach, socket-before-UMEM teardown, timeout, SIGINT, bounded EBUSY retry and SIGKILL limits."
+  },
+  "code_files_read": [
+    "examples/network/xsk_common.hpp",
+    "examples/network/xsk_receiver.cpp",
+    "examples/network/lab_xdp.bpf.c",
+    "examples/network/wire.hpp",
+    "examples/network/udp_sender.py",
+    "examples/network/udp_endpoint.cpp",
+    "scripts/network_lab.py",
+    "scripts/test_network.py",
+    "scripts/build_network.py"
+  ],
+  "checks_performed": [
+    "All four mdBook include targets exist; full-source unindented fences.",
+    "Balanced Markdown fences and SVG XML parse.",
+    "Compared foreground command arguments, output fields, starvation values and sequence ranges to actual code/test.",
+    "Quick Look preview inspected; shortened FILL label to fit. Full mdBook/browser visual verification remains coordinator-owned.",
+    "Official primary references browsed; no privileged Linux run performed by this writer."
+  ],
+  "hardware_status": {
+    "source_reviewed": true,
+    "writer_compiled": false,
+    "writer_host_runtime": false,
+    "physical_runtime": "not exercised",
+    "coordinator_reported_evidence": "CI run 43334222277 succeeded on Linux 7.0 Azure; not Pi 6.12 or physical evidence; coordinator must bind final source hashes to that record."
+  },
+  "concerns": [
+    "Forward lesson links 13.3 and 13.5 depend on coordinator integration.",
+    "Manual starvation can miss the 500 ms window; page explains and points to coordinated integration runner after manual lab cleanup.",
+    "Independent review and accepted-build/publication checks remain required."
+  ],
+  "status": "writer_complete_pending_independent_review"
+}

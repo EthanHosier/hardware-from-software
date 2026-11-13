@@ -1,0 +1,38 @@
+{
+  "id": "13.3",
+  "reviewer": "root, separate from dedicated fresh-context writer",
+  "status": "accepted_source_review",
+  "reviewed_at": "2026-11-13T07:32:24.608291+00:00",
+  "canonical_sha256": "a2423f32f27e4fcc61290905575a708b7f286a0393f2b37f5d7a86d62accc1b6",
+  "included_source_sha256": {},
+  "asset_sha256": {
+    "src/assets/13.3-umem-ownership.svg": "4ca68eb93491e499f80305f2f98c4b5500e12e42c3239cae17949783b5e3c146"
+  },
+  "paths_read": [
+    "src/13.3-verify-af-xdp-memory.md",
+    "reviews/13.3-writer.json",
+    "src/assets/13.3-umem-ownership.svg",
+    "src/assets/13.3-umem-ownership.svg",
+    "NETWORKING_EXAMPLES.md"
+  ],
+  "scope_coverage": "Running-kernel/source/image/embedded-config provenance, minimal unbound socket lifecycle and errno/capability limits, UMEM chunks/offsets/four SPSC ring transfers, copy vs zero-copy and generic vs native, nextlab prerequisites.",
+  "sources_checked": [
+    "https://docs.kernel.org/6.12/networking/af_xdp.html",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/net/xdp/xsk.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/include/linux/socket.h",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/include/uapi/linux/if_xdp.h",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/net/xdp/xsk_queue.h",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmgenet.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/kernel/configs.c",
+    "https://raw.githubusercontent.com/xdp-project/xdp-tools/v1.3.1/headers/xdp/xsk.h"
+  ],
+  "checks_performed": [
+    "Root read every word, included source, commands and complete SVG; substantive source/API/progression review completed before hash freeze.",
+    "Read all prose, both complete Python heredocs and actual nativebuild/installer paths. Confirmed compiled CONFIG_IKCONFIG=m and IKCONFIG_PROC=y, VETH=m and XDP_SOCKETS=y. Embedded config loaded only as diagnostic module and conditionally unloaded. Hash checks match actual installer-record paths; unbound socket not misrepresented as packet/queue success. Full UMEM SVG visually inspected. Root reviewed actual sharedring helpers and AF_XDP docs.",
+    "All shell fences syntax checked with sh -n. Full rendered source equality, local links, SVG XML and downloadable files are enforced by publish.py before deployment.",
+    "Network code compiled natively on Arm64 Bookworm; Linux7.0Azure namespace integration CI43334222277 passes all12cases. Physical Pi/GENET operations are qualified source/reader exercises."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source-reviewed; software compiled and hosted Linux namespace tested. Physical Pi boot, GENET DMA/PHY and hardware runtime not exercised."
+}

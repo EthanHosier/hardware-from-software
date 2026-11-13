@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="650" viewBox="0 0 920 650" role="img" aria-labelledby="title desc">
+<title id="title">AF_XDP UMEM and four ownership rings</title>
+<desc id="desc">A conceptual software diagram. UMEM chunks contain bytes. FILL and TX publish ownership from application to kernel. RX and COMPLETION return ownership to application. Hardware DMA descriptors are separate.</desc>
+<defs><marker id="arrow133" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#285b8e"/></marker></defs>
+<rect width="920" height="650" rx="12" fill="#f4f7fb"/>
+<g font-family="system-ui,sans-serif" fill="#172d43">
+<text x="30" y="37" font-size="23" font-weight="700">AF_XDP software ownership — one socket, one UMEM</text>
+<rect x="30" y="65" width="860" height="115" rx="8" fill="#fff" stroke="#7890aa"/>
+<text x="48" y="92" font-size="18" font-weight="700">UMEM mapping: base pointer + packet offset → packet bytes</text>
+<g font-size="16" text-anchor="middle">
+<rect x="48" y="106" width="180" height="50" fill="#dbeaf7" stroke="#7890aa"/><text x="138" y="128">chunk 0</text><text x="138" y="148">offset 0</text>
+<rect x="228" y="106" width="180" height="50" fill="#dbeaf7" stroke="#7890aa"/><text x="318" y="128">chunk 1</text><text x="318" y="148">offset 4096</text>
+<rect x="408" y="106" width="180" height="50" fill="#dbefdf" stroke="#7890aa"/><text x="498" y="128">chunk 2</text><text x="498" y="148">offset 8192</text>
+<text x="690" y="138">… 4096 bytes per chunk</text>
+</g>
+<rect x="30" y="210" width="230" height="337" rx="8" fill="#dbefdf" stroke="#7890aa"/>
+<rect x="660" y="210" width="230" height="337" rx="8" fill="#dbeaf7" stroke="#7890aa"/>
+<text x="145" y="242" font-size="20" text-anchor="middle" font-weight="700">Application</text>
+<text x="775" y="242" font-size="20" text-anchor="middle" font-weight="700">Kernel</text>
+<text x="145" y="281" text-anchor="middle" font-size="16">free chunk → FILL</text>
+<text x="145" y="350" text-anchor="middle" font-size="16">RX → inspect / edit</text>
+<text x="145" y="419" text-anchor="middle" font-size="16">reply → TX</text>
+<text x="145" y="488" text-anchor="middle" font-size="16">completion → reuse</text>
+<text x="775" y="281" text-anchor="middle" font-size="16">receive storage</text>
+<text x="775" y="350" text-anchor="middle" font-size="16">received packet</text>
+<text x="775" y="419" text-anchor="middle" font-size="16">transmit packet</text>
+<text x="775" y="488" text-anchor="middle" font-size="16">finished with bytes</text>
+<g stroke="#285b8e" stroke-width="3" marker-end="url(#arrow133)"><path d="M270 290H650"/><path d="M650 359H270"/><path d="M270 428H650"/><path d="M650 497H270"/></g>
+<g font-size="17" text-anchor="middle"><text x="460" y="276">FILL: chunk offset</text><text x="460" y="345">RX: packet offset + length + options</text><text x="460" y="414">TX: packet offset + length + options</text><text x="460" y="483">COMPLETION: reusable buffer offset</text></g>
+<text x="30" y="580" font-size="17">Each arrow is one single-producer / single-consumer ring.</text>
+<text x="30" y="606" font-size="17">Publishing a descriptor transfers permission to use the named bytes.</text>
+<text x="30" y="632" font-size="17" font-weight="600">These rings are distinct from the NIC's hardware DMA descriptors.</text>
+</g></svg>

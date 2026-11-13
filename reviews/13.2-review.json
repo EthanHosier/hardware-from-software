@@ -1,0 +1,42 @@
+{
+  "id": "13.2",
+  "reviewer": "root, separate from dedicated fresh-context writer",
+  "status": "accepted_source_review",
+  "reviewed_at": "2026-11-13T00:13:23.465151+00:00",
+  "canonical_sha256": "caf520dfd4985b71625eed913c7952f33b44e234d24cfd21db8cc3f19a5c941e",
+  "included_source_sha256": {
+    "examples/network/lab_xdp.bpf.c": "2e8748686a1a567a4354269a45ac2e4cbf8e118f51e57becd97b6e707b922bc7",
+    "examples/network/xdp_control.cpp": "0f4cb19b1d89609ce57ef411f7972b608ad1b7a2706239c4b5bd258e80c8e09f",
+    "examples/network/xsk_common.hpp": "f88b840e0e2728e9c4c95e55c84d7f236ab0875044558a5435962fb88a09991c"
+  },
+  "asset_sha256": {
+    "src/assets/13.2-generic-xdp-placement.svg": "22e77535b0c2ef8af1691a88d81ee7b585ee82e20c8e2f57b57a0526ff4afd6e"
+  },
+  "paths_read": [
+    "src/13.2-selective-generic-xdp.md",
+    "reviews/13.2-writer.json",
+    "examples/network/lab_xdp.bpf.c",
+    "examples/network/xdp_control.cpp",
+    "examples/network/xsk_common.hpp",
+    "src/assets/13.2-generic-xdp-placement.svg",
+    "src/assets/13.2-generic-xdp-placement.svg",
+    "NETWORKING_EXAMPLES.md"
+  ],
+  "scope_coverage": "Generic versus native XDP placement, exact bounded selective classifier/pass policy, verifier limits, maps/counters, pass/drop/unsupported experiments, existing attachment refusal and identity-checked detach/recovery.",
+  "sources_checked": [
+    "https://docs.kernel.org/6.12/bpf/verifier.html",
+    "https://docs.kernel.org/6.12/networking/af_xdp.html",
+    "https://raw.githubusercontent.com/torvalds/linux/v6.12/net/core/dev.c",
+    "https://raw.githubusercontent.com/libbpf/libbpf/v1.1.2/src/netlink.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmgenet.c"
+  ],
+  "checks_performed": [
+    "Root read every word, included source, commands and complete SVG; substantive source/API/progression review completed before hash freeze.",
+    "Read entire classifier/controller/sharedloader and all commands; packet bounds precede reads, counters selectedonly, no checksum-validation claim. Actual CI verifier/pass/drop/foreignattach/missingXSKfallback cases pass. Reviewed normal-finish, exception and SIGKILL limitations. Diagram source labels inspected; complete render/source/download checks run at publication.",
+    "All shell fences syntax checked with sh -n. Full rendered source equality, local links, SVG XML and downloadable files are enforced by publish.py before deployment.",
+    "Network code compiled natively on Arm64 Bookworm; Linux7.0Azure namespace integration CI43334222277 passes all12cases. Physical Pi/GENET operations are qualified source/reader exercises."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source-reviewed; software compiled and hosted Linux namespace tested. Physical Pi boot, GENET DMA/PHY and hardware runtime not exercised."
+}

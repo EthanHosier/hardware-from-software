@@ -1,0 +1,47 @@
+{
+  "id": "13.1",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "NETWORKING_PLAN.md",
+    "NETWORKING_EXAMPLES.md",
+    "catalog.json (13.1 entry)",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/11.3-decode-ethernet-frame.md"
+  ],
+  "sources": [
+    "https://docs.kernel.org/6.12/networking/packet_mmap.html",
+    "https://raw.githubusercontent.com/torvalds/linux/v6.12/include/uapi/linux/if_packet.h",
+    "https://raw.githubusercontent.com/torvalds/linux/v6.12/net/packet/af_packet.c"
+  ],
+  "scope_audit": {
+    "complete_source": "Full unindented mdBook includes for packet_ring.cpp and shared wire.hpp",
+    "ownership": "V3 block status acquire/release, no pointers after release, prompt return and wrap, separate hardware ring",
+    "layout_bounds": "Block and record lengths/offsets, alignment, variable records, VLAN metadata policy and parser boundaries explained",
+    "batching_deadline": "Two 1 MiB blocks, 2048 frame accounting, 50 ms retirement, independent absolute deadline, whole-block finish and matched overshoot",
+    "evidence": "Matched numbered requests using ordinary endpoint; rerun packet_rx and optional strace for syscall comparison; stats/drop interpretation without speed claims",
+    "copy_boundary": "SKB and skb_copy_bits remain; mapped decoding avoids recvmsg copy to separate array; no hardware zero-copy claim",
+    "cleanup": "Exact bounded namespace commands and ownership-checking cleanup; no physical interface mutation"
+  },
+  "code_files_read": [
+    "examples/network/packet_ring.cpp",
+    "examples/network/wire.hpp",
+    "examples/network/packet_rx.cpp",
+    "examples/network/udp_endpoint.cpp",
+    "examples/network/udp_sender.py",
+    "scripts/network_lab.py",
+    "scripts/build_network.py"
+  ],
+  "checks_performed": [
+    "Read full authoring, planning and example contracts and prescribed style reference",
+    "Browsed official Linux documentation, UAPI structures and implementation; checked block barriers, skb copy, freeze conditions and PACKET_STATISTICS reset",
+    "Manually traced actual ring bounds, decoder use, count/deadline behavior and normal/error cleanup",
+    "Checked both includes and all local Markdown link targets exist",
+    "Parsed unique SVG as XML and checked fenced code blocks balanced"
+  ],
+  "hardware_status": "Source-reviewed only by this writer. No Linux namespace execution, Pi compile/boot, physical network runtime or timing measurement claimed. Root owns build/runtime/render acceptance.",
+  "concerns": [
+    "Independent reviewer must check rendered SVG/page and shared build/runtime evidence before accepting. No pending source include."
+  ],
+  "status": "ready-for-independent-review"
+}

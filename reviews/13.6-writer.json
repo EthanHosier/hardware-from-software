@@ -1,0 +1,82 @@
+{
+  "id": "13.6",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md (entire)",
+    "NETWORKING_PLAN.md (entire)",
+    "NETWORKING_EXAMPLES.md",
+    "EXAMPLES.md",
+    "catalog.json (13.6 entry)",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md"
+  ],
+  "sources": [
+    "https://docs.kernel.org/6.12/networking/af_xdp.html",
+    "https://doc.dpdk.org/guides/prog_guide/ethdev/ethdev.html",
+    "https://doc.dpdk.org/guides/linux_gsg/linux_drivers.html",
+    "https://doc.dpdk.org/guides/nics/af_xdp.html"
+  ],
+  "scope_audit": {
+    "owned_paths": [
+      "src/13.6-compare-network-paths.md",
+      "src/assets/13.6-network-paths.svg",
+      "reviews/13.6-writer.json"
+    ],
+    "coverage": [
+      "Five-row ownership/path matrix and original SVG distinguishing actual software paths and conceptual hardware alternatives",
+      "Matched finite UDP and AF_XDP echoes:100 requests,eight-byte payload,same interval/deadline,three alternating repetitions per path",
+      "Two foreground terminals with observed READY gate; no background process orchestration or races",
+      "GNU time per-process wall/user/system CPU and timestamps,environment/driver/offload/topology records; pipeline status caveat",
+      "Loss and exact sender min/upper-middle/max RTT meaning,successful samples only; effective rate limitation and process versus asynchronous kernel CPU caveats",
+      "Passive AF_PACKET/PACKET_MMAP capture comparison separately retains ordinary UDP echo service",
+      "DPDK PMD polling cost,mbuf pool ownership,direct device access,bifurcated/AF_XDP PMD exceptions; no unbind or purchases",
+      "Same course kernel6.12.96-hfs1-v8,explicitgeneric/copy; software CI43334222277 distinguished from actual repeated measurement and physical Pi results",
+      "Cleanup,signal/ownership recovery,decision guide,Pico/W5500 future direction only"
+    ],
+    "code_includes": [
+      "examples/network/udp_sender.py"
+    ],
+    "hashes": {
+      "src/13.6-compare-network-paths.md": "ce396fc46b8377c3ed9f974edb3b7b251a3e98710805d50bede114b82baf02b5",
+      "src/assets/13.6-network-paths.svg": "750d65f96e19aa5506d2e3fc3bcafcdcb267f943af791ff08ebcb3ec254f4476"
+    }
+  },
+  "code_files_read": [
+    "examples/network/udp_sender.py",
+    "examples/network/udp_endpoint.cpp",
+    "examples/network/xsk_responder.cpp",
+    "examples/network/xsk_common.hpp",
+    "examples/network/packet_rx.cpp",
+    "examples/network/packet_ring.cpp",
+    "scripts/network_lab.py"
+  ],
+  "checks_performed": [
+    {
+      "check": "Official Linux and DPDK primary references browsed; actual CLI/defaults/readiness/statistics/timeout/ownership implementation read",
+      "status": "source-reviewed"
+    },
+    {
+      "check": "All shell fences parsed with zsh -n; SVG parsed as XML; local links/fences checked; nonexistent original11.3 link corrected to actual11.2 canonical page",
+      "status": "passed writer static checks"
+    },
+    {
+      "check": "Quick Look rendered original SVG; inspected thumbnail (Quick Look square thumbnail crops right side)",
+      "status": "partial visual check; full browser rendering pending root"
+    },
+    {
+      "check": "Linux privileged experiment and repeated performance measurements",
+      "status": "not run by writer on macOS; no timings fabricated"
+    },
+    {
+      "check": "Complete mdBook build/download/render and independent substantive review",
+      "status": "pending root"
+    }
+  ],
+  "hardware_status": "Writer has not booted the physical Pi or measured physical networking. CI pass cited from coordinator evidence is software integration only. Diagram hardware rows explicitly conceptual.",
+  "concerns": [
+    "Manual READY-gated foreground protocol deliberately records responder wall including readiness delay; page states CPU seconds and sender wall are the interpretable quantities,not latency/throughput benchmark claims.",
+    "Canonical13.5 lesson is being written separately; root must resolve/stage forward link.",
+    "Root must inspect full-width SVG browser render and all prose/commands independently.",
+    "No shared code,other lessons,catalog/build files,Git or deployment changed."
+  ],
+  "status": "writer complete; pending independent root review"
+}

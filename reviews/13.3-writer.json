@@ -1,0 +1,96 @@
+{
+  "id": "13.3",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "NETWORKING_PLAN.md",
+    "NETWORKING_EXAMPLES.md",
+    "EXAMPLES.md",
+    "KERNEL_BASELINE.md",
+    "kernel-baseline.json",
+    "catalog.json (13.3 entry)",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/5.2-verify-the-linux-development-environment.md",
+    "src/13.2-selective-generic-xdp.md",
+    ".deps/inspect-linux-headers-6.12.96+rpt-rpi-v8/usr/src/linux-headers-6.12.96+rpt-rpi-v8/.config"
+  ],
+  "sources": [
+    "https://docs.kernel.org/6.12/networking/af_xdp.html",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/net/xdp/xsk.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/include/linux/socket.h",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/include/uapi/linux/if_xdp.h",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/net/xdp/xsk_queue.h",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmgenet.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/kernel/configs.c",
+    "https://raw.githubusercontent.com/xdp-project/xdp-tools/v1.3.1/headers/xdp/xsk.h"
+  ],
+  "scope_audit": {
+    "owned_paths": [
+      "src/13.3-verify-af-xdp-memory.md",
+      "src/assets/13.3-umem-ownership.svg",
+      "reviews/13.3-writer.json"
+    ],
+    "coverage": [
+      "Same course kernel 6.12.96-hfs1-v8; no rebuild or switch",
+      "Exact running release, module build link, clean source identity, embedded config, installed config/image and source/build records",
+      "Minimal finite Python socket create/close, Linux AF_XDP 44 fallback, CAP_NET_RAW distinction and no bound runtime claim",
+      "UMEM aligned chunks, process base versus offsets, software descriptors versus NIC DMA descriptors",
+      "FILL/RX/TX/COMPLETION producers, consumers and exclusive byte ownership; RX slot release is distinct from TX completion",
+      "SPSC acquire/release and maintained libxdp ring helpers",
+      "Generic/native and copy/zero-copy separately explained, pinned GENET missing hooks, explicit example flags/options query",
+      "Actual library/build-script contract, namespace setup/show and single rx-0 discovery, symptoms and cleanup/next state"
+    ],
+    "code_includes": [],
+    "inline_programs": "Two complete finite administrative Python heredocs; socket probe reuses the 5.2 approach and provenance check reads existing artifacts. No duplicated packet-processing implementation.",
+    "hashes": {
+      "src/13.3-verify-af-xdp-memory.md": "a2423f32f27e4fcc61290905575a708b7f286a0393f2b37f5d7a86d62accc1b6",
+      "src/assets/13.3-umem-ownership.svg": "4ca68eb93491e499f80305f2f98c4b5500e12e42c3239cae17949783b5e3c146"
+    },
+    "prose_words_excluding_fences": 1613
+  },
+  "code_files_read": [
+    "examples/network/xsk_common.hpp",
+    "scripts/build_network.py",
+    "scripts/network_lab.py",
+    "scripts/build_pi_kernel.py",
+    "scripts/install_pi_kernel.py"
+  ],
+  "checks_performed": [
+    {
+      "check": "Browsed official pinned kernel and libxdp source and Linux 6.12 AF_XDP docs; matched local actual example ownership and CLI/build contracts",
+      "status": "source-reviewed"
+    },
+    {
+      "check": "Pinned local official headers package SHA256 equals kernel-baseline.json; inspected extracted config: IKCONFIG=m, IKCONFIG_PROC=y, NET_NS=y, VETH=m, BPF_SYSCALL=y",
+      "status": "passed"
+    },
+    {
+      "check": "Both inline Python heredocs parsed with ast; all shell fences parsed with zsh -n; balanced fences and canonical local/future catalog links",
+      "status": "passed writer static checks"
+    },
+    {
+      "check": "SVG XML parsed; Quick Look generated thumbnail; layout inspected but Quick Look crops wide SVG thumbnail at right",
+      "status": "source/XML verified; full browser render pending independent review"
+    },
+    {
+      "check": "Pi provenance/config commands and privileged socket creation",
+      "status": "not run by writer on physical Pi"
+    },
+    {
+      "check": "Linux network build/runtime",
+      "status": "not run by writer; shared root validation required"
+    },
+    {
+      "check": "mdBook full render, links/downloads and narrow-screen SVG",
+      "status": "pending independent root review"
+    }
+  ],
+  "hardware_status": "Physical Pi boot, socket lifecycle on the Pi, packet runtime, PHY and DMA not exercised by writer. No measured traffic or hardware result is claimed.",
+  "concerns": [
+    "Independent reviewer must inspect the full page, exact commands and SVG.",
+    "configs module is confirmed present in the pinned official config as a module; lesson loads it only for /proc/config.gz inspection and removes it only if absent before this shell. Config/image files are a reproducibility chain, not secure boot attestation.",
+    "13.4 canonical forward link will be staged by root when unpublished.",
+    "No shared code, other pages, build/catalog/config, Git or deployment modified."
+  ],
+  "status": "writer complete; pending independent review and root render/runtime verification"
+}

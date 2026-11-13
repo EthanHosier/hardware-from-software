@@ -1,0 +1,42 @@
+{
+  "id": "13.5",
+  "reviewer": "root, separate from dedicated fresh-context writer",
+  "status": "accepted_source_review",
+  "reviewed_at": "2026-11-13T07:35:21.933558+00:00",
+  "canonical_sha256": "5a673cd5991ce2ad443a94b672de2cc729585ed93d57d97a1026a033e4df1116",
+  "included_source_sha256": {
+    "examples/network/xsk_responder.cpp": "c844a47b10d094f8cb00e388fe0c9dab30572baaf7c160f51eec6e280e34ce12",
+    "examples/network/xsk_common.hpp": "f88b840e0e2728e9c4c95e55c84d7f236ab0875044558a5435962fb88a09991c",
+    "examples/network/wire.hpp": "af9a7fe7864a87d715bf28dcac0638a133adbee592016cac0faba1a217b5c92e",
+    "examples/network/lab_xdp.bpf.c": "2e8748686a1a567a4354269a45ac2e4cbf8e118f51e57becd97b6e707b922bc7"
+  },
+  "asset_sha256": {
+    "src/assets/13.5-frame-lifetime.svg": "e943367cae463ad7ee05ca6b91366ead997f0f272ee83147751a7b722356735a"
+  },
+  "paths_read": [
+    "src/13.5-af-xdp-transmit-completion.md",
+    "reviews/13.5-writer.json",
+    "examples/network/xsk_responder.cpp",
+    "examples/network/xsk_common.hpp",
+    "examples/network/wire.hpp",
+    "examples/network/lab_xdp.bpf.c",
+    "src/assets/13.5-frame-lifetime.svg",
+    "NETWORKING_EXAMPLES.md"
+  ],
+  "scope_coverage": "All four AF_XDP rings and per-chunk state, RX descriptor release versus TX completion, in-place bounded UDP reply/checksums, partial TX availability/wakeup/drain/errors and teardown, small-pool request/reply and failure verification.",
+  "sources_checked": [
+    "https://docs.kernel.org/6.12/networking/af_xdp.html",
+    "https://github.com/xdp-project/xdp-tools/blob/v1.3.1/headers/xdp/xsk.h",
+    "https://www.rfc-editor.org/rfc/rfc768.html",
+    "https://www.rfc-editor.org/rfc/rfc791.html"
+  ],
+  "checks_performed": [
+    "Root read every word, included source, commands and complete SVG; substantive source/API/progression review completed before hash freeze.",
+    "Root read entire prose, complete XSK implementation and independent checksum fixtures; separate kernel_lessons agent also source-reviewed and returned no findings. Explicitly teaches unsent TX-reservation failure rather than fabricated retryqueue. RuntimeCI validates badchecksum rejection,3valid smallpoolreplies pending0, timeout/reattach and starvation. Full lifetime SVG visually inspected. All software evidence qualified from physicalPi and noforcedTXshortagetest claimed.",
+    "All shell fences syntax checked with sh -n. Full rendered source equality, local links, SVG XML and downloadable files are enforced by publish.py before deployment.",
+    "Network code compiled natively on Arm64 Bookworm; Linux7.0Azure namespace integration CI43334222277 passes all12cases. Physical Pi/GENET operations are qualified source/reader exercises."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source-reviewed; software compiled and hosted Linux namespace tested. Physical Pi boot, GENET DMA/PHY and hardware runtime not exercised."
+}

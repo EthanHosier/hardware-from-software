@@ -1,0 +1,57 @@
+{
+  "id": "13.5",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "NETWORKING_PLAN.md",
+    "NETWORKING_EXAMPLES.md",
+    "catalog.json",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    ".github/workflows/networking.yml"
+  ],
+  "sources": [
+    "https://docs.kernel.org/6.12/networking/af_xdp.html",
+    "https://github.com/xdp-project/xdp-tools/blob/v1.3.1/headers/xdp/xsk.h",
+    "https://www.rfc-editor.org/rfc/rfc768.html",
+    "https://www.rfc-editor.org/rfc/rfc791.html"
+  ],
+  "scope_audit": {
+    "four_rings_and_ownership": "Chunk state table and dedicated diagram; RX slot release explicitly separate from TX completion. Single producer/consumer maintained helpers.",
+    "bounded_transmit": "One descriptor reserve; shortage recycles unsent application-owned chunk and final accounting fails; wakeup/transient errors, statistics, absolute deadline and bounded drain covered.",
+    "reply_validation": "Checked no-options unfragmented marked IPv4/UDP, pre-mutation checksum validation, omitted IPv4 UDP checksum semantics, endpoint swaps, fresh TTL and full reply checksums; ARP passed.",
+    "reproducible_run": "Exact namespace, foreground responder, normal endpoint stopped, finite ten requests, eight frames, readiness line, illustrated summary, cleanup and automated test.",
+    "evidence_limits": "Portable byte fixtures distinguished from privileged ring execution; script tests small pool/invalid checksums/timeout reattach, starvation receiver rather than invented TX test. CI environment distinguished from untested physical Pi."
+  },
+  "code_files_read": [
+    "examples/network/xsk_common.hpp",
+    "examples/network/xsk_responder.cpp",
+    "examples/network/wire.hpp",
+    "examples/network/wire_test.cpp",
+    "examples/network/lab_xdp.bpf.c",
+    "examples/network/udp_sender.py",
+    "scripts/test_network.py",
+    "scripts/network_lab.py",
+    "scripts/build_network.py"
+  ],
+  "checks_performed": [
+    {
+      "check": "python3 scripts/build_network.py --portable-only",
+      "result": "passed; native clang C++20 normal and ASan/UBSan wire fixtures and 20000 bounded malformed inputs"
+    },
+    {
+      "check": "include paths, existing local links, SVG XML parse",
+      "result": "passed; 13.6 is a planned forward reference assigned to another writer"
+    },
+    {
+      "check": "privileged integration evidence",
+      "result": "Coordinator supplied successful run 43334222277: all twelve privileged namespace cases on hosted Linux 7.0 Azure; native Arm Bookworm compilation. Not rerun by this Mac writer."
+    }
+  ],
+  "hardware_status": "Physical Pi boot, GENET, PHY, DMA and Ethernet runtime not exercised. Generic/copy namespace evidence only.",
+  "concerns": [
+    "Independent root review and render/asset visual inspection remain required.",
+    "Shared code may be formatted or repaired by root; included files stay live and prose should be rechecked against final source.",
+    "CI success statement is coordinator-supplied evidence; root reviewer should confirm artifact/run link before acceptance."
+  ],
+  "status": "writer_complete_pending_independent_review"
+}

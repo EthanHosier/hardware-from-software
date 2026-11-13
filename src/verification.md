@@ -17,6 +17,8 @@ Linux programs require C++20 and Linux interfaces. The kernel example uses the L
 - Host protocol tests check framing, malformed input, bounds and recovery. Pseudo-terminal tests exercise serial-client stream handling; they are not UART waveform measurements.
 - Linux build checks compile the actual application and kernel sources. Any runtime test is identified separately from compilation.
 - Book checks verify included sources, links, downloads, diagrams and rendered pages.
+- The complete Pi kernel Image, modules and Device Trees were cross-built from the frozen configuration, and both external modules matched its exact release and symbol versions. Installer tests use temporary filesystem fixtures.
+- Networking examples compile natively on hosted Arm64 Bookworm. Twelve privileged namespace cases passed on hosted Linux `7.0.0-1017-azure` (x86_64), including BPF verification, packet rings, selective filtering, AF_XDP copy receive/reply, checksum rejection, starvation, timeout and reattachment. This runtime host is separate from the compiled Pi `6.12.96-hfs1-v8` kernel; neither result establishes physical Pi networking.
 
 The final machine-readable [verification record](verification.json) records the completed checks and exact source hashes. Review records accompany the repository.
 

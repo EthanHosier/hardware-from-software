@@ -1,6 +1,6 @@
 {
-  "status": "in progress: single-kernel migration checked; networking extension under independent review",
-  "recorded_at": "2026-11-13T00:06:04.451987+00:00",
+  "status": "complete: 65 pages independently reviewed; software checks passed; physical runtime unexercised",
+  "recorded_at": "2026-11-13T07:37:09.064637+00:00",
   "baseline": {
     "pico_sdk": "2.3.1",
     "pico_sdk_commit": "079c6f39023649b154152db30f1d781e884879bc",
@@ -36,7 +36,8 @@
     "single_kernel_ci_commit": "0e4391a31aeebb43208c47a59b3b491e5d033bc6",
     "single_kernel_ci_result": "success: full Image/modules/dtbs, external hello/mybutton modules, DT overlay, complete modules_install staging; host and native Arm64 applications/tests pass",
     "single_kernel_installer": "15 temporary-fixture tests passed; no Pi installed or booted",
-    "pico_single_kernel_regression": "All12 firmware targets rebuilt; host parser normal/sanitized and all11 serialPTY cases passed"
+    "pico_single_kernel_regression": "All12 firmware targets rebuilt; host parser normal/sanitized and all11 serialPTY cases passed",
+    "networking_example_archive": "Fresh extraction passes four portable original app builds, original protocol normal/ASan/UBSan, all11serialPTYcases, network decoder/checksum normal/ASan/UBSan with20000malformed inputs, and all15installer fixturetests."
   },
   "physical_runtime": "not exercised; no verified connection to boards",
   "limitations": [
@@ -77,10 +78,10 @@
     "examples/kernel/mybutton.c": "519501c09961f2b2a1702e26aab6cf29a1f9b9e666a2027fc8a007f50b02a371"
   },
   "documentation": {
-    "catalog_pages": 53,
-    "main_lessons": 44,
+    "catalog_pages": 65,
+    "main_lessons": 56,
     "appendix_pages": 9,
-    "independent_review": "All 53 canonical pages accepted_source_review; included source and asset hashes enforced at build."
+    "independent_review": "All65 canonical pages accepted_source_review; included source, diagram and reviewed dependency hashes enforced by build. Twelve networking lessons have a separate final progression audit."
   },
   "single_kernel_build": {
     "status": "full kernel and both external modules compiled",

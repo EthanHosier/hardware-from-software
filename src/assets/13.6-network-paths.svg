@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="790" viewBox="0 0 1000 790" role="img" aria-labelledby="title desc">
+<title id="title">Five packet receive paths</title>
+<desc id="desc">UDP uses the kernel protocol stack; packet sockets receive a parallel capture copy. Generic XDP copies selected traffic to UMEM. Native XDP with supported zero-copy still uses a kernel driver. A conceptual direct hardware PMD manages device queues in userspace.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#34495e"/></marker></defs>
+<rect width="1000" height="790" fill="#fff"/>
+<g font-family="system-ui,sans-serif" font-size="17" fill="#172b3a">
+<text x="25" y="34" font-size="25" font-weight="700">Receive paths: the boundary changes, ownership remains</text>
+<text x="25" y="61">Software experiment: rows 1–3. Hardware alternatives: rows 4–5 are conceptual.</text>
+<rect x="168" y="80" width="507" height="648" rx="8" fill="#eaf1f9"/>
+<rect x="690" y="80" width="285" height="648" rx="8" fill="#edf6e8"/>
+<text x="190" y="107" font-weight="700">Kernel / driver work</text><text x="710" y="107" font-weight="700">Userspace</text>
+<text x="25" y="151" font-weight="700">1 UDP</text>
+<rect x="185" y="125" width="470" height="58" rx="6" fill="#fff" stroke="#607d9c"/>
+<text x="200" y="150">RX → Linux driver → IP/UDP → socket</text><text x="200" y="172">Normal protocol processing</text>
+<path d="M655 155H710" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="722" y="149">Payload receive buffer</text><text x="722" y="172">UDP echo application</text>
+<text x="25" y="241" font-weight="700">2 Capture</text>
+<rect x="185" y="210" width="470" height="83" rx="6" fill="#fff" stroke="#607d9c"/>
+<text x="200" y="235">RX → Linux driver → packet socket copy</text><text x="200" y="258">Normal IP/UDP continues separately</text><text x="200" y="281">Shared ring is not a NIC descriptor ring</text>
+<path d="M655 247H710" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="722" y="235">recv buffer OR</text><text x="722" y="258">PACKET_MMAP ring</text><text x="722" y="281">Passive decoder</text>
+<text x="25" y="354" font-weight="700">3 Generic</text><text x="25" y="378">XDP / copy</text>
+<rect x="185" y="320" width="470" height="83" rx="6" fill="#fff" stroke="#607d9c"/>
+<text x="200" y="345">RX → Linux driver → skb → generic XDP</text><text x="200" y="368">Selected frames → AF_XDP copy</text><text x="200" y="391">Passed frames → normal stack (e.g. ARP)</text>
+<path d="M655 357H710" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="722" y="345">UMEM + XSK rings</text><text x="722" y="368">Frame responder</text><text x="722" y="391">Explicit buffer ownership</text>
+<text x="25" y="462" font-weight="700">4 Native</text><text x="25" y="486">zero-copy</text><text x="25" y="510">Conceptual</text>
+<rect x="185" y="430" width="470" height="101" rx="6" fill="#fff" stroke="#607d9c" stroke-dasharray="7 4"/>
+<text x="200" y="456">Supported NIC → Linux driver / native XDP</text><text x="200" y="480">Supported zero-copy queue → UMEM DMA</text><text x="200" y="504">Driver and kernel remain involved</text>
+<path d="M655 478H710" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="722" y="456">UMEM + XSK rings</text><text x="722" y="480">Frame processing</text><text x="722" y="504">Actual mode must be checked</text>
+<text x="25" y="590" font-weight="700">5 Direct PMD</text><text x="25" y="614">Conceptual</text>
+<rect x="185" y="560" width="470" height="131" rx="6" fill="#fff" stroke="#607d9c" stroke-dasharray="7 4"/>
+<text x="200" y="585">Kernel establishes protected device access</text><text x="200" y="609">Dedicated NIC queues / DMA buffers</text><text x="200" y="633">Ordinary kernel packet stack bypassed</text><text x="200" y="672">Exceptions: AF_XDP PMD / bifurcated drivers</text>
+<path d="M655 610H710" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="722" y="585">Userspace hardware PMD</text><text x="722" y="609">Poll / burst processing</text><text x="722" y="633">mbuf pool + application</text><text x="722" y="672">Different ownership paths</text>
+<text x="25" y="757">Arrows show delivery, not timings. veth has no Ethernet PHY or physical NIC DMA.</text>
+</g></svg>

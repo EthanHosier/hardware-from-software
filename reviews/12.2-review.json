@@ -3,7 +3,7 @@
   "reviewer": "root, separate from dedicated fresh-context writer",
   "status": "accepted_source_review",
   "reviewed_at": "2026-11-13T00:09:33.005893+00:00",
-  "canonical_sha256": "91f7154058a01aebf1d3e29c1afc26abe57f93ed822f76868b0a84e2cdc10d8b",
+  "canonical_sha256": "ba003e46ddcb2239c499b367cf246642d6fb1977b6c28eb5b3df77b1d13f1045",
   "included_source_sha256": {
     "examples/network/udp_endpoint.cpp": "842eefc950f1865849c111005bb5e63991a810b4d4503990b20103d3dbb820c7",
     "examples/network/udp_sender.py": "7bacc905d4eb5e4ea1442abf1368bbf2c7a6e9e81f107cdc4effd293b0ece770"
@@ -33,6 +33,8 @@
     "Network code compiled natively on Arm64 Bookworm; Linux7.0Azure namespace integration CI43334222277 passes all12cases. Physical Pi/GENET operations are qualified source/reader exercises."
   ],
   "findings": [],
-  "repairs": [],
+  "repairs": [
+    "Final independent progression audit found that a wired bind does not prove wired reply egress. Added read-only source-qualified route-to-Mac check and required selected device equal discovered GENET interface before claiming TX; alternate route remains source/software-only observation. Root re-read complete repaired procedure."
+  ],
   "hardware_status": "Source-reviewed; software compiled and hosted Linux namespace tested. Physical Pi boot, GENET DMA/PHY and hardware runtime not exercised."
 }

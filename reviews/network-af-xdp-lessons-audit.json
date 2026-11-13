@@ -1,0 +1,48 @@
+{
+  "id": "network-af-xdp-lessons-audit",
+  "status": "13.4 reviewed without actionable findings;13.5 not yet available",
+  "reviewer_scope": "Independent lesson prose/command/diagram audit against implementation. Reviewer authored shared network code; root separately reviews code and accepts pages.",
+  "pages": {
+    "13.4": {
+      "findings": [],
+      "canonical_sha256": "574e06fe980038819355b03711361cf3112878d1db6488892ad945c23e1b5ff4",
+      "diagram_sha256": "38a0a1e06076877f69dc86391ec059b7f5de3a496ef2c1b19e1597be141d5d79",
+      "coverage": [
+        "Full prose+receiver/shared/BPF/wire includes read",
+        "CLI,workingdirectories,namespaces,address/port,count/deadline/STARVE_MS/FRAMES checked",
+        "UMEMFILLRXownershipanddescriptorversusbufferlifetime checked",
+        "Generic/copyactualmodecheck,queueidentity,mapreadybeforeattach,missingXSKfallback checked",
+        "Finite3requestredirectvsordinaryendpointrestorationexperiment checked",
+        "8chunk500msstarvationandpacedrecoverycheckedagainsttestscript",
+        "Exception/timeoutnormalcleanup,EBUSYretry,SIGKILLlimitschecked",
+        "Diagramlabels/arrowsandsoftwarevsphysicalqualification checked"
+      ]
+    },
+    "13.5": {
+      "status": "pending writer;not reviewed"
+    }
+  },
+  "paths_read": [
+    "src/13.4-af-xdp-receive.md",
+    "src/assets/13.4-fill-rx-ownership.svg",
+    "reviews/13.4-writer.json",
+    "examples/network/xsk_receiver.cpp",
+    "examples/network/xsk_common.hpp",
+    "examples/network/lab_xdp.bpf.c",
+    "examples/network/wire.hpp",
+    "examples/network/udp_sender.py",
+    "examples/network/udp_endpoint.cpp",
+    "scripts/network_lab.py",
+    "scripts/test_network.py",
+    ".authoring/network-ci-43334222277/runtime-report.json"
+  ],
+  "runtime_evidence": {
+    "run": "43334222277",
+    "kernel": "7.0.0-1017-azure",
+    "architecture": "x86_64",
+    "case_count": 12,
+    "case_status": "all passed",
+    "qualification": "Hosted Linux software veth/namespace runtime only; not booted course6.12.96-hfs1-v8 or physicalPi/GENET/PHY/DMA validation."
+  },
+  "acceptance": "No acceptance hashes frozen and no publication performed by reviewer."
+}

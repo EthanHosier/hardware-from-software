@@ -1,6 +1,6 @@
 # Networking extension: Chapters 11–13
 
-Status: the user authorised the single-kernel migration and completion of all networking lessons. Implementation and independent review are in progress. The baseline is established in Chapter 5 and reused here.
+Status: the user authorised the single-kernel migration and completion of all networking lessons. All 12 lessons are written and independently reviewed; final publication checks are recorded in reviews/. The baseline is established in Chapter 5 and reused here.
 
 ## Goal and shape
 

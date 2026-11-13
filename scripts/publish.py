@@ -13,7 +13,7 @@ def main():
     subprocess.run(['python3','scripts/build.py',*scope],cwd=ROOT,check=True)
     subprocess.run(['python3','scripts/check_book.py',*scope],cwd=ROOT,check=True)
     expected=json.loads((ROOT/'book/publication.json').read_text())
-    command=['vercel','deploy','--prebuilt','--prod','--yes','--no-wait']
+    command=['vercel','deploy','--prebuilt','--prod','--yes','--no-wait','--scope','ethanhosiers-projects']
     result=subprocess.run(command,cwd=ROOT,capture_output=True,text=True,timeout=120)
     # Current CLI emits structured JSON after progress lines. Save full output ignored.
     (ROOT/'.authoring/last-deploy.log').write_text(result.stdout+'\n'+result.stderr)
@@ -37,14 +37,20 @@ def main():
     else:raise RuntimeError('Deployment pending after bounded wait; inspect existing ID before retry')
     url=deployment.get('productionUrl') or 'https://hardware-from-software.vercel.app'
     # This deliberately uses urllib, without Vercel credentials or bypass headers.
-    request=urllib.request.Request(url+'/publication.json',headers={'User-Agent':'HardwareBookPublicVerification/1.0'})
-    with urllib.request.urlopen(request,timeout=30) as response:
-        if response.url!=url+'/publication.json':raise RuntimeError('Unexpected redirect: '+response.url)
-        actual=json.loads(response.read())
-    if actual!=expected:raise RuntimeError('Public production manifest differs from this build')
+    # READY can precede propagation of the production alias. Verify that alias
+    # with bounded retries instead of deploying a duplicate on a stale response.
+    for attempt in range(20):
+        request=urllib.request.Request(url+'/publication.json?release='+deployment['id'],headers={
+            'User-Agent':'HardwareBookPublicVerification/1.0','Cache-Control':'no-cache'})
+        with urllib.request.urlopen(request,timeout=30) as response:
+            if response.url!=url+'/publication.json?release='+deployment['id']:raise RuntimeError('Unexpected redirect: '+response.url)
+            actual=json.loads(response.read())
+        if actual==expected:break
+        time.sleep(2)
+    else:raise RuntimeError('Public production manifest differs after bounded alias propagation wait')
     for entry in json.loads((ROOT/'catalog.json').read_text()):
         if entry['id'] not in expected['published']:continue
-        target=url+'/'+Path(entry['path']).with_suffix('.html').name
+        target=url+'/'+Path(entry['path']).with_suffix('.html').name+'?release='+deployment['id']
         with urllib.request.urlopen(target,timeout=30) as response:
             if response.url!=target or response.status!=200:raise RuntimeError('Public chapter verification failed '+target)
             body=response.read()

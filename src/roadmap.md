@@ -161,7 +161,7 @@ Support checking a preinstalled card and, when necessary, imaging a selected 64-
 
 [Read this lesson](5.2-verify-the-linux-development-environment.md).
 
-Record board model, OS release, architecture, running kernel, compiler, and boot configuration layout. Install only required development packages and compile/run a tiny C++ program natively.
+Identify the64-bit Pi environment; build/install the one pinned AF_XDP-enabled6.12.96-hfs1-v8 kernel before Linux labs, retaining recovery files; verify release/config/socket support, run nativehello and retain exact completed module buildtree.
 
 <a id="lesson-5-3"></a>
 ## 5.3 — Establish GPIO identity and ownership
@@ -238,7 +238,7 @@ Rewire a button and LED to dedicated Pi header pins, confirm availability, and u
 
 [Read this lesson](8.2-build-and-load-the-smallest-external-module.md).
 
-Install headers matching the running kernel, use kbuild, and build a minimal C module with load/unload logging. Explain module metadata, kernel/user address spaces, and recovery if the module or headers mismatch.
+Install headers matching the running kernel, use kbuild, and build a minimal C module with load/unload logging. Explain module metadata, kernel/user address spaces, and recovery if the module or headers mismatch. Reuse the completed6.12.96-hfs1-v8 course-kernel output and Module.symvers from5.2; no distribution-header substitution.
 
 <a id="lesson-8-3"></a>
 ## 8.3 — Describe the device and bind the driver
@@ -309,6 +309,90 @@ Reuse `/dev/mybutton` and the robust UART client. A physical Pi button event wak
 [Read this lesson](10.2-verify-troubleshoot-and-explain-the-system.md).
 
 Use a repeatable end-to-end checklist: restart the client, reset the Pico, remove/reconnect the data link with boards powered down for wiring changes, reject malformed requests, and handle the driver going offline. Revisit what each layer provides and identify the next experiment by interest.
+
+<a id="lesson-11-1"></a>
+## 11.1 — Identify the network hardware and establish a recoverable lab
+
+[Read this lesson](11.1-identify-network-hardware.md).
+
+Label MAC/PHY/RJ45/MDIO; discoverPi4GENETinterface; separateWiFimanagementandwiredtest; safeprivatevethnamespace setup/cleanup andboundedconnectivity checks.
+
+<a id="lesson-11-2"></a>
+## 11.2 — Send a numbered UDP message through the normal stack
+
+[Read this lesson](11.2-send-numbered-udp.md).
+
+CompletefiniteUDPendpoint+portableMacsender,version/magic/sequencevalidation,deadlines,ARPandstackdiagram,filteredcapturesandboundedfailurecases.
+
+<a id="lesson-11-3"></a>
+## 11.3 — Decode an Ethernet frame without trusting its layout
+
+[Read this lesson](11.3-decode-ethernet-frame.md).
+
+CompleteboundedAF_PACKETreceiverwithsharedcheckedARP/IPv4/UDPdecoder,endiannessandbounds,unsupportedVLAN/IPv6/fragments,offload/FCS/preamblelimits,fixturetests.
+
+<a id="lesson-12-1"></a>
+## 12.1 — Connect Device Tree, driver probe, MMIO and the PHY
+
+[Read this lesson](12.1-trace-network-driver-probe.md).
+
+TraceactualGENETsource/resourcesandPHY/MDIO; distinguishexportedregisterresources,softwarebuffersandMMIOdescriptors;readonlyidentity/sourcecheckswithmatchedversion.
+
+<a id="lesson-12-2"></a>
+## 12.2 — Follow a transmit buffer through DMA and completion
+
+[Read this lesson](12.2-trace-network-transmit-dma.md).
+
+Tracebcmgenet_xmit/skb/DMAmap/descriptors/producer/completion/unmap,errorlifetimes,addressspacesandownership;boundedUDPobservation,offloadsandlimits.
+
+<a id="lesson-12-3"></a>
+## 12.3 — Follow receive DMA, interrupts and NAPI into a socket
+
+[Read this lesson](12.3-trace-network-receive-napi.md).
+
+TraceGENETRXbufferrefill/unmap/IRQ/NAPIbudget/GRO/stackhandoff;read-onlycounterandIRQbefore/afterexperiment,correlationlimitsandoptionalavailabletracepoints.
+
+<a id="lesson-13-1"></a>
+## 13.1 — Receive through a shared packet ring
+
+[Read this lesson](13.1-receive-packet-ring.md).
+
+CompleteboundedTPACKET_V3RXreader,block/frameboundsandownership/acquire-release,poll/deadline/dropstats;shareddecoder;notNIChardwareDMAorzerocopy.
+
+<a id="lesson-13-2"></a>
+## 13.2 — Run a selective generic XDP program
+
+[Read this lesson](13.2-selective-generic-xdp.md).
+
+CompleteBPFprogram+ownedloader,verifier/pass/count/dropselectedmarkedUDPonly,SKBexplicit,preexistingattachmentrefusalandownedcleanup,namespacefirstandphysicalmanagementguard.
+
+<a id="lesson-13-3"></a>
+## 13.3 — Verify AF_XDP availability and understand its memory model
+
+[Read this lesson](13.3-verify-af-xdp-memory.md).
+
+Reuse5.2singlekernelrelease/configandminimalsocketchecks;UMEM/FILL/RX/TX/COMPLETIONdiagram;generic/nativeversuscopy/zerocopy;libxdp/libbpftoolchainprep,nosecondkernel.
+
+<a id="lesson-13-4"></a>
+## 13.4 — Redirect a lab flow into AF_XDP receive buffers
+
+[Read this lesson](13.4-af-xdp-receive.md).
+
+Completegeneric/copyAF_XDPreceiverwithboundedUMEM/FILL/RX,checkedoneRXqueue0topology,selectivemapredirectreadyfallbackPASS,counters/sequenceaccountingandcleanup.
+
+<a id="lesson-13-5"></a>
+## 13.5 — Transmit replies and reclaim buffers correctly
+
+[Read this lesson](13.5-af-xdp-transmit-completion.md).
+
+CompleteboundedAF_XDPresponderwithTX/COMPLETIONownership,repliesforvalidlabUDPonly,MAC/IP/portswapandchecksums,noin-flightreuse,ringavailability/deadline/drain/cleanup.
+
+<a id="lesson-13-6"></a>
+## 13.6 — Compare paths and explain full kernel bypass
+
+[Read this lesson](13.6-compare-network-paths.md).
+
+FairfiniteUDPversusAF_XDPechoandseparatecapturecomparison,CPU/loss/RTTmode/pathmatrix,pollingtradeoffs,DPDKdirectPMDversusAF_XDPPMDconcepts,normalcoursekernelcleanup,nohardwarezerocopypromise.
 
 <a id="lesson-a"></a>
 ## A — Pinouts and circuits

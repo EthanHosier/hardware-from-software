@@ -1,0 +1,36 @@
+{
+  "id": "13.6",
+  "reviewer": "root, separate from dedicated fresh-context writer",
+  "status": "accepted_source_review",
+  "reviewed_at": "2026-11-13T07:36:36.307497+00:00",
+  "canonical_sha256": "ce396fc46b8377c3ed9f974edb3b7b251a3e98710805d50bede114b82baf02b5",
+  "included_source_sha256": {
+    "examples/network/udp_sender.py": "7bacc905d4eb5e4ea1442abf1368bbf2c7a6e9e81f107cdc4effd293b0ece770"
+  },
+  "asset_sha256": {
+    "src/assets/13.6-network-paths.svg": "750d65f96e19aa5506d2e3fc3bcafcdcb267f943af791ff08ebcb3ec254f4476"
+  },
+  "paths_read": [
+    "src/13.6-compare-network-paths.md",
+    "reviews/13.6-writer.json",
+    "examples/network/udp_sender.py",
+    "src/assets/13.6-network-paths.svg",
+    "NETWORKING_EXAMPLES.md"
+  ],
+  "scope_coverage": "Five packet-path capability matrix, semantically matched bounded UDP/AF_XDP repeated measurement, explicit upper-median/CPU/wall/loss and workload limits, passive capture separate, direct PMD/mbuf/VFIO/bifurcated/AF_XDPPMD distinctions and cleanup.",
+  "sources_checked": [
+    "https://docs.kernel.org/6.12/networking/af_xdp.html",
+    "https://doc.dpdk.org/guides/prog_guide/ethdev/ethdev.html",
+    "https://doc.dpdk.org/guides/linux_gsg/linux_drivers.html",
+    "https://doc.dpdk.org/guides/nics/af_xdp.html"
+  ],
+  "checks_performed": [
+    "Root read every word, included source, commands and complete SVG; substantive source/API/progression review completed before hash freeze.",
+    "Root read all prose/source/commands and full SVG; final independent coordinator also reviewed all12lessons with no unresolved findings. Browsed official DPDK PMD, Linuxdriver andAF_XDPPMD references. Foreground READY gates avoid launch races; time exit records cover tee masking; responder idle and asynchronouskernelCPU limits explicit. No invented measurements or physicalspeedup; corrected11.2canonicalsource link before freeze.",
+    "All shell fences syntax checked with sh -n. Full rendered source equality, local links, SVG XML and downloadable files are enforced by publish.py before deployment.",
+    "Network code compiled natively on Arm64 Bookworm; Linux7.0Azure namespace integration CI43334222277 passes all12cases. Physical Pi/GENET operations are qualified source/reader exercises."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source-reviewed; software compiled and hosted Linux namespace tested. Physical Pi boot, GENET DMA/PHY and hardware runtime not exercised."
+}

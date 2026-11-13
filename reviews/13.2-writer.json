@@ -1,0 +1,51 @@
+{
+  "id": "13.2",
+  "paths_read": [
+    "AUTHORING_GUIDE.md",
+    "PLAN.md",
+    "NETWORKING_PLAN.md",
+    "NETWORKING_EXAMPLES.md",
+    "catalog.json (13.2 entry)",
+    "/Users/hermes/Desktop/learncpp-mirror/condensed/1.4-variable-assignment-and-initialization.md",
+    "src/13.1-receive-packet-ring.md"
+  ],
+  "sources": [
+    "https://docs.kernel.org/6.12/bpf/verifier.html",
+    "https://docs.kernel.org/6.12/networking/af_xdp.html",
+    "https://raw.githubusercontent.com/torvalds/linux/v6.12/net/core/dev.c",
+    "https://raw.githubusercontent.com/libbpf/libbpf/v1.1.2/src/netlink.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmgenet.c"
+  ],
+  "scope_audit": {
+    "complete_source": "Unindented full mdBook includes for lab_xdp.bpf.c, xdp_control.cpp, xsk_common.hpp; full shared header in details with present loader scope explained; wire.hpp linked to prior full include.",
+    "BPF": "Instructions/verifier, conditional packet bounds, byte order/alignment, nullable map values, exact supported marker/layout and checksum non-validation, atomic action map counts explained.",
+    "placement": "Labelled unique SVG separates actual veth/generic/SKB path and conceptual native pre-SKB driver hook; pinned GENET support checked.",
+    "experiment": "Foreground bounded namespace pass/count, second-controller refusal/unchanged ID, ordinary endpoint delivery, selective drop, ARP/ICMP via peer-neighbour flush and finite ping, passed malformed version rejected by endpoint, restored delivery.",
+    "ownership": "All-mode preexisting refusal, UPDATE_IF_NOEXIST attach, owned ID query plus expected descriptor detach, normal/signal/exception cleanup and crash limit.",
+    "physical_guard": "No physical attachment commands; Wi-Fi management prerequisite for future physical repetition; explicit veth evidence limits.",
+    "cleanup": "Inspects attachment/processes, ownership-checking helper cleanup, restricted disposable-link recovery after killed controller."
+  },
+  "code_files_read": [
+    "examples/network/lab_xdp.bpf.c",
+    "examples/network/xdp_control.cpp",
+    "examples/network/xsk_common.hpp",
+    "examples/network/wire.hpp",
+    "examples/network/udp_endpoint.cpp",
+    "examples/network/udp_sender.py",
+    "scripts/network_lab.py",
+    "scripts/build_network.py",
+    "scripts/test_network.py (XDP test landmarks)"
+  ],
+  "checks_performed": [
+    "Read prescribed authoring/planning/example/style sources",
+    "Browsed primary verifier, mode, receive, attach/detach and pinned GENET implementation sources",
+    "Traced source classifier conditions, map counters, loader ownership and sender/endpoint status behavior",
+    "Checked full includes exist and fences balanced; fixed canonical 11.1 link",
+    "Parsed unique SVG XML and manually checked labels/arrow placement"
+  ],
+  "hardware_status": "Source reviewed by writer; no Linux privileged run, target compile, Pi boot or physical runtime claimed. Root owns actual build/runtime/render checks.",
+  "concerns": [
+    "Independent reviewer must read all included code and verify rendered details/fences/SVG plus shared compile/runtime evidence. Manual endpoint and controller runs must start promptly within the explicit finite lifetimes. No pending source includes."
+  ],
+  "status": "ready-for-independent-review"
+}

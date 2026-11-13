@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="630" viewBox="0 0 760 630" role="img" aria-labelledby="title desc">
+<title id="title">One AF_XDP chunk through all four rings</title>
+<desc id="desc">FILL transfers a free chunk to the kernel, RX delivers application ownership, TX transfers the edited reply to the kernel, and COMPLETION permits reuse. RX slot release alone never reclaims a TX chunk.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/></marker></defs>
+<rect width="760" height="630" rx="12" fill="#f8fafc"/>
+<g font-family="system-ui,sans-serif" fill="#0f172a" text-anchor="middle">
+<text x="380" y="34" font-size="22" font-weight="700">UMEM chunk ownership — software rings</text>
+<g stroke="#334155" stroke-width="2">
+<rect x="160" y="58" width="440" height="60" rx="8" fill="#dbeafe"/>
+<rect x="160" y="167" width="440" height="60" rx="8" fill="#fef3c7"/>
+<rect x="160" y="276" width="440" height="70" rx="8" fill="#dbeafe"/>
+<rect x="160" y="395" width="440" height="60" rx="8" fill="#fef3c7"/>
+<rect x="160" y="504" width="440" height="60" rx="8" fill="#dbeafe"/>
+<path d="M380 118V163 M380 227V272 M380 346V391 M380 455V500" fill="none" marker-end="url(#arrow)"/>
+</g>
+<g font-size="18"><text x="380" y="84">free — application may publish to FILL</text><text x="380" y="106" font-size="15">base offset identifies the 4096-byte chunk</text>
+<text x="380" y="193">fill — kernel may write incoming bytes</text><text x="380" y="215" font-size="15">RX descriptor makes received bytes available</text>
+<text x="380" y="302">application — validate, then edit reply</text><text x="380" y="328" font-size="15">RX slot release does not reclaim this packet</text>
+<text x="380" y="421">transmit — kernel may read reply bytes</text><text x="380" y="443" font-size="15">do not edit or put the chunk on FILL</text>
+<text x="380" y="530">application → free — reuse is allowed</text><text x="380" y="552" font-size="15">checked completion decrements pending TX</text></g>
+<g font-size="16" text-anchor="start"><text x="397" y="148">FILL submit</text><text x="397" y="257">RX consume</text><text x="397" y="376">TX submit</text><text x="397" y="485">COMPLETION consume</text></g>
+<text x="380" y="600" font-size="16">One producer/consumer per ring; no physical DMA addresses shown.</text>
+</g></svg>

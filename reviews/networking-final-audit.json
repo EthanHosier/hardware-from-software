@@ -1,0 +1,166 @@
+{
+  "status": "complete_no_unresolved_findings",
+  "auditor": "independent book coordinator",
+  "audited_at": "2026-11-13T07:35:32.896944+00:00",
+  "scope": "Final cross-lesson audit of all 12 new lessons, 11.1\u201313.6. This adds a progression and consistency audit to the separate page reviews; it does not certify rendering, deployment or physical hardware.",
+  "pages": [
+    {
+      "id": "11.1",
+      "path": "src/11.1-identify-network-hardware.md",
+      "sha256": "cf6ac623c76a1d9c6d7bcef03434fc170cd90ffd7f822841c11c7d17f76eb3da",
+      "audit": "full prose read; progression/commands/evidence checked against actual contracts and sources"
+    },
+    {
+      "id": "11.2",
+      "path": "src/11.2-send-numbered-udp.md",
+      "sha256": "0d09ffea947cbabb740acb4ad82e34f4d9ee51b7f83b3c0a812e4564695ac2bd",
+      "audit": "full prose read; progression/commands/evidence checked against actual contracts and sources"
+    },
+    {
+      "id": "11.3",
+      "path": "src/11.3-decode-ethernet-frame.md",
+      "sha256": "efb4d313aeb63b4303fa0f0b8d436c2912e9f1f0a89b190fa10a75337b97a234",
+      "audit": "full prose read; progression/commands/evidence checked against actual contracts and sources"
+    },
+    {
+      "id": "12.1",
+      "path": "src/12.1-trace-network-driver-probe.md",
+      "sha256": "1e92494fcf974f5e6447abdcd51ae124bbee5ecc880bca3b874c926bfd5e1517",
+      "audit": "full prose read; progression/commands/evidence checked against actual contracts and sources"
+    },
+    {
+      "id": "12.2",
+      "path": "src/12.2-trace-network-transmit-dma.md",
+      "sha256": "ba003e46ddcb2239c499b367cf246642d6fb1977b6c28eb5b3df77b1d13f1045",
+      "audit": "full prose read; progression/commands/evidence checked against actual contracts and sources"
+    },
+    {
+      "id": "12.3",
+      "path": "src/12.3-trace-network-receive-napi.md",
+      "sha256": "0a7ba5d5bac7c45fec57919c18bab29d8312a9c72a988b0aa5031dce4f4597da",
+      "audit": "full prose read; progression/commands/evidence checked against actual contracts and sources"
+    },
+    {
+      "id": "13.1",
+      "path": "src/13.1-receive-packet-ring.md",
+      "sha256": "ad8918142ad888912e1ba588c072370ebf57ebe9958b46c10d1a01730a5dcd7b",
+      "audit": "full prose read; progression/commands/evidence checked against actual contracts and sources"
+    },
+    {
+      "id": "13.2",
+      "path": "src/13.2-selective-generic-xdp.md",
+      "sha256": "caf520dfd4985b71625eed913c7952f33b44e234d24cfd21db8cc3f19a5c941e",
+      "audit": "full prose read; progression/commands/evidence checked against actual contracts and sources"
+    },
+    {
+      "id": "13.3",
+      "path": "src/13.3-verify-af-xdp-memory.md",
+      "sha256": "a2423f32f27e4fcc61290905575a708b7f286a0393f2b37f5d7a86d62accc1b6",
+      "audit": "full prose read; progression/commands/evidence checked against actual contracts and sources"
+    },
+    {
+      "id": "13.4",
+      "path": "src/13.4-af-xdp-receive.md",
+      "sha256": "574e06fe980038819355b03711361cf3112878d1db6488892ad945c23e1b5ff4",
+      "audit": "full prose read; progression/commands/evidence checked against actual contracts and sources"
+    },
+    {
+      "id": "13.5",
+      "path": "src/13.5-af-xdp-transmit-completion.md",
+      "sha256": "5a673cd5991ce2ad443a94b672de2cc729585ed93d57d97a1026a033e4df1116",
+      "audit": "full prose read; progression/commands/evidence checked against actual contracts and sources"
+    },
+    {
+      "id": "13.6",
+      "path": "src/13.6-compare-network-paths.md",
+      "sha256": "ce396fc46b8377c3ed9f974edb3b7b251a3e98710805d50bede114b82baf02b5",
+      "audit": "full prose read; progression/commands/evidence checked against actual contracts and sources"
+    }
+  ],
+  "contracts_read": [
+    "NETWORKING_EXAMPLES.md",
+    "reviews/kernel-baseline-review.json",
+    "kernel-baseline.json",
+    ".authoring/network-ci-43334222277/build-report.json",
+    ".authoring/network-ci-43334222277/runtime-report.json"
+  ],
+  "implementation_read": [
+    "examples/network/udp_sender.py",
+    "examples/network/udp_endpoint.cpp",
+    "examples/network/wire.hpp",
+    "examples/network/packet_rx.cpp",
+    "examples/network/packet_ring.cpp",
+    "examples/network/lab_xdp.bpf.c",
+    "examples/network/xdp_control.cpp",
+    "examples/network/xsk_common.hpp",
+    "scripts/network_lab.py",
+    "scripts/build_network.py",
+    "scripts/test_network.py",
+    ".authoring/network-research/bcmgenet.c (TX/RX/map/unmap/descriptors/NAPI relevant ranges)"
+  ],
+  "sources_checked": [
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmgenet.c",
+    "https://docs.kernel.org/6.12/networking/af_xdp.html",
+    "https://man7.org/linux/man-pages/man7/ip.7.html",
+    "https://man7.org/linux/man-pages/man8/ip-route.8.html",
+    "https://doc.dpdk.org/guides/nics/af_xdp.html",
+    "https://doc.dpdk.org/guides/linux_gsg/linux_drivers.html"
+  ],
+  "checks_performed": [
+    "Read every word of all 12 final drafts, including 13.6 after writer completion. Parsed 89 shell fences with sh -n; resolved 68 local or download destinations and 22 full-file includes. No missing files or shell syntax errors.",
+    "Read all referenced SVG text labels through XML for source/prose contradictions. Complete rendered visual and browser checks remain root responsibility.",
+    "All network example hashes match the successful CI 43334222277 build report. Read all 12 runtime cases: kernel 7.0.0-1017-azure, x86_64, helper-owned veth, generic XDP and AF_XDP copy mode. Physical runtime was not exercised. This audit did not rerun privileged tests.",
+    "Progression retains kernel 6.12.96-hfs1-v8 and its matched source, configuration and output tree. The kernelrelease query explicitly passes LOCALVERSION=. No second kernel or unrelated headers are introduced.",
+    "Checked finite readiness/count/deadline commands, namespace ownership and collision refusal, cleanup and ordinary UDP listener requirements. Passive capture and redirection distinguish packet reception from reply service.",
+    "Checked decoder bounds, byte order, options/fragments/checksum limits, count versus unique sequence sets, exact eight-byte payload, marker selectivity and missing-XSK PASS fallback against actual code.",
+    "Checked GENET MMIO descriptors versus RAM payloads, DMA address spaces, streaming mapping lifetime, refill failure and NAPI claims against pinned source. Counter and IRQ correlation limits are explicit.",
+    "Checked TPACKET block acquire/release, batch count and deadline limits, and the retained kernel copy. Checked AF_XDP queue discovery, offsets, FILL/RX/TX/COMPLETION ownership, need-wakeup, EBUSY retries, owned detach and destructor order against the complete implementation.",
+    "Checked 13.6 sequential workload, readiness delay, process CPU limitations, upper-middle median convention and successful-reply-only RTT. Passive capture remains a separate comparison. Direct hardware PMDs, bifurcated drivers and the AF_XDP PMD are distinguished, without an untested speedup or device-unbind instruction.",
+    "Reread repaired 12.2 and all added commands. The route query uses the actual Mac test peer and bound Pi source; selected dev must match IFACE. Another egress path is explicitly excluded from GENET TX evidence, without changing routes."
+  ],
+  "findings": [
+    {
+      "id": "NET-AUDIT-1",
+      "severity": "P2",
+      "page": "12.2",
+      "issue": "The original physical TX exercise assumed that binding the UDP endpoint to PI_WIRED_IP forced Ethernet egress. Linux route selection can use Wi-Fi despite source binding.",
+      "requested_fix": "Query ip route get using the actual Mac peer and PI_WIRED_IP source; require selected dev == IFACE before claiming GENET TX. Retain another path only as application/source evidence.",
+      "resolution": "Root repaired the lesson and refreshed its separate acceptance report. Audit reread confirms the route query, device gate and explicit non-GENET alternative.",
+      "status": "resolved"
+    }
+  ],
+  "unresolved_findings": [],
+  "limitations": [
+    "No physical Pi boot, GENET, PHY, DMA, hardware zero-copy or performance evidence was added. Existing CI results apply to their recorded software environment.",
+    "The auditor changed no lesson, acceptance hash, shared code, Git state or deployment. Only this audit JSON was written.",
+    "Root completes page acceptance, rendered/browser, download/archive, deployment and final metadata checks."
+  ],
+  "audited_network_source_sha256": {
+    "examples/network/lab_xdp.bpf.c": "2e8748686a1a567a4354269a45ac2e4cbf8e118f51e57becd97b6e707b922bc7",
+    "examples/network/packet_ring.cpp": "0688e83feaa5daf4902c27f1766d65ea0937a75ce44c3cf3973403bc5d1328ba",
+    "examples/network/packet_rx.cpp": "cc4636e589f7f9910f2288237bd1190a648a44f92326947c72ab239e60a506b0",
+    "examples/network/udp_endpoint.cpp": "842eefc950f1865849c111005bb5e63991a810b4d4503990b20103d3dbb820c7",
+    "examples/network/udp_sender.py": "7bacc905d4eb5e4ea1442abf1368bbf2c7a6e9e81f107cdc4effd293b0ece770",
+    "examples/network/wire.hpp": "af9a7fe7864a87d715bf28dcac0638a133adbee592016cac0faba1a217b5c92e",
+    "examples/network/wire_test.cpp": "c5779c02a903e033b9d99e2eda938d2a5016e7ad5e6966595efc8553a8ca563b",
+    "examples/network/xdp_control.cpp": "0f4cb19b1d89609ce57ef411f7972b608ad1b7a2706239c4b5bd258e80c8e09f",
+    "examples/network/xsk_common.hpp": "f88b840e0e2728e9c4c95e55c84d7f236ab0875044558a5435962fb88a09991c",
+    "examples/network/xsk_receiver.cpp": "090176e3f27eaec9a2ff60d2c11d7567a0cde21a4710d52b29836a0f44767c2f",
+    "examples/network/xsk_responder.cpp": "c844a47b10d094f8cb00e388fe0c9dab30572baaf7c160f51eec6e280e34ce12"
+  },
+  "audited_asset_sha256": {
+    "src/assets/0.3-pi4-top.svg": "e0706ba370ef9a43249be5ef3b6b080fec13bf928a9d2a1b7d20ef18f4622a52",
+    "src/assets/11.1-network-path.svg": "4146b7d08cdab3cd27af52234f83f922f599a57d7b794221700e50e23cf7dea1",
+    "src/assets/11.2-udp-stack-and-bytes.svg": "15644e26dbed2fdc481ad6a7f2827a512787fa19133a8c5ec4c2b3a50bff731e",
+    "src/assets/11.3-frame-boundaries.svg": "dfd2c69e1753c45ba9e2bfa201e79735dd55cc2d4b45af9a8d68ecf66d412009",
+    "src/assets/12.1-genet-probe-map.svg": "cd6852cecfc4c599981d130e738f395265bead845c5816970e0bc28c1da7130e",
+    "src/assets/12.2-genet-tx-ownership.svg": "1bf51b1e5e5a669143b0fd309b9d1d3598ffe6b597b1205735c15fdc285292c4",
+    "src/assets/12.3-genet-rx-ownership.svg": "b63a41ba453a5f498ef742300868bea0b37c6c40e1e743cd4ea7f14592dc5277",
+    "src/assets/13.1-packet-ring-ownership.svg": "7d527e92d191f54d3632bf55695a3d51114950949cfa7c334526ca06fd2b8182",
+    "src/assets/13.2-generic-xdp-placement.svg": "22e77535b0c2ef8af1691a88d81ee7b585ee82e20c8e2f57b57a0526ff4afd6e",
+    "src/assets/13.3-umem-ownership.svg": "4ca68eb93491e499f80305f2f98c4b5500e12e42c3239cae17949783b5e3c146",
+    "src/assets/13.4-fill-rx-ownership.svg": "38a0a1e06076877f69dc86391ec059b7f5de3a496ef2c1b19e1597be141d5d79",
+    "src/assets/13.5-frame-lifetime.svg": "e943367cae463ad7ee05ca6b91366ead997f0f272ee83147751a7b722356735a",
+    "src/assets/13.6-network-paths.svg": "750d65f96e19aa5506d2e3fc3bcafcdcb267f943af791ff08ebcb3ec254f4476"
+  }
+}

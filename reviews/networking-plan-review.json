@@ -2,8 +2,8 @@
   "id": "networking-plan",
   "reviewer": "independent agent /root/network_plan_review",
   "review_date": "2026-11-12",
-  "status": "accepted_plan_review",
-  "approval_state": "awaiting_user_authorisation_to_implement",
+  "status": "historical_accepted_plan_review",
+  "approval_state": "user_authorised_implementation_and_completion",
   "plan_path": "NETWORKING_PLAN.md",
   "canonical_sha256": "b24e495c8089258f4a6f9a167aa45651d243a1c96e28727d6845b932fa9d6b26",
   "scope": "Three proposed chapters, 12 lessons; planning and research only. No page/code/catalog/deployment/kernel installation performed.",
@@ -77,5 +77,6 @@
     "Compile enabled Pi kernel and verify output/config/release artifacts; actual Pi boot and physical networking remain reader-exercised until observed."
   ],
   "unresolved_plan_findings": [],
-  "hardware_status": "No physical hardware runtime performed; no current Pi kernel configuration remotely inspected."
+  "hardware_status": "No physical hardware runtime performed; no current Pi kernel configuration remotely inspected.",
+  "superseded_by": "User requested one enabled course kernel from5.2, then all12network lessons to completion. Old13.3second-kernel resolution is historical; current NETWORKING_PLAN.md and kernel-baseline-review.json describe final implementation."
 }

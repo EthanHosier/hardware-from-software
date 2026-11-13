@@ -47,7 +47,7 @@ Use SDK startup, linker support, and clock initialisation initially. Be explicit
 
 ## Exact chapter and lesson outline
 
-There are **44 main lessons across 11 chapter groups (0–10)**, plus appendices and optional extensions. These are focused reading pages, not 44 separate hardware projects.
+The original core has **44 main lessons across chapter groups 0–10**. The approved [networking extension](NETWORKING_PLAN.md) adds 12 lessons in Chapters 11–13: **56 main lessons and nine appendix pages, 65 total**. These are focused reading pages, with several pages developing each practical experiment.
 
 ### 0. Know your hardware and your bench — 6 lessons
 

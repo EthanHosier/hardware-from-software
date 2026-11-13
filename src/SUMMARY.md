@@ -86,6 +86,27 @@
 - [10.1 — Use a Linux device event to control Pico hardware](10.1-use-a-linux-device-event-to-control-pico-hardware.md)
 - [10.2 — Verify, troubleshoot, and explain the system](10.2-verify-troubleshoot-and-explain-the-system.md)
 
+# 11. Recognise the hardware and follow packet bytes
+
+- [11.1 — Identify the network hardware and establish a recoverable lab](11.1-identify-network-hardware.md)
+- [11.2 — Send a numbered UDP message through the normal stack](11.2-send-numbered-udp.md)
+- [11.3 — Decode an Ethernet frame without trusting its layout](11.3-decode-ethernet-frame.md)
+
+# 12. Follow the Ethernet driver into the chip
+
+- [12.1 — Connect Device Tree, driver probe, MMIO and the PHY](12.1-trace-network-driver-probe.md)
+- [12.2 — Follow a transmit buffer through DMA and completion](12.2-trace-network-transmit-dma.md)
+- [12.3 — Follow receive DMA, interrupts and NAPI into a socket](12.3-trace-network-receive-napi.md)
+
+# 13. Move packet processing toward userspace
+
+- [13.1 — Receive through a shared packet ring](13.1-receive-packet-ring.md)
+- [13.2 — Run a selective generic XDP program](13.2-selective-generic-xdp.md)
+- [13.3 — Verify AF_XDP availability and understand its memory model](13.3-verify-af-xdp-memory.md)
+- [13.4 — Redirect a lab flow into AF_XDP receive buffers](13.4-af-xdp-receive.md)
+- [13.5 — Transmit replies and reclaim buffers correctly](13.5-af-xdp-transmit-completion.md)
+- [13.6 — Compare paths and explain full kernel bypass](13.6-compare-network-paths.md)
+
 # Appendices
 
 - [A — Pinouts and circuits](appendix-a.md)

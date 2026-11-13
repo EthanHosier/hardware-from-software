@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="570" viewBox="0 0 920 570" role="img" aria-labelledby="title desc">
+<title id="title">TPACKET_V3 shared blocks and ownership</title><desc id="desc">Two one MiB blocks share a mapping. Kernel fills records then publishes USER; application acquire-loads status, decodes records, then release-stores KERNEL. A record has metadata and packet bytes reached through checked offsets. This is separate from hardware DMA descriptors.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#243b53" stroke-width="1.5"/></marker></defs>
+<rect width="920" height="570" fill="#f6f8fb"/>
+<g font-family="system-ui,sans-serif" fill="#102a43">
+<text x="30" y="35" font-size="23" font-weight="700">Packet socket RX ring: 2 MiB of shared RAM</text>
+<text x="30" y="65" font-size="17">Conceptual software layout — separate from NIC DMA descriptors</text>
+<rect x="30" y="90" width="410" height="125" rx="8" fill="#d9eaf7" stroke="#486581"/>
+<rect x="480" y="90" width="410" height="125" rx="8" fill="#e3efd9" stroke="#486581"/>
+<text x="46" y="118" font-size="19" font-weight="700">Block 0 · 1 MiB</text><text x="496" y="118" font-size="19" font-weight="700">Block 1 · 1 MiB</text>
+<text x="46" y="148" font-size="16">block descriptor + packet records</text><text x="496" y="148" font-size="16">block descriptor + packet records</text>
+<text x="46" y="178" font-size="16">USER: application reads this block</text><text x="496" y="178" font-size="16">KERNEL: kernel may fill this block</text>
+<text x="46" y="202" font-size="15">No reads after returning ownership</text><text x="496" y="202" font-size="15">Application waits for USER publication</text>
+<path d="M145 220V245H60V266" fill="none" stroke="#243b53" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="30" y="275" width="860" height="100" rx="6" fill="#fff" stroke="#486581"/>
+<path d="M265 275V375M540 275V375" stroke="#486581"/>
+<text x="45" y="302" font-size="17" font-weight="700">Block descriptor</text><text x="45" y="328" font-size="15">status, num_pkts, blk_len</text><text x="45" y="353" font-size="15">offset_to_first_pkt →</text>
+<text x="280" y="302" font-size="17" font-weight="700">Record 0</text><text x="280" y="328" font-size="15">tpacket3_hdr · tp_mac → bytes</text><text x="280" y="353" font-size="15">tp_next_offset → next record</text>
+<text x="555" y="302" font-size="17" font-weight="700">Record 1 … Record N−1</text><text x="555" y="328" font-size="15">captured length: tp_snaplen</text><text x="555" y="353" font-size="15">Check each region against blk_len</text>
+<rect x="30" y="413" width="240" height="79" rx="7" fill="#e3efd9" stroke="#486581"/>
+<rect x="340" y="413" width="240" height="79" rx="7" fill="#d9eaf7" stroke="#486581"/>
+<rect x="650" y="413" width="240" height="79" rx="7" fill="#fff" stroke="#486581"/>
+<text x="45" y="442" font-size="17" font-weight="700">Kernel fills block</text><text x="45" y="468" font-size="15">Full or retirement timeout</text>
+<text x="355" y="442" font-size="17" font-weight="700">Publish TP_STATUS_USER</text><text x="355" y="468" font-size="15">Application acquire-loads</text>
+<text x="665" y="442" font-size="17" font-weight="700">Decode whole batch</text><text x="665" y="468" font-size="15">Then release-store KERNEL</text>
+<path d="M273 450H332M583 450H642" stroke="#243b53" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M770 498V528H150V499" fill="none" stroke="#243b53" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="290" y="554" font-size="16">Return promptly; retained USER blocks can cause capture drops</text>
+</g></svg>

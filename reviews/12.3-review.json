@@ -1,0 +1,41 @@
+{
+  "id": "12.3",
+  "reviewer": "root, separate from dedicated fresh-context writer",
+  "status": "accepted_source_review",
+  "reviewed_at": "2026-11-13T00:10:01.210654+00:00",
+  "canonical_sha256": "0a7ba5d5bac7c45fec57919c18bab29d8312a9c72a988b0aa5031dce4f4597da",
+  "included_source_sha256": {
+    "examples/network/udp_endpoint.cpp": "842eefc950f1865849c111005bb5e63991a810b4d4503990b20103d3dbb820c7",
+    "examples/network/udp_sender.py": "7bacc905d4eb5e4ea1442abf1368bbf2c7a6e9e81f107cdc4effd293b0ece770"
+  },
+  "asset_sha256": {
+    "src/assets/12.3-genet-rx-ownership.svg": "b63a41ba453a5f498ef742300868bea0b37c6c40e1e743cd4ea7f14592dc5277"
+  },
+  "paths_read": [
+    "src/12.3-trace-network-receive-napi.md",
+    "reviews/12.3-writer.json",
+    "examples/network/udp_endpoint.cpp",
+    "examples/network/udp_sender.py",
+    "src/assets/12.3-genet-rx-ownership.svg",
+    "src/assets/12.3-genet-rx-ownership.svg",
+    "NETWORKING_EXAMPLES.md"
+  ],
+  "scope_coverage": "GENET RX DMA buffer replacement/unmap, MMIO descriptors versus RAM status block, failure reuse/drop, IRQ scheduling and NAPI budget/GRO/socket handoff, finite source/counter and optional discovered tracepoint observation.",
+  "sources_checked": [
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/drivers/net/ethernet/broadcom/genet/bcmgenet.c",
+    "https://docs.kernel.org/6.12/networking/napi.html",
+    "https://docs.kernel.org/6.12/core-api/dma-api-howto.html",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/net/core/dev.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/net/ipv4/udp.c",
+    "https://raw.githubusercontent.com/raspberrypi/linux/ae161617d7a4552fa91d03626b8d9f3696d17481/include/trace/events/napi.h"
+  ],
+  "checks_performed": [
+    "Root read every word, included source, commands and complete SVG; substantive source/API/progression review completed before hash freeze.",
+    "Read actual pinned refill/desc_rx/rx_poll/isr0/isr1 source and official NAPI/DMA guides. Verified replacement allocation precedes old unmap; failure preserves mapping, next advances consumer. NAPI zero-budget/full-budget explanations match code. Full ownership SVG visually checked including bottom return/stack notes. Fixed wire.hpp download target before freeze; no physical counter or trace result invented.",
+    "All shell fences syntax checked with sh -n. Full rendered source equality, local links, SVG XML and downloadable files are enforced by publish.py before deployment.",
+    "Network code compiled natively on Arm64 Bookworm; Linux7.0Azure namespace integration CI43334222277 passes all12cases. Physical Pi/GENET operations are qualified source/reader exercises."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source-reviewed; software compiled and hosted Linux namespace tested. Physical Pi boot, GENET DMA/PHY and hardware runtime not exercised."
+}

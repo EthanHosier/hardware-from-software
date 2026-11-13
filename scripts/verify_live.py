@@ -12,9 +12,11 @@ def main():
     paths += [p.relative_to(ROOT/'book').as_posix() for p in (ROOT/'book/assets').glob('*.svg')]
     paths += [p.name for p in (ROOT/'book').glob('search*.js')]
     paths += [p.relative_to(ROOT/'book').as_posix() for p in (ROOT/'book/css').glob('*.css')]
+    paths += [p.relative_to(ROOT/'book').as_posix() for p in (ROOT/'book/downloads').rglob('*') if p.is_file()]
+    paths=list(dict.fromkeys(paths))
     records=[]
     for name in paths:
-        target=BASE+name
+        target=BASE+name+'?sha256='+hashlib.sha256((ROOT/'book'/name).read_bytes()).hexdigest()
         with urllib.request.urlopen(urllib.request.Request(target,headers={'User-Agent':'HardwareBookAnonymousCheck/1.0'}),timeout=30) as r:
             assert r.status==200 and r.url==target,(target,r.status,r.url)
             data=r.read()

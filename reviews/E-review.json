@@ -2,7 +2,7 @@
   "id": "E",
   "reviewer": "independent root",
   "status": "accepted_source_review",
-  "canonical_sha256": "4dbb9ed2ab63b6aa6465f8b1202ce84e1cac646389abb8d13a5aa095e4ef1ad2",
+  "canonical_sha256": "e3034de504ae290226a45a49d691e15f8b06fd06914ef60c3b70351ac79d80e5",
   "included_source_sha256": {},
   "asset_sha256": {},
   "reviewed_dependency_sha256": {
@@ -69,7 +69,8 @@
     "Revisited primary M33issue05/\u00a73.3.7 and dependencylicensenotices; referencefacts reuse sourcechecks from associated accepted lessons and current same-session Bosch/SDK/Linux/Pi reviews. WriterHTTP36destinationaudit is separately attributed, not a substitute for substantive accuracy review.",
     "Verified all localdestinations exist or are known generated verification/roadmap outputs; no runnablecodefences or directSVGassets. Checked copiedmachine-readable verificationlink against builder. Exact renderedanchors/publication are rootpublisherchecks.",
     "Readability update independently reviewed against original accepted sources: equivalent control flow, operations and literal bytes; lesson/debugger/diagram identifiers synchronized. See readability-review.json and refreshed verification.json for builds/tests.",
-    "Single-kernel migration substantively audited by separate kernel_audit reviewer: reviews/kernel-baseline-review.json accepted after full kernel CI43330786612; setup/build/recovery commands and unchanged existing programs reviewed. No physical run claimed."
+    "Single-kernel migration substantively audited by separate kernel_audit reviewer: reviews/kernel-baseline-review.json accepted after full kernel CI43330786612; setup/build/recovery commands and unchanged existing programs reviewed. No physical run claimed.",
+    "Root substantively reviewed added networking glossary against accepted/drafted source-reviewed Chapters11\u201313 and actual implementations. Added explicit hostedLinux7.0 runtime versus compiledPi6.12 limitations; factual network CI artifact inspected."
   ],
   "findings": [
     {

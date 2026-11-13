@@ -1,0 +1,38 @@
+{
+  "id": "13.1",
+  "reviewer": "root, separate from dedicated fresh-context writer",
+  "status": "accepted_source_review",
+  "reviewed_at": "2026-11-13T00:11:33.558089+00:00",
+  "canonical_sha256": "ad8918142ad888912e1ba588c072370ebf57ebe9958b46c10d1a01730a5dcd7b",
+  "included_source_sha256": {
+    "examples/network/packet_ring.cpp": "0688e83feaa5daf4902c27f1766d65ea0937a75ce44c3cf3973403bc5d1328ba",
+    "examples/network/wire.hpp": "af9a7fe7864a87d715bf28dcac0638a133adbee592016cac0faba1a217b5c92e"
+  },
+  "asset_sha256": {
+    "src/assets/13.1-packet-ring-ownership.svg": "7d527e92d191f54d3632bf55695a3d51114950949cfa7c334526ca06fd2b8182"
+  },
+  "paths_read": [
+    "src/13.1-receive-packet-ring.md",
+    "reviews/13.1-writer.json",
+    "examples/network/packet_ring.cpp",
+    "examples/network/wire.hpp",
+    "src/assets/13.1-packet-ring-ownership.svg",
+    "src/assets/13.1-packet-ring-ownership.svg",
+    "NETWORKING_EXAMPLES.md"
+  ],
+  "scope_coverage": "TPACKET_V3 sharedRAM blocks/variable records, block ownership and acquire/release, checked traversal, finite deadline versus retirement timer, kernel drop/freeze statistics and matched raw-reader/syscall comparison, exact SKB copy boundary and cleanup.",
+  "sources_checked": [
+    "https://docs.kernel.org/6.12/networking/packet_mmap.html",
+    "https://raw.githubusercontent.com/torvalds/linux/v6.12/include/uapi/linux/if_packet.h",
+    "https://raw.githubusercontent.com/torvalds/linux/v6.12/net/packet/af_packet.c"
+  ],
+  "checks_performed": [
+    "Root read every word, included source, commands and complete SVG; substantive source/API/progression review completed before hash freeze.",
+    "Read full ring/decoder implementations and official PacketMMAP/NAPI/DMA references. Bounds and alignment guard metadata dereferences; all pointers expire at block return. Actual packet-ring integration passed with3matching sequences,2batches and zero drops; no promised batching/performance. Full SVG visually inspected and source equality enforced.",
+    "All shell fences syntax checked with sh -n. Full rendered source equality, local links, SVG XML and downloadable files are enforced by publish.py before deployment.",
+    "Network code compiled natively on Arm64 Bookworm; Linux7.0Azure namespace integration CI43334222277 passes all12cases. Physical Pi/GENET operations are qualified source/reader exercises."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source-reviewed; software compiled and hosted Linux namespace tested. Physical Pi boot, GENET DMA/PHY and hardware runtime not exercised."
+}

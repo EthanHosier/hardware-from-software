@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12T22:01:23.202595+00:00",
+  "updated": "2026-11-13T07:37:09.064637+00:00",
   "pages": {
     "0.1": {
       "path": "src/0.1-what-you-are-going-to-build.md",
@@ -287,6 +287,90 @@
       "writer": "complete",
       "reviewer": "accepted_source_review",
       "writer_agent": "/root/book_coordinator/page_f"
+    },
+    "11.1": {
+      "path": "src/11.1-identify-network-hardware.md",
+      "writer": "complete",
+      "reviewer": "accepted_source_review",
+      "writer_agent": "dedicated fresh-context networking writer",
+      "reviewer_agent": "root plus independent final coordinator audit"
+    },
+    "11.2": {
+      "path": "src/11.2-send-numbered-udp.md",
+      "writer": "complete",
+      "reviewer": "accepted_source_review",
+      "writer_agent": "dedicated fresh-context networking writer",
+      "reviewer_agent": "root plus independent final coordinator audit"
+    },
+    "11.3": {
+      "path": "src/11.3-decode-ethernet-frame.md",
+      "writer": "complete",
+      "reviewer": "accepted_source_review",
+      "writer_agent": "dedicated fresh-context networking writer",
+      "reviewer_agent": "root plus independent final coordinator audit"
+    },
+    "12.1": {
+      "path": "src/12.1-trace-network-driver-probe.md",
+      "writer": "complete",
+      "reviewer": "accepted_source_review",
+      "writer_agent": "dedicated fresh-context networking writer",
+      "reviewer_agent": "root plus independent final coordinator audit"
+    },
+    "12.2": {
+      "path": "src/12.2-trace-network-transmit-dma.md",
+      "writer": "complete",
+      "reviewer": "accepted_source_review",
+      "writer_agent": "dedicated fresh-context networking writer",
+      "reviewer_agent": "root plus independent final coordinator audit"
+    },
+    "12.3": {
+      "path": "src/12.3-trace-network-receive-napi.md",
+      "writer": "complete",
+      "reviewer": "accepted_source_review",
+      "writer_agent": "dedicated fresh-context networking writer",
+      "reviewer_agent": "root plus independent final coordinator audit"
+    },
+    "13.1": {
+      "path": "src/13.1-receive-packet-ring.md",
+      "writer": "complete",
+      "reviewer": "accepted_source_review",
+      "writer_agent": "dedicated fresh-context networking writer",
+      "reviewer_agent": "root plus independent final coordinator audit"
+    },
+    "13.2": {
+      "path": "src/13.2-selective-generic-xdp.md",
+      "writer": "complete",
+      "reviewer": "accepted_source_review",
+      "writer_agent": "dedicated fresh-context networking writer",
+      "reviewer_agent": "root plus independent final coordinator audit"
+    },
+    "13.3": {
+      "path": "src/13.3-verify-af-xdp-memory.md",
+      "writer": "complete",
+      "reviewer": "accepted_source_review",
+      "writer_agent": "dedicated fresh-context networking writer",
+      "reviewer_agent": "root plus independent final coordinator audit"
+    },
+    "13.4": {
+      "path": "src/13.4-af-xdp-receive.md",
+      "writer": "complete",
+      "reviewer": "accepted_source_review",
+      "writer_agent": "dedicated fresh-context networking writer",
+      "reviewer_agent": "root plus independent final coordinator audit"
+    },
+    "13.5": {
+      "path": "src/13.5-af-xdp-transmit-completion.md",
+      "writer": "complete",
+      "reviewer": "accepted_source_review",
+      "writer_agent": "dedicated fresh-context networking writer",
+      "reviewer_agent": "root plus independent final coordinator audit"
+    },
+    "13.6": {
+      "path": "src/13.6-compare-network-paths.md",
+      "writer": "complete",
+      "reviewer": "accepted_source_review",
+      "writer_agent": "dedicated fresh-context networking writer",
+      "reviewer_agent": "root plus independent final coordinator audit"
     }
   }
 }

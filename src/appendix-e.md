@@ -77,6 +77,18 @@ Versioned Linux documentation describes the 6.12 API family; the frozen Raspberr
 
 The linked lessons explain the mechanisms and constraints behind these short definitions. In particular, “atomic register write,” “locked state” and “reference counted” describe particular operations and lifetimes; they are not a proof that the whole system is race-free.
 
+### Networking and packet ownership
+
+| Term | Meaning in Chapters 11–13 |
+| --- | --- |
+| MAC / PHY | The MAC handles Ethernet frames; the PHY handles the link signalling. A MAC address is an identifier, not the controller itself. See [11.1](11.1-identify-network-hardware.md). |
+| DMA mapping / descriptor | The DMA API supplies a device address and manages a packet buffer's mapping lifetime. GENET hardware descriptors use MMIO; packet payloads reside in RAM. See [12.2](12.2-trace-network-transmit-dma.md). |
+| NAPI / GRO | NAPI schedules bounded kernel network processing; GRO may aggregate eligible received traffic. Neither is application busy polling. See [12.3](12.3-trace-network-receive-napi.md). |
+| Packet ring | TPACKET_V3 shares capture blocks with an application. Returning a block permits reuse; it does not expose the NIC's DMA ring. See [13.1](13.1-receive-packet-ring.md). |
+| XDP / AF_XDP | XDP selects receive actions in the kernel. AF_XDP connects selected traffic to application-managed packet buffers; this course explicitly uses generic XDP and copy mode. See [13.3](13.3-verify-af-xdp-memory.md). |
+| UMEM / completion | UMEM contains packet chunks. A TX completion returns a chunk for reuse; releasing an RX descriptor alone does not complete a TX or prove peer receipt. See [13.5](13.5-af-xdp-transmit-completion.md). |
+| PMD | A poll-mode driver processes bursts for a userspace framework. Its device access can be direct or kernel-backed, depending on the driver. See [13.6](13.6-compare-network-paths.md). |
+
 ## Software and hardware verification matrix
 
 The [machine-readable verification record](verification.json) records tool pins, checks and source hashes. [Independent page reports](https://github.com/EthanHosier/hardware-from-software/tree/main/reviews) associate reviewed Markdown with its included sources and dependencies. A matching hash establishes which bytes were checked; it does not establish hardware behaviour.
@@ -96,6 +108,7 @@ The verification record retains the original 31-file example inventory and its h
 | Button Device Tree overlay | Compiled with `dtc -@` in hosted Linux CI. | Applying it at boot, binding the actual device and verifying GPIO ownership. |
 | `mmio_fragment.c` | Source-reviewed contextual probe fragment only; **no module target and no compilation claim**. | Mapping/access on any device. Compiled `hello`/`mybutton` modules do not validate this fragment. |
 | Optional BME280 examples | Both firmware targets compiled, shared compensation source reviewed, C.3's explicitly synthetic arithmetic independently reproduced on a host. | Physical I²C/SPI, real calibration bytes, sensor temperature, timing and ambient accuracy. Pressure/humidity compensation is not implemented. |
+| Networking examples | Native Arm64 Bookworm compilation; decoder/checksum fixtures normal and ASan/UBSan; twelve privileged namespace cases on hosted Linux 7.0 Azure, including selective BPF and AF_XDP copy RX/TX, starvation and cleanup. | Pi course-kernel networking runtime, GENET/PHY/DMA behaviour and physical throughput. |
 | All physical bench work | **Physical runtime not exercised:** no verified board connection in the authoring environment. | Board boot, GPIO/electrical levels, SWD, UART/I²C/SPI, analyser capture, kernel runtime/unbind, LED output and physical timing/accuracy measurements. |
 
 The frozen firmware tool record is SDK **2.3.1**, commit `079c6f39023649b154152db30f1d781e884879bc`; Arm GNU **14.2.Rel1 (14.2.1)**, **darwin-arm64** host bundle; CMake **3.31.6**; Ninja Python package **1.11.1.4** (the executable banner is `1.11.1.git.kitware.jobserver-1`). Appendix B records paths and recovery.

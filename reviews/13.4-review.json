@@ -1,0 +1,44 @@
+{
+  "id": "13.4",
+  "reviewer": "root, separate from dedicated fresh-context writer",
+  "status": "accepted_source_review",
+  "reviewed_at": "2026-11-13T07:33:09.513079+00:00",
+  "canonical_sha256": "574e06fe980038819355b03711361cf3112878d1db6488892ad945c23e1b5ff4",
+  "included_source_sha256": {
+    "examples/network/xsk_receiver.cpp": "090176e3f27eaec9a2ff60d2c11d7567a0cde21a4710d52b29836a0f44767c2f",
+    "examples/network/xsk_common.hpp": "f88b840e0e2728e9c4c95e55c84d7f236ab0875044558a5435962fb88a09991c",
+    "examples/network/lab_xdp.bpf.c": "2e8748686a1a567a4354269a45ac2e4cbf8e118f51e57becd97b6e707b922bc7",
+    "examples/network/wire.hpp": "af9a7fe7864a87d715bf28dcac0638a133adbee592016cac0faba1a217b5c92e"
+  },
+  "asset_sha256": {
+    "src/assets/13.4-fill-rx-ownership.svg": "38a0a1e06076877f69dc86391ec059b7f5de3a496ef2c1b19e1597be141d5d79"
+  },
+  "paths_read": [
+    "src/13.4-af-xdp-receive.md",
+    "reviews/13.4-writer.json",
+    "examples/network/xsk_receiver.cpp",
+    "examples/network/xsk_common.hpp",
+    "examples/network/lab_xdp.bpf.c",
+    "examples/network/wire.hpp",
+    "src/assets/13.4-fill-rx-ownership.svg",
+    "NETWORKING_EXAMPLES.md"
+  ],
+  "scope_coverage": "Exact generic/copy queue binding and socket-mode verification, XSKMAP readiness/fallback, FILL/RX ownership invariants and wakeups, ordinarysocket bypass/restoration, bounded smallpool starvation and cleanup.",
+  "sources_checked": [
+    "https://docs.kernel.org/6.12/networking/af_xdp.html",
+    "https://github.com/xdp-project/xdp-tools/blob/v1.3.1/headers/xdp/xsk.h",
+    "https://raw.githubusercontent.com/xdp-project/xdp-tools/v1.3.1/headers/xdp/xsk.h",
+    "https://github.com/torvalds/linux/blob/v6.12/net/xdp/xsk.c",
+    "https://raw.githubusercontent.com/torvalds/linux/v6.12/net/xdp/xsk.c",
+    "https://raw.githubusercontent.com/xdp-project/xdp-tools/v1.3.1/lib/libxdp/xsk.c"
+  ],
+  "checks_performed": [
+    "Root read every word, included source, commands and complete SVG; substantive source/API/progression review completed before hash freeze.",
+    "Root and separate kernel_lessons agent read allprose/source/commands. Runtime artifact confirms selected3frames bypass ordinarysocket, then normaldeliveryrestored; starvation/recovery exposes56drops onactualhostwithoutpromisingexactmanualcounts. Allqueue0coverage explicitsinglequeueguard; copy=1 followsXDP_OPTIONS. Full SVG visually inspected; no findings. See network-af-xdp-lessons-audit.json.",
+    "All shell fences syntax checked with sh -n. Full rendered source equality, local links, SVG XML and downloadable files are enforced by publish.py before deployment.",
+    "Network code compiled natively on Arm64 Bookworm; Linux7.0Azure namespace integration CI43334222277 passes all12cases. Physical Pi/GENET operations are qualified source/reader exercises."
+  ],
+  "findings": [],
+  "repairs": [],
+  "hardware_status": "Source-reviewed; software compiled and hosted Linux namespace tested. Physical Pi boot, GENET DMA/PHY and hardware runtime not exercised."
+}
