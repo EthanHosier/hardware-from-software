@@ -1,21 +1,41 @@
 #include "iostream"
+#include "map"
+#include "set"
 #include "pico/stdlib.h"
 
 constexpr unsigned led_pin = 16;
 constexpr uint32_t mask = 1ul << led_pin;
+constexpr int ONE_SECOND_IN_NANOS = 1'000'000;
 
-void play_note(int pitch, float duration_secs) {
-    assert(pitch <= 100 && pitch >= 0);
-    int sleep_micros_per_iter = (100 - pitch) * 10;
-    int num_iterations = static_cast<int>(
-        duration_secs * 1'000'000.0f / static_cast<float>(sleep_micros_per_iter)
-    );
 
-    for (int i = 0; i < num_iterations; i ++) {
+#define C       261.63f
+#define C_SHARP 277.18f
+#define D_FLAT  277.18f
+#define D       293.66f
+#define D_SHARP 311.13f
+#define E_FLAT  311.13f
+#define E       329.63f
+#define F       349.23f
+#define F_SHARP 369.99f
+#define G_FLAT  369.99f
+#define G       392.00f
+#define G_SHARP 415.30f
+#define A_FLAT  415.30f
+#define A       440.00f
+#define A_SHARP 466.16f
+#define B_FLAT  466.16f
+#define B       493.88f
+
+void play_note(float freq, float duration_secs = 1) {
+    float sleep_nanos = ONE_SECOND_IN_NANOS / freq;
+    float num_iterations = duration_secs * ONE_SECOND_IN_NANOS / sleep_nanos;
+    int set_sleep = static_cast<int>(sleep_nanos / 2);
+
+    for (auto i = 0; i < static_cast<int>(num_iterations); i ++) {
         sio_hw->gpio_set = mask;
-        sleep_us(sleep_micros_per_iter / 2);
+        sleep_us(set_sleep);
         sio_hw->gpio_clr = mask;
-        sleep_us(sleep_micros_per_iter / 2);
+        sleep_us(set_sleep);
     }
 }
 
@@ -24,11 +44,14 @@ int main() {
     gpio_init(led_pin);
     gpio_set_dir(led_pin, GPIO_OUT);
 
-    while (true) {
-        std::cout << "lower pitch" << std::endl;
-        play_note(5, 5);
+    auto frequencies = std::set{
+        C, C_SHARP, D_FLAT, D, D_SHARP, E_FLAT, E, F,
+        F_SHARP, G_FLAT, G, G_SHARP, A_FLAT, A, A_SHARP, B_FLAT, B
+    };
 
-        std::cout << "higher pitch" << std::endl;
-        play_note(40, 5);
+    while (true) {
+        for (auto freq: frequencies) {
+            play_note(freq);
+        }
     }
 }
