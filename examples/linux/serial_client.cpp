@@ -8,6 +8,7 @@ int main(int argc, char** argv) {
     }
 
     std::string command = argv[2];
+
     for (int argument_index = 3; argument_index < argc; ++argument_index) {
         command += " " + std::string(argv[argument_index]);
     }

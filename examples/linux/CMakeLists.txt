@@ -18,3 +18,8 @@ foreach(example IN ITEMS
     add_executable(${example} ${example}.cpp)
     target_compile_options(${example} PRIVATE -Wall -Wextra -Wpedantic)
 endforeach()
+
+option(HFS_BUILD_NETWORK "Include the networking examples in this project" OFF)
+if(HFS_BUILD_NETWORK)
+    add_subdirectory(../network network)
+endif()

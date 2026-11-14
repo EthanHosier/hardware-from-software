@@ -28,12 +28,14 @@ int main(int argc, char** argv) {
             }
             return value;
         };
+
         const auto expected_count = number(argv[2], 10000);
         const auto timeout = number(argc == 4 ? argv[3] : "30", 300);
         const auto interface_index = if_nametoindex(argv[1]);
         if (interface_index == 0) {
             throw std::runtime_error("unknown interface");
         }
+
         socket_fd = socket(AF_PACKET, SOCK_RAW | SOCK_CLOEXEC, htons(ETH_P_ALL));
         if (socket_fd < 0) {
             throw std::runtime_error(std::strerror(errno));
